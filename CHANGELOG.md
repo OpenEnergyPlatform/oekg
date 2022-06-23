@@ -25,3 +25,4 @@ Here is a template for new release sections:
 - README.md [#2](https://github.com/OpenEnergyPlatform/oekg/pull/2)
 - CONTRIBUTING.md [#2](https://github.com/OpenEnergyPlatform/oekg/pull/2)
 - CHANGELOG.md [#2](https://github.com/OpenEnergyPlatform/oekg/pull/2)
+- CODE_OF_CONDUCT.md [#3](https://github.com/OpenEnergyPlatform/oekg/pull/3)
