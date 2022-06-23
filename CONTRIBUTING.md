@@ -8,7 +8,7 @@
 - [GitHub](https://github.com/)
 
 ## Types of interaction
-This repository is following the [Contributor Covenant Code of Conduct](https://github.com/../CODE_OF_CONDUCT.md). <br>
+This repository is following the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). <br>
 Please be self-reflective and always maintain a good culture of discussion and active participation.
 
 ### A. Use
