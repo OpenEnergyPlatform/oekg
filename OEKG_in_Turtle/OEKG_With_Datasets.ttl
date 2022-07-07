@@ -1,6 +1,10 @@
+@prefix DBO: <http://dbpedia.org/ontology/> .
 @prefix DC: <http://purl.org/dc/terms/> .
 @prefix OEKG: <http://openenergy-platform.org/ontology/oekg/> .
 @prefix OEO: <http://openenergy-platform.org/ontology/oeo/> .
+@prefix RDFS: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix SCHEMA: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 OEKG:Ludwig_Hulk DC:type DC:contributor .
 
@@ -46,6 +50,21 @@ OEKG:abbb_transformer a OEO:IAO_0000100 ;
 OEKG:abbb_transmission_capacity a OEO:IAO_0000100 ;
     DC:description "Transmission_capacities_with_end_nodes_from_and_to_a_region" ;
     DC:title "Transmission_capacities_related_to_scenarios" .
+
+OEKG:dummy_dataset_f OEO:conforms OEKG:scenario_narrative_dummy_narrative_j ;
+    OEO:input_of OEKG:scenario_projection_Zukunft_Stromsystem .
+
+OEKG:dummy_dataset_j OEO:conforms OEKG:scenario_narrative_dummy_narrative_j ;
+    OEO:input_of OEKG:scenario_projection_Politikszenarien_VIII .
+
+OEKG:dummy_dataset_s OEO:conforms OEKG:scenario_narrative_dummy_narrative_j,
+        OEKG:scenario_narrative_dummy_narrative_q ;
+    OEO:input_of OEKG:scenario_projection_Klimapfade_fur_Deutschland,
+        OEKG:scenario_projection_Trafo_FW,
+        OEKG:scenario_projection_Untersuchungen_zur_Energiestrategie_Brandenburgs .
+
+OEKG:dummy_dataset_w OEO:conforms OEKG:scenario_narrative_dummy_narrative_q ;
+    OEO:input_of OEKG:scenario_projection_klimaschutzszenario_2050 .
 
 OEKG:ego_slp_parameters a OEO:IAO_0000100 ;
     DC:description "A_collection_of_simulation_parameters,_focus_on_technologies" ;
@@ -901,38 +920,1229 @@ OEKG:szenariendb_mmr_de a OEO:IAO_0000100 ;
     DC:description "This_table_holds_emission_projections_and_corresponding_parameters,_submitted_under_Article_14_of_Regulation__EU__525_2013" ;
     DC:title "Emission_scenario_data_submitted_by_Germany_under_Regulation__EU__525_2013" .
 
+OEKG:Aktuelle_Maßnahmen_Szenario__2012_ a OEO:OEO_00000364 ;
+    RDFS:label "Aktuelle_Maßnahmen_Szenario__2012_" ;
+    OEO:IAO_0000115 "All_measures_done_until_2012,_target__now_situation_of_political_energy_and_climate_framework" ;
+    OEO:IAO_0000136 OEKG:klimaschutzszenario_2050_analysis_scope ;
+    OEO:abbreviation "AMS__2012_" ;
+    DC:type "Measure-driven" .
+
+OEKG:Almut_Kirchner a OEO:OEO_00000064 .
+
+OEKG:Andreas_Kemmler a OEO:OEO_00000064 .
+
+OEKG:Ben_Pfluger a OEO:OEO_00000064 .
+
+OEKG:Benjamin_Fries a OEO:OEO_00000064 .
+
+OEKG:Berit_Muller a OEO:OEO_00000064 .
+
+OEKG:CRF_sector__IPCC_2006___other a OEO:OEO_00010050 ;
+    RDFS:label "CRF sector (IPCC 2006): other" .
+
+OEKG:Combination_of_maintaining_the_use_of_biomass_for_heating_purposes_and_less_ambitious_building_renovation a OEO:OEO_00000364 ;
+    RDFS:label "Combination_of_maintaining_the_use_of_biomass_for_heating_purposes_and_less_ambitious_building_renovation" ;
+    OEO:IAO_0000115 "Effects_of_combined_use_of_biomass_for_heating_purposes_and_less_heat_demand_reduction" ;
+    OEO:IAO_0000136 OEKG:Trafo_FW_analysis_scope ;
+    OEO:abbreviation "2B" ;
+    DC:type "Target-driven" .
+
+OEKG:Energieszenario_2030 a OEO:OEO_00000364 ;
+    RDFS:label "Energieszenario_2030" ;
+    OEO:IAO_0000115 "Demand_data_from_2010_is_scaled_with_expacted_demand_in_2030__political_goal_" ;
+    OEO:IAO_0000136 OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_analysis_scope ;
+    OEO:abbreviation "appBBB_ES2030" ;
+    DC:type "Target-driven" .
+
+OEKG:Felix_Chr._Matthes a OEO:OEO_00000064 .
+
+OEKG:Felix_Chri._Matthes a OEO:OEO_00000064 .
+
+OEKG:Felix_Matthes a OEO:OEO_00000064 .
+
+OEKG:Florian_Rechenmacher a OEO:OEO_00000064 .
+
+OEKG:Frank_Peter a OEO:OEO_00000064 .
+
+OEKG:Frank_Sensfuß a OEO:OEO_00000064 .
+
+OEKG:Globaler_Klimaschutz___80_Klimapfad a OEO:OEO_00000364 ;
+    RDFS:label "Globaler_Klimaschutz___80_Klimapfad" ;
+    OEO:IAO_0000115 "Global_community_commits_to_2_degree_goal,_climate_control_instruments_globally_coordinated,_acceleration_of_innovation" ;
+    OEO:IAO_0000136 OEKG:Klimapfade_fur_Deutschland_analysis_scope ;
+    OEO:abbreviation "G80" ;
+    DC:type "Target-driven" .
+
+OEKG:Globales_Klimaschutz___95_Klimapfad a OEO:OEO_00000364 ;
+    RDFS:label "Globales_Klimaschutz___95_Klimapfad" ;
+    OEO:IAO_0000115 "Global_community_commits_to_2_degree_goal,_climate_control_instruments_globally_coordinated" ;
+    OEO:IAO_0000136 OEKG:Klimapfade_fur_Deutschland_analysis_scope ;
+    OEO:abbreviation "G95" ;
+    DC:type "Target-driven" .
+
+OEKG:Grune_2030 a OEO:OEO_00000364 ;
+    RDFS:label "Grune_2030" ;
+    OEO:IAO_0000115 "Demand_data_from_2010_is_scaled_with_expacted_demand_in_2030__own_assumptions_contrary_to_ES2030_" ;
+    OEO:IAO_0000136 OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_analysis_scope ;
+    OEO:abbreviation "appBBB_gruene2030" ;
+    DC:type "Target-driven" .
+
+OEKG:Hannes_Boettcher a OEO:OEO_00000064 .
+
+OEKG:Jan_Steinbach a OEO:OEO_00000064 .
+
+OEKG:Jens_Burchardt a OEO:OEO_00000064 .
+
+OEKG:Johannes_Hartwig a OEO:OEO_00000064 .
+
+OEKG:Judit_Kockat a OEO:OEO_00000064 .
+
+OEKG:Katja_Schumachen a OEO:OEO_00000064 .
+
+OEKG:Katja_Schumacher a OEO:OEO_00000064 .
+
+OEKG:Klaus_Henneberg a OEO:OEO_00000064 .
+
+OEKG:Klaus_Hennenberg a OEO:OEO_00000064 .
+
+OEKG:Klimapfade_fur_Deutschland a OEO:OEO_00000364 ;
+    DBO:subtitle "-" ;
+    OEO:BFO_0000051 OEKG:Klimapfade_fur_Deutschland_model_inputs,
+        OEKG:Klimapfade_fur_Deutschland_model_outputs,
+        OEKG:Klimapfade_fur_Deutschland_scenario_horizon ;
+    OEO:OEO_00000506 OEKG:Almut_Kirchner,
+        OEKG:Andreas_Kemmler,
+        OEKG:Florian_Rechenmacher,
+        OEKG:Jens_Burchardt,
+        OEKG:Marco_Wunsch,
+        OEKG:Patrick_Herhold,
+        OEKG:Philipp_Gerbert,
+        OEKG:Stefan_Schoenberger ;
+    OEO:OEO_00000509 OEKG:Klimapfade_fur_Deutschland_report ;
+    OEO:OEO_00000510 OEKG:institution ;
+    OEO:OEO_00000514 OEKG:Klimapfade_fur_Deutschland_resolution ;
+    OEO:RO_0002234 OEKG:funding_source ;
+    OEO:RO_0002615 OEKG:Klimapfade_fur_Deutschland_VIEW_model ;
+    OEO:abbreviation "" ;
+    OEO:has_projection OEKG:scenario_projection_Klimapfade_fur_Deutschland ;
+    OEO:written_by OEKG:dummy_institute_kk14 ;
+    DC:abstract "Analysis of technical and economic potentials and measures to reduce GHG" ;
+    DC:conformsTo OEKG:Globaler_Klimaschutz___80_Klimapfad,
+        OEKG:Globales_Klimaschutz___95_Klimapfad,
+        OEKG:Klimapfade_fur_Deutschland_analysis_scope,
+        OEKG:Nationale_Alleingänge___80_Klimapfad,
+        OEKG:Nationale_Alleingänge___95_Klimapfad,
+        OEKG:Referenzszenario ;
+    DC:title "Klimapfade für Deutschland" ;
+    SCHEMA:url "https://bdi.eu/publikation/news/klimapfade-fuer-deutschland/" .
+
+OEKG:Klimapfade_fur_Deutschland_VIEW_model a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Klimapfade_fur_Deutschland ;
+    DC:title "VIEW-model" .
+
+OEKG:Klimapfade_fur_Deutschland_duration a OEO:OEO_00030035 ;
+    OEO:OEO_00040010 OEO:UO_0000036 ;
+    OEO:OEO_00140178 30 .
+
+OEKG:Klimapfade_fur_Deutschland_model_inputs a OEO:OEO_00030029 ;
+    OEO:IAO_0000136 OEKG:coal,
+        OEKG:electricity_price,
+        OEKG:investment_cost,
+        OEKG:natural_gas,
+        OEKG:synthetic_fuel .
+
+OEKG:Klimapfade_fur_Deutschland_model_outputs a OEO:OEO_00020013 ;
+    OEO:IAO_0000136 OEKG:carbon_capture_and_storage,
+        OEKG:carbon_dioxide,
+        OEKG:developable_flow_potential,
+        OEKG:economic_flow_potential,
+        OEKG:energy_storage,
+        OEKG:final_energy_carrier,
+        OEKG:greenhouse_gas_emission,
+        OEKG:hydrofluorocarbon,
+        OEKG:methane,
+        OEKG:nitrogen_trifluoride,
+        OEKG:nitrous_oxide,
+        OEKG:offshore_wind_farm,
+        OEKG:onshore_wind_farm,
+        OEKG:perfluorocarbon,
+        OEKG:primary_energy_carrier,
+        OEKG:rooftop_photovoltaic_power_plant,
+        OEKG:sulphur_hexafluoride,
+        OEKG:technological_flow_potential,
+        OEKG:theoretical_flow_potential .
+
+OEKG:Klimapfade_fur_Deutschland_regions a OEO:OEO_00020032 ;
+    OEO:IAO_0000136 "Germany" .
+
+OEKG:Klimapfade_fur_Deutschland_report OEO:RO_0002353 OEKG:Klimapfade_fur_Deutschland .
+
+OEKG:Klimapfade_fur_Deutschland_resolution a OEO:OEO_00020121 ;
+    RDFS:label OEO:Year ;
+    OEO:OEO_00040010 OEO:UO_0000036 .
+
+OEKG:Klimapfade_fur_Deutschland_scenario_horizon a OEO:OEO_00020098 ;
+    OEO:BFO_0000051 [ a OEO:OEO_00030031 ;
+            OEO:OEO_00140178 2020 ],
+        [ a OEO:OEO_00030032 ;
+            OEO:OEO_00140178 2050 ],
+        OEKG:Klimapfade_fur_Deutschland_duration,
+        OEKG:scenario_year_2020,
+        OEKG:scenario_year_2030,
+        OEKG:scenario_year_2040,
+        OEKG:scenario_year_2050 .
+
+OEKG:Klimaschutzszenario_80 a OEO:OEO_00000364 ;
+    RDFS:label "Klimaschutzszenario_80" ;
+    OEO:IAO_0000115 "Targets_of_governmental_energy_concept_for_greenhouse_gas_emissions,_renewable_energies_and_energy_efficiency" ;
+    OEO:IAO_0000136 OEKG:klimaschutzszenario_2050_analysis_scope ;
+    OEO:abbreviation "KS_80" ;
+    DC:type "Target-driven" .
+
+OEKG:Klimaschutzszenario_95 a OEO:OEO_00000364 ;
+    RDFS:label "Klimaschutzszenario_95" ;
+    OEO:IAO_0000115 "Reduction_of_greenhouse_gas_emissions_95_in_2050_towards_1990" ;
+    OEO:IAO_0000136 OEKG:klimaschutzszenario_2050_analysis_scope ;
+    OEO:abbreviation "KS_95" ;
+    DC:type "Target-driven" .
+
+OEKG:Lara_Mia_Herrmann a OEO:OEO_00000064 .
+
+OEKG:Laufzeitbegrenzungs_Szenario_for_20_years__EEG_ a OEO:OEO_00000364 ;
+    RDFS:label "Laufzeitbegrenzungs_Szenario_for_20_years__EEG_" ;
+    OEO:IAO_0000115 "Operating_time_of_power_plants_limited,_disconnection_of_coal_power_plants_according_to_model_of_withdrawal_from_nuclear_energy_programme" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Target-driven" .
+
+OEKG:Laufzeitbegrenzungs_Szenario_for_25_years__EEG_ a OEO:OEO_00000364 ;
+    RDFS:label "Laufzeitbegrenzungs_Szenario_for_25_years__EEG_" ;
+    OEO:IAO_0000115 "Operating_time_of_power_plants_limited,_disconnection_of_coal_power_plants_according_to_model_of_withdrawal_from_nuclear_energy_programme" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Target-driven" .
+
+OEKG:Laufzeitbegrenzungs_Szenario_for_30_years__EEG_ a OEO:OEO_00000364 ;
+    RDFS:label "Laufzeitbegrenzungs_Szenario_for_30_years__EEG_" ;
+    OEO:IAO_0000115 "Operating_time_of_power_plants_limited,_disconnection_of_coal_power_plants_according_to_model_of_withdrawal_from_nuclear_energy_programme" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Target-driven" .
+
+OEKG:Laufzeitbrezungs_Szenario_for_20_years a OEO:OEO_00000364 ;
+    RDFS:label "Laufzeitbrezungs_Szenario_for_20_years" ;
+    OEO:IAO_0000115 "Operating_time_of_power_plants_limited,_technical_practicability_limits_of_expansion_of_renewable_energy_are_not_completely_exploited" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Target-driven" .
+
+OEKG:Laufzeitbrezungs_Szenario_for_25_years a OEO:OEO_00000364 ;
+    RDFS:label "Laufzeitbrezungs_Szenario_for_25_years" ;
+    OEO:IAO_0000115 "Operating_time_of_power_plants_limited,_technical_practicability_limits_of_expansion_of_renewable_energy_are_not_completely_exploited" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Target-driven" .
+
+OEKG:Laufzeitbrezungs_Szenario_for_30_years a OEO:OEO_00000364 ;
+    RDFS:label "Laufzeitbrezungs_Szenario_for_30_years" ;
+    OEO:IAO_0000115 "Operating_time_of_power_plants_limited,_technical_practicability_limits_of_expansion_of_renewable_energy_are_not_completely_exploited" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Target-driven" .
+
+OEKG:Less_ambitious_building_renovation a OEO:OEO_00000364 ;
+    RDFS:label "Less_ambitious_building_renovation" ;
+    OEO:IAO_0000115 "Effects_of_less_heat_demand_reduction_against_the_background_of_achieving_the_GHG_goal_in_the_building_sector" ;
+    OEO:IAO_0000136 OEKG:Trafo_FW_analysis_scope ;
+    OEO:abbreviation "2A" ;
+    DC:type "Target-driven" .
+
+OEKG:Lothar_Rausch a OEO:OEO_00000064 .
+
+OEKG:Maintaining_the_use_of_biomass_for_heating_purposes a OEO:OEO_00000364 ;
+    RDFS:label "Maintaining_the_use_of_biomass_for_heating_purposes" ;
+    OEO:IAO_0000115 "Effects_of_the_use_of_biomass_for_heating_puposes_against_the_background_of_achieving_the_GHG_goal_in_the_building_sector" ;
+    OEO:IAO_0000136 OEKG:Trafo_FW_analysis_scope ;
+    OEO:abbreviation "1B" ;
+    DC:type "Target-driven" .
+
+OEKG:Mit_Erweiterten_Maßnahmen_Szenario a OEO:OEO_00000364 ;
+    RDFS:label "Mit_Erweiterten_Maßnahmen_Szenario" ;
+    OEO:IAO_0000115 "Suggestion_of_measures_in_order_to_achieve_sectoral_goals_of___Klimaschutzplan_2050" ;
+    OEO:IAO_0000136 OEKG:Politikszenarien_VIII_analysis_scope ;
+    OEO:abbreviation "MEMS" ;
+    DC:type "Target-driven" .
+
+OEKG:Mit_Maßnahmen_Szenario a OEO:OEO_00000364 ;
+    RDFS:label "Mit_Maßnahmen_Szenario" ;
+    OEO:IAO_0000115 "All_measures_implemented_by_July_2016,_including_implemented_measures_from___Aktionsprogramm_Klimaschutz_2020" ;
+    OEO:IAO_0000136 OEKG:Politikszenarien_VIII_analysis_scope ;
+    OEO:abbreviation "MMS" ;
+    DC:type "Measure-driven" .
+
+OEKG:Mit_Weiteren_Maßnahmen_Szenario a OEO:OEO_00000364 ;
+    RDFS:label "Mit_Weiteren_Maßnahmen_Szenario" ;
+    OEO:IAO_0000115 "Not_yet_implemented_measures_of___Aktionsprogramm_Klimaschutz_2020___and___Nationalen_Aktionsplan_Energieeffizienz___included" ;
+    OEO:IAO_0000136 OEKG:Politikszenarien_VIII_analysis_scope ;
+    OEO:abbreviation "MWMS" ;
+    DC:type "Measure-driven" .
+
+OEKG:Nationale_Alleingänge___80_Klimapfad a OEO:OEO_00000364 ;
+    RDFS:label "Nationale_Alleingänge___80_Klimapfad" ;
+    OEO:IAO_0000115 "Only_core_Europe_and_few_other_countries_pursue_climate_control,_coexistance_of_seperate_path,_regression_of_innovation_rate" ;
+    OEO:IAO_0000136 OEKG:Klimapfade_fur_Deutschland_analysis_scope ;
+    OEO:abbreviation "N80" ;
+    DC:type "Target-driven" .
+
+OEKG:Nationale_Alleingänge___95_Klimapfad a OEO:OEO_00000364 ;
+    RDFS:label "Nationale_Alleingänge___95_Klimapfad" ;
+    OEO:IAO_0000115 "Only_core_Europe_and_few_other_countries_pursue_climate_control,_coexistance_of_seperate_path,_regression_of_innovation_rate" ;
+    OEO:IAO_0000136 OEKG:Klimapfade_fur_Deutschland_analysis_scope ;
+    OEO:abbreviation "N95" ;
+    DC:type "Target-driven" .
+
+OEKG:Patrick_Herhold a OEO:OEO_00000064 .
+
+OEKG:Philipp_Gerbert a OEO:OEO_00000064 .
+
+OEKG:Politikszenarien_VIII a OEO:OEO_00000364 ;
+    DBO:subtitle "" ;
+    OEO:BFO_0000051 OEKG:Politikszenarien_VIII_model_inputs,
+        OEKG:Politikszenarien_VIII_model_outputs,
+        OEKG:Politikszenarien_VIII_scenario_horizon ;
+    OEO:OEO_00000506 OEKG:Barbara_Schlomann,
+        OEKG:Benjamin_Fries,
+        OEKG:Benjamin_Greiner,
+        OEKG:Carina_Zell_Ziegler,
+        OEKG:Charlotte_Loreck,
+        OEKG:Felix_Matthes,
+        OEKG:Gunter_Dehoust,
+        OEKG:Hannah_Foerster,
+        OEKG:Hans_Joachim_Ziesing,
+        OEKG:Hauke_Hermann,
+        OEKG:Jan_Steinbach,
+        OEKG:Julia_Repenning,
+        OEKG:Katja_Schumacher,
+        OEKG:Kirsten_Wiegmann,
+        OEKG:Klaus_Hennenberg,
+        OEKG:Lara_Mia_Herrmann,
+        OEKG:Lothar_Rausch,
+        OEKG:Lukas_Emele,
+        OEKG:Margarethe_Scheffler,
+        OEKG:Ralph_Harthan,
+        OEKG:Ruth_Blanck,
+        OEKG:Sibylle_Braungardt,
+        OEKG:Sylvie_Ludig,
+        OEKG:Thomas_Bergmann,
+        OEKG:Tobias_Fleiter,
+        OEKG:Veit_Burger,
+        OEKG:Wolfgang_Eichhammer,
+        OEKG:Wolfram_Joerß ;
+    OEO:OEO_00000509 OEKG:Politikszenarien_VIII_report ;
+    OEO:OEO_00000510 OEKG:institution ;
+    OEO:OEO_00000514 OEKG:Politikszenarien_VIII_resolution ;
+    OEO:RO_0002234 OEKG:funding_source ;
+    OEO:RO_0002615 OEKG:Politikszenarien_VIII_ELIAS_PowerFlex,
+        OEKG:Politikszenarien_VIII_EnUSEM,
+        OEKG:Politikszenarien_VIII_FORECAST,
+        OEKG:Politikszenarien_VIII_INVERT_EE_Lab,
+        OEKG:Politikszenarien_VIII_TEMPS ;
+    OEO:abbreviation "" ;
+    OEO:has_projection OEKG:scenario_projection_Politikszenarien_VIII ;
+    OEO:written_by OEKG:dummy_institute_dqa ;
+    DC:abstract "Generation of projections for German greenhouse gas emissions until 2035" ;
+    DC:conformsTo OEKG:Mit_Erweiterten_Maßnahmen_Szenario,
+        OEKG:Mit_Maßnahmen_Szenario,
+        OEKG:Mit_Weiteren_Maßnahmen_Szenario,
+        OEKG:Politikszenarien_VIII_analysis_scope ;
+    DC:title "Politikszenarien VIII" ;
+    SCHEMA:url "" .
+
+OEKG:Politikszenarien_VIII_ELIAS_PowerFlex a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Politikszenarien_VIII ;
+    DC:title "ELIAS/PowerFlex" .
+
+OEKG:Politikszenarien_VIII_EnUSEM a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Politikszenarien_VIII ;
+    DC:title "EnUSEM" .
+
+OEKG:Politikszenarien_VIII_FORECAST a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Politikszenarien_VIII ;
+    DC:title "FORECAST" .
+
+OEKG:Politikszenarien_VIII_INVERT_EE_Lab a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Politikszenarien_VIII ;
+    DC:title "INVERT/EE-Lab" .
+
+OEKG:Politikszenarien_VIII_TEMPS a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Politikszenarien_VIII ;
+    DC:title "TEMPS" .
+
+OEKG:Politikszenarien_VIII_duration a OEO:OEO_00030035 ;
+    OEO:OEO_00040010 OEO:UO_0000036 ;
+    OEO:OEO_00140178 15 .
+
+OEKG:Politikszenarien_VIII_model_inputs a OEO:OEO_00030029 ;
+    OEO:IAO_0000136 OEKG:coal,
+        OEKG:electricity_price,
+        OEKG:gross_domestic_product,
+        OEKG:gross_value_added,
+        OEKG:natural_gas,
+        OEKG:population .
+
+OEKG:Politikszenarien_VIII_model_outputs a OEO:OEO_00020013 ;
+    OEO:IAO_0000136 OEKG:carbon_dioxide,
+        OEKG:developable_flow_potential,
+        OEKG:economic_flow_potential,
+        OEKG:energy_storage,
+        OEKG:final_energy_carrier,
+        OEKG:greenhouse_gas_emission,
+        OEKG:hydrofluorocarbon,
+        OEKG:methane,
+        OEKG:nitrous_oxide,
+        OEKG:perfluorocarbon,
+        OEKG:primary_energy_carrier,
+        OEKG:technological_flow_potential .
+
+OEKG:Politikszenarien_VIII_regions a OEO:OEO_00020032 ;
+    OEO:IAO_0000136 "Germany" .
+
+OEKG:Politikszenarien_VIII_report OEO:RO_0002353 OEKG:Politikszenarien_VIII .
+
+OEKG:Politikszenarien_VIII_resolution a OEO:OEO_00020121 ;
+    RDFS:label OEO:Year ;
+    OEO:OEO_00040010 OEO:UO_0000036 .
+
+OEKG:Politikszenarien_VIII_scenario_horizon a OEO:OEO_00020098 ;
+    OEO:BFO_0000051 [ a OEO:OEO_00030031 ;
+            OEO:OEO_00140178 2020 ],
+        [ a OEO:OEO_00030032 ;
+            OEO:OEO_00140178 2035 ],
+        OEKG:Politikszenarien_VIII_duration,
+        OEKG:scenario_year_2020,
+        OEKG:scenario_year_2025,
+        OEKG:scenario_year_2030,
+        OEKG:scenario_year_2035 .
+
+OEKG:Rainer_Elsland a OEO:OEO_00000064 .
+
+OEKG:Reference_scenario_with_high_heat_demand_reduction_and_exit_form_the_use_of_biomass_for_heating_purposes a OEO:OEO_00000364 ;
+    RDFS:label "Reference_scenario_with_high_heat_demand_reduction_and_exit_form_the_use_of_biomass_for_heating_purposes" ;
+    OEO:IAO_0000115 "Ambitious,_energy_efficient_development" ;
+    OEO:IAO_0000136 OEKG:Trafo_FW_analysis_scope ;
+    OEO:abbreviation "1A" ;
+    DC:type "Target-driven" .
+
+OEKG:Referenz_Szenario a OEO:OEO_00000364 ;
+    RDFS:label "Referenz_Szenario" ;
+    OEO:IAO_0000115 "Historical_scenario_with_oil_price_projection,_price_path_with_a_high_price_level_of_fuel" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Measure-driven" .
+
+OEKG:Referenzszenario a OEO:OEO_00000364 ;
+    RDFS:label "Referenzszenario" ;
+    OEO:IAO_0000115 "Indicative_scenario,_target__evaluation_of_gap_between_development_under_current_situation_and_goal_of_climate_control_of_government" ;
+    OEO:IAO_0000136 OEKG:Klimapfade_fur_Deutschland_analysis_scope ;
+    OEO:abbreviation "R" ;
+    DC:type "Measure-driven" .
+
+OEKG:Schnellausstiegs_Szenario a OEO:OEO_00000364 ;
+    RDFS:label "Schnellausstiegs_Szenario" ;
+    OEO:IAO_0000115 "Very_ambitioned_expansion_of_renewable_energy,_orientated_on_qualitative_determined_technical_limitations_of_exit_strategy,_regulatory_practicability_ignored" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Target-driven" .
+
+OEKG:Stefan_Schoenberger a OEO:OEO_00000064 .
+
+OEKG:Sylive_Ludig a OEO:OEO_00000064 .
+
+OEKG:Sylvie_Ludig a OEO:OEO_00000064 .
+
+OEKG:Thomas_Bergmann a OEO:OEO_00000064 .
+
+OEKG:Trafo_FW a OEO:OEO_00000364 ;
+    DBO:subtitle "Teilbericht im Rahmen des Projektes: TRANSFORMATIONSPFADE IM WÄRMESEKTOR – Betriebs- und volkswirtschaftliche Betrachtung der Sektorkopplung mit dem Fokus Fernwärme mit hohen Anteilen konventioneller KWK-Erzeugung und Rückkopplung zum Gesamtenergieversorgungssystem" ;
+    OEO:BFO_0000051 OEKG:Trafo_FW_model_inputs,
+        OEKG:Trafo_FW_model_outputs,
+        OEKG:Trafo_FW_scenario_horizon ;
+    OEO:OEO_00000506 OEKG:Norman_Gerhardt ;
+    OEO:OEO_00000509 OEKG:Trafo_FW_report ;
+    OEO:OEO_00000510 OEKG:institution ;
+    OEO:OEO_00000514 OEKG:Trafo_FW_resolution ;
+    OEO:RO_0002234 OEKG:funding_source ;
+    OEO:RO_0002615 OEKG:Trafo_FW_SCOPE ;
+    OEO:abbreviation "Trafo FW" ;
+    OEO:has_projection OEKG:scenario_projection_Trafo_FW ;
+    OEO:written_by OEKG:dummy_institute_zz12 ;
+    DC:abstract "Transformation of the heat sector against the background of economic aspects of the sector coupling and achievement of the sector goal" ;
+    DC:conformsTo OEKG:Combination_of_maintaining_the_use_of_biomass_for_heating_purposes_and_less_ambitious_building_renovation,
+        OEKG:Less_ambitious_building_renovation,
+        OEKG:Maintaining_the_use_of_biomass_for_heating_purposes,
+        OEKG:Reference_scenario_with_high_heat_demand_reduction_and_exit_form_the_use_of_biomass_for_heating_purposes,
+        OEKG:Trafo_FW_analysis_scope ;
+    DC:title "Entwicklung der Gebäudewärme und Rückkopplung mit dem Energiesystem in -95% THG Klimazielszenarien" ;
+    SCHEMA:url "https://www.iee.fraunhofer.de/content/dam/iwes-neu/energiesystemtechnik/de/Dokumente/Veroeffentlichungen/2019/2019_Feb_Bericht_Fraunhofer_IEE_-_Transformation_Waerme_2030_2050.pdf" .
+
+OEKG:Trafo_FW_SCOPE a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Trafo_FW ;
+    DC:title "SCOPE" .
+
+OEKG:Trafo_FW_duration a OEO:OEO_00030035 ;
+    OEO:OEO_00040010 OEO:UO_0000036 ;
+    OEO:OEO_00140178 30 .
+
+OEKG:Trafo_FW_model_inputs a OEO:OEO_00030029 ;
+    OEO:IAO_0000136 OEKG:coal,
+        OEKG:energy_storage,
+        OEKG:natural_gas,
+        OEKG:population .
+
+OEKG:Trafo_FW_model_outputs a OEO:OEO_00020013 ;
+    OEO:IAO_0000136 OEKG:carbon_dioxide,
+        OEKG:energy_storage,
+        OEKG:final_energy_carrier,
+        OEKG:methane,
+        OEKG:nitrous_oxide .
+
+OEKG:Trafo_FW_regions a OEO:OEO_00020032 ;
+    OEO:IAO_0000136 "EWR (excluding Greece)" .
+
+OEKG:Trafo_FW_report OEO:RO_0002353 OEKG:Trafo_FW .
+
+OEKG:Trafo_FW_resolution a OEO:OEO_00020121 ;
+    RDFS:label OEO:Hour ;
+    OEO:OEO_00040010 OEO:UO_0000032 .
+
+OEKG:Trafo_FW_scenario_horizon a OEO:OEO_00020098 ;
+    OEO:BFO_0000051 [ a OEO:OEO_00030032 ;
+            OEO:OEO_00140178 2050 ],
+        [ a OEO:OEO_00030031 ;
+            OEO:OEO_00140178 2030 ],
+        OEKG:Trafo_FW_duration,
+        OEKG:scenario_year_2030,
+        OEKG:scenario_year_2040,
+        OEKG:scenario_year_2050 .
+
+OEKG:Transformations_Szenario a OEO:OEO_00000364 ;
+    RDFS:label "Transformations_Szenario" ;
+    OEO:IAO_0000115 "Ambitioned_expansion_of_renewable_energies__power_plant_complex,_CO2_optimisation_of_power_plants_by_21st__year_of_operation" ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_analysis_scope ;
+    OEO:abbreviation "" ;
+    DC:type "Target-driven" .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs a OEO:OEO_00000364 ;
+    DBO:subtitle "" ;
+    OEO:BFO_0000051 OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_model_inputs,
+        OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_model_outputs,
+        OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_scenario_horizon ;
+    OEO:OEO_00000506 OEKG:Berit_Muller,
+        OEKG:Elisa_Gaudchau,
+        OEKG:Jochen_Twele ;
+    OEO:OEO_00000509 OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_report ;
+    OEO:OEO_00000510 OEKG:institution ;
+    OEO:OEO_00000514 OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_resolution ;
+    OEO:RO_0002234 OEKG:funding_source ;
+    OEO:RO_0002615 OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_Oemof_Application_Berlin_Brandenburg ;
+    OEO:abbreviation "ESBB" ;
+    OEO:has_projection OEKG:scenario_projection_Untersuchungen_zur_Energiestrategie_Brandenburgs ;
+    OEO:written_by OEKG:dummy_institute_zz12 ;
+    DC:abstract "Investigation and assessment of existing energy strategies of Brandenburg, focal question: is coal still needed for stable energy supply in 2030?" ;
+    DC:conformsTo OEKG:Energieszenario_2030,
+        OEKG:Grune_2030,
+        OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_analysis_scope ;
+    DC:title "Untersuchungen zur Energiestrategie Brandenburgs" ;
+    SCHEMA:url "https://reiner-lemoine-institut.de/untersuchungen-zur-energiestrategie-brandenburgs-gaudchau-et-al-2017/" .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_Oemof_Application_Berlin_Brandenburg a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Untersuchungen_zur_Energiestrategie_Brandenburgs ;
+    DC:title "Oemof Application Berlin Brandenburg" .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_duration a OEO:OEO_00030035 ;
+    OEO:OEO_00040010 OEO:UO_0000036 ;
+    OEO:OEO_00140178 1 .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_model_inputs a OEO:OEO_00030029 ;
+    OEO:IAO_0000136 OEKG:coal,
+        OEKG:district_heating,
+        OEKG:electricity_price,
+        OEKG:natural_gas .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_model_outputs a OEO:OEO_00020013 ;
+    OEO:IAO_0000136 OEKG:carbon_dioxide,
+        OEKG:energy_storage,
+        OEKG:final_energy_carrier,
+        OEKG:primary_energy_carrier,
+        OEKG:sulphur_hexafluoride .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_regions a OEO:OEO_00020032 ;
+    OEO:IAO_0000136 "Brandenburg" .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_report OEO:RO_0002353 OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_resolution a OEO:OEO_00020121 ;
+    RDFS:label OEO:Hour ;
+    OEO:OEO_00040010 OEO:UO_0000032 .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_scenario_horizon a OEO:OEO_00020098 ;
+    OEO:BFO_0000051 [ a OEO:OEO_00030032 ;
+            OEO:OEO_00140178 2015 ],
+        [ a OEO:OEO_00030031 ;
+            OEO:OEO_00140178 2015 ],
+        OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_duration,
+        OEKG:scenario_year_2015 .
+
+OEKG:Vanessa_Cook a OEO:OEO_00000064 .
+
+OEKG:Veit_Burger a OEO:OEO_00000064 .
+
+OEKG:Wolfgang_Schade a OEO:OEO_00000064 .
+
+OEKG:Zukunft_Stromsystem a OEO:OEO_00000364 ;
+    DBO:subtitle "Kohleausstieg 2035 - Vom Ziel her denken" ;
+    OEO:BFO_0000051 OEKG:Zukunft_Stromsystem_model_inputs,
+        OEKG:Zukunft_Stromsystem_model_outputs,
+        OEKG:Zukunft_Stromsystem_scenario_horizon ;
+    OEO:OEO_00000506 OEKG:Charlotte_Loreck,
+        OEKG:Felix_Chr._Matthes,
+        OEKG:Frank_Peter,
+        OEKG:Hauke_Hermann,
+        OEKG:Inka_Ziegenhagen,
+        OEKG:Lukas_Emele,
+        OEKG:Vanessa_Cook ;
+    OEO:OEO_00000509 OEKG:Zukunft_Stromsystem_report ;
+    OEO:OEO_00000510 OEKG:institution ;
+    OEO:OEO_00000514 OEKG:Zukunft_Stromsystem_resolution ;
+    OEO:RO_0002234 OEKG:funding_source ;
+    OEO:RO_0002615 OEKG:Zukunft_Stromsystem_PowerFlex ;
+    OEO:abbreviation "" ;
+    OEO:has_projection OEKG:scenario_projection_Zukunft_Stromsystem ;
+    OEO:written_by OEKG:dummy_institute_tt10 ;
+    DC:abstract "Analysis of reasoning and organization of  change away from fossil electricity generation" ;
+    DC:conformsTo OEKG:Laufzeitbegrenzungs_Szenario_for_20_years__EEG_,
+        OEKG:Laufzeitbegrenzungs_Szenario_for_25_years__EEG_,
+        OEKG:Laufzeitbegrenzungs_Szenario_for_30_years__EEG_,
+        OEKG:Laufzeitbrezungs_Szenario_for_20_years,
+        OEKG:Laufzeitbrezungs_Szenario_for_25_years,
+        OEKG:Laufzeitbrezungs_Szenario_for_30_years,
+        OEKG:Referenz_Szenario,
+        OEKG:Schnellausstiegs_Szenario,
+        OEKG:Transformations_Szenario,
+        OEKG:Zukunft_Stromsystem_analysis_scope ;
+    DC:title "Zukunft Stromsystem" ;
+    SCHEMA:url "https://www.oeko.de/publikationen/p-details/zukunft-stromsystem/" .
+
+OEKG:Zukunft_Stromsystem_PowerFlex a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_Zukunft_Stromsystem ;
+    DC:title "PowerFlex" .
+
+OEKG:Zukunft_Stromsystem_duration a OEO:OEO_00030035 ;
+    OEO:OEO_00040010 OEO:UO_0000036 ;
+    OEO:OEO_00140178 30 .
+
+OEKG:Zukunft_Stromsystem_model_inputs a OEO:OEO_00030029 ;
+    OEO:IAO_0000136 OEKG:coal,
+        OEKG:gross_domestic_product,
+        OEKG:gross_value_added,
+        OEKG:natural_gas,
+        OEKG:population .
+
+OEKG:Zukunft_Stromsystem_model_outputs a OEO:OEO_00020013 ;
+    OEO:IAO_0000136 OEKG:carbon_dioxide,
+        OEKG:developable_flow_potential,
+        OEKG:economic_flow_potential,
+        OEKG:energy_storage,
+        OEKG:final_energy_carrier,
+        OEKG:primary_energy_carrier,
+        OEKG:technological_flow_potential,
+        OEKG:theoretical_flow_potential .
+
+OEKG:Zukunft_Stromsystem_regions a OEO:OEO_00020032 ;
+    OEO:IAO_0000136 "Germany" .
+
+OEKG:Zukunft_Stromsystem_report OEO:RO_0002353 OEKG:Zukunft_Stromsystem .
+
+OEKG:Zukunft_Stromsystem_resolution a OEO:OEO_00020121 ;
+    RDFS:label OEO:Hour ;
+    OEO:OEO_00040010 OEO:UO_0000032 .
+
+OEKG:Zukunft_Stromsystem_scenario_horizon a OEO:OEO_00020098 ;
+    OEO:BFO_0000051 [ a OEO:OEO_00030032 ;
+            OEO:OEO_00140178 2050 ],
+        [ a OEO:OEO_00030031 ;
+            OEO:OEO_00140178 2020 ],
+        OEKG:Zukunft_Stromsystem_duration,
+        OEKG:scenario_year_2020,
+        OEKG:scenario_year_2025,
+        OEKG:scenario_year_2030,
+        OEKG:scenario_year_2035,
+        OEKG:scenario_year_2040,
+        OEKG:scenario_year_2045,
+        OEKG:scenario_year_2050 .
+
+OEKG:battery_electric_vehicle a OEO:OEO_00010024 ;
+    RDFS:label "battery electric vehicle" .
+
+OEKG:biogas a OEO:OEO_00000074 ;
+    RDFS:label "biogas" .
+
+OEKG:carbon_capture_and_storage a OEO:OEO_00010141 ;
+    RDFS:label "carbon capture and storage" .
+
+OEKG:electric_vehicle a OEO:OEO_00000146 ;
+    RDFS:label "electric vehicle" .
+
+OEKG:heat_pump a OEO:OEO_00000212 ;
+    RDFS:label "heat pump" .
+
+OEKG:heating_oil a OEO:OEO_00000211 ;
+    RDFS:label "heating oil" .
+
+OEKG:hydrogen a OEO:OEO_00000220 ;
+    RDFS:label "hydrogen" .
+
+OEKG:klimaschutzszenario_2050 a OEO:OEO_00000364 ;
+    DBO:subtitle "2. Endbericht" ;
+    OEO:BFO_0000051 OEKG:klimaschutzszenario_2050_model_inputs,
+        OEKG:klimaschutzszenario_2050_model_outputs,
+        OEKG:klimaschutzszenario_2050_scenario_horizon ;
+    OEO:OEO_00000506 OEKG:Barbara_Schlomann,
+        OEKG:Ben_Pfluger,
+        OEKG:Benjamin_Greiner,
+        OEKG:Carina_Zell_Ziegler,
+        OEKG:Charlotte_Loreck,
+        OEKG:Felix_Chri._Matthes,
+        OEKG:Frank_Sensfuß,
+        OEKG:Gunter_Dehoust,
+        OEKG:Hannah_Foerster,
+        OEKG:Hannes_Boettcher,
+        OEKG:Hans_Joachim_Ziesing,
+        OEKG:Hauke_Hermann,
+        OEKG:Johannes_Hartwig,
+        OEKG:Judit_Kockat,
+        OEKG:Julia_Repenning,
+        OEKG:Katja_Schumachen,
+        OEKG:Kirsten_Wiegmann,
+        OEKG:Klaus_Henneberg,
+        OEKG:Lukas_Emele,
+        OEKG:Margarethe_Scheffler,
+        OEKG:Rainer_Elsland,
+        OEKG:Ralph_Harthan,
+        OEKG:Ruth_Blanck,
+        OEKG:Sibylle_Braungardt,
+        OEKG:Sylive_Ludig,
+        OEKG:Tobias_Fleiter,
+        OEKG:Wolfgang_Eichhammer,
+        OEKG:Wolfgang_Schade,
+        OEKG:Wolfram_Joerß ;
+    OEO:OEO_00000509 OEKG:klimaschutzszenario_2050_report ;
+    OEO:OEO_00000510 OEKG:institution ;
+    OEO:OEO_00000514 OEKG:klimaschutzszenario_2050_resolution ;
+    OEO:RO_0002234 OEKG:funding_source ;
+    OEO:RO_0002615 OEKG:klimaschutzszenario_2050_ELIAS_PowerFlex,
+        OEKG:klimaschutzszenario_2050_ENUSEM,
+        OEKG:klimaschutzszenario_2050_ERNSTL_EE_Lab_INVERT,
+        OEKG:klimaschutzszenario_2050_FORECAST,
+        OEKG:klimaschutzszenario_2050_ISI_ASTRA_D,
+        OEKG:klimaschutzszenario_2050_PowerAce,
+        OEKG:klimaschutzszenario_2050_TEMPS ;
+    OEO:abbreviation "KSz 2050" ;
+    OEO:has_projection OEKG:scenario_projection_klimaschutzszenario_2050 ;
+    OEO:written_by OEKG:dummy_institute_vv50 ;
+    DC:abstract "Creation and analysation of scenarios for different political climate levels of ambition until 2050" ;
+    DC:conformsTo OEKG:Aktuelle_Maßnahmen_Szenario__2012_,
+        OEKG:Klimaschutzszenario_80,
+        OEKG:Klimaschutzszenario_95,
+        OEKG:klimaschutzszenario_2050_analysis_scope ;
+    DC:title "Klimaschutzszenario 2050" ;
+    SCHEMA:url "https://www.oeko.de/oekodoc/2451/2015-608-de.pdf" .
+
+OEKG:klimaschutzszenario_2050_ELIAS_PowerFlex a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_klimaschutzszenario_2050 ;
+    DC:title "ELIAS/PowerFlex" .
+
+OEKG:klimaschutzszenario_2050_ENUSEM a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_klimaschutzszenario_2050 ;
+    DC:title "ENUSEM" .
+
+OEKG:klimaschutzszenario_2050_ERNSTL_EE_Lab_INVERT a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_klimaschutzszenario_2050 ;
+    DC:title "ERNSTL/EE-Lab/INVERT" .
+
+OEKG:klimaschutzszenario_2050_FORECAST a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_klimaschutzszenario_2050 ;
+    DC:title "FORECAST" .
+
+OEKG:klimaschutzszenario_2050_ISI_ASTRA_D a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_klimaschutzszenario_2050 ;
+    DC:title "ISI ASTRA-D" .
+
+OEKG:klimaschutzszenario_2050_PowerAce a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_klimaschutzszenario_2050 ;
+    DC:title "PowerAce" .
+
+OEKG:klimaschutzszenario_2050_TEMPS a OEO:OEO_00000274 ;
+    OEO:RO_0000056 OEKG:scenario_projection_klimaschutzszenario_2050 ;
+    DC:title "TEMPS" .
+
+OEKG:klimaschutzszenario_2050_duration a OEO:OEO_00030035 ;
+    OEO:OEO_00040010 OEO:UO_0000036 ;
+    OEO:OEO_00140178 30 .
+
+OEKG:klimaschutzszenario_2050_model_inputs a OEO:OEO_00030029 ;
+    OEO:IAO_0000136 OEKG:district_heating,
+        OEKG:electricity_price,
+        OEKG:gross_domestic_product,
+        OEKG:gross_value_added,
+        OEKG:investment_cost,
+        OEKG:natural_gas,
+        OEKG:population,
+        OEKG:synthetic_fuel .
+
+OEKG:klimaschutzszenario_2050_model_outputs a OEO:OEO_00020013 ;
+    OEO:IAO_0000136 OEKG:battery_electric_vehicle,
+        OEKG:carbon_dioxide,
+        OEKG:developable_flow_potential,
+        OEKG:economic_flow_potential,
+        OEKG:electric_vehicle,
+        OEKG:energy_storage,
+        OEKG:final_energy_carrier,
+        OEKG:greenhouse_gas_emission,
+        OEKG:hydrofluorocarbon,
+        OEKG:methane,
+        OEKG:nitrogen_trifluoride,
+        OEKG:nitrous_oxide,
+        OEKG:perfluorocarbon,
+        OEKG:primary_energy_carrier,
+        OEKG:sulphur_hexafluoride,
+        OEKG:technological_flow_potential,
+        OEKG:theoretical_flow_potential,
+        OEKG:thermal_energy_storage .
+
+OEKG:klimaschutzszenario_2050_regions a OEO:OEO_00020032 ;
+    OEO:IAO_0000136 "Germany" .
+
+OEKG:klimaschutzszenario_2050_report OEO:RO_0002353 OEKG:klimaschutzszenario_2050 .
+
+OEKG:klimaschutzszenario_2050_resolution a OEO:OEO_00020121 ;
+    RDFS:label OEO:Year ;
+    OEO:OEO_00040010 OEO:UO_0000036 .
+
+OEKG:klimaschutzszenario_2050_scenario_horizon a OEO:OEO_00020098 ;
+    OEO:BFO_0000051 [ a OEO:OEO_00030031 ;
+            OEO:OEO_00140178 2020 ],
+        [ a OEO:OEO_00030032 ;
+            OEO:OEO_00140178 2050 ],
+        OEKG:klimaschutzszenario_2050_duration,
+        OEKG:scenario_year_2020,
+        OEKG:scenario_year_2030,
+        OEKG:scenario_year_2040,
+        OEKG:scenario_year_2050 .
+
+OEKG:offshore_wind_farm a <http://openenergy-platform.org/ontology/oeo/OE_:00000308> ;
+    RDFS:label "offshore wind farm" .
+
+OEKG:onshore_wind_farm a OEO:OEO_00000311 ;
+    RDFS:label "onshore wind farm" .
+
+OEKG:renewable_fuel a OEO:OEO_00000302 ;
+    RDFS:label "renewable fuel" .
+
+OEKG:rooftop_photovoltaic_power_plant a OEO:OEO_00000361 ;
+    RDFS:label "rooftop photovoltaic power plant" .
+
+OEKG:solar_thermal_energy a OEO:OEO_00000388 ;
+    RDFS:label "solar thermal energy" .
+
+OEKG:synthetic_hydrogen a OEO:OEO_00010016 ;
+    RDFS:label "synthetic hydrogen" .
+
+OEKG:synthetic_methane a OEO:OEO_00010018 ;
+    RDFS:label "synthetic methane" .
+
+OEKG:thermal_energy_storage a OEO:OEO_00000039 ;
+    RDFS:label "thermal energy storage" .
+
+OEKG:water a OEO:OEO_00000441 ;
+    RDFS:label "water" .
+
+OEKG:Barbara_Schlomann a OEO:OEO_00000064 .
+
+OEKG:Benjamin_Greiner a OEO:OEO_00000064 .
+
+OEKG:CRF_sector__IPCC_2006___energy_industry a OEO:OEO_00010040 ;
+    RDFS:label "CRF sector (IPCC 2006): energy industry" .
+
+OEKG:CRF_sector__IPCC_2006___transport a OEO:OEO_00010042 ;
+    RDFS:label "CRF sector (IPCC 2006): transport" .
+
+OEKG:Carina_Zell_Ziegler a OEO:OEO_00000064 .
+
+OEKG:EU_emission_sector__LULUCF a OEO:OEO_00010135 ;
+    RDFS:label "EU emission sector: LULUCF" .
+
+OEKG:Gunter_Dehoust a OEO:OEO_00000064 .
+
+OEKG:Hannah_Foerster a OEO:OEO_00000064 .
+
+OEKG:Julia_Repenning a OEO:OEO_00000064 .
+
+OEKG:Kirsten_Wiegmann a OEO:OEO_00000064 .
+
 OEKG:Linas OEO:OEO_00140171 "none" ;
     DC:name "Linas" ;
     DC:type DC:contributor .
+
+OEKG:Margarethe_Scheffler a OEO:OEO_00000064 .
+
+OEKG:Ralph_Harthan a OEO:OEO_00000064 .
+
+OEKG:Ruth_Blanck a OEO:OEO_00000064 .
+
+OEKG:Sibylle_Braungardt a OEO:OEO_00000064 .
+
+OEKG:Tobias_Fleiter a OEO:OEO_00000064 .
+
+OEKG:Wolfgang_Eichhammer a OEO:OEO_00000064 .
+
+OEKG:Wolfram_Joerß a OEO:OEO_00000064 .
 
 OEKG:doroschmid OEO:OEO_00140171 "none" ;
     DC:name "doroschmid" ;
     DC:type DC:contributor .
 
+OEKG:dummy_institute_dqa OEO:runs OEKG:scenario_projection_Politikszenarien_VIII .
+
+OEKG:dummy_institute_kk14 OEO:runs OEKG:scenario_projection_Klimapfade_fur_Deutschland .
+
+OEKG:dummy_institute_tt10 OEO:runs OEKG:scenario_projection_Zukunft_Stromsystem .
+
+OEKG:dummy_institute_vv50 OEO:runs OEKG:scenario_projection_klimaschutzszenario_2050 .
+
+OEKG:investment_cost a OEO:OEO_00020167 ;
+    RDFS:label "investment cost" .
+
+OEKG:nitrogen_trifluoride a OEO:OEO_00000026 ;
+    RDFS:label "nitrogen trifluoride" .
+
+OEKG:CRF_sector__IPCC_2006___manufacture_of_solid_fuels_and_other_energy_industries a OEO:OEO_00010160 ;
+    RDFS:label "CRF sector (IPCC 2006): manufacture of solid fuels and other energy industries" .
+
+OEKG:Charlotte_Loreck a OEO:OEO_00000064 .
+
+OEKG:Hauke_Hermann a OEO:OEO_00000064 .
+
+OEKG:Inka_Ziegenhagen a OEO:OEO_00000064 .
+
+OEKG:Jochen_Twele a OEO:OEO_00000064 .
+
 OEKG:Jonas_Huber OEO:OEO_00140171 "Jonas.Huber@rl_institut.de" ;
     DC:name "Jonas_Huber" ;
     DC:type DC:contributor .
+
+OEKG:Lukas_Emele a OEO:OEO_00000064 .
+
+OEKG:Marco_Wunsch a OEO:OEO_00000064 .
+
+OEKG:Norman_Gerhardt a OEO:OEO_00000064 .
+
+OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_analysis_scope a OEO:OEO_00020072 ;
+    OEO:IAO_0000136 OEKG:Untersuchungen_zur_Energiestrategie_Brandenburgs_regions ;
+    OEO:OEO_00000505 OEKG:CRF_sector__IPCC_2006___manufacturing_industries_and_construction,
+        OEKG:biogas,
+        OEKG:biomass,
+        OEKG:electricity_sector,
+        OEKG:hard_coal,
+        OEKG:heat_pump,
+        OEKG:heating_and_cooling_sector,
+        OEKG:natural_gas,
+        OEKG:solar_thermal_energy,
+        OEKG:transport_sector,
+        OEKG:wind_energy .
+
+OEKG:greenhouse_gas_emission a OEO:OEO_00000199 ;
+    RDFS:label "greenhouse gas emission" .
+
+OEKG:gross_domestic_product a OEO:OEO_00140013 ;
+    RDFS:label "gross domestic product" .
+
+OEKG:gross_value_added a OEO:OEO_00140023 ;
+    RDFS:label "gross value added" .
+
+OEKG:hydro_energy a OEO:OEO_00000218 ;
+    RDFS:label "hydro energy" .
+
+OEKG:hydrofluorocarbon a OEO:OEO_00000219 ;
+    RDFS:label "hydrofluorocarbon" .
+
+OEKG:lignite a OEO:OEO_00000251 ;
+    RDFS:label "lignite" .
+
+OEKG:perfluorocarbon a OEO:OEO_00000322 ;
+    RDFS:label "perfluorocarbon" .
+
+OEKG:sulphur_hexafluoride a OEO:OEO_00000038 ;
+    RDFS:label "sulphur hexafluoride" .
+
+OEKG:synthetic_fuel a OEO:OEO_00010017 ;
+    RDFS:label "synthetic fuel" .
+
+OEKG:theoretical_flow_potential a OEO:OEO_00140057 ;
+    RDFS:label "theoretical flow potential" .
+
+OEKG:CRF_sector__IPCC_2006___agriculture a OEO:OEO_00010047 ;
+    RDFS:label "CRF sector (IPCC 2006): agriculture" .
+
+OEKG:CRF_sector__IPCC_2006___waste a OEO:OEO_00010049 ;
+    RDFS:label "CRF sector (IPCC 2006): waste" .
 
 OEKG:Christian_Hofmann OEO:OEO_00140171 "christian.hofmann@rl_institut.de" ;
     DC:name "Christian_Hofmann" ;
     DC:type DC:contributor .
 
-OEKG:Elisa_Gaudchau OEO:OEO_00140171 "elisa.gaudchau@rl_institut.de" ;
-    DC:name "Elisa_Gaudchau" ;
-    DC:type DC:contributor .
+OEKG:Hans_Joachim_Ziesing a OEO:OEO_00000064 .
 
 OEKG:Kilian_Zimmerer OEO:OEO_00140171 "",
         "none" ;
     DC:name "Kilian_Zimmerer" ;
     DC:type DC:contributor .
 
+OEKG:Politikszenarien_VIII_analysis_scope a OEO:OEO_00020072 ;
+    OEO:IAO_0000136 OEKG:Politikszenarien_VIII_regions ;
+    OEO:OEO_00000505 OEKG:CRF_sector__IPCC_2006___agriculture,
+        OEKG:CRF_sector__IPCC_2006___energy_industry,
+        OEKG:CRF_sector__IPCC_2006___manufacturing_industries_and_construction,
+        OEKG:CRF_sector__IPCC_2006___waste,
+        OEKG:EU_emission_sector__LULUCF,
+        OEKG:biomass,
+        OEKG:district_heating,
+        OEKG:electricity_sector,
+        OEKG:hard_coal,
+        OEKG:heating_and_cooling_sector,
+        OEKG:hydro_energy,
+        OEKG:lignite,
+        OEKG:natural_gas,
+        OEKG:nuclear_fuel,
+        OEKG:transport_sector,
+        OEKG:waste_fuel,
+        OEKG:water,
+        OEKG:wind_energy .
+
+OEKG:biomass a OEO:OEO_00010214 ;
+    RDFS:label "biomass" .
+
+OEKG:developable_flow_potential a OEO:OEO_00140060 ;
+    RDFS:label "developable flow potential" .
+
+OEKG:district_heating a OEO:OEO_00000132 ;
+    RDFS:label "district heating" .
+
+OEKG:dummy_institute_zz12 OEO:runs OEKG:scenario_projection_Trafo_FW,
+        OEKG:scenario_projection_Untersuchungen_zur_Energiestrategie_Brandenburgs .
+
+OEKG:economic_flow_potential a OEO:OEO_00140059 ;
+    RDFS:label "economic flow potential" .
+
+OEKG:electricity_price a OEO:OEO_00020117 ;
+    RDFS:label "electricity price" .
+
+OEKG:klimaschutzszenario_2050_analysis_scope a OEO:OEO_00020072 ;
+    OEO:IAO_0000136 OEKG:klimaschutzszenario_2050_regions ;
+    OEO:OEO_00000505 OEKG:CRF_sector__IPCC_2006___agriculture,
+        OEKG:CRF_sector__IPCC_2006___energy_industry,
+        OEKG:CRF_sector__IPCC_2006___manufacture_of_solid_fuels_and_other_energy_industries,
+        OEKG:CRF_sector__IPCC_2006___manufacturing_industries_and_construction,
+        OEKG:CRF_sector__IPCC_2006___other,
+        OEKG:CRF_sector__IPCC_2006___transport,
+        OEKG:CRF_sector__IPCC_2006___waste,
+        OEKG:EU_emission_sector__LULUCF,
+        OEKG:electricity_sector,
+        OEKG:hard_coal,
+        OEKG:heating_and_cooling_sector,
+        OEKG:hydrogen,
+        OEKG:lignite,
+        OEKG:methane,
+        OEKG:natural_gas,
+        OEKG:transport_sector,
+        OEKG:waste_fuel .
+
+OEKG:nitrous_oxide a OEO:OEO_00000027 ;
+    RDFS:label "nitrous oxide" .
+
+OEKG:nuclear_fuel a OEO:OEO_00000033,
+        OEO:OEO_00000302 ;
+    RDFS:label "nuclear fuel" .
+
+OEKG:population a OEO:OEO_00230013 ;
+    RDFS:label "population" .
+
+OEKG:scenario_projection_Klimapfade_fur_Deutschland a OEO:IAO_0000100 ;
+    OEO:based_on OEKG:scenario_narrative_dummy_narrative_j ;
+    OEO:is_executed_by OEKG:dummy_institute_kk14 .
+
+OEKG:scenario_projection_Trafo_FW a OEO:IAO_0000100 ;
+    OEO:based_on OEKG:scenario_narrative_dummy_narrative_q ;
+    OEO:is_executed_by OEKG:dummy_institute_zz12 .
+
+OEKG:scenario_projection_Untersuchungen_zur_Energiestrategie_Brandenburgs a OEO:IAO_0000100 ;
+    OEO:based_on OEKG:scenario_narrative_dummy_narrative_q ;
+    OEO:is_executed_by OEKG:dummy_institute_zz12 .
+
+OEKG:scenario_projection_Zukunft_Stromsystem a OEO:IAO_0000100 ;
+    OEO:based_on OEKG:scenario_narrative_dummy_narrative_j ;
+    OEO:is_executed_by OEKG:dummy_institute_tt10 .
+
+OEKG:technological_flow_potential a OEO:OEO_00140058 ;
+    RDFS:label "technological flow potential" .
+
+OEKG:waste_fuel a OEO:OEO_00000439 ;
+    RDFS:label "waste fuel" .
+
+OEKG:wind_energy a OEO:OEO_00000446 ;
+    RDFS:label "wind energy" .
+
 OEKG:Bachibouzouk OEO:OEO_00140171 "none" ;
     DC:name "Bachibouzouk" ;
     DC:type DC:contributor .
 
+OEKG:Elisa_Gaudchau a OEO:OEO_00000064 ;
+    OEO:OEO_00140171 "elisa.gaudchau@rl_institut.de" ;
+    DC:name "Elisa_Gaudchau" ;
+    DC:type DC:contributor .
+
+OEKG:Trafo_FW_analysis_scope a OEO:OEO_00020072 ;
+    OEO:IAO_0000136 OEKG:Trafo_FW_regions ;
+    OEO:OEO_00000505 OEKG:CRF_sector__IPCC_2006___agriculture,
+        OEKG:CRF_sector__IPCC_2006___manufacturing_industries_and_construction,
+        OEKG:CRF_sector__IPCC_2006___waste,
+        OEKG:electricity_sector,
+        OEKG:heating_and_cooling_sector,
+        OEKG:nuclear_fuel,
+        OEKG:renewable_fuel,
+        OEKG:synthetic_fuel,
+        OEKG:transport_sector .
+
+OEKG:coal a OEO:OEO_00000088 ;
+    RDFS:label "coal" .
+
+OEKG:hard_coal a OEO:OEO_00000204 ;
+    RDFS:label "hard coal" .
+
+OEKG:heating_and_cooling_sector a OEO:OEO_00000213 ;
+    RDFS:label "heating and cooling sector" .
+
+OEKG:primary_energy_carrier a OEO:OEO_00140078 ;
+    RDFS:label "primary energy carrier" .
+
+OEKG:CRF_sector__IPCC_2006___manufacturing_industries_and_construction a OEO:OEO_00010041 ;
+    RDFS:label "CRF sector (IPCC 2006): manufacturing industries and construction" .
+
+OEKG:Klimapfade_fur_Deutschland_analysis_scope a OEO:OEO_00020072 ;
+    OEO:IAO_0000136 OEKG:Klimapfade_fur_Deutschland_regions ;
+    OEO:OEO_00000505 OEKG:CRF_sector__IPCC_2006___agriculture,
+        OEKG:CRF_sector__IPCC_2006___manufacture_of_solid_fuels_and_other_energy_industries,
+        OEKG:CRF_sector__IPCC_2006___manufacturing_industries_and_construction,
+        OEKG:CRF_sector__IPCC_2006___transport,
+        OEKG:CRF_sector__IPCC_2006___waste,
+        OEKG:biomass,
+        OEKG:district_heating,
+        OEKG:electricity_sector,
+        OEKG:hard_coal,
+        OEKG:heating_and_cooling_sector,
+        OEKG:heating_oil,
+        OEKG:hydro_energy,
+        OEKG:methane,
+        OEKG:natural_gas,
+        OEKG:nuclear_fuel,
+        OEKG:synthetic_hydrogen,
+        OEKG:synthetic_methane,
+        OEKG:transport_sector,
+        OEKG:waste_fuel,
+        OEKG:wind_energy .
+
+OEKG:carbon_dioxide a OEO:OEO_00000006 ;
+    RDFS:label "carbon dioxide" .
+
+OEKG:electricity_sector a OEO:OEO_00000145,
+        OEO:OEO_00010041 ;
+    RDFS:label "electricity sector" .
+
+OEKG:final_energy_carrier a OEO:OEO_00140080 ;
+    RDFS:label "final energy carrier" .
+
+OEKG:funding_source a OEO:OEO_00090001 ;
+    OEO:IAO_0000136 "2015",
+        "2017",
+        "2018",
+        "2019" ;
+    OEO:OEO_00000506 OEKG:Hans_Joachim_Ziesing,
+        OEKG:Inka_Ziegenhagen,
+        OEKG:Jochen_Twele,
+        OEKG:Marco_Wunsch,
+        OEKG:Norman_Gerhardt ;
+    OEO:RO_0002353 OEKG:Hans_Joachim_Ziesing,
+        OEKG:Inka_Ziegenhagen,
+        OEKG:Jochen_Twele,
+        OEKG:Marco_Wunsch,
+        OEKG:Norman_Gerhardt ;
+    DC:title "Bundesministerium für Umwelt, Naturschutz, Bau und Reaktorsicherheit",
+        "Bundesverband der Deutschen Industrie (BDI)",
+        "Fraktion Bündnis 90/Die Grünen in Brandenburger Landtag",
+        "German Federal Ministry for Economic Affairs and Energy",
+        "Umweltbundesamt",
+        "WWF Germany" .
+
+OEKG:institution a OEO:OEO_00000238 ;
+    DC:title "Fraunhofer IEE",
+        "Reiner Lemoine Institut gGmbH",
+        "The Boston Consulting Group",
+        "Öko-Institut" .
+
+OEKG:methane a OEO:OEO_00000025 ;
+    RDFS:label "methane" .
+
+OEKG:scenario_narrative_dummy_narrative_q OEO:similar_to OEKG:scenario_narrative_dummy_narrative_q,
+        OEKG:scenario_narrative_dummy_narrative_x .
+
+OEKG:transport_sector a OEO:OEO_00000422 ;
+    RDFS:label "transport sector" .
+
 OEKG:4lm OEO:OEO_00140171 "none" ;
     DC:name "4lm" ;
     DC:type DC:contributor .
+
+OEKG:energy_storage a OEO:OEO_00000012 ;
+    RDFS:label "energy storage" .
+
+OEKG:scenario_narrative_dummy_narrative_j OEO:similar_to OEKG:scenario_narrative_dummy_narrative_j,
+        OEKG:scenario_narrative_dummy_narrative_z .
+
+OEKG:scenario_projection_Politikszenarien_VIII a OEO:IAO_0000100 ;
+    OEO:based_on OEKG:scenario_narrative_dummy_narrative_j ;
+    OEO:is_executed_by OEKG:dummy_institute_dqa .
+
+OEKG:Zukunft_Stromsystem_analysis_scope a OEO:OEO_00020072 ;
+    OEO:IAO_0000136 OEKG:Zukunft_Stromsystem_regions ;
+    OEO:OEO_00000505 OEKG:CRF_sector__IPCC_2006___manufacture_of_solid_fuels_and_other_energy_industries,
+        OEKG:CRF_sector__IPCC_2006___manufacturing_industries_and_construction,
+        OEKG:biomass,
+        OEKG:electricity_sector,
+        OEKG:hard_coal,
+        OEKG:hydro_energy,
+        OEKG:lignite,
+        OEKG:natural_gas,
+        OEKG:nuclear_fuel,
+        OEKG:transport_sector,
+        OEKG:waste_fuel,
+        OEKG:wind_energy .
+
+OEKG:scenario_projection_klimaschutzszenario_2050 a OEO:IAO_0000100 ;
+    OEO:based_on OEKG:scenario_narrative_dummy_narrative_q ;
+    OEO:is_executed_by OEKG:dummy_institute_vv50 .
+
+OEKG:natural_gas a OEO:OEO_00000292 ;
+    RDFS:label "natural gas" .
 
 OEKG:Ludee OEO:OEO_00140171 "none" ;
     DC:name "Ludee" ;
