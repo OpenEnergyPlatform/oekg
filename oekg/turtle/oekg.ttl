@@ -1,0 +1,1 @@
+@prefix OEO: <http://openenergy-platform.org/ontology/oeo/> .
