@@ -2,7 +2,7 @@
 name: OEKG Feature Issue
 about: For new ideas, developments and features of the OEKG (Factsheets)
 title: Your title should make sense if said after "The issue is <your issue title>"
-labels: "enhancement", "factsheet 📃"
+labels: "enhancement" "factsheet 📃"
 assignees: 'adelmemariani'
 
 ---
