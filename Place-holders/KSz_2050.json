@@ -1,0 +1,287 @@
+{
+	"klimaschutzszenario_2050": {
+		"title": "Klimaschutzszenario 2050",
+		"sub-title": "2. Endbericht",
+		"abbreviation": "KSz 2050",
+		"abstract": "Creation and analysation of scenarios for different political climate levels of ambition until 2050",
+		"authors": [
+			"Julia Repenning",
+			"Lukas Emele",
+			"Ruth Blanck",
+			"Hannes Böttcher",
+			"Günter Dehoust",
+			"Hannah Förster",
+			"Benjamin Greiner",
+			"Ralph Harthan",
+			"Klaus Henneberg",
+			"Hauke Hermann",
+			"Wolfram Jörß",
+			"Charlotte Loreck",
+			"Sylive Ludig",
+			"Felix Chri. Matthes",
+			"Margarethe Scheffler",
+			"Katja Schumachen",
+			"Kirsten Wiegmann",
+			"Carina Zell-Ziegler",
+			"Sibylle Braungardt",
+			"Wolfgang Eichhammer",
+			"Rainer Elsland",
+			"Tobias Fleiter",
+			"Johannes Hartwig",
+			"Judit Kockat",
+			"Ben Pfluger",
+			"Wolfgang Schade",
+			"Barbara Schlomann",
+			"Frank Sensfuß",
+			"Hans-Joachim Ziesing"
+		],
+		"institution": {
+			"name": "Öko-Institut"
+		},
+		"licence": "",
+		"funding source": {
+			"name": "Bundesministerium für Umwelt, Naturschutz, Bau und Reaktorsicherheit",
+			"organisation role": "",
+			"contact person": "",
+			"type of sponsorship": ""
+		},
+		"study report": {
+			"publication year": "2015",
+			"citation reference": "",
+			"DOI": ""
+		},
+		"used models": [
+			"ERNSTL/EE-Lab/INVERT",
+			"FORECAST",
+			"TEMPS",
+			"ISI ASTRA-D",
+			"ELIAS/PowerFlex",
+			"PowerAce",
+			"ENUSEM"
+		],
+		"used models types": [
+			"Target-driven",
+			"fundamental"
+		],
+		"URL": "https://www.oeko.de/oekodoc/2451/2015-608-de.pdf",
+		"study region": "Germany",
+		"scenario horizon": {
+			"duration": {
+				"unit": "year",
+				"value": "30",
+				"start time": "2020",
+				"ending time": "2050"
+			}
+		},
+		"resolution": {
+			"id": "UO_0000036",
+			"name": "Year"
+		},
+		"scenario years": ["2020", "2030", "2040", "2050"],
+		"sectors": [{
+				"id": "OEO_00000145",
+				"name": "electricity sector"
+			},
+			{
+				"id": "OEO_00000213",
+				"name": "heating and cooling sector"
+			},
+			{
+				"id": "OEO_00000422",
+				"name": "transport sector"
+			},
+			{
+				"id": "OEO_00010041",
+				"name": "CRF sector (IPCC 2006): manufacturing industries and construction"
+			},
+			{
+				"id": "OEO_00010040",
+				"name": "CRF sector (IPCC 2006): energy industry"
+			},
+			{
+				"id": "OEO_00010160",
+				"name": "CRF sector (IPCC 2006): manufacture of solid fuels and other energy industries"
+			},
+			{
+				"id": "OEO_00010042",
+				"name": "CRF sector (IPCC 2006): transport"
+			},
+			{
+				"id": "OEO_00010050",
+				"name": "CRF sector (IPCC 2006): other"
+			},
+			{
+				"id": "OEO_00010047",
+				"name": "CRF sector (IPCC 2006): agriculture"
+			},
+			{
+				"id": "OEO_00010135",
+				"name": "EU emission sector: LULUCF"
+			},
+			{
+				"id": "OEO_00010049",
+				"name": "CRF sector (IPCC 2006): waste"
+			}
+		],
+		"energy carriers": [{
+				"id": "OEO_00000204",
+				"name": "hard coal"
+			},
+			{
+				"id": "OEO_00000251",
+				"name": "lignite"
+			},
+			{
+				"id": "OEO_00000292",
+				"name": "natural gas"
+			},
+			{
+				"id": "OEO_00000220",
+				"name": "hydrogen"
+			},
+			{
+				"id": "OEO_00000025",
+				"name": "methane"
+			},
+			{
+				"id": "OEO_00000439",
+				"name": "waste fuel"
+			}
+		],
+		"modeling results": {
+			"energy flows": [{
+					"id": "OEO_00140078",
+					"name": "primary energy carrier"
+				},
+				{
+					"id": "OEO_00140080",
+					"name": "final energy carrier"
+				}
+			],
+			"installed capacities": [{
+				"id": "OEO_00000012",
+				"name": "energy storage"
+			},
+      {
+				"id": "OEO_00010024",
+				"name": "battery electric vehicle"
+			},
+      {
+				"id": "OEO_00000146",
+				"name": "electric vehicle"
+			},
+      {
+				"id": "OEO_00000039",
+				"name": "thermal energy storage"
+			}
+      ],
+			"potentials": [{
+					"id": "OEO_00140058",
+					"name": "technological flow potential"
+				},
+				{
+					"id": "OEO_00140059",
+					"name": "economic flow potential"
+				},
+				{
+					"id": "OEO_00140057",
+					"name": "theoretical flow potential"
+				},
+				{
+					"id": "OEO_00140060",
+					"name": "developable flow potential"
+				}
+			],
+			"environmental effects": [{
+					"id": "OEO_00000199",
+					"name": "greenhouse gas emission"
+				},
+				{
+					"id": "OEO_00000006",
+					"name": "carbon dioxide"
+				},
+				{
+					"id": "OEO_00000025",
+					"name": "methane"
+				},
+				{
+					"id": "OEO_00000027",
+					"name": "nitrous oxide"
+				},
+				{
+					"id": "OEO_00000219",
+					"name": "hydrofluorocarbon"
+				},
+				{
+					"id": "OEO_00000322",
+					"name": "perfluorocarbon"
+				},
+				{
+					"id": "OEO_00000038",
+					"name": "sulphur hexafluoride"
+				},
+				{
+					"id": "OEO_00000026",
+					"name": "nitrogen trifluoride"
+				}
+			]
+		},
+		"modeling inputs": {
+			"population": [{
+				"id": "OEO_00230013",
+				"name": "population"
+			}],
+			"economic data": [{
+					"id": "OEO_00140013",
+					"name": "gross domestic product"
+				},
+				{
+					"id": "OEO_00140023",
+					"name": "gross value added"
+				}
+			],
+			"prices": [{
+					"id": "OEO_00000292",
+					"name": "natural gas"
+				},
+				{
+					"id": "OEO_00020117",
+					"name": "electricity price"
+				},
+				{
+					"id": "OEO_00000132",
+					"name": "district heating"
+				},
+				{
+					"id": "OEO_00010017",
+					"name": "synthetic fuel"
+				},
+				{
+					"id": "OEO_00020167",
+					"name": "investment cost"
+				}
+			]
+		},
+		"modeling output": [],
+    "scenarios": [
+    {
+      "name" : "Aktuelle-Maßnahmen-Szenario (2012)",
+      "abbreviation" : "AMS (2012)",
+      "definition" : "All measures done until 2012, target: now situation of political energy and climate framework",
+      "type" : "Measure-driven"
+    },
+    {
+      "name" : "Klimaschutzszenario 80",
+      "abbreviation" : "KS 80",
+      "definition" : "Targets of governmental energy concept for greenhouse gas emissions, renewable energies and energy efficiency",
+      "type" : "Target-driven"
+    },
+    {
+      "name" : "Klimaschutzszenario 95",
+      "abbreviation" : "KS 95",
+      "definition" : "Reduction of greenhouse gas emissions 95% in 2050 towards 1990",
+      "type" : "Target-driven"
+    }
+  ]
+	}
+}

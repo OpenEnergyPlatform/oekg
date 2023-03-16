@@ -1,0 +1,298 @@
+{
+	"Klimapfade für Deutschland": {
+		"title": "Klimapfade für Deutschland",
+		"sub-title": "-",
+		"abbreviation": "",
+		"abstract": "Analysis of technical and economic potentials and measures to reduce GHG",
+		"authors": [
+			"Philipp Gerbert",
+			"Patrick Herhold",
+			"Jens Burchardt",
+			"Stefan Schönberger",
+			"Florian Rechenmacher",
+			"Almut Kirchner",
+			"Andreas Kemmler",
+			"Marco Wünsch"
+		],
+		"institution": {
+			"name": "The Boston Consulting Group"
+		},
+		"licence": "",
+		"funding source": {
+			"name": "Bundesverband der Deutschen Industrie (BDI)",
+			"organisation role": "",
+			"contact person": "Dr. Carsten Rolle",
+			"type of sponsorship": ""
+		},
+		"study report": {
+			"publication year": "2018",
+			"citation reference": "Copyright The Boston Consulting Group GmbH 2018",
+			"DOI": ""
+		},
+		"used models": [
+			"VIEW-model"
+		],
+		"used models types": [
+			"Global prognosis",
+			"simulationmodel",
+			"sectoral",
+			"bottom-up",
+			"Strommarktmodell",
+			"Kohortenmodell",
+			"Gebäudebestandsmodell"
+		],
+		"URL": "https://bdi.eu/publikation/news/klimapfade-fuer-deutschland/",
+		"study region": "Germany",
+		"scenario horizon": {
+			"duration": {
+				"unit": "year",
+				"value": "30",
+				"start time": "2020",
+				"ending time": "2050"
+			}
+		},
+		"resolution": {
+			"id": "UO_0000036",
+			"name": "Year"
+		},
+		"scenario years": ["2020", "2030", "2040", "2050"],
+		"sectors": [{
+				"id": "OEO_00000145",
+				"name": "electricity sector"
+			},
+			{
+				"id": "OEO_00000213",
+				"name": "heating and cooling sector"
+			},
+			{
+				"id": "OEO_00000422",
+				"name": "transport sector"
+			},
+			{
+				"id": "OEO_00010041",
+				"name": "CRF sector (IPCC 2006): manufacturing industries and construction"
+			},
+			{
+				"id": "OEO_00010160",
+				"name": "CRF sector (IPCC 2006): manufacture of solid fuels and other energy industries"
+			},
+			{
+				"id": "OEO_00010042",
+				"name": "CRF sector (IPCC 2006): transport"
+			},
+			{
+				"id": "OEO_00010047",
+				"name": "CRF sector (IPCC 2006): agriculture"
+			},
+			{
+				"id": "OEO_00010049",
+				"name": "CRF sector (IPCC 2006): waste"
+			}
+		],
+		"energy carriers": [{
+				"id": "OEO_00000204",
+				"name": "hard coal"
+			},
+			{
+				"id": "OEO_00000292",
+				"name": "natural gas"
+			},
+			{
+				"id": "OEO_00000302",
+				"name": "nuclear fuel"
+			},
+			{
+				"id": "OEO_00010214",
+				"name": "biomass"
+			},
+			{
+				"id": "OEO_00000446",
+				"name": "wind energy"
+			},
+			{
+				"id": "OEO_00000218",
+				"name": "hydro energy"
+			},
+			{
+				"id": "OEO_00000025",
+				"name": "methane"
+			},
+			{
+				"id": "OEO_00000211",
+				"name": "heating oil"
+			},
+			{
+				"id": "OEO_00000439",
+				"name": "waste fuel"
+			},
+			{
+				"id": "OEO_00010016",
+				"name": "synthetic hydrogen"
+			},
+			{
+				"id": "OEO_00010018",
+				"name": "synthetic methane"
+			},
+			{
+				"id": "OEO_00000132",
+				"name": "district heating"
+			}
+		],
+		"modeling results": {
+			"energy flows": [{
+					"id": "OEO_00140078",
+					"name": "primary energy carrier"
+				},
+				{
+					"id": "OEO_00140080",
+					"name": "final energy carrier"
+				}
+			],
+			"installed capacities": [
+				{
+					"id": "OEO_00000012",
+					"name": "energy storage"
+				},
+				{
+					"id": "OEO_00010141",
+					"name": "carbon capture and storage"
+				}
+			],
+			"potentials": [{
+					"id": "OEO_00140058",
+					"name": "technological flow potential"
+				},
+				{
+					"id": "OEO_00140059",
+					"name": "economic flow potential"
+				},
+				{
+					"id": "OEO_00140057",
+					"name": "theoretical flow potential"
+				},
+				{
+					"id": "OEO_00000361",
+					"name": "rooftop photovoltaic power plant"
+				},
+				{
+					"id": "OEO_00000311",
+					"name": "onshore wind farm"
+				},
+				{
+					"id": "OE_:00000308",
+					"name": "offshore wind farm"
+				},
+				{
+					"id": "OEO_00140060",
+					"name": "developable flow potential"
+				}
+			],
+			"environmental effects": [{
+					"id": "OEO_00000199",
+					"name": "greenhouse gas emission"
+				},
+				{
+					"id": "OEO_00000006",
+					"name": "carbon dioxide"
+				},
+				{
+					"id": "OEO_00000025",
+					"name": "methane"
+				},
+				{
+					"id": "OEO_00000027",
+					"name": "nitrous oxide"
+				},
+				{
+					"id": "OEO_00000219",
+					"name": "hydrofluorocarbon"
+				},
+				{
+					"id": "OEO_00000322",
+					"name": "perfluorocarbon"
+				},
+				{
+					"id": "OEO_00000038",
+					"name": "sulphur hexafluoride"
+				},
+				{
+					"id": "OEO_00000026",
+					"name": "nitrogen trifluoride"
+				}
+			]
+		},
+		"modeling inputs": {
+			"prices": [{
+					"id": "OEO_00000292",
+					"name": "natural gas"
+				},
+				{
+					"id": "OEO_00020117",
+					"name": "electricity price"
+				},
+				{
+					"id": "OEO_00010017",
+					"name": "synthetic fuel"
+				},
+				{
+					"id": "OEO_00000088",
+					"name": "coal"
+				},
+				{
+					"id": "OEO_00020167",
+					"name": "investment cost"
+				}
+			]
+		},
+		"modeling output": [
+			{
+				"id": "OEO_00140013",
+				"name": "gross domestic product"
+			},
+			{
+				"id": "OEO_00230013",
+				"name": "population"
+			},
+			{
+				"id": "OEO_00010017",
+				"name": "synthetic fuel"
+			},
+			{
+				"id": "OEO_00140023",
+				"name": "gross value added"
+			}
+		],
+		"scenarios": [
+			{
+				"name" : "Referenzszenario",
+				"abbreviation" : "R",
+				"definition" : "Indicative scenario, target: evaluation of gap between development under current situation and goal of climate control of government",
+				"type" : "Measure-driven"
+			},
+			{
+				"name" : "Globaler Klimaschutz - 80% Klimapfad",
+				"abbreviation" : "G80",
+				"definition" : "Global community commits to 2-degree-goal, climate control instruments globally coordinated, acceleration of innovation",
+				"type" : "Target-driven"
+			},
+			{
+				"name" : "Globales Klimaschutz - 95% Klimapfad",
+				"abbreviation" : "G95",
+				"definition" : "Global community commits to 2-degree-goal, climate control instruments globally coordinated",
+				"type" : "Target-driven"
+			},
+			{
+				"name" : "Nationale Alleingänge - 80% Klimapfad",
+				"abbreviation" : "N80",
+				"definition" : "Only core Europe and few other countries pursue climate control, coexistance of seperate path, regression of innovation rate",
+				"type" : "Target-driven"
+			},
+			{
+				"name" : "Nationale Alleingänge - 95% Klimapfad",
+				"abbreviation" : "N95",
+				"definition" : "Only core Europe and few other countries pursue climate control, coexistance of seperate path, regression of innovation rate",
+				"type" : "Target-driven"
+			}
+		]
+	}
+}

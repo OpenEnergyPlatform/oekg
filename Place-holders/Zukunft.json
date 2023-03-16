@@ -1,0 +1,245 @@
+{
+  "Zukunft Stromsystem": {
+    "title": "Zukunft Stromsystem",
+    "sub-title": "Kohleausstieg 2035 - Vom Ziel her denken",
+    "abbreviation": "",
+    "abstract":
+      "Analysis of reasoning and organization of  change away from fossil electricity generation",
+    "authors": [
+      "Felix Chr. Matthes",
+      "Lukas Emele",
+      "Hauke Hermann",
+      "Charlotte Loreck",
+      "Vanessa Cook",
+      "Frank Peter",
+      "Inka Ziegenhagen"
+    ],
+    "institution": {
+      "name": "Öko-Institut"
+    },
+    "licence": "",
+    "funding source": {
+      "name": "WWF Germany",
+      "organisation role": "",
+      "contact person": "Maro Ballach",
+      "type of sponsorship": ""
+    },
+    "study report": {
+      "publication year": "2017",
+      "citation reference": "Copyright WWF Deutschland",
+      "DOI": ""
+    },
+    "used models": ["PowerFlex"],
+    "used models types": ["Integrated"],
+    "URL": "https://www.oeko.de/publikationen/p-details/zukunft-stromsystem/",
+    "study region": "Germany",
+    "scenario horizon": {
+      "duration": {
+        "unit": "year",
+        "value": "30",
+        "start time": "2020",
+        "ending time": "2050"
+      }
+    },
+    "resolution": {
+      "id": "UO_0000032",
+      "name": "Hour"
+    },
+    "scenario years": ["2020", "2025", "2030", "2035", "2040", "2045", "2050"],
+    "sectors": [
+      {
+        "id": "OEO_00000145",
+        "name": "electricity sector"
+      },
+      {
+        "id": "OEO_00000422",
+        "name": "transport sector"
+      },
+      {
+        "id": "OEO_00010041",
+        "name":
+          "CRF sector (IPCC 2006): manufacturing industries and construction"
+      },
+      {
+        "id": "OEO_00010160",
+        "name":
+          "CRF sector (IPCC 2006): manufacture of solid fuels and other energy industries"
+      }
+    ],
+    "energy carriers": [
+      {
+        "id": "OEO_00000251",
+        "name": "lignite"
+      },
+      {
+        "id": "OEO_00000204",
+        "name": "hard coal"
+      },
+      {
+        "id": "OEO_00000292",
+        "name": "natural gas"
+      },
+      {
+        "id": "OEO_00000302",
+        "name": "nuclear fuel"
+      },
+      {
+        "id": "OEO_00010214",
+        "name": "biomass"
+      },
+      {
+        "id": "OEO_00000446",
+        "name": "wind energy"
+      },
+      {
+        "id": "OEO_00000218",
+        "name": "hydro energy"
+      },
+      {
+        "id": "OEO_00000439",
+        "name": "waste fuel"
+      }
+    ],
+    "modeling results": {
+      "energy flows": [
+        {
+          "id": "OEO_00140078",
+          "name": "primary energy carrier"
+        },
+        {
+          "id": "OEO_00140080",
+          "name": "final energy carrier"
+        }
+      ],
+      "installed capacities": [
+        {
+          "id": "OEO_00000012",
+          "name": "energy storage"
+        }
+      ],
+      "potentials": [
+        {
+          "id": "OEO_00140058",
+          "name": "technological flow potential"
+        },
+        {
+          "id": "OEO_00140059",
+          "name": "economic flow potential"
+        },
+        {
+          "id": "OEO_00140057",
+          "name": "theoretical flow potential"
+        },
+        {
+          "id": "OEO_00140060",
+          "name": "developable flow potential"
+        }
+      ],
+      "environmental effects": [
+        {
+          "id": "OEO_00000006",
+          "name": "carbon dioxide"
+        }
+      ]
+    },
+    "modeling inputs": {
+      "population": [
+        {
+          "id": "OEO_00230013",
+          "name": "population"
+        }
+      ],
+      "economic data": [
+        {
+          "id": "OEO_00140013",
+          "name": "gross domestic product"
+        },
+        {
+          "id": "OEO_00140023",
+          "name": "gross value added"
+        }
+      ],
+      "prices": [
+        {
+          "id": "OEO_00000292",
+          "name": "natural gas"
+        },
+        {
+          "id": "OEO_00000088",
+          "name": "coal"
+        }
+      ]
+    },
+    "modeling output": [
+      {
+        "id": "OEO_00020117",
+        "name": "electricity price"
+      }
+    ],
+    "scenarios": [
+      {
+        "name": "Referenz-Szenario",
+        "abbreviation": "",
+        "definition":
+          "Historical scenario with oil price projection, price path with a high price level of fuel",
+        "type": "Measure-driven"
+      },
+      {
+        "name": "Schnellausstiegs-Szenario",
+        "abbreviation": "",
+        "definition":
+          "Very ambitioned expansion of renewable energy, orientated on qualitative determined technical limitations of exit strategy, regulatory practicability ignored",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Laufzeitbegrenzungs-Szenario for 20 years (EEG)",
+        "abbreviation": "",
+        "definition":
+          "Operating time of power plants limited, disconnection of coal power plants according to model of withdrawal from nuclear energy programme",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Laufzeitbegrenzungs-Szenario for 25 years (EEG)",
+        "abbreviation": "",
+        "definition":
+          "Operating time of power plants limited, disconnection of coal power plants according to model of withdrawal from nuclear energy programme",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Laufzeitbegrenzungs-Szenario for 30 years (EEG)",
+        "abbreviation": "",
+        "definition":
+          "Operating time of power plants limited, disconnection of coal power plants according to model of withdrawal from nuclear energy programme",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Laufzeitbrezungs-Szenario for 20 years",
+        "abbreviation": "",
+        "definition":
+          "Operating time of power plants limited, technical practicability limits of expansion of renewable energy are not completely exploited",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Laufzeitbrezungs-Szenario for 25 years",
+        "abbreviation": "",
+        "definition":
+          "Operating time of power plants limited, technical practicability limits of expansion of renewable energy are not completely exploited",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Laufzeitbrezungs-Szenario for 30 years",
+        "abbreviation": "",
+        "definition":
+          "Operating time of power plants limited, technical practicability limits of expansion of renewable energy are not completely exploited",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Transformations-Szenario",
+        "abbreviation": "",
+        "definition":
+          "Ambitioned expansion of renewable energies/ power plant complex, CO2 optimisation of power plants by 21st  year of operation",
+        "type": "Target-driven"
+      }
+    ]
+  }
+}

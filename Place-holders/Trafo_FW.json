@@ -1,0 +1,184 @@
+{
+  "Trafo FW": {
+    "title":
+      "Entwicklung der Gebäudewärme und Rückkopplung mit dem Energiesystem in -95% THG Klimazielszenarien",
+    "sub-title":
+      "Teilbericht im Rahmen des Projektes: TRANSFORMATIONSPFADE IM WÄRMESEKTOR – Betriebs- und volkswirtschaftliche Betrachtung der Sektorkopplung mit dem Fokus Fernwärme mit hohen Anteilen konventioneller KWK-Erzeugung und Rückkopplung zum Gesamtenergieversorgungssystem",
+    "abbreviation": "Trafo FW",
+    "abstract":
+      "Transformation of the heat sector against the background of economic aspects of the sector coupling and achievement of the sector goal",
+    "authors": ["Norman Gerhardt"],
+    "institution": {
+      "name": "Fraunhofer IEE"
+    },
+    "licence": "",
+    "funding source": {
+      "name": "German Federal Ministry for Economic Affairs and Energy",
+      "organisation role": "",
+      "contact person": "",
+      "type of sponsorship": "R&D project"
+    },
+    "study report": {
+      "publication year": "2019",
+      "citation reference":
+        "https://www.iee.fraunhofer.de/content/dam/iwes-neu/energiesystemtechnik/de/Dokumente/Veroeffentlichungen/2019/2019_Feb_Bericht_Fraunhofer_IEE_-_Transformation_Waerme_2030_2050.pdf",
+      "DOI": ""
+    },
+    "used models": ["SCOPE"],
+    "used models types": [
+      "energy system model - linear full cost optimization"
+    ],
+    "URL":
+      "https://www.iee.fraunhofer.de/content/dam/iwes-neu/energiesystemtechnik/de/Dokumente/Veroeffentlichungen/2019/2019_Feb_Bericht_Fraunhofer_IEE_-_Transformation_Waerme_2030_2050.pdf",
+    "study region": "EWR (excluding Greece)",
+    "resolution": {
+      "id": "UO_0000032",
+      "name": "Hour"
+    },
+    "scenario horizon": {
+      "duration": {
+        "unit": "year",
+        "value": "30",
+        "start time": "2030",
+        "ending time": "2050"
+      }
+    },
+    "scenario years": ["2030", "2040", "2050"],
+    "sectors": [
+      {
+        "id": "OEO_00000145",
+        "name": "electricity sector"
+      },
+      {
+        "id": "OEO_00000213",
+        "name": "heating and cooling sector"
+      },
+      {
+        "id": "OEO_00000422",
+        "name": "transport sector"
+      },
+      {
+        "id": "OEO_00010041",
+        "name":
+          "CRF sector (IPCC 2006): manufacturing industries and construction"
+      },
+      {
+        "id": "OEO_00000422",
+        "name": "transport sector"
+      },
+      {
+        "id": "OEO_00010047",
+        "name": "CRF sector (IPCC 2006): agriculture"
+      },
+      {
+        "id": "OEO_00010049",
+        "name": "CRF sector (IPCC 2006): waste"
+      }
+    ],
+    "energy carriers": [
+      {
+        "id": "OEO_00000033",
+        "name": "nuclear fuel"
+      },
+      {
+        "id": "OEO_00000302",
+        "name": "renewable fuel"
+      },
+      {
+        "id": "OEO_00010017",
+        "name": "synthetic fuel"
+      }
+    ],
+    "modeling results": {
+      "energy flows": [
+        {
+          "id": "OEO_00140080",
+          "name": "final energy carrier"
+        }
+      ],
+      "installed capacities": [
+        {
+          "id": "OEO_00000012",
+          "name": "energy storage"
+        }
+      ],
+      "environmental effects": [
+        {
+          "id": "OEO_00000006",
+          "name": "carbon dioxide"
+        },
+        {
+          "id": "OEO_00000025",
+          "name": "methane"
+        },
+        {
+          "id": "OEO_00000027",
+          "name": "nitrous oxide"
+        }
+      ]
+    },
+    "modeling inputs": {
+      "population": [
+        {
+          "id": "OEO_00230013",
+          "name": "population"
+        }
+      ],
+      "prices": [
+        {
+          "id": "OEO_00000292",
+          "name": "natural gas"
+        },
+        {
+          "id": "OEO_00000088",
+          "name": "coal"
+        },
+        {
+          "id": "OEO_00000012",
+          "name": "energy storage"
+        }
+      ]
+    },
+    "modeling output": [
+      {
+        "id": "OEO_00000132",
+        "name": "district heating"
+      },
+      {
+        "id": "OEO_00020117",
+        "name": "electricity price"
+      }
+    ],
+    "scenarios": [
+      {
+        "name":
+          "Reference scenario with high heat demand reduction and exit form the use of biomass for heating purposes",
+        "abbreviation": "1A",
+        "definition": "Ambitious, energy efficient development",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Maintaining the use of biomass for heating purposes",
+        "abbreviation": "1B",
+        "definition":
+          "Effects of the use of biomass for heating puposes against the background of achieving the GHG goal in the building sector",
+        "type": "Target-driven"
+      },
+      {
+        "name": "Less ambitious building renovation",
+        "abbreviation": "2A",
+        "definition":
+          "Effects of less heat demand reduction against the background of achieving the GHG goal in the building sector",
+        "type": "Target-driven"
+      },
+      {
+        "name":
+          "Combination of maintaining the use of biomass for heating purposes and less ambitious building renovation",
+        "abbreviation": "2B",
+        "definition":
+          "Effects of combined use of biomass for heating purposes and less heat demand reduction",
+        "type": "Target-driven"
+      }
+    ]
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "Politikszenarien VIII": {
+    "title": "Politikszenarien VIII",
+    "sub-title": "",
+    "abbreviation": "",
+    "abstract":
+      "Generation of projections for German greenhouse gas emissions until 2035",
+    "authors": [
+      "Julia Repenning",
+      "Lukas Emele",
+      "Sylvie Ludig",
+      "Thomas Bergmann",
+      "Ruth Blanck",
+      "Veit Bürger",
+      "Günter Dehoust",
+      "Ralph Harthan",
+      "Hauke Hermann",
+      "Lara Mia Herrmann",
+      "Hannah Förster",
+      "Benjamin Greiner",
+      "Klaus Hennenberg",
+      "Wolfram Jörß",
+      "Charlotte Loreck",
+      "Felix Matthes",
+      "Lothar Rausch",
+      "Margarethe Scheffler",
+      "Katja Schumacher",
+      "Kirsten Wiegmann",
+      "Carina Zell-Ziegler",
+      "Sibylle Braungardt",
+      "Wolfgang Eichhammer",
+      "Tobias Fleiter",
+      "Benjamin Fries",
+      "Barbara Schlomann",
+      "Jan Steinbach",
+      "Hans-Joachim Ziesing"
+    ],
+    "institution": {
+      "name": "Öko-Institut"
+    },
+    "licence": "",
+    "funding source": {
+      "name": "Umweltbundesamt",
+      "organisation role": "",
+      "contact person": "",
+      "type of sponsorship": ""
+    },
+    "study report": {
+      "publication year": "2018",
+      "citation reference": "",
+      "DOI": ""
+    },
+    "used models": [
+      "ELIAS/PowerFlex",
+      "EnUSEM",
+      "TEMPS",
+      "INVERT/EE-Lab",
+      "FORECAST"
+    ],
+    "used models types": ["Integration", "emissions", "multi-phase-waste"],
+    "URL": "",
+    "study region": "Germany",
+    "scenario horizon": {
+      "duration": {
+        "unit": "year",
+        "value": "15",
+        "start time": "2020",
+        "ending time": "2035"
+      }
+    },
+    "resolution": {
+      "id": "UO_0000036",
+      "name": "Year"
+    },
+    "scenario years": ["2020", "2025", "2030", "2035"],
+    "sectors": [
+      {
+        "id": "OEO_00000145",
+        "name": "electricity sector"
+      },
+      {
+        "id": "OEO_00000213",
+        "name": "heating and cooling sector"
+      },
+      {
+        "id": "OEO_00000422",
+        "name": "transport sector"
+      },
+      {
+        "id": "OEO_00010041",
+        "name":
+          "CRF sector (IPCC 2006): manufacturing industries and construction"
+      },
+      {
+        "id": "OEO_00010041",
+        "name": "electricity sector"
+      },
+      {
+        "id": "OEO_00010040",
+        "name": "CRF sector (IPCC 2006): energy industry"
+      },
+      {
+        "id": "OEO_00010047",
+        "name": "CRF sector (IPCC 2006): agriculture"
+      },
+      {
+        "id": "OEO_00010135",
+        "name": "EU emission sector: LULUCF"
+      },
+      {
+        "id": "OEO_00010049",
+        "name": "CRF sector (IPCC 2006): waste"
+      }
+    ],
+    "energy carriers": [
+      {
+        "id": "OEO_00000251",
+        "name": "lignite"
+      },
+      {
+        "id": "OEO_00000204",
+        "name": "hard coal"
+      },
+      {
+        "id": "OEO_00000292",
+        "name": "natural gas"
+      },
+      {
+        "id": "OEO_00000302",
+        "name": "nuclear fuel"
+      },
+      {
+        "id": "OEO_00010214",
+        "name": "biomass"
+      },
+      {
+        "id": "OEO_00000446",
+        "name": "wind energy"
+      },
+      {
+        "id": "OEO_00000218",
+        "name": "hydro energy"
+      },
+      {
+        "id": "OEO_00000439",
+        "name": "waste fuel"
+      },
+      {
+        "id": "OEO_00000132",
+        "name": "district heating"
+      },
+      {
+        "id": "OEO_00000441",
+        "name": "water"
+      }
+    ],
+    "modeling results": {
+      "energy flows": [
+        {
+          "id": "OEO_00140078",
+          "name": "primary energy carrier"
+        },
+        {
+          "id": "OEO_00140080",
+          "name": "final energy carrier"
+        }
+      ],
+      "installed capacities": [
+        {
+          "id": "OEO_00000012",
+          "name": "energy storage"
+        }
+      ],
+      "potentials": [
+        {
+          "id": "OEO_00140058",
+          "name": "technological flow potential"
+        },
+        {
+          "id": "OEO_00140059",
+          "name": "economic flow potential"
+        },
+        {
+          "id": "OEO_00140060",
+          "name": "developable flow potential"
+        }
+      ],
+      "environmental effects": [
+        {
+          "id": "OEO_00000199",
+          "name": "greenhouse gas emission"
+        },
+        {
+          "id": "OEO_00000006",
+          "name": "carbon dioxide"
+        },
+        {
+          "id": "OEO_00000025",
+          "name": "methane"
+        },
+        {
+          "id": "OEO_00000027",
+          "name": "nitrous oxide"
+        },
+        {
+          "id": "OEO_00000219",
+          "name": "hydrofluorocarbon"
+        },
+        {
+          "id": "OEO_00000322",
+          "name": "perfluorocarbon"
+        }
+      ]
+    },
+    "modeling inputs": {
+      "population": [
+        {
+          "id": "OEO_00230013",
+          "name": "population"
+        }
+      ],
+      "economic data": [
+        {
+          "id": "OEO_00140013",
+          "name": "gross domestic product"
+        },
+        {
+          "id": "OEO_00140023",
+          "name": "gross value added"
+        }
+      ],
+      "prices": [
+        {
+          "id": "OEO_00000292",
+          "name": "natural gas"
+        },
+        {
+          "id": "OEO_00020117",
+          "name": "electricity price"
+        },
+        {
+          "id": "OEO_00000088",
+          "name": "coal"
+        }
+      ]
+    },
+    "modeling output": [
+      {
+        "id": "OEO_00230013",
+        "name": "population"
+      }
+    ],
+    "scenarios": [
+      {
+        "name": "Mit-Maßnahmen-Szenario",
+        "abbreviation": "MMS",
+        "definition":
+          "All measures implemented by July 2016, including implemented measures from - Aktionsprogramm Klimaschutz 2020",
+        "type": "Measure-driven"
+      },
+      {
+        "name": "Mit-Weiteren-Maßnahmen-Szenario",
+        "abbreviation": "MWMS",
+        "definition":
+          "Not yet implemented measures of - Aktionsprogramm Klimaschutz 2020 - and - Nationalen Aktionsplan Energieeffizienz - included",
+        "type": "Measure-driven"
+      },
+      {
+        "name": "Mit-Erweiterten-Maßnahmen-Szenario",
+        "abbreviation": "MEMS",
+        "definition":
+          "Suggestion of measures in order to achieve sectoral goals of - Klimaschutzplan 2050",
+        "type": "Target-driven"
+      }
+    ]
+  }
+}
