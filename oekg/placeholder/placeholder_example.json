@@ -1,0 +1,181 @@
+{
+  "Example": {
+    "title": "Example Study",
+    "sub-title": "",
+    "abbreviation": "",
+    "abstract":
+      "",
+    "authors": [
+      "Jon Snow",
+    ],
+    "institution": {
+      "name": "Institut"
+    },
+    "licence": "",
+    "funding source": {
+      "name": "BMWK",
+      "organisation role": "",
+      "contact person": "",
+      "type of sponsorship": ""
+    },
+    "study report": {
+      "publication year": "2020",
+      "citation reference": "",
+      "DOI": ""
+    },
+    "used models": [
+      ""
+    ],
+    "used models types": [""],
+    "URL": "",
+    "study region": "Germany",
+    "scenario horizon": {
+      "duration": {
+        "unit": "year",
+        "value": "15",
+        "start time": "2020",
+        "ending time": "2050"
+      }
+    },
+    "resolution": {
+      "id": "UO_0000036",
+      "name": "Year"
+    },
+    "scenario years": ["2020", "2025", "2030", "2035"],
+    "sectors": [
+      {
+        "id": "OEO_00000145",
+        "name": "electricity sector"
+      },
+      {
+        "id": "OEO_00000213",
+        "name": "heating and cooling sector"
+      },
+      {
+        "id": "OEO_00000422",
+        "name": "transport sector"
+      }
+    ],
+    "energy carriers": [
+      {
+        "id": "OEO_00000251",
+        "name": "lignite"
+      },
+      {
+        "id": "OEO_00000204",
+        "name": "hard coal"
+      },
+      {
+        "id": "OEO_00000292",
+        "name": "natural gas"
+      },
+      {
+        "id": "OEO_00000302",
+        "name": "nuclear fuel"
+      },
+      {
+        "id": "OEO_00010214",
+        "name": "biomass"
+      },
+      {
+        "id": "OEO_00000446",
+        "name": "wind energy"
+      },
+      {
+        "id": "OEO_00000218",
+        "name": "hydro energy"
+      },
+      {
+        "id": "OEO_00000439",
+        "name": "waste fuel"
+      },
+      {
+        "id": "OEO_00000132",
+        "name": "district heating"
+      },
+      {
+        "id": "OEO_00000441",
+        "name": "water"
+      }
+    ],
+    "modeling results": {
+      "energy flows": [
+        {
+          "id": "OEO_00140078",
+          "name": "primary energy carrier"
+        },
+        {
+          "id": "OEO_00140080",
+          "name": "final energy carrier"
+        }
+      ],
+      "installed capacities": [
+        {
+          "id": "OEO_00000012",
+          "name": "energy storage"
+        }
+      ],
+      "potentials": [
+        {
+          "id": "OEO_00140058",
+          "name": "technological flow potential"
+        }
+      ],
+      "environmental effects": [
+        {
+          "id": "OEO_00000199",
+          "name": "greenhouse gas emission"
+        }
+      ]
+    },
+    "modeling inputs": {
+      "population": [
+        {
+          "id": "OEO_00230013",
+          "name": "population"
+        }
+      ],
+      "economic data": [
+        {
+          "id": "OEO_00140013",
+          "name": "gross domestic product"
+        }
+      ],
+      "prices": [
+        {
+          "id": "OEO_00020117",
+          "name": "electricity price"
+        }
+      ]
+    },
+    "modeling output": [
+      {
+        "id": "OEO_00230013",
+        "name": "population"
+      }
+    ],
+    "scenarios": [
+      {
+        "name": "Scenario A",
+        "abbreviation": "A",
+        "definition":
+          "",
+        "type": "Measure-driven"
+      },
+      {
+        "name": "Scenario B",
+        "abbreviation": "B",
+        "definition":
+          "",
+        "type": "Measure-driven"
+      },
+      {
+        "name": "Scenario C",
+        "abbreviation": "C",
+        "definition":
+          " ",
+        "type": "Target-driven"
+      }
+    ]
+  }
+}
