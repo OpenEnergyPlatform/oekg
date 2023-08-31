@@ -19,7 +19,7 @@ The OEP Factsheets are using the OEKG.
 - S8: Sectors
 - S9: Energy carriers
 - S10: Energy transformation processes
-- S11: Keywords
+- S11: Descriptors (formally: Keywords)
 - R1: Report Title
 - R2: Date
 - R3: DOI
@@ -34,7 +34,7 @@ The OEP Factsheets are using the OEKG.
 - SC4: Spatial regions
 - SC5: Interacting regions
 - SC6: Scenario year
-- SC7:  Keywords
+- SC7: Scenario types
 - SC8: Input/output datasets
 
 ## Models and Framworks (TBD)
