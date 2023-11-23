@@ -17,7 +17,7 @@
    :alt: OpenEnergyPlatform
    :target: https://openenergy-platform.org/
 
-======================================================
+=======================================================
 Open Energy Family - Open Energy Knowledge Graph (OEKG)
 =======================================================
 
@@ -58,16 +58,18 @@ Technical documentation
 TBD
 
 License / Copyright
-=======================
+===================
 
 This repository is licensed under `Creative Commons Zero v1.0 Universal <https://creativecommons.org/publicdomain/zero/1.0/>`_.
 
 See `LICENSE.txt <./LICENSE.txt>`_.
 
 Contributing
-=======================
+============
 
 For further contributing infos and conventions see: `CONTRIBUTING.md <./CONTRIBUTING.md>`_.
+
+
 
 .. |badge_license| image:: https://img.shields.io/github/license/OpenEnergyPlatform/oekg
     :target: LICENSE.txt
