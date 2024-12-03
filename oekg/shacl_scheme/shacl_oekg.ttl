@@ -1,0 +1,381 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix oeo: <http://openenergy-platform.org/ontology/oeo/> .
+@prefix oekg: <http://openenergy-platform.org/ontology/oekg/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> . #currently unused due to error in URI
+
+# Shape to validate Studies
+# no relation place_of_publication
+# no relation uid
+ex:StudyShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00010252; #scenario_study
+    sh:property[
+        sh:path oekg:has_publication;
+        sh:node ex:PublicationShape;
+# do we have max or min values here?
+    ] ;
+    sh:property [
+        sh:path oekg:report_title ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ; # this is missing a lot
+    ];
+    sh:property [
+        sh:path dc:acronym;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oekg:has_full_name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path dc:abstract ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oekg:date_of_publication ;
+        sh:maxCount 1 ;
+# most are string, some are date
+    ] ;
+    sh:property [
+        sh:path oekg:link_to_study ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oekg:doi ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000509; #has_funding_source
+        sh:node ex:FundingSourceShape ;
+# do we have max or min values here?
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000510; #has_organisation
+        sh:node ex:InstitutionShape ;
+# do we have max or min values here?
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000508 ; #has_contact_person
+        sh:node ex:ContactPersonShape ;
+# do we have max or min values here?
+    ] ;
+    sh:property [
+        sh:path oeo:based_on_sector_division ;
+# do we have max or min values here?
+# devision_shape_URI has no other relations so no use making a shape for it
+    ] ;
+
+    sh:property [
+        sh:path oeo:OEO_00000505 ; #covers_sector
+# do we have max or min values here?
+# sector_URI has no other relations so no use making a shape for it
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000522 ; #covers
+        sh:node ex:TechnologyShape ; 
+# technology may be wrong here as spatial_regions are also covered
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000506 ; #has_author
+        sh:node ex:AuthorShape ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:has_study_keyword ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:has_model ;
+        sh:node ex:ModelShape ;
+# do we have max or min values here?
+    ] ;
+    sh:property [
+        sh:path oekg:has_scenario ;
+        sh:node ex:ScenarioShape ;
+        sh:minCount 1 ;
+    ] ;
+
+# the following relations exist but are not referenced in the generated file
+
+    sh:property [ 
+        sh:path oeo:RO_0002234 ; # has_output, this should be obo:RO_0002234
+        sh:node ex:DatasetShape ;
+# do we have max or min values here?
+    ] ;
+    sh:property [
+        sh:path oeo:covers_energy_carrier ;
+# do we have max or min values here?        
+    ] ;
+    sh:property [
+        sh:path oeo:covers_transformation_processes ;
+# do we have max or min values here?        
+    ] ;
+    sh:property [
+        sh:path oeo:has_framework ;
+        sh:node ex:FrameworkShape ;
+# do we have max or min values here?        
+    ] .
+
+#Shape to validate publications
+ex:PublicationShape
+    a sh:NodeShape ;
+    sh:property[
+        sh:path oekg:publication_uuid;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ];
+    sh:property [
+       sh:path rdfs:label ; 
+       sh:datatype xsd:string ;
+       sh:minCount 1 ;
+    ] ;
+    
+# the following relations exist but are not referenced in the generated file
+    sh:property [ 
+        sh:path oeo:OEO_00000506; #has_author
+        sh:node ex:AuthorShape ;
+        sh:minCount 1 ;
+    ];
+    sh:property [
+       sh:path oekg:date_of_publication ; 
+       sh:minCount 1 ;
+    ];
+    sh:property [
+       sh:path oekg:place_of_publication ; 
+# do we have max or min values here?       
+    ];
+    sh:property [
+       sh:path oekg:link_to_study ; 
+# do we have max or min values here?       
+    ];
+    sh:property [
+       sh:path oekg:link_to_study_report ; 
+# do we have max or min values here?       
+    ];
+    sh:property [
+       sh:path oekg:doi ; 
+# do we have max or min values here?
+].
+
+# Shape to validate Funding Sources
+# funding_source_URI has no relation to iri or id. 
+ex:FundingSourceShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00090001; #funder
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ].
+
+# Shape to validate Institutions
+# institution_source_URI has no relation to iri or id. 
+ex:InstitutionShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000238; #institution
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+# Shape to validate Contact Persons
+# contact_person_URI has no relation to iri or id. 
+ex:ContactPersonShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000107; #contact_person
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+# Shape to validate Technologies
+# not every object has the same type. Most have none, some have obo:BFO_0000006 (spatial_region). 
+# there are no relations from the technology_URI
+# most do not even have a label so I don't know if we want to check that
+ex:TechnologyShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+       # sh:minCount 1 ;
+       # sh:maxCount 1 ;
+    ] .
+
+# Shape to validate authors
+# again there is no iri or id
+ex:AuthorShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000064; #author
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+# Shape to validate Models
+ex:ModelShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000277; #model_factsheet
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:has_iri ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+].
+
+# Shape to validate scenarios
+ex:ScenarioShape
+# no relations to acromym (but we have label and full_name) or id
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000365; #scenario_factsheet
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oekg:has_full_name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020220 ; #has_study_region 
+        sh:node ex:RegionShape ;
+# should this have min or max value?
+    ] ;
+    sh:property [
+        sh:path oekg:scenario_uuid ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path dc:abstract ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:has_scenario_descriptor ;
+        sh:minCount 1 ;
+# descriptors have no other relations so making a Shape for them makes little sense
+    ] ;
+    sh:property [
+        sh:path oeo:RO_0002233 ; #has_input (this should be obo:RO_0002233)
+        sh:node ex:DatasetShape ;
+# do we have max or min values here?   
+    ] ;
+    sh:property [
+        sh:path oeo:RO_0002234 ; #has_output (this should be obo:RO_0002234)
+        sh:node ex:DatasetShape ;
+# do we have max or min values here?
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020224 ; #has_scenario_year
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+# no relations from the year so making a Shape for it makes little sense
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000522 ; #covers
+        sh:node ex:TechnologyShape;
+        sh:datatype xsd:string ;
+# do we have max or min values here?
+
+# following relations exist but are not on the generated file
+    ] ;
+    sh:property [
+        sh:path oeo:covers_interacting_regions ;
+# do we have max or min values here?        
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020222 ; #has_interacting_region
+        sh:node ex:RegionShape ;
+# do we have max or min values here?        
+    ] .
+
+# Shape to validate Regions
+# no relation to iri
+ex:RegionShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00020032; #study_region
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oekg:reference ; 
+# this relation also ends in a region but will referencing the RegionShape will result in an endless loop.
+        sh:minCount 1 ;
+    ] .
+
+# Shape to validate Datasets
+ex:DatasetShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00030030; #endogenous data 
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:has_iri ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:has_id ;
+# do we have max or min values here?
+    ] ;
+    sh:property [
+        sh:path oeo:has_key ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+
+#Shape to validate frameworks
+ex:FrameworkShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000172; #framework_factsheet
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path oeo:has_iri ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
