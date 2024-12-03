@@ -338,7 +338,7 @@ ex:RegionShape
 # Shape to validate Datasets
 ex:DatasetShape
     a sh:NodeShape ;
-    sh:targetClass oeo:OEO_00030030; #endogenous data 
+    sh:or ( [ sh:targetClass oeo:OEO_00030030 ] [ sh:targetClass oeo:OEO_00030029 ]); #endogenous data or exogenous data
     sh:property [
         sh:path rdfs:label ;
         sh:datatype xsd:string ;
