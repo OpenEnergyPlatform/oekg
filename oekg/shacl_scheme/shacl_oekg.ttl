@@ -311,6 +311,7 @@ ex:ScenarioShape
     ] ;
     sh:property [
         sh:path oeo:covers_interacting_regions ;
+        sh:node ex:RegionShape ;
 # do we have max or min values here?        
     ] ;
     sh:property [
@@ -323,7 +324,7 @@ ex:ScenarioShape
 # no relation to iri
 ex:RegionShape
     a sh:NodeShape ;
-    sh:targetClass oeo:OEO_00020032; #study_region
+    sh:or ( [ sh:targetClass oeo:OEO_00020032 ] [ sh:targetClass oeo:OEO_00020036 ]); #study region or interacting region
     sh:property [
         sh:path rdfs:label ;
         sh:datatype xsd:string ;
