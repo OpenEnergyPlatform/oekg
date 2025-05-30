@@ -27,4 +27,4 @@ Here is a template for new release sections:
 - CHANGELOG.md [#2](https://github.com/OpenEnergyPlatform/oekg/pull/2)
 - CODE_OF_CONDUCT.md [#3](https://github.com/OpenEnergyPlatform/oekg/pull/3)
 - CITATION.cff [#2](https://github.com/OpenEnergyPlatform/oekg/pull/2)
-- oekg rework files [[#48](https://github.com/OpenEnergyPlatform/oekg/issues/48)]
+- oekg rework files [[#50](https://github.com/OpenEnergyPlatform/oekg/pull/50)]
