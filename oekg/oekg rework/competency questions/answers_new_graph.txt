@@ -1,0 +1,282 @@
+1. Give me all bundles in which institution A was involved.
+
+SELECT DISTINCT ?s ?label WHERE{
+
+?s ?p ?o.
+?p rdfs:label "has organisation"^^XSD:string.
+?o rdfs:label "Fraunhofer ISI"^^XSD:string.
+?s rdfs:label ?label.
+}
+
+> Can answer this question
+
+2. Give me all bundles that cover, amongst others, the energy transformation sector and industry sector.
+
+SELECT DISTINCT ?s ?label WHERE{
+{
+?s ?p ?o.
+?o a*/rdfs:subClassOf* ?sec.
+?s rdfs:label ?label.
+?p rdfs:label "covers sector (shortcut)"^^XSD:string.
+?sec rdfs:label "energy transformation sector"^^XSD:string.
+}
+UNION
+{
+?s ?p ?o.
+?o a*/rdfs:subClassOf* ?sec.
+?s rdfs:label ?label.
+?p rdfs:label "covers sector (shortcut)"^^XSD:string.
+?sec rdfs:label "industry sector"^^XSD:string.
+}
+}
+
+> Can answer this question
+
+3. Give me all bundles that cover only the energy transformation sector.
+
+SELECT DISTINCT ?s ?name WHERE{
+{
+?s oeo:OEO_00020439 ?o.
+?s rdfs:label ?name.
+?o a*/rdfs:subClassOf* oeo:OEO_00000158.
+}
+MINUS
+{
+?s oeo:OEO_00020439 ?o.
+?s rdfs:label ?name.
+?s oeo:OEO_00020439 ?o2.
+?o a*/rdfs:subClassOf* oeo:OEO_00000158.
+?o2 a*/rdfs:subClassOf* ?sec2.
+FILTER(?sec2 != oeo:OEO_00000158 && ?o != ?o2)
+}
+}
+
+> Can answer this question
+
+4. Give me all bundles that have the sufficency descriptor tag and have a scenario for the year 2040.
+
+SELECT DISTINCT ?s ?name WHERE{
+?s oeo:OEO_00390071 ?o.
+?s rdfs:label ?name.
+?o rdfs:label "sufficiency"^^XSD:string.
+
+?s obo:BFO_0000051 ?scenario.
+?scenario a oeo:OEO_00000365.
+?scenario oeo:OEO_00020440 ?year. 
+FILTER CONTAINS(str(?year),"2040")
+}
+
+> Can answer this question
+
+5. Give me all bundles to which Felix Maurer contributed as author to a publication.
+
+SELECT DISTINCT ?s ?name ?pub ?publabel  WHERE{
+?s obo:BFO_0000051 ?pub.
+?pub a oeo:OEO_00020012.
+?s rdfs:label ?name.
+?pub oeo:OEO_00000506 ?author. #has author
+?pub rdfs:label ?publabel.
+?author rdfs:label "Felix Maurer"^^XSD:string.
+}
+
+> Can answer this question
+
+6. Give me all scenarios that have dataset B as input data. 
+
+SELECT DISTINCT ?s ?name  WHERE{
+?s oeo:OEO_00020437 ?input. 
+?s rdfs:label ?name.
+?input rdfs:label "abbb_simulation_parameter"^^XSD:string.
+}
+
+> Can answer this question
+
+7. Give me all scenario that have dataset B as output data. 
+
+
+SELECT DISTINCT ?s ?name  WHERE{
+?s a oeo:OEO_00000365. #scenario factsheet
+?s rdfs:label ?name.
+?s oeo:OEO_00020436 ?output. 
+?output rdfs:label "Primary and final energy consumption of scenario KS95"^^XSD:string.
+}
+
+> Can answer this question
+
+8. Give me all scenarios that belong to bundle C or bundle D.
+
+SELECT DISTINCT ?s ?name ?scenario ?scenlabel WHERE{
+ ?s obo:BFO_0000051 ?scenario.
+ ?s rdfs:label ?name.
+ ?scenario a oeo:OEO_00000365. 
+ ?scenario rdfs:label ?scenlabel.
+FILTER(?s = oekg:59cf408f-8ab1-7fe1-0175-e3e50e15eeaa || ?s = oekg:8a59cb1b-ea99-0594-a5ef-7d59f1b7fab3).
+}
+
+> Can answer this question
+
+9. Give me all scenarios of type target driven scenarios that are for Germany and project the year 2050 or later.
+
+SELECT DISTINCT ?s ?name ?year WHERE{
+?s oeo:OEO_00390073 oeo:OEO_00020247. 
+?s rdfs:label ?name.
+?s oeo:OEO_00020220 ?land.
+?land rdfs:label "Germany"^^XSD:string.
+?s oeo:OEO_00020440 ?year. 
+FILTER (?year >= "2050-01-01"^^XSD:dateTime).
+}
+
+> Can answer this question
+
+10. Give me all scenarios about Germany, either as study region or interacting region, and project the year 2030.
+
+SELECT DISTINCT ?s ?name WHERE{
+{?s oeo:OEO_00020220 ?land. 
+?s rdfs:label ?name.
+?land rdfs:label "Germany"^^XSD:string.
+?s oeo:OEO_00020440 ?year.} 
+UNION
+{?s oeo:OEO_00020222 ?land. 
+?s rdfs:label ?name.
+?land rdfs:label "Germany"^^XSD:string.
+?s oeo:OEO_00020440 ?year.} 
+FILTER CONTAINS(str(?year),"2030")
+}
+
+> Can answer this question
+
+11. Give me all scenarios that are for Germany and project the year 2030, where the respective bundle covers the energy transformation sector.
+
+SELECT DISTINCT ?scenario ?scename ?s ?name WHERE{
+?s oeo:OEO_00020439 ?o.
+?o a*/rdfs:subClassOf* oeo:OEO_00000158.
+?s obo:BFO_0000051 ?scenario.
+?s rdfs:label ?name.
+?scenario a oeo:OEO_00000365. #scenario factsheet
+?scenario rdfs:label ?scename.
+?scenario oeo:OEO_00020220 ?land. #has study region
+?land rdfs:label "Germany"^^XSD:string.
+?scenario oeo:OEO_00020440 ?year.
+FILTER CONTAINS(str(?year),"2030")
+}
+
+> Can answer this question
+
+12. Give me all datasets that are part of scenario E.
+
+SELECT DISTINCT ?dataset ?label WHERE{
+<http://openenergy-platform.org/ontology/oekg/scenario/444fca1a-8e8f-1e56-9773-6852691621b0> ?p ?dataset.
+?dataset rdfs:label ?label.
+FILTER(?p = oeo:OEO_00020436 || ?p = oeo:OEO_00020437). 
+}
+
+> Can answer this question
+
+
+13. Give me all datasets that are part of bundle C.
+
+SELECT DISTINCT ?dataset ?name WHERE{
+<http://openenergy-platform.org/ontology/oekg/6ddf7ede-c3a5-93c8-4385-b975c628d610> obo:BFO_0000051 ?scenario.
+?s rdfs:label ?name.
+?scenario a oeo:OEO_00000365. #scenario factsheet
+?scenario ?p ?dataset.
+?dataset rdfs:label ?name.
+FILTER(?p = oeo:OEO_00020436 || ?p = oeo:OEO_00020437). 
+}
+
+> Can answer this question
+
+14. Give me all scenarios that belong to a bundle that is modelled within the MESSAGEix framework.
+
+SELECT DISTINCT ?scen ?name WHERE{
+?s obo:BFO_0000051 ?f.
+?f a oeo:OEO_00000172.
+?f rdfs:label "MESSAGEix"^^XSD:string.
+?s obo:BFO_0000051 ?scen.
+?scenario a oeo:OEO_00000365. 
+?scen rdfs:label ?name.
+}
+
+> Can answer this question
+
+15. Give me all bundles that are modelled within the MESSAGEix framework.
+    
+SELECT DISTINCT ?s ?name WHERE{
+?s obo:BFO_0000051 ?f.
+?f a oeo:OEO_00000172.
+?s rdfs:label ?name.
+?f rdfs:label "MESSAGEix"^^XSD:string.
+}  
+
+> Can answer this question
+
+16. Give me all scenarios that belong to a bundle that is modelled with the oemof abbb model.
+
+SELECT DISTINCT ?scen ?name WHERE{
+?s obo:BFO_0000051 ?m.
+?m a oeo:OEO_00000277.
+?m rdfs:label "oemof_abbb"^^XSD:string.
+?s obo:BFO_0000051 ?scen.
+?scen a oeo:OEO_00000365. 
+?scen rdfs:label ?name.
+}
+   
+> Can answer this question
+
+17. Give me all bundles that are modelled with the oemof abbb model.
+
+SELECT DISTINCT ?s ?name WHERE{
+?s obo:BFO_0000051 ?m.
+?m a oeo:OEO_00000277.
+?s rdfs:label ?name.
+?m rdfs:label "oemof_abbb"^^XSD:string.
+} 
+
+> Can answer this question
+
+18. Give me all scenarios that belong to a bundle modelled with the oemof abbb model and that project the years 2030 and 2040.
+
+SELECT DISTINCT ?scen ?name WHERE{
+{?s obo:BFO_0000051 ?m.
+?m a oeo:OEO_00000277.
+?m rdfs:label "oemof_abbb"^^XSD:string.
+?s obo:BFO_0000051 ?scen.
+?scen a oeo:OEO_00000365. 
+?scen rdfs:label ?name.
+?scen oeo:OEO_00020440 ?year.
+FILTER CONTAINS(str(?year),"2030").
+}
+UNION
+{?s obo:BFO_0000051 ?m.
+?m a oeo:OEO_00000277.
+?m rdfs:label "oemof_abbb"^^XSD:string.
+?s obo:BFO_0000051 ?scen.
+?scen a oeo:OEO_00000365. 
+?scen rdfs:label ?name.
+?scen oeo:OEO_00020440 ?year.
+FILTER CONTAINS(str(?year),"2040").
+}.
+}
+
+> Can answer this question
+
+19. Give me all dois of publications that are about a bundle that contain a scenario for the year 2050.
+
+SELECT DISTINCT ?d ?p ?name WHERE{
+?s obo:BFO_0000051 ?p.
+?p rdfs:label ?name.
+?p a oeo:OEO_00020012.
+?p oeo:OEO_00390098 ?d.
+?s obo:BFO_0000051 ?scen.
+?scen a oeo:OEO_00000365. 
+?scen oeo:OEO_00020440 ?year.
+FILTER CONTAINS(str(?year),"2050").
+}
+
+> Can answer this question
+
+20. Give me all datasets of scenario E that contain data for the year 2030.
+
+> Can NOT answer this question
+
+

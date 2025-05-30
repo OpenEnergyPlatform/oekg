@@ -1,0 +1,217 @@
+1. Give me all bundles in which institution A was involved.
+
+SELECT DISTINCT ?s ?name WHERE{
+?s oeo:OEO_00000510 ?o. 
+?s oekg:has_full_name ?name.
+?o rdfs:label "Fraunhofer ISI".
+}
+
+> Can answer this question.
+
+2. Give me all bundles that cover, amongst others, the energy transformation sector and industry sector.
+
+SELECT DISTINCT ?s ?name WHERE{
+?s oeo:OEO_00000505 ?sec. 
+?s oekg:has_full_name ?name.
+FILTER(?sec = oeo:OEO_00010065 || ?sec = oeo:OEO_00010373).
+}
+
+> Only partially answers this question since entries are individuals of the classes we are looking for and there is no hierarchy in the oekg.
+
+3. Give me all bundles that cover only the energy transformation sector.
+
+SELECT DISTINCT ?s  ?name WHERE{
+{?s oeo:OEO_00000505 oeo:OEO_00010065. 
+?s oekg:has_full_name ?name.}
+MINUS
+{?s oeo:OEO_00000505 oeo:OEO_00010065. 
+?s oeo:OEO_00000505 ?o2. 
+?s oekg:has_full_name ?name.
+FILTER(?o2 != oeo:OEO_00010065)} 
+}
+
+> Only partially answers this question since entries are individuals of the classes we are looking for and there is no hierarchy in the oekg.
+
+4. Give me all bundles that have the sufficency descriptor tag and have a scenario for the year 2040.
+
+SELECT DISTINCT ?s ?name WHERE{
+?s oeo:has_study_keyword "sufficiency".
+?s oekg:has_scenario ?scenario.
+?s oekg:has_full_name ?name.
+?scenario oeo:OEO_00020224 "2040". 
+}
+
+> Can answer thsi question.
+
+5. Give me all bundles to which Felix Maurer contributed as author to a publication.
+
+SELECT DISTINCT ?s ?name ?pub ?publabel  WHERE{
+?s oekg:has_publication ?pub.
+?s oekg:has_full_name ?name.
+?pub oeo:OEO_00000506 ?a. #has author
+?pub rdfs:label ?publabel.
+?a rdfs:label "Felix Maurer".
+}
+
+> Can answer this question.
+
+6. Give me all scenarios that have dataset B as input data.
+
+SELECT DISTINCT ?s ?name  WHERE{
+?s oeo:RO_0002233 ?input. 
+?input rdfs:label "abbb_simulation_parameter".
+
+> Can answer thsi question.
+
+7. Give me all scenario that have dataset B as output data. 
+
+SELECT DISTINCT ?s ?name  WHERE{
+?s a oeo:OEO_00000365. 
+?s oekg:has_full_name ?name.
+?s oeo:RO_0002234 ?output. 
+?output rdfs:label "Primary and final energy consumption of scenario KS95".
+
+> Can answer this question but has to account for special cases.
+
+8. Give me all scenarios that belong to bundle C or bundle D.
+
+SELECT DISTINCT ?scenario ?scenlabel WHERE{
+ ?s oekg:has_scenario ?scenario.
+ ?scenario rdfs:label ?scenlabel.
+FILTER(?s = oekg:59cf408f-8ab1-7fe1-0175-e3e50e15eeaa || ?s = oekg:8a59cb1b-ea99-0594-a5ef-7d59f1b7fab3).
+}
+
+> Can answer this question.
+
+9. Give me all scenarios of type target driven scenarios that are for Germany and project the year 2050 or later.
+
+SELECT DISTINCT ?s WHERE{
+{?s oeo:has_scenario_descriptor oeo:OEO_00020247. 
+?s oeo:OEO_00020220 ?land. 
+?land rdfs:label "Germany".
+?s oeo:OEO_00020224 "2050".} 
+}
+
+> Only partially anwers this question as years are not saved in a way that allow < or >.
+
+10. Give me all scenarios about Germany, either as study region or interacting region, and project the year 2030.
+
+SELECT DISTINCT ?s WHERE{
+{?s oeo:OEO_00020220 ?land. 
+?land rdfs:label "Germany".
+?s oeo:OEO_00020224 "2030".} 
+UNION
+{?s oeo:covers_interacting_region ?land.
+?land rdfs:label "Germany".
+?s oeo:OEO_00020224 "2030".} 
+UNION
+{?s oeo:OEO_00020222 ?land. 
+?land rdfs:label "Germany".
+?s oeo:OEO_00020224 "2030".} 
+}
+
+> Can answer this question but has to account for special cases.
+
+11. Give me all scenarios that are for Germany and project the year 2030, where the respective bundle covers the energy transformation sector.
+
+SELECT DISTINCT ?scenario ?name WHERE{
+?s oekg:has_scenario ?scenario.
+?scenario rdfs:label ?name.
+?scenario oeo:OEO_00020220 ?land. 
+?land rdfs:label "Germany".
+?scenario oeo:OEO_00020224 "2030". 
+?s oeo:OEO_00000505 oeo:OEO_00010065. 
+}
+
+> Only partially answers this question since entries are individuals of the classes we are looking for and there is no hierarchy in the oekg.
+
+12. Give me all datasets that are part of scenario E.
+
+SELECT DISTINCT ?dataset ?label WHERE{
+<http://openenergy-platform.org/ontology/oekg/scenario/444fca1a-8e8f-1e56-9773-6852691621b0> ?p ?dataset.
+?dataset rdfs:label ?label.
+FILTER(?p = oeo:RO_0002233 || ?p = oeo:RO_0002234). #has input, has output
+}
+
+> Can answer this question.
+
+13. Give me all datasets that are part of bundle C.
+
+SELECT DISTINCT ?dataset WHERE{
+{<http://openenergy-platform.org/ontology/oekg/769cff3d-d739-4760-687b-19c3f3675bd9> oeo:RO_0002234 ?dataset.} 
+UNION
+{<http://openenergy-platform.org/ontology/oekg/769cff3d-d739-4760-687b-19c3f3675bd9> oekg:has_scenario ?scen.
+?scen ?p ?dataset.
+FILTER(?p = oeo:RO_0002233 || ?p = oeo:RO_0002234).} 
+}
+
+> Can answer this question but has to account for special cases.
+
+14. Give me all scenarios that belong to a bundle that is modelled within the MESSAGEix framework.
+
+SELECT DISTINCT ?scen ?name WHERE{
+?s oeo:has_framework ?f.
+?f rdfs:label "MESSAGEix".
+?s oekg:has_scenario ?scen.
+?scen rdfs:label ?name.
+}
+
+> Can answer this question.
+
+15. Give me all bundles that are modelled within the MESSAGEix framework.
+
+SELECT DISTINCT ?s ?name WHERE{
+?s oeo:has_framework ?f.
+?s oekg:has_full_name ?name.
+?f rdfs:label "MESSAGEix".
+}  
+
+> Can answer this question.
+    
+16. Give me all scenarios that belong to a bundle that is modelled with the oemof abbb model.
+
+SELECT DISTINCT ?scen ?name WHERE{
+?s oeo:has_model ?m.
+?m rdfs:label "oemof_abbb".
+?s oekg:has_scenario ?scen.
+?scen rdfs:label ?name.
+}
+
+> Can snwer this question.
+
+17. Give me all bundles that are modelled with the oemof abbb model.
+
+SELECT DISTINCT ?s ?name WHERE{
+?s oeo:has_model ?m.
+?s oekg:has_full_name ?name.
+?m rdfs:label "oemof_abbb".
+} 
+
+> Can snwer this question.
+
+18. Give me all scenarios that belong to a bundle modelled with the oemof abbb model and that project the years 2030 and 2040.
+
+SELECT DISTINCT ?scen ?name WHERE{
+?s oeo:has_model ?f.
+?f rdfs:label "oemof_abbb".
+?s oekg:has_scenario ?scen.
+?scen rdfs:label ?name.
+?scen oeo:OEO_00020224 ?year. 
+FILTER(?year = "2030" || ?year = 2040).
+
+> Can answer thsi question.
+
+19. Give me all dois of publications that are about a bundle that contain a scenario for the year 2050.
+
+SELECT DISTINCT ?d WHERE{
+?s oekg:has_publication ?p.
+?p oekg:doi ?d.
+?s oekg:has_scenario ?scen.
+?scen oeo:OEO_00020224 "2050". 
+}
+
+> Can answer this question.
+
+20. Give me all datasets of scenario E that contain data for the year 2030.
+
+> Can NOT answer this question.
