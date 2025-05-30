@@ -47,15 +47,15 @@ The latest version of the input files are provided here:
 
 # shacl folder
 
-## oekg_shacl_old_graph.ttl
+## oekg_shacl_old_graph.txt
 
 - shacl file for the old OEKG
 
-## oekg_shacl_new_graph.ttl
+## oekg_shacl_new_graph.txt
 
 - shacl file for the new OEKG
 
-## New_Graph_ValidationResults(55)
+## New_Graph_ValidationResults(55).txt
 
 - validation report for the rework3.ttl file (the new OEKG) and the SHALC file oekg_shacl_new_graph.ttl
 - contains 55 violations
