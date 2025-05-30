@@ -41,7 +41,7 @@ SELECT DISTINCT ?s ?name WHERE{
 ?scenario oeo:OEO_00020224 "2040". 
 }
 
-> Can answer thsi question.
+> Can answer this question.
 
 5. Give me all bundles to which Felix Maurer contributed as author to a publication.
 
@@ -61,7 +61,7 @@ SELECT DISTINCT ?s ?name  WHERE{
 ?s oeo:RO_0002233 ?input. 
 ?input rdfs:label "abbb_simulation_parameter".
 
-> Can answer thsi question.
+> Can answer this question.
 
 7. Give me all scenario that have dataset B as output data. 
 
@@ -177,7 +177,7 @@ SELECT DISTINCT ?scen ?name WHERE{
 ?scen rdfs:label ?name.
 }
 
-> Can snwer this question.
+> Can answer this question.
 
 17. Give me all bundles that are modelled with the oemof abbb model.
 
@@ -187,7 +187,7 @@ SELECT DISTINCT ?s ?name WHERE{
 ?m rdfs:label "oemof_abbb".
 } 
 
-> Can snwer this question.
+> Can answer this question.
 
 18. Give me all scenarios that belong to a bundle modelled with the oemof abbb model and that project the years 2030 and 2040.
 
@@ -199,7 +199,7 @@ SELECT DISTINCT ?scen ?name WHERE{
 ?scen oeo:OEO_00020224 ?year. 
 FILTER(?year = "2030" || ?year = 2040).
 
-> Can answer thsi question.
+> Can answer this question.
 
 19. Give me all dois of publications that are about a bundle that contain a scenario for the year 2050.
 
