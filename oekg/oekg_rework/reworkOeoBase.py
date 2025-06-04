@@ -1,14 +1,30 @@
+from owlready2 import *
 import rdflib
 from rdflib import URIRef, Namespace
 import sys
+
+
+def reasoning(data):
+    path = data.rsplit("/", 1)
+    if len(path) > 1:
+        newpath = path[0] + "/" + "OEO_Prep.owl"
+    else:
+        newpath = "OEO_Prep.owl"
+
+    onto = get_ontology(data).load()
+
+    with onto:
+        sync_reasoner()
+
+    onto.save(newpath)
+
+    return newpath
 
 def rework(classes, labels, graph, newgraph): #generate output to copy to shacl file
     oeo = Namespace("https://openenergyplatform.org/ontology/oeo/")
     rdfs = Namespace("http://www.w3.org/2000/01/rdf-schema#")
     rdf = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
     newgraph.bind("OEO", oeo)
-    # inferred energy carriers
-    carriers = ["OEO_00010408", "OEO_00010019", "OEO_00010409", "OEO_00010383", "OEO_00000062", "OEO_00000066", "OEO_00010225", "OEO_00000356", "OEO_00010223", "OEO_00000077", "OEO_00010445", "OEO_00000093", "OEO_00000094", "OEO_00000096", "OEO_00000099", "OEO_00000102", "OEO_00320013", "OEO_00320015", "OEO_00320012", "OEO_00320014", "OEO_00000115", "OEO_00010242", "OEO_00010379", "OEO_00140080", "OEO_00020196", "OEO_00000014", "OEO_00000131", "OEO_00010015", "OEO_00010226", "OEO_00000299", "OEO_00010382", "OEO_00010224", "OEO_00000181", "OEO_00010153", "OEO_00010146", "OEO_00010148", "OEO_00010151", "OEO_00010155", "OEO_00010241", "OEO_00000186", "OEO_00000204", "OEO_00000211", "OEO_00000226", "OEO_00000245", "OEO_00010237", "OEO_00320011", "OEO_00000257", "OEO_00000258", "OEO_00010145", "OEO_00010147", "OEO_00010150", "OEO_00010156", "OEO_00110000", "OEO_00000263", "OEO_00010316", "OEO_00010317", "OEO_00000286", "OEO_00000290", "OEO_00000292", "OEO_00000297", "OEO_00010337", "OEO_00010416", "OEO_00000302", "OEO_00010327", "OEO_00140078", "OEO_00000345", "OEO_00010326", "OEO_00010380", "OEO_00020050", "OEO_00000033", "OEO_00140079", "OEO_00010418", "OEO_00000332", "OEO_00010144", "OEO_00000391", "OEO_00010149", "OEO_00010154", "OEO_00010381", "OEO_00000401", "OEO_00010336", "OEO_00010221", "OEO_00010017", "OEO_00010016", "OEO_00010018", "OEO_00000439", "OEO_00010104", "OEO_00010448", "OEO_00010447", "OEO_00000054", "OEO_00010000", "OEO_00000058", "OEO_00000071", "OEO_00010446", "OEO_00000072", "OEO_00000074", "OEO_00000075", "OEO_00010215", "OEO_00000084", "OEO_00000088", "OEO_00020001", "OEO_00000173", "OEO_00000183", "OEO_00140159", "OEO_00000220", "OEO_00000246", "OEO_00000251", "OEO_00000025", "OEO_00010484", "OEO_00010105", "OEO_00000320", "OEO_00230021", "OEO_00140091", "OEO_00010093", "OEO_00020058", "OEO_00110001", "OEO_00140160", "OEO_00140092", "OEO_00000040", "OEO_00000441", "OEO_00000449"]
 
     i = 0
     for cl in classes:
@@ -46,9 +62,6 @@ def rework(classes, labels, graph, newgraph): #generate output to copy to shacl 
 
     print("\ndescripor tags\n") # descriptor tags a queried differently but are also printed
     annotationQuery(graph)
-
-    for c in carriers:
-        newgraph.add((URIRef("https://openenergyplatform.org/ontology/oeo/"+c), rdfs.subClassOf, oeo.OEO_00020039))
 
     newgraph.serialize("rework1.ttl", format='turtle')
 
@@ -91,6 +104,7 @@ def shaclOutput (subject, children, indivs): #output a string that can be used i
     for ind in indivs:
         results.append(ind.replace('https://openenergyplatform.org/ontology/oeo/', 'oeo:'))
     result = " "
+    results = list(set(results)) #remove duplicates
     for r in results:
         result = result + r + " "
     print(result)
@@ -133,11 +147,11 @@ classes = ["https://openenergyplatform.org/ontology/oeo/OEO_00000367",
             "https://openenergyplatform.org/ontology/oeo/OEO_00000364"]
 labels = ["sector", "sector division", "technology", "energy carrier", "scenario"]
 
-data = sys.argv[1] #path to the rdf data file
+#data = sys.argv[1] #path to the rdf data file
 
-#data = "/home/madeleine/Schreibtisch/oeo-full.owl"
+data = "/home/madeleine/Schreibtisch/oeo-full.owl"
 g = rdflib.Graph()
-g.parse(data)
+g.parse(reasoning(data))
 reworkG = rdflib.Graph() #new empty graph
 
 rework(classes, labels, g, reworkG)  # print out subclasses and individuals to be copied into shacl (no inferred classes!)

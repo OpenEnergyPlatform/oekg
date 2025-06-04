@@ -1742,164 +1742,108 @@ OEKG:fd14cec6-9144-3207-eac1-40af83caf4c2 a OEO:OEO_00020227 ;
     OEO:OEO_00390071 OEO:OEO_00000199 ;
     OEO:OEO_00390079 OEO:OEO_00000242 .
 
-OEO:OEO_00000014 RDFS:label "fossil combustion fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000025 RDFS:label "methane"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000033 RDFS:label "renewable fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00000040 RDFS:label "uranium"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000054 RDFS:label "air"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000302 .
 
 OEO:OEO_00000058 RDFS:label "anthracite"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000204 .
 
 OEO:OEO_00000062 RDFS:label "associated gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000292 .
 
 OEO:OEO_00000066 RDFS:label "aviation gasoline"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000183 .
 
 OEO:OEO_00000071 RDFS:label "biodiesel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000072 RDFS:label "biofuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000258,
+        OEO:OEO_00010242 .
 
 OEO:OEO_00000075 RDFS:label "biogasoline"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000258,
+        OEO:OEO_00010241 .
 
 OEO:OEO_00000077 RDFS:label "blast furnace gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000263 .
 
 OEO:OEO_00000084 RDFS:label "charcoal"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000332,
+        OEO:OEO_00140079 .
 
 OEO:OEO_00000093 RDFS:label "coke oven gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000263 .
 
 OEO:OEO_00000094 RDFS:label "coking coal"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000204 .
 
 OEO:OEO_00000096 RDFS:label "colliery gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000099 RDFS:label "combustion fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000292 .
 
 OEO:OEO_00000102 RDFS:label "compressed air"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000115 RDFS:label "crude oil"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000054,
+        OEO:OEO_00140079 .
 
 OEO:OEO_00000131 RDFS:label "fossil diesel fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000181,
+        OEO:OEO_00010242 .
 
 OEO:OEO_00000160 a OEO:OEO_00010407 ;
     RDFS:label "Eurostat energy balance sector division"^^XSD:string .
 
-OEO:OEO_00000173 RDFS:label "fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000181 RDFS:label "gas diesel oil"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000183 RDFS:label "gasoline"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00000186 RDFS:label "gasworks gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000263 .
 
 OEO:OEO_00000193 a OEO:OEO_00010407 ;
     RDFS:label "German energy balance sector division"^^XSD:string .
 
-OEO:OEO_00000204 RDFS:label "hard coal"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00000211 RDFS:label "heating oil"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000220 RDFS:label "hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000226 RDFS:label "industrial waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000181 .
 
 OEO:OEO_00000243 a OEO:OEO_00010055 ;
     RDFS:label "CRF sectors (IPCC 1996)"^^XSD:string .
 
 OEO:OEO_00000245 RDFS:label "jet fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000246 RDFS:label "kerosene"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000246 .
 
 OEO:OEO_00000251 RDFS:label "lignite"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000088 .
 
 OEO:OEO_00000257 RDFS:label "liquid air"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000258 RDFS:label "liquid biofuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000263 RDFS:label "manufactured coal based gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000054 .
 
 OEO:OEO_00000286 RDFS:label "motor gasoline"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000290 RDFS:label "municipal waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000183 .
 
 OEO:OEO_00000291 a OEO:OEO_00000368 ;
     RDFS:label "nace_ sectors"^^XSD:string .
 
 OEO:OEO_00000297 RDFS:label "non associated gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000292 .
 
 OEO:OEO_00000299 RDFS:label "fossil municipal waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000302 RDFS:label "nuclear fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000290,
+        OEO:OEO_00010224 .
 
 OEO:OEO_00000320 RDFS:label "peat"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000332 RDFS:label "solid biofuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000391,
+        OEO:OEO_00140078 .
 
 OEO:OEO_00000345 RDFS:label "pumped water"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00110000,
+        OEO:OEO_00140079 .
 
 OEO:OEO_00000355 a OEO:OEO_00010403 ;
     RDFS:label "Renewable Energy Directive sector division"^^XSD:string .
 
 OEO:OEO_00000356 RDFS:label "biogenic municipal waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000391 RDFS:label "solid fossil fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000290,
+        OEO:OEO_00010223 .
 
 OEO:OEO_00000401 RDFS:label "sub bituminous coal"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000439 RDFS:label "waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00000441 RDFS:label "water"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000088 .
 
 OEO:OEO_00000449 RDFS:label "wood"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000332,
+        OEO:OEO_00140078 .
 
 OEO:OEO_00000506 RDFS:label "has author"^^XSD:string .
 
@@ -1909,32 +1853,14 @@ OEO:OEO_00000509 RDFS:label "has funding source"^^XSD:string .
 
 OEO:OEO_00000510 RDFS:label "has organisation"^^XSD:string .
 
-OEO:OEO_00010000 RDFS:label "ammonia"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010015 RDFS:label "fossil hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010016 RDFS:label "synthetic hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010017 RDFS:label "synthetic fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010018 RDFS:label "synthetic methane"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00010019 RDFS:label "PtL fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010156 .
 
 OEO:OEO_00010093 RDFS:label "river"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010104 RDFS:label "water body"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010104 .
 
 OEO:OEO_00010105 RDFS:label "ocean"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010104 .
 
 OEO:OEO_00010131 a OEO:OEO_00000367 ;
     RDFS:label "EU emission sector: ETS"^^XSD:string .
@@ -1948,49 +1874,32 @@ OEO:OEO_00010133 a OEO:OEO_00000422 ;
 OEO:OEO_00010134 a OEO:OEO_00000367 ;
     RDFS:label "EU emission sector: effort sharing"^^XSD:string .
 
-OEO:OEO_00010135 a OEO:OEO_00010035 ;
+OEO:OEO_00010135 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "EU emission sector: LULUCF"^^XSD:string .
 
-OEO:OEO_00010144 RDFS:label "solid combustion fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010145 RDFS:label "liquid combustion fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010146 RDFS:label "gaseous combustion fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010147 RDFS:label "liquid fossil fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010148 RDFS:label "gaseous fossil fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00010149 RDFS:label "solid renewable fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000033,
+        OEO:OEO_00010144 .
 
 OEO:OEO_00010150 RDFS:label "liquid renewable fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000033,
+        OEO:OEO_00010145 .
 
 OEO:OEO_00010151 RDFS:label "gaseous renewable fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010153 RDFS:label "gaseous biofuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000033,
+        OEO:OEO_00010146 .
 
 OEO:OEO_00010154 RDFS:label "solid synthetic fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010017,
+        OEO:OEO_00010144 .
 
-OEO:OEO_00010155 RDFS:label "gaseous synthetic fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010156 RDFS:label "liquid synthetic fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010163 a OEO:OEO_00010130 ;
+OEO:OEO_00010163 a OEO:OEO_00010130,
+        OEO:OEO_00010402 ;
     RDFS:label "GovReg sector division"^^XSD:string .
 
-OEO:OEO_00010204 a OEO:OEO_00010130 ;
+OEO:OEO_00010204 a OEO:OEO_00010130,
+        OEO:OEO_00010402 ;
     RDFS:label "MMR sector division"^^XSD:string .
 
 OEO:OEO_00010205 a OEO:OEO_00010320 ;
@@ -2008,32 +1917,20 @@ OEO:OEO_00010208 a OEO:OEO_00000367 ;
 OEO:OEO_00010209 a OEO:OEO_00000367 ;
     RDFS:label "total emissions including LULUCF and including international aviation"^^XSD:string .
 
-OEO:OEO_00010215 RDFS:label "biomethane"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00010221 RDFS:label "synthetic ammonia"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010223 RDFS:label "biogenic waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010224 RDFS:label "fossil waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010000,
+        OEO:OEO_00010155 .
 
 OEO:OEO_00010225 RDFS:label "biogenic industrial waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000226,
+        OEO:OEO_00010223 .
 
 OEO:OEO_00010226 RDFS:label "fossil industrial waste fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000226,
+        OEO:OEO_00010224 .
 
 OEO:OEO_00010237 RDFS:label "liquefied natural gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010241 RDFS:label "gasoline fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010242 RDFS:label "diesel fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000292 .
 
 OEO:OEO_00010304 RDFS:label "NC/BR sector division"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00010402 .
@@ -2041,59 +1938,53 @@ OEO:OEO_00010304 RDFS:label "NC/BR sector division"^^XSD:string ;
 OEO:OEO_00010305 a OEO:OEO_00000367 ;
     RDFS:label "NC/BR sector: energy"^^XSD:string .
 
-OEO:OEO_00010306 a OEO:OEO_00000422 ;
+OEO:OEO_00010306 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "NC/BR sector: transport"^^XSD:string .
 
 OEO:OEO_00010307 a OEO:OEO_00000227 ;
     RDFS:label "NC/BR sector: industry/industrial processes and product use"^^XSD:string .
 
-OEO:OEO_00010308 a OEO:OEO_00010035 ;
+OEO:OEO_00010308 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "NC/BR sector: agriculture"^^XSD:string .
 
-OEO:OEO_00010309 a OEO:OEO_00010035 ;
+OEO:OEO_00010309 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "NC/BR sector: forestry/LULUCF"^^XSD:string .
 
-OEO:OEO_00010310 a OEO:OEO_00010036 ;
+OEO:OEO_00010310 a OEO:OEO_00010036,
+        OEO:OEO_00010360 ;
     RDFS:label "NC/BR sector: waste management/waste"^^XSD:string .
 
-OEO:OEO_00010311 a OEO:OEO_00000367 ;
+OEO:OEO_00010311 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "NC/BR sector: other"^^XSD:string .
 
-OEO:OEO_00010316 RDFS:label "mineral oil product"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010317 RDFS:label "mineral oil"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00010326 RDFS:label "refinery gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010148,
+        OEO:OEO_00010316 .
 
 OEO:OEO_00010327 RDFS:label "petroleum coke"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000391,
+        OEO:OEO_00010316 .
 
 OEO:OEO_00010336 RDFS:label "sustainable biofuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000033,
+        OEO:OEO_00000072 .
 
 OEO:OEO_00010337 RDFS:label "non-sustainable biofuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010360 RDFS:label "source category"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00000367 .
-
-OEO:OEO_00010379 RDFS:label "electrolytic hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010380 RDFS:label "renewable electrolytic hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010381 RDFS:label "steam reforming hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000072 .
 
 OEO:OEO_00010382 RDFS:label "fossil steam reforming hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000220,
+        OEO:OEO_00010015,
+        OEO:OEO_00010381 .
 
 OEO:OEO_00010383 RDFS:label "abated steam reforming hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000220,
+        OEO:OEO_00010015,
+        OEO:OEO_00010381 .
 
 OEO:OEO_00010389 a OEO:OEO_00000145 ;
     RDFS:label "RED sector: electricity"^^XSD:string .
@@ -2105,16 +1996,17 @@ OEO:OEO_00010391 a OEO:OEO_00000422 ;
     RDFS:label "RED sector: transport"^^XSD:string .
 
 OEO:OEO_00010408 RDFS:label "Brent crude"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000115 .
 
 OEO:OEO_00010409 RDFS:label "Western Texas Intermediate"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000115 .
 
 OEO:OEO_00010416 RDFS:label "nuclear electric hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010379 .
 
 OEO:OEO_00010418 RDFS:label "solar electrolytic hydrogen"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010379,
+        OEO:OEO_00010380 .
 
 OEO:OEO_00010435 RDFS:label "marine current energy technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00010434 .
@@ -2125,34 +2017,26 @@ OEO:OEO_00010436 RDFS:label "marine tidal energy technology"^^XSD:string ;
 OEO:OEO_00010437 RDFS:label "marine wave energy technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00010434 .
 
-OEO:OEO_00010445 RDFS:label "blended liquid fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00010446 RDFS:label "bioethanol"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000258,
+        OEO:OEO_00020001 .
 
 OEO:OEO_00010447 RDFS:label "E10"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010241,
+        OEO:OEO_00010445 .
 
 OEO:OEO_00010448 RDFS:label "B7"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00010464 RDFS:label "subsector"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00000367 .
+    RDFS:subClassOf OEO:OEO_00010242,
+        OEO:OEO_00010445 .
 
 OEO:OEO_00010484 RDFS:label "methanol"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010145,
+        OEO:OEO_00140159 .
 
 OEO:OEO_00010485 RDFS:label "manufacturing technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000407 .
 
-OEO:OEO_00020001 RDFS:label "ethanol"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00020058 RDFS:label "rock"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00020196 RDFS:label "fissile material entity"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020039 .
 
 OEO:OEO_00020220 RDFS:label "has study region"^^XSD:string .
@@ -2174,47 +2058,37 @@ OEO:OEO_00020439 RDFS:label "covers sector (shortcut)"^^XSD:string .
 
 OEO:OEO_00020440 RDFS:label "has scenario year value"^^XSD:string .
 
-OEO:OEO_00110000 RDFS:label "liquid water"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
 OEO:OEO_00110001 RDFS:label "steam"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00140078 RDFS:label "primary energy carrier"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00140079 RDFS:label "secondary energy carrier"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000441,
+        OEO:OEO_00140079 .
 
 OEO:OEO_00140080 RDFS:label "final energy carrier"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020039 .
 
 OEO:OEO_00140091 RDFS:label "plutonium"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000302 .
 
 OEO:OEO_00140092 RDFS:label "thorium"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00140159 RDFS:label "hydrocarbon"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000302 .
 
 OEO:OEO_00140160 RDFS:label "syngas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010146,
+        OEO:OEO_00140079 .
 
 OEO:OEO_00320011 RDFS:label "liquefied petroleum gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010146 .
 
 OEO:OEO_00320012 RDFS:label "compressed natural gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00000292,
+        OEO:OEO_00320015 .
 
 OEO:OEO_00320013 RDFS:label "compressed biomethane"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010215,
+        OEO:OEO_00320015 .
 
 OEO:OEO_00320014 RDFS:label "compressed synthetic methane"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
-
-OEO:OEO_00320015 RDFS:label "compressed gas fuel"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+    RDFS:subClassOf OEO:OEO_00010018,
+        OEO:OEO_00320015 .
 
 OEO:OEO_00360042 a OEO:OEO_00000158 ;
     RDFS:label "BSI-KritisV energy sector"^^XSD:string .
@@ -9994,11 +9868,12 @@ Braunkohlekraftwerks gerechnet."""^^XSD:string ;
     OEO:OEO_00020440 "2030-01-01T00:00:00"^^XSD:dateTime ;
     OEO:OEO_00390095 "ff9765f6-b2ea-fb3c-1d77-b043b856e956"^^XSD:string .
 
-OEO:OEO_00000074 RDFS:label "biogas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+OEO:OEO_00000025 RDFS:label "methane"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010146,
+        OEO:OEO_00140159 .
 
-OEO:OEO_00000088 RDFS:label "coal"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+OEO:OEO_00000074 RDFS:label "biogas"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010153 .
 
 OEO:OEO_00000145 RDFS:label "electricity sector"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000158 .
@@ -10009,254 +9884,352 @@ OEO:OEO_00000213 RDFS:label "heating and cooling sector"^^XSD:string ;
 OEO:OEO_00000214 RDFS:label "household sector"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000128 .
 
-OEO:OEO_00000292 RDFS:label "natural gas"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020039 .
+OEO:OEO_00000246 RDFS:label "kerosene"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010147,
+        OEO:OEO_00010316 .
 
 OEO:OEO_00000405 RDFS:label "commercial sector"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000128 .
 
+OEO:OEO_00010000 RDFS:label "ammonia"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010146 .
+
+OEO:OEO_00010018 RDFS:label "synthetic methane"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000025,
+        OEO:OEO_00010155 .
+
 OEO:OEO_00010034 RDFS:label "building sector"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000128 .
 
-OEO:OEO_00010058 a OEO:OEO_00000367 ;
+OEO:OEO_00010058 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): CO2 transport and storage"^^XSD:string .
 
-OEO:OEO_00010161 a OEO:OEO_00000367 ;
+OEO:OEO_00010156 RDFS:label "liquid synthetic fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010017,
+        OEO:OEO_00010145 .
+
+OEO:OEO_00010161 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): solid fuels"^^XSD:string .
 
-OEO:OEO_00010162 a OEO:OEO_00000367 ;
+OEO:OEO_00010162 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): oil and natural gas"^^XSD:string .
 
-OEO:OEO_00010164 a OEO:OEO_00000227 ;
+OEO:OEO_00010164 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): mineral industry"^^XSD:string .
 
-OEO:OEO_00010169 a OEO:OEO_00000227 ;
+OEO:OEO_00010169 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): non-energy products from fuels and solvent use"^^XSD:string .
 
-OEO:OEO_00010170 a OEO:OEO_00000227 ;
+OEO:OEO_00010170 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): electronics industry"^^XSD:string .
 
-OEO:OEO_00010171 a OEO:OEO_00000227 ;
+OEO:OEO_00010171 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): product uses as substitutes for ozone depleting substances"^^XSD:string .
 
-OEO:OEO_00010172 a OEO:OEO_00000227 ;
+OEO:OEO_00010172 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): other product manufacture and use"^^XSD:string .
 
-OEO:OEO_00010173 a OEO:OEO_00000227 ;
+OEO:OEO_00010173 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): industrial processes and product use - other"^^XSD:string .
 
-OEO:OEO_00010174 a OEO:OEO_00010036 ;
+OEO:OEO_00010174 a OEO:OEO_00010036,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): solid waste disposal"^^XSD:string .
 
-OEO:OEO_00010175 a OEO:OEO_00010036 ;
+OEO:OEO_00010175 a OEO:OEO_00010036,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): biological treatment of solid waste"^^XSD:string .
 
-OEO:OEO_00010176 a OEO:OEO_00010036 ;
+OEO:OEO_00010176 a OEO:OEO_00010036,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): incineration and open burning of waste"^^XSD:string .
 
-OEO:OEO_00010177 a OEO:OEO_00010036 ;
+OEO:OEO_00010177 a OEO:OEO_00010036,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): waste water treatment and discharge"^^XSD:string .
 
-OEO:OEO_00010178 a OEO:OEO_00010036 ;
+OEO:OEO_00010178 a OEO:OEO_00010036,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): waste - other"^^XSD:string .
 
-OEO:OEO_00010179 a OEO:OEO_00010035 ;
+OEO:OEO_00010179 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): enteric fermentation"^^XSD:string .
 
-OEO:OEO_00010180 a OEO:OEO_00010035 ;
+OEO:OEO_00010180 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): manure management"^^XSD:string .
 
-OEO:OEO_00010181 a OEO:OEO_00010035 ;
+OEO:OEO_00010181 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): rice cultivation"^^XSD:string .
 
-OEO:OEO_00010182 a OEO:OEO_00010035 ;
+OEO:OEO_00010182 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): agricultural soils"^^XSD:string .
 
-OEO:OEO_00010183 a OEO:OEO_00010035 ;
+OEO:OEO_00010183 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): prescribed burning of savannas"^^XSD:string .
 
-OEO:OEO_00010184 a OEO:OEO_00010035 ;
+OEO:OEO_00010184 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): field burning of agricultural residues"^^XSD:string .
 
-OEO:OEO_00010185 a OEO:OEO_00010035 ;
+OEO:OEO_00010185 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): liming"^^XSD:string .
 
-OEO:OEO_00010186 a OEO:OEO_00010035 ;
+OEO:OEO_00010186 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): urea application"^^XSD:string .
 
-OEO:OEO_00010187 a OEO:OEO_00010035 ;
+OEO:OEO_00010187 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): other carbon-containing fertilizers"^^XSD:string .
 
-OEO:OEO_00010188 a OEO:OEO_00010035 ;
+OEO:OEO_00010188 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): agriculture - other"^^XSD:string .
 
-OEO:OEO_00010189 a OEO:OEO_00010035 ;
+OEO:OEO_00010189 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): forest land"^^XSD:string .
 
-OEO:OEO_00010190 a OEO:OEO_00010035 ;
+OEO:OEO_00010190 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): cropland"^^XSD:string .
 
-OEO:OEO_00010191 a OEO:OEO_00010035 ;
+OEO:OEO_00010191 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): grassland"^^XSD:string .
 
-OEO:OEO_00010192 a OEO:OEO_00010035 ;
+OEO:OEO_00010192 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): wetlands"^^XSD:string .
 
-OEO:OEO_00010193 a OEO:OEO_00010035 ;
+OEO:OEO_00010193 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): settlements"^^XSD:string .
 
-OEO:OEO_00010194 a OEO:OEO_00010035 ;
+OEO:OEO_00010194 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): other land"^^XSD:string .
 
-OEO:OEO_00010195 a OEO:OEO_00010035 ;
+OEO:OEO_00010195 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): harvested wood products"^^XSD:string .
 
-OEO:OEO_00010196 a OEO:OEO_00010035 ;
+OEO:OEO_00010196 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): land use, land-use change and forestry - other"^^XSD:string .
 
-OEO:OEO_00010198 a OEO:OEO_00000367 ;
+OEO:OEO_00010198 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): total emissions including LULUCF"^^XSD:string .
 
-OEO:OEO_00010199 a OEO:OEO_00000422 ;
+OEO:OEO_00010199 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): international bunkers and multilateral operations"^^XSD:string .
 
-OEO:OEO_00010201 a OEO:OEO_00010320 ;
+OEO:OEO_00010201 a OEO:OEO_00010320,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): international aviation"^^XSD:string .
 
-OEO:OEO_00010202 a OEO:OEO_00010320 ;
+OEO:OEO_00010202 a OEO:OEO_00010320,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): maritime navigation"^^XSD:string .
 
-OEO:OEO_00010203 a OEO:OEO_00000422 ;
+OEO:OEO_00010203 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): multilateral operations"^^XSD:string .
 
-OEO:OEO_00010228 a OEO:OEO_00000367 ;
+OEO:OEO_00010215 RDFS:label "biomethane"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010153 .
+
+OEO:OEO_00010228 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): CO2 emissions from biomass"^^XSD:string .
 
-OEO:OEO_00010229 a OEO:OEO_00000367 ;
+OEO:OEO_00010229 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): CO2 captured"^^XSD:string .
 
-OEO:OEO_00010230 a OEO:OEO_00000367 ;
+OEO:OEO_00010230 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): indirect CO2"^^XSD:string .
 
 OEO:OEO_00010319 RDFS:label "mineral oil refining sector"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000158 .
 
-OEO:OEO_00010338 a OEO:OEO_00000367 ;
+OEO:OEO_00010338 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): transport of CO2"^^XSD:string .
 
-OEO:OEO_00010339 a OEO:OEO_00000367 ;
+OEO:OEO_00010339 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): injection and storage"^^XSD:string .
 
-OEO:OEO_00010340 a OEO:OEO_00000367 ;
+OEO:OEO_00010340 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): CO2 transport and storage - other"^^XSD:string .
 
-OEO:OEO_00010341 a OEO:OEO_00000227 ;
+OEO:OEO_00010341 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): lime production"^^XSD:string .
 
-OEO:OEO_00010342 a OEO:OEO_00000227 ;
+OEO:OEO_00010342 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): glass production"^^XSD:string .
 
-OEO:OEO_00010343 a OEO:OEO_00000227 ;
+OEO:OEO_00010343 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): other process uses of carbonates"^^XSD:string .
 
-OEO:OEO_00010344 a OEO:OEO_00000227 ;
+OEO:OEO_00010344 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): ammonia production"^^XSD:string .
 
-OEO:OEO_00010345 a OEO:OEO_00000227 ;
+OEO:OEO_00010345 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): nitric acid production"^^XSD:string .
 
-OEO:OEO_00010346 a OEO:OEO_00000227 ;
+OEO:OEO_00010346 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): adipic acid production"^^XSD:string .
 
-OEO:OEO_00010347 a OEO:OEO_00000227 ;
+OEO:OEO_00010347 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): caprolactam, gloxal and glyoxylic acid production"^^XSD:string .
 
-OEO:OEO_00010348 a OEO:OEO_00000227 ;
+OEO:OEO_00010348 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): carbide production"^^XSD:string .
 
-OEO:OEO_00010349 a OEO:OEO_00000227 ;
+OEO:OEO_00010349 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): titanium dioxide production"^^XSD:string .
 
-OEO:OEO_00010350 a OEO:OEO_00000227 ;
+OEO:OEO_00010350 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): soda ash production"^^XSD:string .
 
-OEO:OEO_00010351 a OEO:OEO_00000227 ;
+OEO:OEO_00010351 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): petrochemical and carbon black production"^^XSD:string .
 
-OEO:OEO_00010352 a OEO:OEO_00000227 ;
+OEO:OEO_00010352 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): fluorochemical production"^^XSD:string .
 
-OEO:OEO_00010353 a OEO:OEO_00000227 ;
+OEO:OEO_00010353 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): chemical industry - other"^^XSD:string .
 
-OEO:OEO_00010354 a OEO:OEO_00000227 ;
+OEO:OEO_00010354 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): ferroalloys production"^^XSD:string .
 
-OEO:OEO_00010355 a OEO:OEO_00000227 ;
+OEO:OEO_00010355 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): aluminium production"^^XSD:string .
 
-OEO:OEO_00010356 a OEO:OEO_00000227 ;
+OEO:OEO_00010356 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): magnesium production"^^XSD:string .
 
-OEO:OEO_00010357 a OEO:OEO_00000227 ;
+OEO:OEO_00010357 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): lead production"^^XSD:string .
 
-OEO:OEO_00010358 a OEO:OEO_00000227 ;
+OEO:OEO_00010358 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): zinc production"^^XSD:string .
 
-OEO:OEO_00010359 a OEO:OEO_00000227 ;
+OEO:OEO_00010359 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): metal industry - other"^^XSD:string .
 
-OEO:OEO_00010363 a OEO:OEO_00000227 ;
+OEO:OEO_00010363 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): integrated circuit or semiconductor"^^XSD:string .
 
-OEO:OEO_00010364 a OEO:OEO_00000227 ;
+OEO:OEO_00010364 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): TFT flat panel display"^^XSD:string .
 
-OEO:OEO_00010365 a OEO:OEO_00000227 ;
+OEO:OEO_00010365 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): photovoltaics"^^XSD:string .
 
-OEO:OEO_00010366 a OEO:OEO_00000227 ;
+OEO:OEO_00010366 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): heat transfer fluid"^^XSD:string .
 
-OEO:OEO_00010367 a OEO:OEO_00000227 ;
+OEO:OEO_00010367 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): electronics industry - other"^^XSD:string .
 
-OEO:OEO_00010368 a OEO:OEO_00000227 ;
+OEO:OEO_00010368 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): refrigeration and air conditioning"^^XSD:string .
 
-OEO:OEO_00010369 a OEO:OEO_00000227 ;
+OEO:OEO_00010369 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): foam blowing agents"^^XSD:string .
 
-OEO:OEO_00010370 a OEO:OEO_00000227 ;
+OEO:OEO_00010370 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): fire protection"^^XSD:string .
 
-OEO:OEO_00010371 a OEO:OEO_00000227 ;
+OEO:OEO_00010371 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): aerosols"^^XSD:string .
 
-OEO:OEO_00010372 a OEO:OEO_00000227 ;
+OEO:OEO_00010372 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): solvents"^^XSD:string .
 
-OEO:OEO_00010373 a OEO:OEO_00000227 ;
+OEO:OEO_00010373 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): other applications"^^XSD:string .
 
-OEO:OEO_00010374 a OEO:OEO_00000227 ;
+OEO:OEO_00010374 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): electrical equipment"^^XSD:string .
 
-OEO:OEO_00010375 a OEO:OEO_00000227 ;
+OEO:OEO_00010375 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): SF6 and PFCs from other product use"^^XSD:string .
 
-OEO:OEO_00010376 a OEO:OEO_00000227 ;
+OEO:OEO_00010376 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): N2O from product use"^^XSD:string .
 
-OEO:OEO_00010377 a OEO:OEO_00000227 ;
+OEO:OEO_00010377 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): other product manufacture and use - other"^^XSD:string .
+
+OEO:OEO_00010380 RDFS:label "renewable electrolytic hydrogen"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010379 .
+
+OEO:OEO_00020001 RDFS:label "ethanol"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010145 .
 
 OEO:OEO_00020004 RDFS:label "gas grid"^^XSD:string .
 
 OEO:OEO_00020005 RDFS:label "heating grid"^^XSD:string .
 
-OEO:OEO_00020050 RDFS:label "renewable energy carrier"^^XSD:string ;
+OEO:OEO_00020196 RDFS:label "fissile material entity"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020039 .
 
 OEO:OEO_00020310 RDFS:label "without measures scenario"^^XSD:string ;
@@ -10272,7 +10245,8 @@ OEO:OEO_00020372 RDFS:label "potential energy storage technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020366 .
 
 OEO:OEO_00020411 RDFS:label "robust system scenario"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00020248 .
+    RDFS:subClassOf OEO:OEO_00020248,
+        OEO:OEO_00030010 .
 
 OEO:OEO_00050018 RDFS:label "primary energy consumption value"^^XSD:string .
 
@@ -11026,74 +11000,157 @@ OEKG:f90f2e5f-437e-9a28-96d6-291062199833 a OEO:OEO_00000064 ;
     OEO:OEO_00390094 "/dataedit/view/scenario/eu_leg_data_2021_rep_table_1"^^XSD:string ;
     OEO:OEO_00390095 "3f0b2467-49f4-011a-83b5-3acdf04cab51"^^XSD:string .
 
-OEO:OEO_00010043 a OEO:OEO_00000128 ;
+OEO:OEO_00000054 RDFS:label "air"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00020039 .
+
+OEO:OEO_00000115 RDFS:label "crude oil"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010147,
+        OEO:OEO_00010317,
+        OEO:OEO_00140078 .
+
+OEO:OEO_00000181 RDFS:label "gas diesel oil"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010147,
+        OEO:OEO_00010316 .
+
+OEO:OEO_00000183 RDFS:label "gasoline"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010147,
+        OEO:OEO_00010241,
+        OEO:OEO_00010316 .
+
+OEO:OEO_00000204 RDFS:label "hard coal"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000088 .
+
+OEO:OEO_00000226 RDFS:label "industrial waste fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000439 .
+
+OEO:OEO_00000290 RDFS:label "municipal waste fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000439 .
+
+OEO:OEO_00000332 RDFS:label "solid biofuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000072,
+        OEO:OEO_00010144 .
+
+OEO:OEO_00000441 RDFS:label "water"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00020039 .
+
+OEO:OEO_00010015 RDFS:label "fossil hydrogen"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000220,
+        OEO:OEO_00010148 .
+
+OEO:OEO_00010016 RDFS:label "synthetic hydrogen"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000220,
+        OEO:OEO_00010155 .
+
+OEO:OEO_00010043 a OEO:OEO_00000128,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): fuel combustion - other sectors"^^XSD:string .
 
-OEO:OEO_00010044 a OEO:OEO_00000367 ;
+OEO:OEO_00010044 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): fuel combustion - other"^^XSD:string .
 
-OEO:OEO_00010050 a OEO:OEO_00000367 ;
+OEO:OEO_00010050 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): other"^^XSD:string .
 
-OEO:OEO_00010054 a OEO:OEO_00000128 ;
+OEO:OEO_00010054 a OEO:OEO_00000128,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): agriculture, forestry and fishing"^^XSD:string .
 
 OEO:OEO_00010055 RDFS:label "common reporting format"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000368 .
 
-OEO:OEO_00010057 a OEO:OEO_00000367 ;
+OEO:OEO_00010057 a OEO:OEO_00000367,
+        OEO:OEO_00010360,
+        OEO:OEO_00010464 ;
     RDFS:label "CRF sector (IPCC 2006): fugitive emissions from fuels"^^XSD:string .
 
-OEO:OEO_00010059 a OEO:OEO_00000422 ;
+OEO:OEO_00010059 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): domestic aviation"^^XSD:string .
 
-OEO:OEO_00010060 a OEO:OEO_00000422 ;
+OEO:OEO_00010060 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): road transportation"^^XSD:string .
 
-OEO:OEO_00010061 a OEO:OEO_00000422 ;
+OEO:OEO_00010061 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): railways"^^XSD:string .
 
-OEO:OEO_00010062 a OEO:OEO_00000422 ;
+OEO:OEO_00010062 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): domestic navigation"^^XSD:string .
 
-OEO:OEO_00010063 a OEO:OEO_00000422 ;
+OEO:OEO_00010063 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): other transportation"^^XSD:string .
 
-OEO:OEO_00010064 a OEO:OEO_00000422 ;
+OEO:OEO_00010064 a OEO:OEO_00000422,
+        OEO:OEO_00010360,
+        OEO:OEO_00010464 ;
     RDFS:label "CRF sector (IPCC 2006): pipeline transport"^^XSD:string .
+
+OEO:OEO_00010104 RDFS:label "water body"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00110000 .
 
 OEO:OEO_00010130 RDFS:label "EU emission sector division"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00010403 .
 
-OEO:OEO_00010158 a OEO:OEO_00000158 ;
+OEO:OEO_00010153 RDFS:label "gaseous biofuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000072,
+        OEO:OEO_00010146 .
+
+OEO:OEO_00010158 a OEO:OEO_00000158,
+        OEO:OEO_00010360,
+        OEO:OEO_00010464 ;
     RDFS:label "CRF sector (IPCC 2006): public electricity and heat production"^^XSD:string .
 
-OEO:OEO_00010159 a OEO:OEO_00010319 ;
+OEO:OEO_00010159 a OEO:OEO_00010319,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): petroleum refining"^^XSD:string .
 
-OEO:OEO_00010160 a OEO:OEO_00000158 ;
+OEO:OEO_00010160 a OEO:OEO_00000158,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): manufacture of solid fuels and other energy industries"^^XSD:string .
 
-OEO:OEO_00010165 a OEO:OEO_00000227 ;
+OEO:OEO_00010165 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): cement production"^^XSD:string .
 
-OEO:OEO_00010166 a OEO:OEO_00000227 ;
+OEO:OEO_00010166 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): chemical industry"^^XSD:string .
 
-OEO:OEO_00010167 a OEO:OEO_00000227 ;
+OEO:OEO_00010167 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): metal industry"^^XSD:string .
 
-OEO:OEO_00010168 a OEO:OEO_00000227 ;
+OEO:OEO_00010168 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): iron and steel production"^^XSD:string .
 
-OEO:OEO_00010197 a OEO:OEO_00000367 ;
+OEO:OEO_00010197 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): total emissions excluding LULUCF"^^XSD:string .
 
-OEO:OEO_00010200 a OEO:OEO_00010320 ;
+OEO:OEO_00010200 a OEO:OEO_00010320,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): international bunkers"^^XSD:string .
 
-OEO:OEO_00010402 RDFS:label "CRF-based sector division"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00000368 .
+OEO:OEO_00010223 RDFS:label "biogenic waste fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000072,
+        OEO:OEO_00000439 .
+
+OEO:OEO_00010224 RDFS:label "fossil waste fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000014,
+        OEO:OEO_00000439 .
+
+OEO:OEO_00010317 RDFS:label "mineral oil"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000014 .
+
+OEO:OEO_00010381 RDFS:label "steam reforming hydrogen"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000220,
+        OEO:OEO_00010016 .
 
 OEO:OEO_00010403 RDFS:label "EU legislation sector division"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000368 .
@@ -11101,7 +11158,19 @@ OEO:OEO_00010403 RDFS:label "EU legislation sector division"^^XSD:string ;
 OEO:OEO_00010407 RDFS:label "energy balance sector division"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000368 .
 
+OEO:OEO_00010445 RDFS:label "blended liquid fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010145 .
+
 OEO:OEO_00020036 RDFS:label "interacting region"^^XSD:string .
+
+OEO:OEO_00020050 RDFS:label "renewable energy carrier"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00020039 .
+
+OEO:OEO_00110000 RDFS:label "liquid water"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000441 .
+
+OEO:OEO_00140159 RDFS:label "hydrocarbon"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
 
 OEO:OEO_00360007 RDFS:label "flexibility"^^XSD:string .
 
@@ -11260,29 +11329,72 @@ OEKG:fd8a8769-0a59-e8b9-f1ef-23cbc6fce441 a OEO:OEO_00000064 ;
     OEO:OEO_00390094 "https://openenergy-platform.org/dataedit/view/scenario/eu_leg_data_2019_eio_ir_article23_t1"^^XSD:string ;
     OEO:OEO_00390095 "ef2ce1e0-2690-a644-012e-135d78ec3cb5"^^XSD:string .
 
-OEO:OEO_00010038 a OEO:OEO_00000367 ;
+OEO:OEO_00000258 RDFS:label "liquid biofuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000072,
+        OEO:OEO_00010145 .
+
+OEO:OEO_00000263 RDFS:label "manufactured coal based gas"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010148,
+        OEO:OEO_00140079 .
+
+OEO:OEO_00000302 RDFS:label "nuclear fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000173,
+        OEO:OEO_00020196 .
+
+OEO:OEO_00000391 RDFS:label "solid fossil fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000014,
+        OEO:OEO_00010144 .
+
+OEO:OEO_00010017 RDFS:label "synthetic fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099,
+        OEO:OEO_00000173,
+        OEO:OEO_00140079 .
+
+OEO:OEO_00010038 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): energy"^^XSD:string .
 
-OEO:OEO_00010039 a OEO:OEO_00000367 ;
+OEO:OEO_00010039 a OEO:OEO_00000367,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): fuel combustion"^^XSD:string .
 
-OEO:OEO_00010041 a OEO:OEO_00000227 ;
+OEO:OEO_00010041 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): manufacturing industries and construction"^^XSD:string .
 
-OEO:OEO_00010042 a OEO:OEO_00000422 ;
+OEO:OEO_00010042 a OEO:OEO_00000422,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): transport"^^XSD:string .
 
-OEO:OEO_00010046 a OEO:OEO_00000227 ;
+OEO:OEO_00010046 a OEO:OEO_00000227,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): industrial processes and product use"^^XSD:string .
 
-OEO:OEO_00010047 a OEO:OEO_00010035 ;
+OEO:OEO_00010047 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): agriculture"^^XSD:string .
 
-OEO:OEO_00010048 a OEO:OEO_00010035 ;
+OEO:OEO_00010048 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): land use, land-use change and forestry"^^XSD:string .
 
-OEO:OEO_00010049 a OEO:OEO_00010036 ;
+OEO:OEO_00010049 a OEO:OEO_00010036,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): waste"^^XSD:string .
+
+OEO:OEO_00010155 RDFS:label "gaseous synthetic fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010017,
+        OEO:OEO_00010146 .
+
+OEO:OEO_00010241 RDFS:label "gasoline fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
+
+OEO:OEO_00010242 RDFS:label "diesel fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
+
+OEO:OEO_00010379 RDFS:label "electrolytic hydrogen"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000220,
+        OEO:OEO_00010016 .
 
 OEO:OEO_00010434 RDFS:label "marine hydro power technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00010431 .
@@ -11293,6 +11405,9 @@ OEO:OEO_00020369 RDFS:label "thermal energy storage technology"^^XSD:string ;
 OEO:OEO_00020373 RDFS:label "study report due to legal obligation"^^XSD:string .
 
 OEO:OEO_00140040 RDFS:label "demand"^^XSD:string .
+
+OEO:OEO_00320015 RDFS:label "compressed gas fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
 
 OEO:OEO_00360002 RDFS:label "model intercomparison study"^^XSD:string .
 
@@ -11348,19 +11463,53 @@ OEKG:d3fc217b-b22a-5035-22ce-fa3d320cacdd a OEO:OEO_00000064 ;
     RDFS:label "FORECAST Residential"^^XSD:string ;
     OEO:OEO_00390094 "/factsheets/models/307/"^^XSD:string .
 
+OEO:OEO_00000033 RDFS:label "renewable fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099,
+        OEO:OEO_00000173,
+        OEO:OEO_00020050 .
+
+OEO:OEO_00000088 RDFS:label "coal"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000391,
+        OEO:OEO_00140078 .
+
 OEO:OEO_00000293 RDFS:label "negative emission"^^XSD:string .
 
-OEO:OEO_00010040 a OEO:OEO_00000158 ;
+OEO:OEO_00000439 RDFS:label "waste fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099,
+        OEO:OEO_00000173 .
+
+OEO:OEO_00010040 a OEO:OEO_00000158,
+        OEO:OEO_00010360,
+        OEO:OEO_00010464 ;
     RDFS:label "CRF sector (IPCC 2006): energy industry"^^XSD:string .
 
-OEO:OEO_00010052 a OEO:OEO_00000405 ;
+OEO:OEO_00010052 a OEO:OEO_00000405,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): commercial and institutional"^^XSD:string .
 
-OEO:OEO_00010053 a OEO:OEO_00000214 ;
+OEO:OEO_00010053 a OEO:OEO_00000214,
+        OEO:OEO_00010360 ;
     RDFS:label "CRF sector (IPCC 2006): residential"^^XSD:string .
+
+OEO:OEO_00010144 RDFS:label "solid combustion fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
+
+OEO:OEO_00010147 RDFS:label "liquid fossil fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000014,
+        OEO:OEO_00010145 .
+
+OEO:OEO_00010148 RDFS:label "gaseous fossil fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000014,
+        OEO:OEO_00010146 .
 
 OEO:OEO_00010320 RDFS:label "international transport sector"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000422 .
+
+OEO:OEO_00010402 RDFS:label "CRF-based sector division"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000368 .
+
+OEO:OEO_00010464 RDFS:label "subsector"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000367 .
 
 OEO:OEO_00020306 RDFS:label "geothermal heat technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020308 .
@@ -11410,10 +11559,21 @@ OEKG:c1af505c-35f1-56bb-4dba-7e2e1beecc24 a OEO:OEO_00000064 ;
     RDFS:label "ProFi"^^XSD:string ;
     OEO:OEO_00390094 "/factsheets/models/295/"^^XSD:string .
 
+OEO:OEO_00000173 RDFS:label "fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00020039 .
+
+OEO:OEO_00010316 RDFS:label "mineral oil product"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000014,
+        OEO:OEO_00010317,
+        OEO:OEO_00140079 .
+
 OEO:OEO_00020307 RDFS:label "solar thermal heat technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020308 .
 
 OEO:OEO_00090001 RDFS:label "funder"^^XSD:string .
+
+OEO:OEO_00140078 RDFS:label "primary energy carrier"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00020039 .
 
 OEKG:2e988348-2988-15fa-27c1-0d7b1631fdc7 a OEO:OEO_00090001 ;
     RDFS:label "Umweltbundesamt"^^XSD:string .
@@ -11433,7 +11593,20 @@ OEKG:2ee80beb-fcba-38b3-8860-28a0b06c50cc a OEO:OEO_00000064 ;
     RDFS:label "ENUSEM"^^XSD:string ;
     OEO:OEO_00390094 "/factsheets/models/275/"^^XSD:string .
 
+OEO:OEO_00000014 RDFS:label "fossil combustion fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
+
+OEO:OEO_00000072 RDFS:label "biofuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
+
 OEO:OEO_00000143 RDFS:label "electricity grid"^^XSD:string .
+
+OEO:OEO_00000220 RDFS:label "hydrogen"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010146 .
+
+OEO:OEO_00000292 RDFS:label "natural gas"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00010148,
+        OEO:OEO_00140078 .
 
 OEO:OEO_00000368 RDFS:label "sector division"^^XSD:string .
 
@@ -11488,6 +11661,9 @@ OEO:OEO_00000158 RDFS:label "energy transformation sector"^^XSD:string ;
 
 OEO:OEO_00000172 RDFS:label "framework factsheet"^^XSD:string .
 
+OEO:OEO_00010145 RDFS:label "liquid combustion fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
+
 OEO:OEO_00010444 RDFS:label "sufficiency"^^XSD:string .
 
 OEO:OEO_00030007 RDFS:label "climate scenario"^^XSD:string ;
@@ -11511,6 +11687,9 @@ OEO:OEO_00010036 RDFS:label "waste and wastewater sector"^^XSD:string ;
 
 OEO:OEO_00020370 RDFS:label "chemical energy storage technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020366 .
+
+OEO:OEO_00140079 RDFS:label "secondary energy carrier"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00020039 .
 
 <https://openenergyplatform.org/ontology/oekg/region/Afghanistan> a OEO:OEO_00020032 ;
     RDFS:label "Afghanistan "^^XSD:string ;
@@ -12357,11 +12536,16 @@ OEO:OEO_00000242 a OEO:OEO_00010055 ;
 
 OEO:OEO_00000364 RDFS:label "scenario"^^XSD:string .
 
+OEO:OEO_00010146 RDFS:label "gaseous combustion fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000099 .
+
 OEO:OEO_00020349 RDFS:label "power-to-ammonia technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020348 .
 
 OEO:OEO_00020367 RDFS:label "electrical energy storage technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020366 .
+
+OEO:OEO_00020039 RDFS:label "energy carrier"^^XSD:string .
 
 OEO:OEO_00020350 RDFS:label "power-to-methane technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020348 .
@@ -12372,6 +12556,9 @@ OEO:OEO_00020254 RDFS:label "electrical energy share"^^XSD:string .
 
 OEO:OEO_00260007 RDFS:label "CO2 emission"^^XSD:string .
 
+OEO:OEO_00000099 RDFS:label "combustion fuel"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000173 .
+
 OEO:OEO_00000107 RDFS:label "contact person"^^XSD:string .
 
 OEO:OEO_00010069 a OEO:OEO_00010035 ;
@@ -12380,14 +12567,16 @@ OEO:OEO_00010069 a OEO:OEO_00010035 ;
 OEO:OEO_00010070 a OEO:OEO_00010036 ;
     RDFS:label "KSG sector waste management and other"^^XSD:string .
 
-OEO:OEO_00010071 a OEO:OEO_00010035 ;
+OEO:OEO_00010071 a OEO:OEO_00010035,
+        OEO:OEO_00010360 ;
     RDFS:label "KSG sector land use, land-use change and forestry"^^XSD:string .
 
 OEO:OEO_00020314 RDFS:label "reference scenario"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000364 .
 
 OEO:OEO_00020321 RDFS:label "CO2 emission scenario"^^XSD:string ;
-    RDFS:subClassOf OEO:OEO_00030009 .
+    RDFS:subClassOf OEO:OEO_00020317,
+        OEO:OEO_00030009 .
 
 <https://openenergyplatform.org/ontology/oekg/region/Georgia> a OEO:OEO_00020032 ;
     RDFS:label "Georgia "^^XSD:string ;
@@ -12552,10 +12741,10 @@ OEO:OEO_00020267 RDFS:label "energy technology"^^XSD:string ;
 OEO:OEO_00020366 RDFS:label "energy storage technology"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00020267 .
 
-OEO:OEO_00030010 RDFS:label "energy scenario"^^XSD:string ;
+OEO:OEO_00020248 RDFS:label "explorative scenario"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000364 .
 
-OEO:OEO_00020248 RDFS:label "explorative scenario"^^XSD:string ;
+OEO:OEO_00030010 RDFS:label "energy scenario"^^XSD:string ;
     RDFS:subClassOf OEO:OEO_00000364 .
 
 <https://openenergyplatform.org/ontology/oekg/region/UnitedKingdomOfGreatBritainAndNorthernIreland> a OEO:OEO_00020032 ;
@@ -12700,7 +12889,8 @@ OEO:OEO_00030009 RDFS:label "emission scenario"^^XSD:string ;
 
 OEO:OEO_00000365 RDFS:label "scenario factsheet"^^XSD:string .
 
-OEO:OEO_00020039 RDFS:label "energy carrier"^^XSD:string .
+OEO:OEO_00010360 RDFS:label "source category"^^XSD:string ;
+    RDFS:subClassOf OEO:OEO_00000367 .
 
 OEO:OEO_00030030 RDFS:label "endogenous data"^^XSD:string .
 

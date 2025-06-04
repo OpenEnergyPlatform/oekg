@@ -35,7 +35,8 @@ The latest version of the input files are provided here:
 
 - oeo-full.owl is the OEO release v2.8.0
 - oekg_neu.ttl is the OEKG used for the rework (retrieved in april 2025)
-- OEKG_Prep.ttl is a file taht gets created by mainRemodel.py as a in-between step
+- OEKG_Prep.ttl is a file that gets created by mainRemodel.py as a in-between step
+- OEO_Prep.owl is a file that gets created by reworkBase.py as a in-between step
 - rework1.ttl, rework2.ttl, rework3.ttl are the latest output of the scripts with the input files provided
 
 ## documentation.pdf
