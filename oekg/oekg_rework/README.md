@@ -27,7 +27,21 @@
 - places found labels in the graph
 - outputs graph as rework3.ttl
 
+## hierarchyEXTRA.py
+
 ### rework3.ttl is the final version of the reworked oekg
+
+- this is a variant of reworkOeoBase.py that can be used for future updates
+
+- takes path to a data file as first argumennt
+- takes the complete IRI of a class as second argument
+- take the integer 0, 1 or 2 as third argument
+- takes path to an ontology as forth argument if 0 or 1 are used before
+- when 0 is chosen queries the inferred(!!!) ontology provided in argument 4 for the subclasses and individuals of the class in argument 2 and places in in the graph of the file given in the first argument
+- when 1 is chosen queries the ontology provided in argument 4 for the subclasses and individuals of the class in argument 2 and places in in the graph of the file given in the first argument
+- when 2 is chosen queries the data file provided in argument 1 for the subclasses and individuals of the class in argument 2 and removed them from the graph
+- outputs the modified graph as result.ttl
+
 
 ## input files
 
