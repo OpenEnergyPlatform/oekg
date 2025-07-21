@@ -63,7 +63,7 @@ def rework(classes, labels, graph, newgraph): #generate output to copy to shacl 
     print("\ndescripor tags\n") # descriptor tags a queried differently but are also printed
     annotationQuery(graph)
 
-    newgraph.serialize("rework1.ttl", format='turtle')
+    newgraph.serialize("output_rework_oekg_step1.ttl", format='turtle')
 
 def exploreSubClass(subjects, parents, children, graph): #recursively look through the subclasses, make arrays for parents and children
     if len(subjects)==0:

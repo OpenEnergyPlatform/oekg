@@ -493,7 +493,7 @@ def queryHelper(datasets, predicate, graph, resultList):  # for a list of subjec
 Oekgdata = sys.argv[1] #path to the oekg data file
 data = sys.argv[2] # path to the File with the output of reworkOEOBase
 #Oekgdata = "/home/madeleine/Schreibtisch/Bachelorarbeit/oekg_Material/oekg_neu.ttl"
-#data = "/home/madeleine/PycharmProjects/pythonProject/bachelorPyFiles/rework1.ttl"
+#data = "/home/madeleine/PycharmProjects/pythonProject/bachelorPyFiles/output_rework_oekg_step1.ttl"
 
 # this is not in a main() because the graphs do not like to be loaded from inside a function
 g = rdflib.Graph()
@@ -533,4 +533,4 @@ finishRegions(g, reworkG)
 finishLabels(g, reworkG)
 
 #save the new graph in a file
-reworkG.serialize("rework2.ttl", format='turtle')
+reworkG.serialize("output_rework_oekg_step2.ttl", format='turtle')

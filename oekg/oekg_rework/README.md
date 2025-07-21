@@ -7,29 +7,29 @@
 - prints them for copying to SHACL
 - queries OEO for "oekg" annotated descriptpor tag classes and prints them
 - adds triples für subclasses and individuals  to new graph
-- outputs graph as rework1.ttl
+- outputs graph as output_rework_oekg_step1.ttl
 
 ## mainRemodel.py 
 
 - takes path to the old OEKG .ttl file as 1st argument
-- takes rework1.ttl, the output of reworkOeoBase.py, as second argument
+- takes output_rework_oekg_step1.ttl, the output of reworkOeoBase.py, as second argument
 - queries the OEKG for its relevant triples and places them in the new graph
 - corrects several mistakes for special places
 - replaces classes and predicated
-- outputs graph as rework2.ttl
+- outputs graph as output_rework_oekg_step2.ttl
 
 ## labeler.py
 
 - takes path to the latest OEO release .owl file as first argument
-- takes rework1.ttl, the output of mainRemodel.py, as second argument
+- takes output_rework_oekg_step1.ttl, the output of mainRemodel.py, as second argument
 - queries the OEO for labels of any URI in the OEKG
 - removes old labels if they exist
 - places found labels in the graph
-- outputs graph as rework3.ttl
+- outputs graph as output_rework_oekg_final.ttl
 
 ## hierarchyEXTRA.py
 
-### rework3.ttl is the final version of the reworked oekg
+### output_rework_oekg_final.ttl is the final version of the reworked oekg
 
 - this is a variant of reworkOeoBase.py that can be used for future updates
 
@@ -40,7 +40,7 @@
 - when 0 is chosen queries the inferred(!!!) ontology provided in argument 4 for the subclasses and individuals of the class in argument 2 and places in in the graph of the file given in the first argument
 - when 1 is chosen queries the ontology provided in argument 4 for the subclasses and individuals of the class in argument 2 and places in in the graph of the file given in the first argument
 - when 2 is chosen queries the data file provided in argument 1 for the subclasses and individuals of the class in argument 2 and removed them from the graph
-- outputs the modified graph as result.ttl
+- outputs the modified graph as output_modified_hierachy.ttl
 
 
 ## input files
@@ -51,7 +51,7 @@ The latest version of the input files are provided here:
 - oekg_neu.ttl is the OEKG used for the rework (retrieved in april 2025)
 - OEKG_Prep.ttl is a file that gets created by mainRemodel.py as a in-between step
 - OEO_Prep.owl is a file that gets created by reworkBase.py as a in-between step
-- rework1.ttl, rework2.ttl, rework3.ttl are the latest output of the scripts with the input files provided
+- output_rework_oekg_step1.ttl, output_rework_oekg_step2.ttl, output_rework_oekg_final.ttl are the latest output of the scripts with the input files provided
 
 ## documentation.pdf
 
@@ -72,7 +72,7 @@ The latest version of the input files are provided here:
 
 ## New_Graph_ValidationResults(55).txt
 
-- validation report for the rework3.ttl file (the new OEKG) and the SHALC file oekg_shacl_new_graph.ttl
+- validation report for the output_rework_oekg_final.ttl file (the new OEKG) and the SHALC file oekg_shacl_new_graph.ttl
 - contains 55 violations
 
 ## Old_Graph_ValidationResults(2695).txt
@@ -95,7 +95,7 @@ The latest version of the input files are provided here:
 
 ## answers_new_graph.txt
 
-- contains queries for the competency questions as possible in the new graph (rework3.ttl) with a brief verdict how good these answers are
+- contains queries for the competency questions as possible in the new graph (output_rework_oekg_final.ttl) with a brief verdict how good these answers are
 
 
 

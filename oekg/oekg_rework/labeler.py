@@ -8,7 +8,7 @@ def buildQuery(val,qu):
 dataoeo = sys.argv[1] #path for the oeo
 dataoekg = sys.argv[2] #parth for the output file of mainRemodel
 #dataoeo = "/home/madeleine/Schreibtisch/oeo-full.owl"
-#dataoekg = "/home/madeleine/PycharmProjects/pythonProject/bachelorPyFiles/rework2.ttl"
+#dataoekg = "/home/madeleine/PycharmProjects/pythonProject/bachelorPyFiles/output_rework_oekg_step2.ttl"
 
 
 f = rdflib.Graph()
@@ -44,7 +44,7 @@ for u in redUris:
     g.add((URIRef(u), rdfs.label, Literal(labels[i], datatype=XSD.string))) #add the new labels
     i = i+1
 
-g.serialize("rework3.ttl", format='turtle')
+g.serialize("output_rework_oekg_final.ttl", format='turtle')
 
 
 

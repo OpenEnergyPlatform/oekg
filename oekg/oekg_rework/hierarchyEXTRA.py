@@ -108,7 +108,7 @@ mode = sys.argv[3] # 0: place hierachy with reasoning, 1: place hierachy without
 data = sys.argv[4] #path to the ontology
 
 #data = "/home/madeleine/Schreibtisch/oeo-full.owl"
-#graph = "/home/madeleine/PycharmProjects/pythonProject/bachelorPyFiles/rework1.ttl"
+#graph = "/home/madeleine/PycharmProjects/pythonProject/bachelorPyFiles/output_rework_oekg_step1.ttl"
 #parentclass = "https://openenergyplatform.org/ontology/oeo/OEO_00000367"
 #mode = 2
 
@@ -129,7 +129,7 @@ elif mode == 2:
     removetriples(parents, children, indivs, indParents, h)
 
 
-h.serialize("result.ttl", format='turtle')
+h.serialize("output_modified_hierachy.ttl", format='turtle')
 
 
 
