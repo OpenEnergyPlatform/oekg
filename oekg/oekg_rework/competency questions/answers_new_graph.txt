@@ -74,7 +74,7 @@ SELECT DISTINCT ?s ?name ?pub ?publabel  WHERE{
 ?s obo:BFO_0000051 ?pub.
 ?pub a oeo:OEO_00020012.
 ?s rdfs:label ?name.
-?pub oeo:OEO_00000506 ?author. #has author
+?pub oeo:OEO_00000506 ?author. 
 ?pub rdfs:label ?publabel.
 ?author rdfs:label "Felix Maurer"^^XSD:string.
 }
@@ -95,7 +95,7 @@ SELECT DISTINCT ?s ?name  WHERE{
 
 
 SELECT DISTINCT ?s ?name  WHERE{
-?s a oeo:OEO_00000365. #scenario factsheet
+?s a oeo:OEO_00000365. 
 ?s rdfs:label ?name.
 ?s oeo:OEO_00020436 ?output. 
 ?output rdfs:label "Primary and final energy consumption of scenario KS95"^^XSD:string.
@@ -152,9 +152,9 @@ SELECT DISTINCT ?scenario ?scename ?s ?name WHERE{
 ?o a*/rdfs:subClassOf* oeo:OEO_00000158.
 ?s obo:BFO_0000051 ?scenario.
 ?s rdfs:label ?name.
-?scenario a oeo:OEO_00000365. #scenario factsheet
+?scenario a oeo:OEO_00000365. 
 ?scenario rdfs:label ?scename.
-?scenario oeo:OEO_00020220 ?land. #has study region
+?scenario oeo:OEO_00020220 ?land. 
 ?land rdfs:label "Germany"^^XSD:string.
 ?scenario oeo:OEO_00020440 ?year.
 FILTER CONTAINS(str(?year),"2030")
@@ -178,7 +178,7 @@ FILTER(?p = oeo:OEO_00020436 || ?p = oeo:OEO_00020437).
 SELECT DISTINCT ?dataset ?name WHERE{
 <http://openenergy-platform.org/ontology/oekg/6ddf7ede-c3a5-93c8-4385-b975c628d610> obo:BFO_0000051 ?scenario.
 ?s rdfs:label ?name.
-?scenario a oeo:OEO_00000365. #scenario factsheet
+?scenario a oeo:OEO_00000365. 
 ?scenario ?p ?dataset.
 ?dataset rdfs:label ?name.
 FILTER(?p = oeo:OEO_00020436 || ?p = oeo:OEO_00020437). 
@@ -237,25 +237,14 @@ SELECT DISTINCT ?s ?name WHERE{
 18. Give me all scenarios that belong to a bundle modelled with the oemof abbb model and that project the years 2030 and 2040.
 
 SELECT DISTINCT ?scen ?name WHERE{
-{?s obo:BFO_0000051 ?m.
-?m a oeo:OEO_00000277.
+{?s obo:BFO_0000051 ?m. 
+?m a oeo:OEO_00000277. 
 ?m rdfs:label "oemof_abbb"^^XSD:string.
-?s obo:BFO_0000051 ?scen.
+?s obo:BFO_0000051 ?scen. 
 ?scen a oeo:OEO_00000365. 
 ?scen rdfs:label ?name.
-?scen oeo:OEO_00020440 ?year.
-FILTER CONTAINS(str(?year),"2030").
-}
-UNION
-{?s obo:BFO_0000051 ?m.
-?m a oeo:OEO_00000277.
-?m rdfs:label "oemof_abbb"^^XSD:string.
-?s obo:BFO_0000051 ?scen.
-?scen a oeo:OEO_00000365. 
-?scen rdfs:label ?name.
-?scen oeo:OEO_00020440 ?year.
-FILTER CONTAINS(str(?year),"2040").
-}.
+?scen oeo:OEO_00020440 ?year. 
+FILTER (CONTAINS(str(?year),"2030") || CONTAINS(str(?year),"2040")).
 }
 
 > Can answer this question
