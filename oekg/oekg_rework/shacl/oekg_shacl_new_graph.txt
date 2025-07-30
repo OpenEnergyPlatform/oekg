@@ -1,0 +1,317 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ex: <http://example.org/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix oeo: <https://openenergyplatform.org/ontology/oeo/> .
+@prefix oekg: <https://openenergyplatform.org/ontology/oekg/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/>. 
+
+
+# Shape to validate Scenario Studies
+ex:StudyShape
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass oeo:OEO_00020227 ; #scenario bundle
+    sh:property [
+    sh:path oeo:OEO_00390071 ; #has study descriptor tag
+    sh:in (  oeo:OEO_00000143 oeo:OEO_00000199 oeo:OEO_00000293 oeo:OEO_00010212 oeo:OEO_00010444 oeo:OEO_00020004 oeo:OEO_00020005 oeo:OEO_00020254 oeo:OEO_00020373 oeo:OEO_00020406 oeo:OEO_00020408 oeo:OEO_00140049 oeo:OEO_00140133 oeo:OEO_00140146 oeo:OEO_00140151 oeo:OEO_00240012 oeo:OEO_00260007 oeo:OEO_00340006 oeo:OEO_00360000 oeo:OEO_00360002 oeo:OEO_00360003 oeo:OEO_00360007 oeo:OEO_00360015 oeo:OEO_00330023 oeo:OEO_00140040 oeo:OEO_00140050 oeo:OEO_00050016 oeo:OEO_00360011 oeo:OEO_00360014 oeo:OEO_00050018 oeo:OEO_00240013 ) ;
+    sh:resultMessage "Study target: This should be used at least once.";
+    sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path obo:BFO_0000051 ; #has part
+        sh:or ( [ sh:class oeo:OEO_00000172 ] [ sh:class oeo:OEO_00020012 ] [sh:class oeo:OEO_00000365] [sh:class oeo:OEO_00000277] ); #framework factsheet or study report or scenario factsheet or model factsheet
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00390079 ; #based on sector division
+        #sector division subclasses and individuals
+        sh:in (  oeo:OEO_00000368 oeo:OEO_00010055 oeo:OEO_00010402 oeo:OEO_00010403 oeo:OEO_00010407 oeo:OEO_00010304 oeo:OEO_00010130 oeo:OEO_00000242 oeo:OEO_00000243 oeo:OEO_00010056 oeo:OEO_00000355 oeo:OEO_00000160 oeo:OEO_00000193 oeo:OEO_00010163 oeo:OEO_00010204 oeo:OEO_00000291 oeo:OEO_00360044 ) ;
+        sh:minCount 1 ;       
+        sh:resultMessage "Study target: This should be based on at least one sector division.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020439 ; #covers sector (shortcut)
+        # sector subclasses and individuals
+        sh:in (  oeo:OEO_00000367 oeo:OEO_00000128 oeo:OEO_00000158 oeo:OEO_00000227 oeo:OEO_00010035 oeo:OEO_00010036 oeo:OEO_00010360 oeo:OEO_00010464 oeo:OEO_00000213 oeo:OEO_00000214 oeo:OEO_00000405 oeo:OEO_00000422 oeo:OEO_00010034 oeo:OEO_00000145 oeo:OEO_00010319 oeo:OEO_00010320 oeo:OEO_00010043 oeo:OEO_00010054 oeo:OEO_00010040 oeo:OEO_00010065 oeo:OEO_00010158 oeo:OEO_00010160 oeo:OEO_00360042 oeo:OEO_00010041 oeo:OEO_00010046 oeo:OEO_00010066 oeo:OEO_00010164 oeo:OEO_00010165 oeo:OEO_00010166 oeo:OEO_00010167 oeo:OEO_00010168 oeo:OEO_00010169 oeo:OEO_00010170 oeo:OEO_00010171 oeo:OEO_00010172 oeo:OEO_00010173 oeo:OEO_00010307 oeo:OEO_00010341 oeo:OEO_00010342 oeo:OEO_00010343 oeo:OEO_00010344 oeo:OEO_00010345 oeo:OEO_00010346 oeo:OEO_00010347 oeo:OEO_00010348 oeo:OEO_00010349 oeo:OEO_00010350 oeo:OEO_00010351 oeo:OEO_00010352 oeo:OEO_00010353 oeo:OEO_00010354 oeo:OEO_00010355 oeo:OEO_00010356 oeo:OEO_00010357 oeo:OEO_00010358 oeo:OEO_00010359 oeo:OEO_00010363 oeo:OEO_00010364 oeo:OEO_00010365 oeo:OEO_00010366 oeo:OEO_00010367 oeo:OEO_00010368 oeo:OEO_00010369 oeo:OEO_00010370 oeo:OEO_00010371 oeo:OEO_00010372 oeo:OEO_00010373 oeo:OEO_00010374 oeo:OEO_00010375 oeo:OEO_00010376 oeo:OEO_00010377 oeo:OEO_00010047 oeo:OEO_00010048 oeo:OEO_00010069 oeo:OEO_00010071 oeo:OEO_00010135 oeo:OEO_00010179 oeo:OEO_00010180 oeo:OEO_00010181 oeo:OEO_00010182 oeo:OEO_00010183 oeo:OEO_00010184 oeo:OEO_00010185 oeo:OEO_00010186 oeo:OEO_00010187 oeo:OEO_00010188 oeo:OEO_00010189 oeo:OEO_00010190 oeo:OEO_00010191 oeo:OEO_00010192 oeo:OEO_00010193 oeo:OEO_00010194 oeo:OEO_00010195 oeo:OEO_00010196 oeo:OEO_00010308 oeo:OEO_00010309 oeo:OEO_00010049 oeo:OEO_00010070 oeo:OEO_00010174 oeo:OEO_00010175 oeo:OEO_00010176 oeo:OEO_00010177 oeo:OEO_00010178 oeo:OEO_00010310 oeo:OEO_00010390 oeo:OEO_00010053 oeo:OEO_00010052 oeo:OEO_00010042 oeo:OEO_00010059 oeo:OEO_00010060 oeo:OEO_00010061 oeo:OEO_00010062 oeo:OEO_00010063 oeo:OEO_00010064 oeo:OEO_00010068 oeo:OEO_00010133 oeo:OEO_00010199 oeo:OEO_00010203 oeo:OEO_00010306 oeo:OEO_00010391 oeo:OEO_00360043 oeo:OEO_00010067 oeo:OEO_00010389 oeo:OEO_00010159 oeo:OEO_00010200 oeo:OEO_00010201 oeo:OEO_00010202 oeo:OEO_00010205 oeo:OEO_00010038 oeo:OEO_00010039 oeo:OEO_00010044 oeo:OEO_00010050 oeo:OEO_00010057 oeo:OEO_00010058 oeo:OEO_00010131 oeo:OEO_00010132 oeo:OEO_00010134 oeo:OEO_00010161 oeo:OEO_00010162 oeo:OEO_00010197 oeo:OEO_00010198 oeo:OEO_00010206 oeo:OEO_00010207 oeo:OEO_00010208 oeo:OEO_00010209 oeo:OEO_00010228 oeo:OEO_00010229 oeo:OEO_00010230 oeo:OEO_00010305 oeo:OEO_00010311 oeo:OEO_00010338 oeo:OEO_00010339 oeo:OEO_00010340 );
+        sh:minCount 1 ;
+        sh:resultMessage "Study target: This should cover at least one sector.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020438 ; #covers technology (shortcut) 
+        #technology subclasses
+        sh:in ( oeo:OEO_00000407 oeo:OEO_00010449 oeo:OEO_00010455 oeo:OEO_00010471 oeo:OEO_00010485 oeo:OEO_00020267 oeo:OEO_00020407 oeo:OEO_00010450 oeo:OEO_00010423 oeo:OEO_00020308 oeo:OEO_00020347 oeo:OEO_00020366 oeo:OEO_00010424 oeo:OEO_00010427 oeo:OEO_00010430 oeo:OEO_00010431 oeo:OEO_00010439 oeo:OEO_00010440 oeo:OEO_00020306 oeo:OEO_00020307 oeo:OEO_00020348 oeo:OEO_00020351 oeo:OEO_00020367 oeo:OEO_00020368 oeo:OEO_00020369 oeo:OEO_00020370 oeo:OEO_00020372 oeo:OEO_00010425 oeo:OEO_00010426 oeo:OEO_00010428 oeo:OEO_00010429 oeo:OEO_00010432 oeo:OEO_00010433 oeo:OEO_00010434 oeo:OEO_00010438 oeo:OEO_00010441 oeo:OEO_00020349 oeo:OEO_00020350 oeo:OEO_00010435 oeo:OEO_00010436 oeo:OEO_00010437 oeo:OEO_00010442 oeo:OEO_00010443 ) ;
+        sh:minCount 1 ;
+        sh:resultMessage "Study target: This should cover at least one technology.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000508 ; #has contact person
+        sh:class oeo:OEO_00000107; #contact person
+        sh:resultMessage "Study target: This should end in class contact person.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000510 ; #has_organisation
+        sh:class oeo:OEO_00030022; #organisation 
+        sh:resultMessage "Study target: This should end in class organisation.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000509 ; #has funding source
+        sh:class oeo:OEO_00090001; #funder
+        sh:resultMessage "Study target: This should end in class funder.";
+    ] ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Study target: This should be string and have exactly one name.";
+    ] ;
+    sh:property [
+        sh:path dc:acronym;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Study target: This should be string and have exactly one acronym.";
+    ] ;
+    sh:property [
+        sh:path dc:abstract ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Study target: This should be string and have max one abctract.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020432 ;  #covers energy carrier (shortcut)
+        #energy carrier subclassed and as inferred 
+        sh:in ( oeo:OEO_00010150 oeo:OEO_00020050 oeo:OEO_00000033 oeo:OEO_00010104 oeo:OEO_00010316 oeo:OEO_00000391 oeo:OEO_00000084 oeo:OEO_00000290 oeo:OEO_00010019 oeo:OEO_00020001 oeo:OEO_00010149 oeo:OEO_00010484 oeo:OEO_00000181 oeo:OEO_00010241 oeo:OEO_00010418 oeo:OEO_00000245 oeo:OEO_00010093 oeo:OEO_00010221 oeo:OEO_00010382 oeo:OEO_00000292 oeo:OEO_00140080 oeo:OEO_00010445 oeo:OEO_00140079 oeo:OEO_00010317 oeo:OEO_00000072 oeo:OEO_00000093 oeo:OEO_00010224 oeo:OEO_00140091 oeo:OEO_00000302 oeo:OEO_00000096 oeo:OEO_00010146 oeo:OEO_00010223 oeo:OEO_00010148 oeo:OEO_00010380 oeo:OEO_00000220 oeo:OEO_00110000 oeo:OEO_00140078 oeo:OEO_00010226 oeo:OEO_00010446 oeo:OEO_00000131 oeo:OEO_00000183 oeo:OEO_00000263 oeo:OEO_00010409 oeo:OEO_00000211 oeo:OEO_00000077 oeo:OEO_00000062 oeo:OEO_00000441 oeo:OEO_00010381 oeo:OEO_00000071 oeo:OEO_00000094 oeo:OEO_00000257 oeo:OEO_00010018 oeo:OEO_00010336 oeo:OEO_00000054 oeo:OEO_00010017 oeo:OEO_00000075 oeo:OEO_00010000 oeo:OEO_00000058 oeo:OEO_00010144 oeo:OEO_00010448 oeo:OEO_00000099 oeo:OEO_00140159 oeo:OEO_00010447 oeo:OEO_00320012 oeo:OEO_00320013 oeo:OEO_00000297 oeo:OEO_00010408 oeo:OEO_00110001 oeo:OEO_00140092 oeo:OEO_00000286 oeo:OEO_00010383 oeo:OEO_00010154 oeo:OEO_00010327 oeo:OEO_00230021 oeo:OEO_00000246 oeo:OEO_00000040 oeo:OEO_00010242 oeo:OEO_00010215 oeo:OEO_00320014 oeo:OEO_00000102 oeo:OEO_00010105 oeo:OEO_00000074 oeo:OEO_00000401 oeo:OEO_00010145 oeo:OEO_00000226 oeo:OEO_00020039 oeo:OEO_00010151 oeo:OEO_00000345 oeo:OEO_00010237 oeo:OEO_00000439 oeo:OEO_00000258 oeo:OEO_00010225 oeo:OEO_00010147 oeo:OEO_00010337 oeo:OEO_00000088 oeo:OEO_00010155 oeo:OEO_00000449 oeo:OEO_00000356 oeo:OEO_00000204 oeo:OEO_00000186 oeo:OEO_00010326 oeo:OEO_00000025 oeo:OEO_00010016 oeo:OEO_00320015 oeo:OEO_00000115 oeo:OEO_00000014 oeo:OEO_00000251 oeo:OEO_00010416 oeo:OEO_00140160 oeo:OEO_00000173 oeo:OEO_00000320 oeo:OEO_00020058 oeo:OEO_00010379 oeo:OEO_00000299 oeo:OEO_00010156 oeo:OEO_00010153 oeo:OEO_00010015 oeo:OEO_00320011 oeo:OEO_00000332 oeo:OEO_00020196 oeo:OEO_00000066) ;
+        sh:resultMessage "Study target: This shouldend in class energy carrier.";
+    ] .
+
+#Shape to validate publications
+ex:PublicationShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00020012 ; #study report
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property[
+        sh:path oeo:OEO_00390078; #has reference
+        sh:class oeo:OEO_00000353 ; #reference 
+        sh:maxCount 1 ;
+        sh:resultMessage "Publication target: This should be string and have max one link.";
+    ];
+    sh:property[
+        sh:path oeo:OEO_00390095; #has uuid 
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string;
+        sh:resultMessage "Publication target: This should be a string and have exactly one uuid.";
+    ];
+    sh:property [
+        sh:path rdfs:label;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Publication target: This should be a string and have exactly one label.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00000506 ; #has author
+        sh:class oeo:OEO_00000064; #author
+        sh:minCount 1 ;
+        sh:resultMessage "Publication target: This should have at least one author.";
+    ] ;
+        sh:property [
+        sh:path oeo:OEO_00390096 ; #has publication date
+        sh:datatype xsd:dateTime; 
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Study target: This should be a date and be used exactly once.";
+    ] ;
+     sh:property [
+        sh:path oeo:OEO_00390098 ; #has doi
+        sh:datatype xsd:string;
+        sh:maxCount 1 ;
+        sh:resultMessage "Publication target: This should be a string and have max one doi.";
+    ].
+
+# Shape to validate scenario factsheets
+ex:ScenarioShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000365 ; #scenario factsheet
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [
+        sh:path dc:acronym ; 
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Scenario target: This should be a string and have exactly one acronym.";
+    ] ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Scenario target: This should be a string and have exactly one name.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00390073 ; #has scenario type
+        sh:in ( oeo:OEO_00000364 oeo:OEO_00020247 oeo:OEO_00020248 oeo:OEO_00020314 oeo:OEO_00020345 oeo:OEO_00020412 oeo:OEO_00030007 oeo:OEO_00030008 oeo:OEO_00030009 oeo:OEO_00030010 oeo:OEO_00020309 oeo:OEO_00020411 oeo:OEO_00020317 oeo:OEO_00020321 oeo:OEO_00020310 oeo:OEO_00020311 oeo:OEO_00020312 ) ;
+        sh:minCount 1 ;
+        sh:resultMessage "Scenario target: This should have at least one scenario subclass.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020222 ; #has interacting region
+        sh:class oeo:OEO_00020036 ; #interacting region
+        sh:resultMessage "Scenario target: This should be end in class interacting region.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020220 ; #has study region 
+        sh:class oeo:OEO_00020032; #study region
+        sh:resultMessage "Scenario target: This should end in class study region";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020440 ; #has scenario year value
+        sh:datatype xsd:dateTime; 
+        sh:resultMessage "Scenario target: This should end in a date.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00390095; #has uuid
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Scenario target: This should be a string and have exactly one uuid.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020437 ; #has information input (shortcut)
+        sh:class oeo:OEO_00030029; #exogenous data
+        sh:resultMessage "Scenario target: This should end in class exogenous data.";        
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00020436 ; #has information output (shortcut)
+        sh:class oeo:OEO_00030030; #endogenous data
+        sh:resultMessage "Scenario target: This should end in class endogenous data.";        
+    ] ;
+    sh:property [
+        sh:path dc:abstract ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Scenario target: This should be a string and have max one abstract.";
+    ] .
+
+# Shape to validate Datasets
+ex:DatasetShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf oeo:OEO_00020437; #has information input (shortcut)
+    sh:targetObjectsOf oeo:OEO_00020436; #has information output (shortcut)
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Dataset target: This should be a string and have exactly one label.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00390094 ; #has iri
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Dataset target: This should be a string and have max one iri.";
+    ] ;
+    sh:property [
+        sh:path oekg:has_id ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:resultMessage "Dataset target: This should be an int and have max one id.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00390095 ; #has uuid
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Dataset target: This should be a string and have exactly one uuid.";
+    ] .
+
+# Shape to validate Regions
+ex:RegionShape
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetObjectsOf oeo:OEO_00020220 ; #has_study_region 
+    sh:targetObjectsOf oeo:OEO_00020222 ; #has_interacting_region
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:resultMessage "Region target: This should be a string and have exactly one label.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00390078 ; #has reference
+        sh:class oeo:OEO_00000353 ; #reference 
+        sh:maxCount 1 ;
+        sh:resultMessage "Region target: This should end in an IRI.";
+    ] .
+
+# Shape to validate framework factsheets
+ex:FrameworkShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000172 ; #framework factsheet    
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Framework target: This should be a string and have exactly one label.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00390094 ; #has iri
+        sh:datatype xsd:string ;
+        sh:resultMessage "Framework target: This should be a string.";
+].
+
+# Shape to validate Model factsheets
+ex:ModelShape
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00000277; #model factsheet
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:resultMessage "Model target: This should be a string and have exactly one label.";
+    ] ;
+    sh:property [
+        sh:path oeo:OEO_00390094 ; #has iri
+        sh:datatype xsd:string ;
+        sh:resultMessage "Model target: This should be a string.";
+].
+
+
+ex:CommonShape
+    a sh:NodeShape ;
+    sh:closed true;
+    sh:targetObjectsOf oeo:OEO_00390071; #has study descriptor tag
+    sh:targetObjectsOf oeo:OEO_00000506; #has author
+    sh:targetObjectsOf oeo:OEO_00390079; #based on sector division
+    sh:targetObjectsOf oeo:OEO_00020439; #covers sector (shortcut)
+    sh:targetObjectsOf oeo:OEO_00020438 ; #covers technology (shortcut)
+    sh:targetObjectsOf oeo:OEO_00000508 ; #has contact person
+    sh:targetObjectsOf oeo:OEO_00000510; #has organisation
+    sh:targetObjectsOf oeo:OEO_00000509 ; #has funding source
+    sh:targetObjectsOf oeo:OEO_00020432; #covers energy carrier (shortcut)
+    sh:targetObjectsOf oeo:OEO_00390073; #has scenario type
+    sh:ignoredProperties ( rdf:type rdfs:subClassOf) ;
+        sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:resultMessage "Common target: This should be a string and have exactly one label.";
+    ] .
+
+

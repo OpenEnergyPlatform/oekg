@@ -1,0 +1,496 @@
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:27189f5a-f819-83e3-be00-ced0b1428e28 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:27189f5a-f819-83e3-be00-ced0b1428e28 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:28bdde80-ba8a-f6df-7f0f-51451a6cbc80 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:43d46150-2fe6-e6c4-3047-377d42ecad89 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:43d46150-2fe6-e6c4-3047-377d42ecad89 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:43d46150-2fe6-e6c4-3047-377d42ecad89 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:48deb86a-829d-5826-1a0c-c81b14136c37 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:48deb86a-829d-5826-1a0c-c81b14136c37 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:49404fe4-eda3-756a-2fe8-565a77ed6391 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:49404fe4-eda3-756a-2fe8-565a77ed6391 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:6ddf7ede-c3a5-93c8-4385-b975c628d610 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:6ddf7ede-c3a5-93c8-4385-b975c628d610 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:7408f817-1c2b-7ad4-aac5-dc13f17fd553 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:7408f817-1c2b-7ad4-aac5-dc13f17fd553 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:769cff3d-d739-4760-687b-19c3f3675bd9 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:769cff3d-d739-4760-687b-19c3f3675bd9 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:769cff3d-d739-4760-687b-19c3f3675bd9 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:7cbe1492-4173-85b9-685a-356b0228ecbc ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:7cbe1492-4173-85b9-685a-356b0228ecbc ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:7cbe1492-4173-85b9-685a-356b0228ecbc ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:8a59cb1b-ea99-0594-a5ef-7d59f1b7fab3 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:8a59cb1b-ea99-0594-a5ef-7d59f1b7fab3 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1827 ;
+	sh:focusNode oekg:8fa8437b-2ba8-6558-88f3-a1457639032f ;
+	sh:resultPath oeo:OEO_00390071 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:8fa8437b-2ba8-6558-88f3-a1457639032f ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:8fa8437b-2ba8-6558-88f3-a1457639032f ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:8fa8437b-2ba8-6558-88f3-a1457639032f ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1827 ;
+	sh:focusNode oekg:9387d4a9-85f1-52e9-ce79-0168f25dd5e0 ;
+	sh:resultPath oeo:OEO_00390071 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:9387d4a9-85f1-52e9-ce79-0168f25dd5e0 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:9387d4a9-85f1-52e9-ce79-0168f25dd5e0 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:a3afdd98-b229-145c-6042-37aa0853c30d ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:a3afdd98-b229-145c-6042-37aa0853c30d ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:a48b9351-b49e-ae2c-60fa-b24a86d0864f ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:b0bc5909-f4f5-304a-bf1b-ce3180723dc8 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:b25a4c68-bbf8-50eb-c58f-066ee27aeb86 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:b25a4c68-bbf8-50eb-c58f-066ee27aeb86 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:b25a4c68-bbf8-50eb-c58f-066ee27aeb86 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:b479acfb-f3ac-cc0f-4e5e-260287d9c57f ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:b6275389-cf5c-ec5b-fe16-7b734d47692b ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:ea514b3f-7493-fd28-2e16-13d19663e2fd ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:ea514b3f-7493-fd28-2e16-13d19663e2fd ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1835 ;
+	sh:focusNode oekg:fb0a19c1-8c20-cd2e-e109-e18d563f9a19 ;
+	sh:resultPath oeo:OEO_00390079 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1837 ;
+	sh:focusNode oekg:fb0a19c1-8c20-cd2e-e109-e18d563f9a19 ;
+	sh:resultPath oeo:OEO_00020439 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:fb0a19c1-8c20-cd2e-e109-e18d563f9a19 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1839 ;
+	sh:focusNode oekg:fd14cec6-9144-3207-eac1-40af83caf4c2 ;
+	sh:resultPath oeo:OEO_00020438 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1854 ;
+	sh:focusNode oekg:publication/03235f26-08b5-499d-8226-320df2f7c8a8 ;
+	sh:resultPath oeo:OEO_00390096 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1854 ;
+	sh:focusNode oekg:publication/486d19ef-bf06-41a0-901d-57b21dbc49a8 ;
+	sh:resultPath oeo:OEO_00390096 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1853 ;
+	sh:focusNode oekg:publication/6b3f9105-3de4-c1a2-7a66-ac0d88248050 ;
+	sh:resultPath oeo:OEO_00000506 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1853 ;
+	sh:focusNode oekg:publication/ceb54471-851a-4444-a47c-333306403c08 ;
+	sh:resultPath oeo:OEO_00000506 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1853 ;
+	sh:focusNode oekg:publication/dfb4de0f-5b99-676d-a2d7-ce2c9303d419 ;
+	sh:resultPath oeo:OEO_00000506 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1853 ;
+	sh:focusNode oekg:publication/f9c160fe-b1db-4913-98d7-fc11560049eb ;
+	sh:resultPath oeo:OEO_00000506 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1859 ;
+	sh:focusNode oekg:scenario/2e4abb2b-43f0-935c-babd-1976ae5a128e ;
+	sh:resultPath oeo:OEO_00390073 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1859 ;
+	sh:focusNode oekg:scenario/4fff2c43-1325-8373-2cc7-908c90be26f5 ;
+	sh:resultPath oeo:OEO_00390073 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1859 ;
+	sh:focusNode oekg:scenario/833c6665-73f6-6817-f534-4a10f5054a3a ;
+	sh:resultPath oeo:OEO_00390073 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1859 ;
+	sh:focusNode oekg:scenario/8fc85e76-f2a8-a76d-03f8-0d5059f7e8d6 ;
+	sh:resultPath oeo:OEO_00390073 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+[
+	a sh:ValidationResult ;
+	sh:resultSeverity sh:Violation ;
+	sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+	sh:sourceShape _:n1859 ;
+	sh:focusNode oekg:scenario/ff9765f6-b2ea-fb3c-1d77-b043b856e956 ;
+	sh:resultPath oeo:OEO_00390073 ;
+	sh:resultMessage "Less than 1 values" ;
+] .
+
