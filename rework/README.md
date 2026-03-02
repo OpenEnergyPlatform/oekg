@@ -58,45 +58,5 @@ The latest version of the input files are provided here:
 - explains all the predicates with definitions, domains and ranges
 
 
-/////
-
-# shacl folder
-
-## oekg_shacl_old_graph.txt
-
-- shacl file for the old OEKG
-
-## oekg_shacl_new_graph.txt
-
-- shacl file for the new OEKG
-
-## New_Graph_ValidationResults(55).txt
-
-- validation report for the output_rework_oekg_final.ttl file (the new OEKG) and the SHALC file oekg_shacl_new_graph.ttl
-- contains 55 violations
-
-## Old_Graph_ValidationResults(2695).txt
-
-- validation report for the oekg_neu.ttl file (the old OEKG) and the SHALC file oekg_shacl_old_graph.ttl
-- contains 2695 violations
-
-
-/////
-
-# competency questions folder
-
-## competency questions unanswered.txt
-
-- contains the competency questions with no answers
-
-## answers_old_graph.txt
-
-- contains queries for the competency questions as possible in the old graph (oekg_neu.ttl) with a brief verdict how good these answers are
-
-## answers_new_graph.txt
-
-- contains queries for the competency questions as possible in the new graph (output_rework_oekg_final.ttl) with a brief verdict how good these answers are
-
-
 
 
