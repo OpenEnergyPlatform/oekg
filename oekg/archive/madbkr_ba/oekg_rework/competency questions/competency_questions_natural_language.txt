@@ -1,0 +1,40 @@
+1. Give me all bundles in which institution A was involved.
+
+2. Give me all bundles that cover, amongst others, the energy transformation sector and industry sector.
+
+3. Give me all bundles that cover only the energy transformation sector.
+
+4. Give me all bundles that have the sufficency descriptor tag and have a scenario for the year 2040.
+
+5. Give me all bundles to which Felix Maurer contributed as author to a publication.
+
+6. Give me all scenarios that have dataset B as input data. 
+
+7. Give me all scenario that have dataset B as output data. 
+
+8. Give me all scenarios that belong to bundle C or bundle D.
+
+9. Give me all scenarios of type target driven scenarios that are for Germany and project the year 2050 or later.
+
+10. Give me all scenarios about Germany, either as study region or interacting region, and project the year 2030.
+
+11. Give me all scenarios that are for Germany and project the year 2030, where the respective bundle covers the energy transformation sector.
+
+12. Give me all datasets that are part of scenario E.
+
+13. Give me all datasets that are part of bundle C.
+
+14. Give me all scenarios that belong to a bundle that is modelled within the MESSAGEix framework.
+
+15. Give me all bundles that are modelled within the MESSAGEix framework.
+    
+16. Give me all scenarios that belong to a bundle that is modelled with the oemof abbb model.
+
+17. Give me all bundles that are modelled with the oemof abbb model.
+
+18. Give me all scenarios that belong to a bundle modelled with the oemof abbb model and that project the years 2030 and 2040.
+
+19. Give me all dois of publications that are about a bundle that contain a scenario for the year 2050.
+
+20. Give me all datasets of scenario E that contain data for the year 2030.
+
