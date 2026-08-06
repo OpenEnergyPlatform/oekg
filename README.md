@@ -24,7 +24,7 @@ consists of one OWL draft. Neither directory's layout is imposed on the other.
 
 ```text
 .
-├── docs/                  the documentation source (mkdocs; the site is not yet built)
+├── docs/                  the documentation source (mkdocs; built by .github/workflows/gh-pages.yml)
 │   └── oekg/
 │       ├── fields.md      the OEKG's fields, as used by the OEP factsheets
 │       └── provenance.md  how the OEKG is built now, and how it used to be
@@ -100,9 +100,23 @@ same change.
 
 ## Documentation
 
-The documentation source is in [`docs/`](docs/). The mkdocs site is **not yet built or
-published** — `mkdocs.yml` and the docs build are the next step, and the nav will mirror the
-tree above.
+📖 **<https://openenergyplatform.github.io/oekg/>**
+
+The documentation source is in [`docs/`](docs/), built with
+[mkdocs-material](https://squidfunk.github.io/mkdocs-material/) from [`mkdocs.yml`](mkdocs.yml)
+and deployed to GitHub Pages by [`.github/workflows/gh-pages.yml`](.github/workflows/gh-pages.yml)
+on every push to `production`. The nav mirrors the tree above: shared pages (tech stack,
+workflow) on top, then one section per knowledge graph.
+
+To build it locally:
+
+```bash
+pip install -r requirements-docs.txt
+mkdocs serve
+```
+
+> ℹ️ The site goes live once this documentation setup reaches `production` and GitHub Pages is
+> enabled for the `gh-pages` branch.
 
 ## The OEKG in one paragraph
 
