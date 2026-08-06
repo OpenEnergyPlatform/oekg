@@ -1,0 +1,87 @@
+# Project
+site_name: Open Energy Knowledge Graphs
+site_url: https://openenergyplatform.github.io/oekg/
+repo_url: https://github.com/OpenEnergyPlatform/oekg
+edit_uri: edit/production/docs/
+
+strict: true
+
+nav:
+  - Home: index.md
+  - Tech stack: tech-stack.md
+  - Workflow: workflow.md
+  - OEKG:
+      - Overview: oekg/index.md
+      - Factsheet fields: oekg/fields.md
+      - SPARQL endpoint: oekg/endpoint.md
+      - Provenance: oekg/provenance.md
+  - Municipal Heat Planning:
+      - Overview: mhpkg/index.md
+
+# Configuration
+theme:
+  name: material
+  logo: assets/OpenEnergyFamily_Logo_OpenEnergyFamily_white_simple.png
+  favicon: assets/OpenEnergyFamily_Logo_OpenEnergyFamily_icon.svg
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.path
+    - navigation.tracking
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.share
+    - content.code.copy
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - def_list
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - mdx_truly_sane_lists
+  - toc:
+      permalink: "#"
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  # NO include-markdown — one central docs/ tree means nothing has to be pulled in
+  # from the per-KG folders. See WF-08.
+
+# Customization
+extra:
+  generator: false
+  homepage: https://openenergyplatform.org/
+  # NOTE: do NOT add `version: {provider: mike}` unless the workflow actually runs `mike`.
+  #       oeplatform declares it without deploying it and the selector is dead.
