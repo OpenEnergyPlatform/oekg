@@ -1,15 +1,111 @@
-=======
-# Open Energy Knowledge Graph (OEKG) 
+---
+hide:
+  - footer
+---
 
-**Disclaimer:** This repository is currently under development.
+# How the OEKG is built — and how it used to be
 
-This repository aims at providing some guidelines for energy experts on how to make an RDF document. RDF is a standard for exchanging data. If you want to learn about the RDF standard, please check out [this page](https://www.w3.org/RDF/) for more details. The Open Energy Knowledge Graph (OEKG) is based on the RDF standard and we use the [Turtle](https://www.w3.org/TR/turtle/) format for storing its facts. Fundamentally, we use the [OEO ontology](https://github.com/OpenEnergyPlatform/ontology) as the schema for our knowledge graph. It means, the OEKG is under development according to the OEO conceptualization. [This post](https://github.com/OpenEnergyPlatform/oekg/issues/7) shows the latest version of the OEKG template. As the OEO evolves, this template may change accordingly. 
+This page exists because the OEKG's part of this repository is organised **by status**, and
+that only makes sense if you know which pipeline produced what. It has two subjects: the
+pipeline that is live, and the one that is not.
 
+## The live graph is not in this repository
 
-We are actively creating RDF graphs from energy study reports. For example, [this report](https://www.oeko.de/publikationen/p-details/klimaschutzszenario-2050-2-endbericht) contains information about the energy scenarios, spatial regions, sectors, and the models used in a study. Instead of conveying these terms in a natural language, we aim at expressing these concepts and their relations in an RDF graph according to the OEO conceptualizations. For this reason, we use some intermediate data structures called [placeholders](https://github.com/OpenEnergyPlatform/oekg/tree/main/Place-holders)  which are JSON files with a simple structure. Through [this Google Colab notebook](https://github.com/OpenEnergyPlatform/oekg/blob/main/How-to-develop-OEKG/How_to_develop_OEPKG.ipynb), you can find a guideline about how to read these placeholders and convert them to a single RDF document using the [rdflib](https://github.com/RDFLib/rdflib) library. Indeed, the OEKG is a big RDF graph containing information about energy studies. It enables interoperability among energy studies. [Here](https://github.com/OpenEnergyPlatform/oekg/blob/main/OEKG_in_Turtle/OEKG_With_Datasets.ttl), you can find the latest version of the OEKG in Turtle format. Currently, it contains **1681** facts (or triples). You can also load this Turtle file with the [Apache Jena](https://jena.apache.org/) and run SPARQL queries on it.
+The OEKG is populated by the **Open Energy Platform's scenario-bundle factsheets**. When
+someone creates or edits a factsheet on the platform, the platform writes the resulting
+triples over **SPARQL** into a **Jena Fuseki** dataset, through an `rdflib`
+`SPARQLUpdateStore` pointed at the endpoint. Reading the graph works the same way, by SPARQL
+query. There is no export step and no file in this repository in that path.
 
-Also, to express study reports using the RDF standard (according to the OEO conceptualizaion), you may find it easier to write Turtle files from scratch and avoid using the placeholders as an intermediate step. The main purpose of the placeholders, [this tutorial](https://github.com/OpenEnergyPlatform/oekg/blob/main/How-to-develop-OEKG/How_to_develop_OEPKG.ipynb) and the [rdflib](https://github.com/RDFLib/rdflib) library is to make it easier to develop an RDF document.
+```text
+OEP scenario-bundle factsheet
+        │  SPARQL update (rdflib SPARQLUpdateStore)
+        ▼
+Jena Fuseki dataset  ◀── SPARQL query ──  consumers
+```
 
+Two consequences worth stating plainly:
 
-If you are interested in the knowledge graphs, [here](https://neo4j.com/knowledge-graphs-data-in-context-for-responsive-businesses/?utm_program=emea-prospecting&utm_source=google&utm_medium=cpc&utm_campaign=emea-search-offers&utm_adgroup=ebook-knowledge-graphs&utm_content=ebook-knowledge-graphs&utm_placement=&utm_keyword=define%20knowledge%20graph&utm_network=g&gclid=Cj0KCQjw1tGUBhDXARIsAIJx01mim5CuQ2uQoiLpzYmnlrsYzZk0virUTkGKFEsoqKYxNCQMEyYHbZUaAhiZEALw_wcB) and
-[here](https://www.ibm.com/cloud/learn/knowledge-graph#:~:text=A%20knowledge%20graph%2C%20also%20known,the%20term%20knowledge%20%E2%80%9Cgraph.%E2%80%9D) are some useful resources for more details.
+- **The platform does not read any file from this repository.** The only ontology file the
+  factsheet code parses is `oeo-full.owl`, and it takes that from the platform's own
+  `ONTOLOGY_ROOT`, not from here.
+- **There is therefore no file in this repository that *is* the OEKG**, and no file here that
+  the shapes in `oekg/shapes/` can be meaningfully run against.
+
+The endpoint itself is Django configuration in
+[`oeplatform`](https://github.com/OpenEnergyPlatform/oeplatform) (`rdfdb` settings), not a
+constant. The deployed value at the time of writing is a Fuseki dataset hosted at OVGU. If you
+need to query the OEKG, that endpoint — not this repository — is the thing to ask for.
+
+## The superseded pipeline
+
+Before the factsheets existed, the OEKG was assembled by hand from published study reports, in
+three steps:
+
+```text
+published study report (PDF)
+        │  read by a human
+        ▼
+placeholder JSON        one file per study, a deliberately simple structure
+        │  Google Colab notebook, rdflib
+        ▼
+a single Turtle file    committed to this repository
+```
+
+The **placeholders** were the interesting idea: rather than asking energy experts to write RDF,
+they wrote flat JSON with a shape that mapped onto the OEO's conceptualisation, and a notebook
+did the conversion with [`rdflib`](https://github.com/RDFLib/rdflib). The notebook doubled as a
+tutorial — the intent was that anyone could follow it to turn a study into a graph. Writing
+Turtle directly was always the alternative for anyone who preferred it; the placeholders
+existed to lower the barrier, not to be a required format.
+
+All three stages are preserved in `oekg/legacy/`:
+
+| Path | What it is |
+|---|---|
+| `oekg/legacy/placeholder/` | the 7 placeholder JSON files |
+| `oekg/legacy/notebook/oekg_tutorial.ipynb` | the Colab notebook that converted them |
+| `oekg/legacy/oekg.ttl` | what came out — a 2023 snapshot |
+
+### Why it was superseded
+
+Hand-maintaining placeholders does not scale, and it puts the graph a manual step away from the
+people who actually have the information. The factsheets moved authorship onto the platform,
+where the data is entered once and lands in the graph directly.
+
+### ⚠️ Do not mistake `oekg/legacy/oekg.ttl` for the OEKG
+
+It is a 2023 snapshot, byte-identical to its 2023-08-31 state — never edited since, only moved.
+It contains **zero** instances of the classes the OEKG is now about: scenario_study, scenario
+bundle, scenario / model / framework factsheet, study report. Its dominant class is
+`IAO_0000100` (data set). No SHACL file in or out of this repository describes it.
+
+## The model rework, and where the definitions live
+
+Between those two pipelines, a Bachelor's thesis remodelled the graph against a current OEO
+release, retargeting classes and predicates and validating the result with SHACL. Its headline
+result is the drop in SHACL violations, **2695 → 55**.
+
+That work is archived intact at `oekg/archive/madbkr_ba/` — inputs, intermediates, outputs,
+shapes, validation reports and the four scripts. It is closed; nothing there is live tooling,
+and the archive's README makes no reproducibility claim, because the repository pins no
+dependencies.
+
+The single most useful document to come out of it is
+**`oekg/archive/madbkr_ba/scripts/documentation.pdf`**, which gives **every predicate with its
+definition, domain and range**. If you are looking for what an OEKG predicate means, that is
+where to look.
+
+One irreplaceable file sits in that archive: `oekg_rework/oekg_neu.ttl`, an **April 2025 dump
+of the live graph** from the Fuseki endpoint. It is the only copy of the OEKG at that date
+anywhere in this repository.
+
+## Summary
+
+| Question | Answer |
+|---|---|
+| Where is the OEKG? | a Jena Fuseki dataset, reached over SPARQL. Not in this repository. |
+| Who writes it? | the OEP's scenario-bundle factsheets. |
+| What are the Turtle files here, then? | history — a 2023 snapshot, and the thesis rework's inputs and outputs. |
+| Where are the predicates defined? | `oekg/archive/madbkr_ba/scripts/documentation.pdf`. |
+| Where are the fields listed? | [`fields.md`](fields.md). |
