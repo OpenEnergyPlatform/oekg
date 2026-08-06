@@ -137,10 +137,39 @@ everything downstream.
 
 | | |
 |---|---|
-| Site generator | mkdocs with mkdocs-material |
+| Site generator | mkdocs **1.x** with mkdocs-material |
 | Diagrams | mermaid, via Material's `pymdownx.superfences` custom fence |
-| Build strictness | `strict: true` — a broken internal link fails the build |
+| Build strictness | `strict: true` **plus** an explicit `validation:` block |
 | Hosting | GitHub Pages |
+
+!!! warning "The `mkdocs~=1.6` pin is deliberate — do not relax it to allow 2.0"
+
+    The Material for MkDocs team warns that **MkDocs 2.0** introduces backward-incompatible
+    changes to the framework Material is built on: the plugin system is removed (all plugins stop
+    working), the theming system is rewritten (all overrides break), **no migration path exists**,
+    the contribution model is closed, and it is **currently unlicensed — unsuitable for production
+    use**. Material itself is not deprecated; it is actively maintained and Production/Stable.
+
+    `mkdocs~=1.6` resolves to `>=1.6, ==1.*`, which permits 1.9 but **blocks 2.0** — verified. Keep
+    it that way until the situation upstream resolves. See the
+    [Material team's analysis](https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/).
+
+### Why the `validation:` block exists
+
+`strict: true` alone is **not** enough. mkdocs 1.6 does not check `#anchors` by default, so a
+strict build passes happily while cross-page anchor links rot. These pages carry several such
+links, so the config adds:
+
+```yaml
+validation:
+  anchors: warn
+  unrecognized_links: warn
+  absolute_links: warn
+```
+
+With `strict: true`, a warning becomes a build failure. This was verified with a negative control —
+an anchor was deliberately broken and the build aborted with exit 1 — so the passing build is a
+real result and not a disabled check.
 
 Documentation is the **only** thing this repository has CI for. There is no test suite and no
 validation job; adding SHACL validation to CI is an obvious future step, but it depends on the

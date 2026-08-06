@@ -6,6 +6,13 @@ edit_uri: edit/production/docs/
 
 strict: true
 
+# mkdocs 1.6 does NOT check #anchors by default, and these pages carry cross-page
+# anchor links. Without this block a strict build passes while anchors silently rot.
+validation:
+  anchors: warn
+  unrecognized_links: warn
+  absolute_links: warn
+
 nav:
   - Home: index.md
   - Tech stack: tech-stack.md
