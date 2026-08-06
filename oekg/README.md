@@ -11,10 +11,11 @@ writing triples over SPARQL, through an `rdflib` `SPARQLUpdateStore` pointed at 
 querying is likewise over SPARQL. The graph never round-trips to a file here.
 
 So nothing in this directory is the OEKG, and **moving files here cannot affect the
-platform**. The endpoint is Django configuration in
-[`oeplatform`](https://github.com/OpenEnergyPlatform/oeplatform), not a constant in this repo.
-The deployed value at the time of writing is a Fuseki dataset at OVGU
-(`oekb.iks.cs.ovgu.de:3443/oekg_main`); treat that as *the deployed value*, not as canonical.
+platform**. The endpoint is **Django configuration** in
+[`oeplatform`](https://github.com/OpenEnergyPlatform/oeplatform) (`rdfdb` settings), not a
+constant, and certainly not something this repository fixes. Historically the deployed dataset
+has been `oekg_main` on a Fuseki instance at OVGU; treat any host you find written down as *a
+deployment detail*, not as canonical, and get the current one from the platform.
 
 What this directory holds is the OEKG's **shapes, evaluation instruments and history**.
 

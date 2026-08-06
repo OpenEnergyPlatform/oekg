@@ -88,9 +88,12 @@ second consumer:
 - **OEO term handling** — the strongest candidate and the most dangerous, because it is
   *semantic*. A shared OEO extraction shaped by the OEKG's needs would silently constrain how
   `mhpkg` models things.
-- **Prefixes and namespaces** — three namespaces are already in play, including two
-  inconsistent OEKG ones bound by `oeplatform` itself. Centralising them would mean asserting
-  which is canonical.
+- **Prefixes and namespaces** — three are in play across the two graphs, and the OEKG's own
+  artifacts straddle a namespace migration (`http://openenergy-platform.org/ontology/…` →
+  `https://openenergyplatform.org/ontology/…`) that this repository has not finished. The MHP
+  draft independently carries a vendor namespace from the tool that exported it. A shared
+  prefix file would have to assert which of these is canonical, which is a decision neither
+  graph's directory layout gets to make.
 
 To admit something, name the two consumers in the pull request and update this section in the
 same change.

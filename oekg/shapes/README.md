@@ -30,17 +30,33 @@ Two consequences, stated so nobody is misled by the directory's existence:
    instances of the classes these shapes target, so running the shapes against it produces
    either nothing or a handful of trivial missing-`rdfs:label` reports.
 
-## Known defect: namespaces
+## 🔴 Known defect: it uses the pre-migration namespace
 
-The file declares `@prefix oeo: <http://openenergy-platform.org/ontology/oeo/>` and
-`@prefix oekg: <http://openenergy-platform.org/ontology/oekg/>` (hyphenated `http`), while
-the graph it was written for uses `https://openenergyplatform.org/…`. Run as committed it
-therefore reports **`Conforms: True` vacuously** — matching nothing. Normalising the
-namespaces first is what reproduces its 2695-violation report.
+This file declares the **old** namespace form:
 
-Namespace drift across the OEKG's artifacts is not incidental: `oeplatform` itself binds two
-inconsistent OEKG namespaces (`…/oekg/` and `…/ontology/oekg/`). Any future shapes work has
-to settle this before it can settle anything else.
+```turtle
+@prefix oeo:  <http://openenergy-platform.org/ontology/oeo/> .
+@prefix oekg: <http://openenergy-platform.org/ontology/oekg/> .
+```
+
+while the graph it was written for uses `https://openenergyplatform.org/ontology/…`. Run as
+committed it therefore reports **`Conforms: True` vacuously** — it matches nothing at all.
+Normalising the namespaces first is what reproduces its 2695-violation report.
+
+The OEKG's namespace migrated from `http://openenergy-platform.org/ontology/…` to
+`https://openenergyplatform.org/ontology/…`, and this repository straddles the change:
+
+| Artifact | OEKG namespace |
+|---|---|
+| `oekg/shapes/oekg_shapes.ttl` — *this file* | `http://openenergy-platform.org/ontology/oekg/` — **old** |
+| `oekg/legacy/oekg.ttl` | `http://openenergy-platform.org/ontology/oekg/` — **old** |
+| `oekg/eval/oekg_shacl.txt` | `https://openenergyplatform.org/ontology/oekg/` — current |
+| `oekg/archive/.../OEKG_Prep.ttl` | `https://openenergyplatform.org/ontology/oekg/` — current |
+| `oeplatform` (`factsheet/oekg/namespaces.py`, verified upstream 2026-08) | `https://openenergyplatform.org/ontology/oekg/` — current |
+
+**Rebasing this file onto the current namespace is the first thing any future shapes work
+should do.** It is not done here, because changing what a shapes file targets is model design,
+not a file move.
 
 ## Also SHACL, elsewhere in this repo
 
