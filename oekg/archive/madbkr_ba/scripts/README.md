@@ -31,7 +31,12 @@
 
 ### output_rework_oekg_final.ttl is the final version of the reworked oekg
 
-- this is a variant of reworkOeoBase.py that can be used for future updates
+- this is a variant of reworkOeoBase.py
+
+> **Not usable.** `mode = sys.argv[3]` is a string and `if mode < 2:` therefore raises
+> `TypeError` on every invocation, after the graph is parsed and before any work is done.
+> It is retired with the other three scripts. Do not treat it as tooling for future
+> updates; if OEO-hierarchy refreshing is wanted again, write it deliberately.
 
 - takes path to a data file as first argumennt
 - takes the complete IRI of a class as second argument
