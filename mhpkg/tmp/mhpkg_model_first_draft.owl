@@ -1,0 +1,350 @@
+<rdf:RDF
+ xml:base="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:dct="http://purl.org/dc/terms/"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+ xmlns:d="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#">
+    <owl:Ontology rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64">
+        <dc:title>Imported Document</dc:title>
+        <dct:modified>6-8-2026</dct:modified>
+        <rdfs:comment>Ontology exported from Termboard - a visual knowledge modeling tool.</rdfs:comment>
+        <rdfs:label>Imported Document</rdfs:label>
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#integral">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>integral</rdfs:label>
+        <skos:prefLabel>integral</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregation_type"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#MWh">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>MWh</rdfs:label>
+        <skos:prefLabel>MWh</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#natural_gas">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>natural gas</rdfs:label>
+        <skos:prefLabel>natural gas</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#241">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>241</rdfs:label>
+        <skos:prefLabel>241</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#2030">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>2030</rdfs:label>
+        <skos:prefLabel>2030</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#year"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregated_inventory_analysis">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>aggregated inventory analysis</rdfs:label>
+        <rdfs:subClassOf rdf:parseType="Resource">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#part_of"/>
+                <owl:someValuesFrom rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:prefLabel>aggregated inventory analysis</skos:prefLabel>
+        <d:part_of rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregated_potential_analysis">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>aggregated potential analysis</rdfs:label>
+        <rdfs:subClassOf rdf:parseType="Resource">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_part"/>
+                <owl:someValuesFrom rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:parseType="Resource">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#part_of"/>
+                <owl:someValuesFrom rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:prefLabel>aggregated potential analysis</skos:prefLabel>
+        <d:has_part rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <d:part_of rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>municipal heat plan</rdfs:label>
+        <rdfs:subClassOf rdf:parseType="Resource">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_part"/>
+                <owl:someValuesFrom rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#tartget_scenario_indicators"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:parseType="Resource">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_part"/>
+                <owl:someValuesFrom rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregated_potential_analysis"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:parseType="Resource">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#part_of_convoi"/>
+                <owl:someValuesFrom rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#false"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:prefLabel>municipal heat plan</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Kassel"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Stadt_Kassel_der_Brgermeister"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Kassel_Wrme_Ingenieurbro"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#title"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#date"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#UUID"/>
+        <d:created_by rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Kassel_Wrme_Ingenieurbro"/>
+        <d:has_part rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#tartget_scenario_indicators"/>
+        <d:has_part rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregated_potential_analysis"/>
+        <d:has_publication_date rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#date"/>
+        <d:has_title rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#title"/>
+        <d:has_uuid rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#UUID"/>
+        <d:is_about_municipality rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Kassel"/>
+        <d:on_behalf_of rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Stadt_Kassel_der_Brgermeister"/>
+        <d:part_of_convoi rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#false"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>primary energy consumption value</rdfs:label>
+        <rdfs:subClassOf rdf:parseType="Resource">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#part_of"/>
+                <owl:someValuesFrom rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregated_potential_analysis"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:prefLabel>primary energy consumption value</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#MWh"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#year"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#annual"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregation_type"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#sector"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#241"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#natural_gas"/>
+        <d:has_aggregation_type rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregation_type"/>
+        <d:has_temporal_resolution rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#annual"/>
+        <d:has_unit rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#MWh"/>
+        <d:part_of rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregated_potential_analysis"/>
+        <d:refers_to_energy_carrier rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#natural_gas"/>
+        <d:refers_to_sector rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#sector"/>
+        <d:refers_to_temporal_region rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#year"/>
+        <d:value rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#241"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#year">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>year</rdfs:label>
+        <skos:prefLabel>year</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#2030"/>
+        <d:value rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#2030"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregation_type">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>aggregation type</rdfs:label>
+        <skos:prefLabel>aggregation type</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#integral"/>
+        <d:value rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#integral"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#annual">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>annual</rdfs:label>
+        <skos:prefLabel>annual</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Kassel">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>Kassel</rdfs:label>
+        <skos:prefLabel>Kassel</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Kassel_Wrme_Ingenieurbro">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>Kassel Wärme Ingenieurbüro</rdfs:label>
+        <skos:prefLabel>Kassel Wärme Ingenieurbüro</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#sector">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>sector</rdfs:label>
+        <skos:prefLabel>sector</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Stadt_Kassel_der_Brgermeister">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>Stadt Kassel, der Bürgermeister</rdfs:label>
+        <skos:prefLabel>Stadt Kassel, der Bürgermeister</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#tartget_scenario_indicators">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>tartget scenario indicators</rdfs:label>
+        <rdfs:subClassOf rdf:parseType="Resource">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#part_of"/>
+                <owl:someValuesFrom rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:prefLabel>tartget scenario indicators</skos:prefLabel>
+        <d:part_of rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#false">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>false</rdfs:label>
+        <skos:prefLabel>false</skos:prefLabel>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#title">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>title</rdfs:label>
+        <skos:prefLabel>title</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#date">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>date</rdfs:label>
+        <skos:prefLabel>date</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#UUID">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>UUID</rdfs:label>
+        <skos:prefLabel>UUID</skos:prefLabel>
+        <skos:related rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_part">
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>has part</rdfs:label>
+        <skos:prefLabel>has part</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#is_about_municipality">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>is about municipality</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Kassel"/>
+        <skos:prefLabel>is about municipality</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_unit">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>has unit</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#MWh"/>
+        <skos:prefLabel>has unit</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#refers_to_temporal_region">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>refers to temporal region</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#year"/>
+        <skos:prefLabel>refers to temporal region</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#on_behalf_of">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>on behalf of</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Stadt_Kassel_der_Brgermeister"/>
+        <skos:prefLabel>on behalf of</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_temporal_resolution">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>has temporal resolution</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#annual"/>
+        <skos:prefLabel>has temporal resolution</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_aggregation_type">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>has aggregation type</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#aggregation_type"/>
+        <skos:prefLabel>has aggregation type</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#part_of">
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>part of</rdfs:label>
+        <skos:prefLabel>part of</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#refers_to_sector">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>refers to sector</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#sector"/>
+        <skos:prefLabel>refers to sector</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#value">
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>value</rdfs:label>
+        <skos:prefLabel>value</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#refers_to_energy_carrier">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#primary_energy_consumption_value"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>refers to energy carrier</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#natural_gas"/>
+        <skos:prefLabel>refers to energy carrier</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#created_by">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>created by</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#Kassel_Wrme_Ingenieurbro"/>
+        <skos:prefLabel>created by</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#part_of_convoi">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>part of convoi</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#false"/>
+        <skos:prefLabel>part of convoi</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_title">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>has title</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#title"/>
+        <skos:prefLabel>has title</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_publication_date">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>has publication date</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#date"/>
+        <skos:prefLabel>has publication date</skos:prefLabel>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#has_uuid">
+        <rdfs:domain rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#municipal_heat_plan"/>
+        <rdfs:isDefinedBy rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64"/>
+        <rdfs:label>has uuid</rdfs:label>
+        <rdfs:range rdf:resource="https://termboard.com/ontology/d0425b2d-d8ba-5a26-f658-cc628c2e4b64#UUID"/>
+        <skos:prefLabel>has uuid</skos:prefLabel>
+    </owl:ObjectProperty>
+</rdf:RDF>
