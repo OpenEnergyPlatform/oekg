@@ -4,6 +4,8 @@
 
 # Open Energy Family — Knowledge Graphs
 
+📖 **Documentation: <https://openenergyplatform.github.io/oekg/>**
+
 **This repository hosts two knowledge graphs.** They share a repository, not a model.
 
 | Directory | Graph | Domain | Status |
@@ -41,7 +43,14 @@ consists of one OWL draft. Neither directory's layout is imposed on the other.
 ├── CHANGELOG.md  CITATION.cff  CONTRIBUTING.md  CODE_OF_CONDUCT.md  LICENSE.txt
 ├── RELEASE_PROCEDURE.md   the family's release convention, adapted
 ├── USERS.cff              who uses these graphs
-└── .github/               issue and pull-request templates (no CI in this repository)
+│
+├── mkdocs.yml             the documentation site config
+├── pyproject.toml         dependency groups (uv; this repo is not an installable package)
+├── uv.lock                committed lockfile — CI installs exactly this
+├── .python-version        the interpreter uv fetches; committed on purpose, see .gitignore
+│
+└── .github/               issue and PR templates, plus the docs-deploy workflow
+                           (documentation is the ONLY thing with CI — no tests, no validation)
 
 # there is no shared/ — see below, its absence is deliberate
 ```
@@ -111,12 +120,12 @@ workflow) on top, then one section per knowledge graph.
 To build it locally:
 
 ```bash
-pip install -r requirements-docs.txt
-mkdocs serve
+uv sync --group docs
+uv run mkdocs serve
 ```
 
-> ℹ️ The site goes live once this documentation setup reaches `production` and GitHub Pages is
-> enabled for the `gh-pages` branch.
+Then open **<http://127.0.0.1:8000/oekg/>** — not `/`. See
+[CONTRIBUTING.md](./CONTRIBUTING.md#local-setup) for the full setup, including the traps.
 
 ## The OEKG in one paragraph
 

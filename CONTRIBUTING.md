@@ -6,6 +6,60 @@
 ## Prerequisites
 - [Git](https://git-scm.com/)
 - [GitHub](https://github.com/)
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) — **only if you are editing the
+  documentation.** You do *not* need Python installed; uv fetches its own.
+
+## Local setup
+
+> This section is specific to this repository and is **not** part of the family CONTRIBUTING
+> template. Keep it when the template is next updated.
+
+**The only installable toolchain here is the documentation build.** That is not an oversight, it is
+the current truth of the repository: neither knowledge graph's data lives in these files, there is
+no test suite, and there is no validation pipeline yet. If you came to work on the graphs
+themselves, you need an editor — not an environment.
+
+```bash
+git clone https://github.com/OpenEnergyPlatform/oekg.git
+cd oekg
+uv sync --group docs
+uv run mkdocs serve
+```
+
+Then open **<http://127.0.0.1:8000/oekg/>** — note the `/oekg/` suffix, see the traps below.
+
+Three commands is the whole of it:
+
+| Command | What it does |
+|---|---|
+| `uv sync --group docs` | creates `.venv/` and installs the locked documentation toolchain |
+| `uv run mkdocs serve` | live-reloading local preview |
+| `uv run mkdocs build --strict` | **exactly** what CI runs — run it before you push |
+
+Verified from a clean clone on a machine whose system Python was 3.10: the first run takes about
+**7 seconds**, including downloading CPython 3.13 and all 30 packages. Afterwards it is instant.
+uv reads the committed `.python-version` and provisions the interpreter itself, so no contributor
+needs a particular Python.
+
+### Traps worth knowing before your first pull request
+
+1. **`mkdocs serve` does not serve the site at `/`.** `mkdocs.yml` sets a `site_url` with a path, so
+   the dev server mounts everything under **`/oekg/`**. `http://127.0.0.1:8000/` redirects there, but
+   a hand-typed deep link will not: the tech-stack page is `/oekg/tech-stack/`, not `/tech-stack/`.
+   OEKG pages carry the prefix **twice** — `/oekg/oekg/fields/` — because the site lives at `/oekg/`
+   and the page itself is `docs/oekg/fields.md`. Confusing, correct, and worth reading twice.
+2. **`strict: true` makes every warning a build failure**, broken `#anchors` included. A
+   documentation edit that looks fine in the browser can still fail CI, so run
+   `uv run mkdocs build --strict` before pushing rather than discovering it in a red pipeline.
+3. **The default branch is `production`** — not `main`, not `develop`. See the note under
+   *Permanent branches* below.
+4. **`mhpkg` is a provisional name.** Do not bake it into IRIs, prefixes or published URLs without
+   a rename path.
+5. **Never hand-edit `uv.lock`.** Change `pyproject.toml`, run `uv lock`, and commit both in the
+   same commit. CI installs with `--frozen`, which *fails* rather than silently re-resolving when
+   the two disagree.
+6. **Do not relax the `mkdocs~=1.6` pin to allow 2.0.** The reason is documented on the
+   [tech stack page](docs/tech-stack.md) and it is not a stylistic preference.
 
 ## Types of interaction
 This repository is following the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). <br>
@@ -43,10 +97,10 @@ Make a checklist for all needed steps if possible.
 
 ### 2. Solve the issue locally
 
-#### 2.0. Get the latest version of the `develop` branch
-Load the `develop branch`:
+#### 2.0. Get the latest version of the default branch
+Load the `production` branch:
 ```bash
-git checkout develop
+git checkout production
 ```
 
 Update with the latest version:
@@ -55,8 +109,13 @@ git pull
 ```
 
 ##### Permanent branches
-* production - includes the current stable version
-* develop - includes all current developments
+* production - the default branch, and the only permanent one
+
+> ⚠️ **This repository has one permanent branch, not two.** The family template describes a
+> `production` + `develop` pair. A `develop` branch existed here early on (last seen in PR #16)
+> and was abandoned; it does not exist today, so `git checkout develop` will fail. Feature
+> branches are branched from and merged back into **`production`** directly — that is what recent
+> pull requests actually did. `production` is also the branch the documentation deploy triggers on.
 
 #### 2.1. Create a new (local) branch
 Create a new feature branch:
@@ -146,7 +205,9 @@ git push
 
 ### 4. Submit a pull request (PR)
 Follow the GitHub guide [creating-a-pull-request](https://help.github.com/en/articles/creating-a-pull-request). <br>
-The PR should be directed: `base: develop` <- `compare: feature-1-collaboration`. <br>
+The PR should be directed: `base: production` <- `compare: feature-1-collaboration`. <br>
+Note the base is `production`, per *Permanent branches* above — merging there publishes the
+documentation site, so make sure `uv run mkdocs build --strict` passes first. <br>
 Add the line `Close #<issue-number>` in the description of your PR.
 When it is merged, it [automatically closes](https://help.github.com/en/github/managing-your-work-on-github/closing-issues-using-keywords) the issue. <br>
 Assign a reviewer and get in contact.

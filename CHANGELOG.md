@@ -28,3 +28,16 @@ Here is a template for new release sections:
 - CODE_OF_CONDUCT.md [#3](https://github.com/OpenEnergyPlatform/oekg/pull/3)
 - CITATION.cff [#2](https://github.com/OpenEnergyPlatform/oekg/pull/2)
 - oekg rework files [[#50](https://github.com/OpenEnergyPlatform/oekg/pull/50)]
+- Documentation site (mkdocs-material, deployed to GitHub Pages) [[#51](https://github.com/OpenEnergyPlatform/oekg/pull/51)]
+- `mhpkg/` for the Municipal Heat Planning KG — provisional name [[#51](https://github.com/OpenEnergyPlatform/oekg/pull/51)]
+- Dependency management with uv: `pyproject.toml`, `uv.lock`, `.python-version` [[#51](https://github.com/OpenEnergyPlatform/oekg/pull/51)]
+- Contributor setup instructions in CONTRIBUTING.md
+
+### Changed
+- Repository restructured around two knowledge graphs; OEKG files grouped by status
+  (`shapes/`, `eval/`, `legacy/`, `archive/`) under `oekg/` [[#51](https://github.com/OpenEnergyPlatform/oekg/pull/51)]
+- CONTRIBUTING.md now documents `production` as the only permanent branch, matching the
+  repository's actual practice
+
+### Removed
+- `requirements-docs.txt`, superseded by `pyproject.toml` and `uv.lock` [[#51](https://github.com/OpenEnergyPlatform/oekg/pull/51)]

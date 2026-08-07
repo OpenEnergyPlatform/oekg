@@ -61,11 +61,11 @@ which uv downloads itself, so no system Python is required.
 | `uv.lock` | **committed** — the exact resolved set, so CI installs what you have locally |
 | `.python-version` | the interpreter uv fetches (3.13); `requires-python` is `>=3.11` |
 
-```bash
-uv sync --group docs        # install the documentation toolchain
-uv run mkdocs serve         # preview the site locally
-uv run mkdocs build --strict # what CI runs
-```
+The commands a contributor runs live in
+[CONTRIBUTING.md](https://github.com/OpenEnergyPlatform/oekg/blob/production/CONTRIBUTING.md#local-setup),
+deliberately in **one** place rather than copied here — two copies of setup instructions diverge
+within months. That page also lists the traps, including the fact that the dev server does not
+serve at `/`.
 
 CI uses `uv sync --group docs --frozen`, where `--frozen` **fails** if `uv.lock` is out of step
 with `pyproject.toml` rather than silently re-resolving — so the build cannot drift from the
