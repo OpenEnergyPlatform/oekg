@@ -1,0 +1,52 @@
+# SPDX-FileCopyrightText: 2026 Open Energy Family <https://github.com/OpenEnergyPlatform>
+# SPDX-FileCopyrightText: oekg <https://github.com/OpenEnergyPlatform/oekg/>
+# SPDX-License-Identifier: CC0-1.0
+#
+# Written fresh from the Open Energy Family convention (rl-institut/super-repo,
+# OpenEnergyPlatform/ontology). Note for anyone copying from those files: the upstream
+# templates contain an unterminated quote on the `message:` line, which makes them invalid
+# YAML. This file closes it. Keep it that way -- indent with spaces only, never tabs.
+
+cff-version: 1.2.0
+message: "If you use one of the knowledge graphs in this repository, please leave your research project, application, or institution for reference."
+
+users:
+  # --- Research projects ---
+  - name: DB4KWP
+    type: research project
+    date-start: '2026-01-01'
+    date-end: '2027-12-31'
+    website: https://reiner-lemoine-institut.de/projekt/db4kwp-mit-datenbanken-und-wissensgraphen-die-ergebnisse-und-daten-der-kommunalen-waermeplanung-vergleichbar-und-nutzbar-machen/
+    comment: "Develops the municipal heat planning knowledge graph (mhpkg)"
+  - name: SIR0P - Towards Scenario Interoperability
+    type: research project
+    date-start: '2021-04-01'
+    date-end: '2024-09-30'
+    website: https://reiner-lemoine-institut.de/projekt/automatisiertes-vergleichen-von-energieszenarien-sirop/
+    comment: "Developed the OEKG and its integration into the Open Energy Platform"
+  - name: SzenarienDB - Datenbank fuer Klima- und Energieszenarien
+    type: research project
+    date-start: '2018-01-01'
+    date-end: '2021-03-31'
+    website: https://reiner-lemoine-institut.de/open-energy-platform-um-offene-szenariendaten-erweitert/
+    comment: "Origin of the OEKG"
+  - name: NFDI4Energy
+    type: research project
+    date-start: '2023-03-01'
+    date-end: '2028-02-29'
+    website: https://nfdi4energy.uol.de/
+
+  # --- Applications ---
+  - name: OEKG / Scenario Bundles
+    type: application
+    website: https://openenergyplatform.org/scenario-bundles/main
+    comment: "Populates and queries the OEKG through the Open Energy Platform's factsheets"
+
+  # --- Institutions ---
+  - institution: RLI - Reiner Lemoine Institut
+    ror: https://ror.org/03xvdbr49
+  - institution: OFFIS - Institute for Information Technology
+    ror: https://ror.org/003sav189
+  - institution: OVGU - Otto von Guericke University Magdeburg
+    ror: https://ror.org/00ggpsq73
+    comment: "Hosts the Jena Fuseki store that serves the OEKG"

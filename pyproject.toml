@@ -1,0 +1,25 @@
+[project]
+name = "oekg"
+version = "0.0.0"
+description = "Open Energy Knowledge Graph (OEKG) and the municipal heat planning knowledge graph"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+requires-python = ">=3.11"
+
+# No runtime dependencies. This repository ships RDF data, SHACL shapes and
+# documentation — not an importable Python package. Tooling lives in the
+# dependency groups below.
+dependencies = []
+
+[dependency-groups]
+# Everything needed to build and preview the documentation site.
+docs = [
+    "mkdocs~=1.6",          # ⚠️ ~=1.6 means >=1.6,==1.* — this BLOCKS MkDocs 2.0. Do not relax.
+    "mkdocs-material~=9.5",
+    "mdx-truly-sane-lists", # better list handling when prettier/pre-commit formats markdown
+]
+
+[tool.uv]
+# Not a package: there is nothing here to build, install or publish. This tells uv
+# to manage the environment without trying to build the project itself.
+package = false

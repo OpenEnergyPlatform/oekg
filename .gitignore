@@ -83,6 +83,10 @@ ipython_config.py
 
 # pyenv
 .python-version
+# ...but this project uses uv, where .python-version is a COMMITTED project pin that tells
+# uv which interpreter to fetch. The line above comes from the stock Python template, where
+# it is a per-developer pyenv file. Ours is checked in deliberately.
+!.python-version
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -128,3 +132,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .DS_Store
+*:Zone.Identifier
