@@ -1,11 +1,14 @@
 name: gh-pages
 
-# Adapted from OpenEnergyPlatform/academy's gh-pages.yml (academy's local mkdocs plugin
-# step stripped, requirements file renamed).
+# Adapted from OpenEnergyPlatform/academy's gh-pages.yml, then switched from pip to uv.
 #
 # NOTE: the trigger branch is `production` — this repository's DEFAULT BRANCH.
 # It is NOT `main` and NOT `develop`. A family workflow copied without adjusting this
 # silently never fires; that bug is live in municipal-heat-planning-ontology today.
+#
+# NOTE: this repository uses uv rather than a requirements file, unlike the rest of the
+# Open Energy Family. Dependencies live in pyproject.toml's `docs` group and are locked
+# in uv.lock, so CI installs exactly what a developer has locally.
 on:
   push:
     branches:
@@ -20,12 +23,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: 3.x
-      - uses: actions/cache@v4
-        with:
-          key: ${{ github.ref }}
-          path: .cache
-      - run: pip install --upgrade -r requirements-docs.txt
-      - run: mkdocs gh-deploy --force
+          enable-cache: true
+
+      # Installs the locked docs dependencies, and the Python pinned by .python-version.
+      # --frozen fails if uv.lock is out of date with pyproject.toml, rather than silently
+      # re-resolving — so CI cannot drift from the committed lockfile.
+      - name: Install documentation dependencies
+        run: uv sync --group docs --frozen
+
+      # mkdocs.yml sets strict: true plus anchor validation, so a broken link or a bad
+      # #anchor fails here rather than shipping.
+      - name: Build and deploy
+        run: uv run mkdocs gh-deploy --force

@@ -49,11 +49,41 @@ The vendored copy exists to keep the archived thesis self-contained. It is **not
 work from — take OEO releases from the
 [`ontology`](https://github.com/OpenEnergyPlatform/ontology) repository.
 
-!!! note "This repository pins no dependencies"
+## Dependencies and environment
 
-    There is no `requirements.txt`, `pyproject.toml` or lockfile for the graph tooling — only the
-    documentation build has pinned dependencies. The archived thesis scripts therefore cannot be
-    guaranteed to run, and the archive makes no reproducibility claim.
+Managed with **[uv](https://docs.astral.sh/uv/)**. `pyproject.toml` declares the dependency
+groups, `uv.lock` pins the exact resolved versions, and `.python-version` pins the interpreter —
+which uv downloads itself, so no system Python is required.
+
+| File | Role |
+|---|---|
+| `pyproject.toml` | dependency groups; `package = false` (this repo is not an importable package) |
+| `uv.lock` | **committed** — the exact resolved set, so CI installs what you have locally |
+| `.python-version` | the interpreter uv fetches (3.13); `requires-python` is `>=3.11` |
+
+```bash
+uv sync --group docs        # install the documentation toolchain
+uv run mkdocs serve         # preview the site locally
+uv run mkdocs build --strict # what CI runs
+```
+
+CI uses `uv sync --group docs --frozen`, where `--frozen` **fails** if `uv.lock` is out of step
+with `pyproject.toml` rather than silently re-resolving — so the build cannot drift from the
+committed lockfile.
+
+!!! note "This diverges from the rest of the Open Energy Family"
+
+    Other OEP repositories use a plain `requirements.txt` with `pip`. This one deliberately does
+    not. The trade was made knowingly: a single source of truth plus a real lockfile was judged
+    worth more than byte-for-byte consistency with a 15-line workflow. If you maintain other family
+    repos, this is the one place this repo will surprise you.
+
+!!! warning "The archived thesis scripts are still not reproducible"
+
+    Only the documentation toolchain is managed. `oekg/archive/madbkr_ba/scripts/` was written
+    against unrecorded versions of `rdflib` and `owlready2`, needs a Java toolchain for
+    `sync_reasoner()`, and one script raises `TypeError` on every invocation. **It is closed
+    work**; adopting uv does not resurrect it, and the archive makes no reproducibility claim.
 
 ## What is still open
 

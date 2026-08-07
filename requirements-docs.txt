@@ -1,8 +1,0 @@
-# Documentation build dependencies for the mkdocs site.
-# Pinned deliberately: an unpinned Material upgrade breaking the build months later
-# is the standard way these sites rot.
-
-mkdocs~=1.6
-mkdocs-material~=9.5
-# better list handling when prettier/pre-commit formats markdown
-mdx-truly-sane-lists
