@@ -1,0 +1,49 @@
+curie,label,type,source,declared_in_mhpo,label_status,deprecated,replaced_by,iri
+BFO_0000023,,class,bfo,no,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000023
+BFO_0000050,,objectProperty,bfo,no,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000050
+BFO_0000051,,objectProperty,bfo,yes,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000051
+IAO_0000104,,class,iao,yes,unresolved,no,,http://purl.obolibrary.org/obo/IAO_0000104
+IAO_0000115,definition,annotationProperty,iao,yes,from_mhpo,no,,http://purl.obolibrary.org/obo/IAO_0000115
+IAO_0000118,alternative label,annotationProperty,iao,yes,from_mhpo,no,,http://purl.obolibrary.org/obo/IAO_0000118
+RO_0000052,,objectProperty,ro,no,unresolved,no,,http://purl.obolibrary.org/obo/RO_0000052
+RO_0000053,,objectProperty,ro,no,unresolved,no,,http://purl.obolibrary.org/obo/RO_0000053
+RO_0000087,,objectProperty,ro,no,unresolved,no,,http://purl.obolibrary.org/obo/RO_0000087
+OEO_00360020,,class,oeo,no,unresolved,no,,https://openenergyplatform.org/ontology/oeo/OEO_00360020
+MHPO_00020003,municipal heat plan,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020003
+MHPO_00020005,aggregated inventory analysis,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020005
+MHPO_00020006,aggregated potential analysis,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020006
+MHPO_00020007,target scenario,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020007
+MHPO_00020008,implementation measure,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020008
+MHPO_00020009,role of region in municipal heat plan,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020009
+MHPO_00020010,municipality area role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020010
+MHPO_00020011,heat plan area role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020011
+MHPO_00020012,unallocated heat supply subarea role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020012
+MHPO_00020013,heat plan subarea role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020013
+MHPO_00020014,excluded area role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020014
+MHPO_00020016,energy saving area role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020016
+MHPO_00020017,municipality area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020017
+MHPO_00020018,heat plan area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020018
+MHPO_00020019,heat plan subarea,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020019
+MHPO_00020020,unallocated heat supply subarea,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020020
+MHPO_00020021,area for decentralized heat supply,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020021
+MHPO_00020022,role of area for decentralized heat supply,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020022
+MHPO_00020023,role of district heating development area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020023
+MHPO_00020024,role of district heating densification area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020024
+MHPO_00020025,role of district heating expansion area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020025
+MHPO_00020026,projected heat plan subarea,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020026
+MHPO_00030001,implementation strategy,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030001
+MHPO_00030005,hydrogen grid area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030005
+MHPO_00030006,hydrogen grid area role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030006
+MHPO_00030007,district heating area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030007
+MHPO_00030008,district heating area role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030008
+MHPO_00030009,district heating densification area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030009
+MHPO_00030010,district heating expansion area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030010
+MHPO_00030011,district heating development area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030011
+MHPO_00030012,energy saving area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030012
+MHPO_00030013,area under suitability assessment,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030013
+MHPO_00030014,role of area under suitability assessment,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030014
+MHPO_00030016,area excluded from heat planning,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030016
+ont00000476,,class,cco,no,unresolved,no,,https://www.commoncoreontologies.org/ont00000476
+ont00000853,,class,cco,no,unresolved,no,,https://www.commoncoreontologies.org/ont00000853
+ont00000965,,class,cco,no,unresolved,no,,https://www.commoncoreontologies.org/ont00000965
+ont00000974,,class,cco,no,unresolved,no,,https://www.commoncoreontologies.org/ont00000974

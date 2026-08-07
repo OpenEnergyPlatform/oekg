@@ -1,0 +1,11 @@
+# The MHPO commit this repository's term list was generated from.
+#
+# MHPO has no releases and no tags, so a commit SHA is the only pin available.
+# Update with: python extract_terms.py --latest   (to see what moved)
+#              edit commit: below, then: python extract_terms.py
+
+repo:    OpenEnergyPlatform/municipal-heat-planning-ontology
+branch:  develop
+commit:  34776b699d10c936da05b353b1001548bf92e4b2
+date:    2026-06-29
+subject: Merge pull request #15 from OpenEnergyPlatform/feature-12-regions
