@@ -47,8 +47,8 @@ first-run cost, not a warm-cache number:
 
 | What you install | First run | Afterwards |
 |---|---|---|
-| `docs` | **≈ 7 s** | instant |
-| `docs` + `schema` + `graph` | **≈ 11 s** | instant |
+| `docs` | **7.5 s** | instant |
+| `docs` + `schema` + `graph` | **10.6 s** | instant |
 
 That first run includes downloading CPython 3.13 itself (≈ 81 MB) and populating a ≈ 220 MB package
 cache shared across all your uv projects. uv reads the committed `.python-version` and provisions
@@ -76,14 +76,37 @@ so the whole author-and-validate loop runs with no server at all. You need this 
 the *load* step against a real SPARQL store.
 
 ```bash
-docker run --rm -p 3030:3030 -e ADMIN_PASSWORD=admin stain/jena-fuseki:5.1.0
+docker run --rm -p 3030:3030 \
+  -e ADMIN_PASSWORD=admin \
+  -e FUSEKI_DATASET_1=ds \
+  stain/jena-fuseki:5.1.0
 ```
 
-The admin UI is then at <http://localhost:3030/>. The image and version match what the
-[`oeplatform`](https://github.com/OpenEnergyPlatform/oeplatform) development stack runs — so **if
-you already run that stack, you have a Fuseki on `localhost:3030` and do not need a second
-container.** Nothing in this repository is configured to point at either one; that is a deliberate
-gap, because where MHPKG data lives in Fuseki is still being decided.
+The admin UI is then at <http://localhost:3030/>. The image, version, dataset name and password
+match what the [`oeplatform`](https://github.com/OpenEnergyPlatform/oeplatform) development stack
+runs — so **if you already run that stack, you already have this on `localhost:3030` and starting a
+second container will just fail with "port is already allocated".**
+
+Verified end to end against that command, because a setup instruction that has not been run is a
+guess:
+
+| | |
+|---|---|
+| Dataset appears | **≈ 5 s** after the container starts — *later* than the web UI does |
+| Reads | no credentials needed — `GET /ds/query` works anonymously |
+| Writes | **require auth**: `curl -u admin:admin -X POST … /ds/data?default` returns 200, without it 401 |
+
+Two traps found while verifying it:
+
+- **The web UI answers before the dataset exists.** The entrypoint starts Fuseki, waits for it, and
+  only *then* creates `FUSEKI_DATASET_1`. A script that polls `http://localhost:3030/` and then
+  immediately writes will get a 404 — poll `$/datasets` instead.
+- **Do not append server arguments like `--mem /ds`.** The entrypoint runs `exec "$@"`, so extra
+  arguments *replace* the `fuseki-server` command rather than being passed to it, and the container
+  comes up with nothing listening. Use the `FUSEKI_DATASET_*` environment variables.
+
+Nothing in this repository is configured to point at either container. That is a deliberate gap:
+where MHPKG data lives in Fuseki — which datasets, which named graphs — is still being decided.
 
 ### Traps worth knowing before your first pull request
 
