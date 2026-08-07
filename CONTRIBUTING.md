@@ -6,40 +6,84 @@
 ## Prerequisites
 - [Git](https://git-scm.com/)
 - [GitHub](https://github.com/)
-- [uv](https://docs.astral.sh/uv/getting-started/installation/) — **only if you are editing the
-  documentation.** You do *not* need Python installed; uv fetches its own.
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) — for the documentation build and
+  for graph work. You do *not* need Python installed; uv fetches its own.
+- [Docker](https://docs.docker.com/get-started/get-docker/) — **optional**, and only to run a local
+  triplestore. Nothing in the repository requires it. See *Optional: a local triplestore* below.
 
 ## Local setup
 
 > This section is specific to this repository and is **not** part of the family CONTRIBUTING
 > template. Keep it when the template is next updated.
 
-**The only installable toolchain here is the documentation build.** That is not an oversight, it is
-the current truth of the repository: neither knowledge graph's data lives in these files, there is
-no test suite, and there is no validation pipeline yet. If you came to work on the graphs
-themselves, you need an editor — not an environment.
+There are **two** installable toolchains here: the documentation build, and the graph toolchain that
+authors the data shape and validates against it. Install whichever you need — they are separate
+dependency groups and neither pulls the other.
 
 ```bash
 git clone https://github.com/OpenEnergyPlatform/oekg.git
 cd oekg
-uv sync --group docs
+uv sync --group docs                                  # documentation only
 uv run mkdocs serve
 ```
 
 Then open **<http://127.0.0.1:8000/oekg/>** — note the `/oekg/` suffix, see the traps below.
-
-Three commands is the whole of it:
 
 | Command | What it does |
 |---|---|
 | `uv sync --group docs` | creates `.venv/` and installs the locked documentation toolchain |
 | `uv run mkdocs serve` | live-reloading local preview |
 | `uv run mkdocs build --strict` | **exactly** what CI runs — run it before you push |
+| `uv sync --group schema` | LinkML: `gen-shacl`, `gen-project`, `gen-json-schema`, … |
+| `uv sync --group graph` | `pyshacl` for validation, `rdflib` for graph manipulation |
 
-Verified from a clean clone on a machine whose system Python was 3.10: the first run takes about
-**7 seconds**, including downloading CPython 3.13 and all 30 packages. Afterwards it is instant.
-uv reads the committed `.python-version` and provisions the interpreter itself, so no contributor
-needs a particular Python.
+The two graph groups are split because `linkml` is **88 of the 95** packages they resolve to
+between them. Something that only validates has no reason to install a generator, so
+`--group graph` alone is a small, fast install. Combine groups freely:
+`uv sync --group docs --group schema --group graph`.
+
+Measured on a clean clone with both the uv cache and the interpreter directory empty — the honest
+first-run cost, not a warm-cache number:
+
+| What you install | First run | Afterwards |
+|---|---|---|
+| `docs` | **≈ 7 s** | instant |
+| `docs` + `schema` + `graph` | **≈ 11 s** | instant |
+
+That first run includes downloading CPython 3.13 itself (≈ 81 MB) and populating a ≈ 220 MB package
+cache shared across all your uv projects. uv reads the committed `.python-version` and provisions
+the interpreter, so no contributor needs a particular Python.
+
+### What this setup does *not* give you
+
+Worth stating plainly, because installing a toolchain is not the same as having something to run it
+on:
+
+- **There is no LinkML schema in this repository yet.** `gen-shacl` is installed and works, but
+  there is nothing to point it at. Authoring that schema is in progress.
+- **There are no generated SHACL shapes**, and therefore nothing for `pyshacl` to validate data
+  against. The shapes under `oekg/shapes/` do not validate any live graph.
+- **There is still no test suite, and no validation runs in CI.** The pull-request checks assert the
+  lockfile and build the documentation; they do not validate graph data.
+- **No ODK or ROBOT toolchain, and no Java.** This repository does not build the municipal heat
+  planning ontology (MHPO) — it consumes a pinned, vendored term list. See `mhpkg/mhpo/README.md`.
+  The extractor there is deliberately standard-library only and needs none of the groups above.
+
+### Optional: a local triplestore
+
+**Not needed to generate or validate.** `pyshacl` reads files and `rdflib` holds graphs in memory,
+so the whole author-and-validate loop runs with no server at all. You need this only to exercise
+the *load* step against a real SPARQL store.
+
+```bash
+docker run --rm -p 3030:3030 -e ADMIN_PASSWORD=admin stain/jena-fuseki:5.1.0
+```
+
+The admin UI is then at <http://localhost:3030/>. The image and version match what the
+[`oeplatform`](https://github.com/OpenEnergyPlatform/oeplatform) development stack runs — so **if
+you already run that stack, you have a Fuseki on `localhost:3030` and do not need a second
+container.** Nothing in this repository is configured to point at either one; that is a deliberate
+gap, because where MHPKG data lives in Fuseki is still being decided.
 
 ### Traps worth knowing before your first pull request
 
@@ -56,8 +100,11 @@ needs a particular Python.
 4. **`mhpkg` is a provisional name.** Do not bake it into IRIs, prefixes or published URLs without
    a rename path.
 5. **Never hand-edit `uv.lock`.** Change `pyproject.toml`, run `uv lock`, and commit both in the
-   same commit. CI installs with `--frozen`, which *fails* rather than silently re-resolving when
-   the two disagree.
+   same commit. Pull-request checks run `uv lock --check`, which *fails* when the two disagree
+   rather than silently re-resolving. **Note for anyone who read this before 2026-08-07:** it used
+   to say CI enforced this with `--frozen`, and that was wrong — `--frozen` means "sync without
+   updating the lockfile", so it accepts a stale lock and passes. `--locked` and `uv lock --check`
+   are the flags that assert.
 6. **Do not relax the `mkdocs~=1.6` pin to allow 2.0.** The reason is documented on the
    [tech stack page](docs/tech-stack.md) and it is not a stylistic preference.
 

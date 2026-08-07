@@ -7,8 +7,13 @@ name: gh-pages
 # silently never fires; that bug is live in municipal-heat-planning-ontology today.
 #
 # NOTE: this repository uses uv rather than a requirements file, unlike the rest of the
-# Open Energy Family. Dependencies live in pyproject.toml's `docs` group and are locked
-# in uv.lock, so CI installs exactly what a developer has locally.
+# Open Energy Family. Dependencies live in pyproject.toml's dependency groups and are
+# locked in uv.lock, so CI installs exactly what a developer has locally. This workflow
+# needs only the `docs` group; `schema` and `graph` are for graph work and are not
+# installed here.
+#
+# NOTE: this workflow deploys and does not run on pull requests. Pull-request checks
+# live in checks.yml.
 on:
   push:
     branches:
@@ -30,10 +35,15 @@ jobs:
           enable-cache: true
 
       # Installs the locked docs dependencies, and the Python pinned by .python-version.
-      # --frozen fails if uv.lock is out of date with pyproject.toml, rather than silently
-      # re-resolving — so CI cannot drift from the committed lockfile.
+      # --locked FAILS if uv.lock is out of date with pyproject.toml, rather than silently
+      # re-resolving — so the deploy cannot drift from the committed lockfile.
+      #
+      # ⚠️ This was `--frozen` until 2026-08-07 and that was a real hole, not a style
+      # choice: `--frozen` means "sync without updating the lockfile", so it ACCEPTS a
+      # stale lock and exits 0. Verified by regenerating neither lock nor cache and
+      # watching it pass. Do not change it back.
       - name: Install documentation dependencies
-        run: uv sync --group docs --frozen
+        run: uv sync --group docs --locked
 
       # mkdocs.yml sets strict: true plus anchor validation, so a broken link or a bad
       # #anchor fails here rather than shipping.

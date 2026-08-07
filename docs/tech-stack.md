@@ -67,9 +67,25 @@ deliberately in **one** place rather than copied here — two copies of setup in
 within months. That page also lists the traps, including the fact that the dev server does not
 serve at `/`.
 
-CI uses `uv sync --group docs --frozen`, where `--frozen` **fails** if `uv.lock` is out of step
-with `pyproject.toml` rather than silently re-resolving — so the build cannot drift from the
-committed lockfile.
+There are three groups: **`docs`** (the documentation build), **`schema`** (LinkML, which generates
+the SHACL shapes) and **`graph`** (`pyshacl` and `rdflib`). `schema` and `graph` are separate
+because `linkml` accounts for 88 of the 95 packages they resolve to between them, and a job that
+only validates has no reason to install a generator.
+
+Pull-request checks run `uv lock --check`, which **fails** if `uv.lock` is out of step with
+`pyproject.toml`, then install every group and build the documentation with `--strict`. The deploy
+workflow installs with `--locked`, which fails the same way.
+
+!!! warning "`--frozen` does not assert anything — corrected 2026-08-07"
+
+    This page and `CONTRIBUTING.md` both used to state that CI enforced the lockfile with
+    `--frozen`. That was **wrong**, and the guarantee it described did not exist: `--frozen` means
+    *"sync without updating the lockfile"*, so it accepts a stale lock and exits 0. Verified by
+    running `uv sync --group docs --frozen` against a `pyproject.toml` carrying a dependency group
+    absent from `uv.lock` — it passed. The flags that actually assert are `--locked` and
+    `uv lock --check`, and both are now in use. Compounding it, the deploy workflow does not run on
+    pull requests at all, so nothing checked anything before merge; that is what `checks.yml` is
+    for.
 
 !!! note "This diverges from the rest of the Open Energy Family"
 
@@ -80,24 +96,31 @@ committed lockfile.
 
 !!! warning "The archived thesis scripts are still not reproducible"
 
-    Only the documentation toolchain is managed. `oekg/archive/madbkr_ba/scripts/` was written
-    against unrecorded versions of `rdflib` and `owlready2`, needs a Java toolchain for
-    `sync_reasoner()`, and one script raises `TypeError` on every invocation. **It is closed
-    work**; adopting uv does not resurrect it, and the archive makes no reproducibility claim.
+    `oekg/archive/madbkr_ba/scripts/` was written against unrecorded versions of `rdflib` and
+    `owlready2`, needs a Java toolchain for `sync_reasoner()`, and one script raises `TypeError` on
+    every invocation. **It is closed work**; the archive makes no reproducibility claim. The
+    `graph` group now locks an `rdflib` — but it locks it for *new* work, not for these scripts,
+    and it does not lock `owlready2` or provide Java. Nothing here resurrects them.
 
 ## What is still open
 
-These are the decisions that have **not** been made. They are being worked as a separate effort,
-because they are model-design questions rather than repository-structure ones.
+Model-design questions rather than repository-structure ones, worked as a separate effort. The
+first of them has since been **decided** and is kept here, marked as such, so that anyone who read
+the old text sees what changed rather than finding the section quietly gone.
 
 ### The model source of truth
 
-**Undecided.** The intended direction is **SHACL-shapes-first**: define the shapes, validate
-against them, and generate whatever else is needed from them — so that the model has one
-authoritative definition and validation is guaranteed rather than hoped for.
-[LinkML](https://linkml.io/) is under consideration as the authoring layer to generate from.
+**Decided** (2026-08-07), and no longer "under consideration". [LinkML](https://linkml.io/) is the
+authoring layer: one schema definition generates the SHACL shapes that validate the data. LinkML
+**never mints domain terms** — every class and slot points at an IRI owned by the
+[municipal heat planning ontology](https://github.com/OpenEnergyPlatform/municipal-heat-planning-ontology)
+(MHPO) or by OEO — and OWL generation stays off, so it never competes with MHPO as a source of
+terms.
 
-Neither is settled, and **nothing in this repository currently implements either.**
+The toolchain for this is now installed and locked, in the `schema` and `graph` groups above.
+**The schema itself does not exist yet**, so nothing in this repository generates shapes today —
+`gen-shacl` works but has nothing to point at. Authoring it is the next step, and it is being
+worked as a separate effort.
 
 ### What validates what
 

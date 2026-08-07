@@ -19,6 +19,32 @@ docs = [
     "mdx-truly-sane-lists", # better list handling when prettier/pre-commit formats markdown
 ]
 
+# Authoring the data shape and generating artifacts from it. LinkML is the
+# authoring layer: it never mints domain terms — every class and slot points at
+# an MHPO or OEO IRI — and `gen-owl` stays off, so it never competes with MHPO.
+#
+# Split from `graph` on purpose: `linkml` is 88 of the 95 packages here, and a
+# job that only *validates* has no reason to install a generator.
+schema = ["linkml"] # provides gen-shacl, gen-project, gen-json-schema, …
+
+# Validating data against the generated shapes, and manipulating graphs.
+#
+# `rdflib` is declared rather than inherited from pyshacl because graph-handling
+# code here will import it directly, and a direct import should be a declared
+# dependency. Nothing imports it yet — this group is installed ahead of the
+# code that uses it, which is the one place on this repo where that was allowed.
+# `linkml-runtime` is deliberately NOT declared: `linkml` provides it, and
+# nothing imports it directly.
+graph = ["pyshacl", "rdflib"]
+
+# No version bounds on the three above, unlike `mkdocs~=1.6`. The committed
+# uv.lock is the pin, and CI asserts it with `uv lock --check`; a bound here
+# would be an upgrade policy invented before any breakage was observed. The
+# mkdocs pin exists because MkDocs 2.0 is a known break — that is what earns a
+# specifier. If LinkML generator output turns out to shift across minors, the
+# ticket that will notice is the generated-artifacts contract, and the bound
+# belongs there.
+
 [tool.uv]
 # Not a package: there is nothing here to build, install or publish. This tells uv
 # to manage the environment without trying to build the project itself.

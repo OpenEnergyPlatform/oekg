@@ -1,0 +1,46 @@
+name: checks
+
+# Pull-request checks. This workflow exists because gh-pages.yml does NOT run on
+# pull requests — it fires only on push to `production`. Before this file, a
+# stale uv.lock or a broken `#anchor` was discovered when the *deploy* failed,
+# which is after merge. Both discoveries now happen at review time.
+#
+# This deliberately does NOT validate any graph data. There is no SHACL
+# validation job yet and adding one is a separate, tracked decision.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      # Asserts the committed lockfile is current, without installing anything.
+      #
+      # ⚠️ Read this before "simplifying" it back to --frozen. `--frozen` does
+      # NOT assert anything: it means "sync without updating the lockfile", so
+      # it happily accepts a stale one and exits 0. Verified 2026-08-07 —
+      # `uv sync --group docs --frozen` succeeded against a pyproject.toml
+      # carrying a whole dependency group that was absent from uv.lock.
+      # `--locked` and `uv lock --check` are the flags that actually assert.
+      - name: Assert uv.lock is current
+        run: uv lock --check
+
+      # Every group, not just docs: a resolution that is broken on a clean
+      # runner should fail here rather than on a contributor's first sync.
+      - name: Install all dependency groups
+        run: uv sync --group docs --group schema --group graph --locked
+
+      # Exactly the command CONTRIBUTING tells contributors to run before
+      # pushing, and what `mkdocs gh-deploy` does on production. mkdocs.yml sets
+      # strict: true plus anchor validation, so a broken link fails here.
+      - name: Build the documentation
+        run: uv run mkdocs build --strict
