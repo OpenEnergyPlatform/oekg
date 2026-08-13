@@ -32,6 +32,10 @@ Here is a template for new release sections:
 - `mhpkg/` for the Municipal Heat Planning KG — provisional name [[#51](https://github.com/OpenEnergyPlatform/oekg/pull/51)]
 - Dependency management with uv: `pyproject.toml`, `uv.lock`, `.python-version` [[#51](https://github.com/OpenEnergyPlatform/oekg/pull/51)]
 - Contributor setup instructions in CONTRIBUTING.md
+- `mhpkg/schema/`: first cut of the MHPKG data shape — a LinkML schema for one slice (a municipal
+  heat plan, its target scenario and one final energy consumption value), the SHACL shapes generated
+  from it, a hand-written companion file enforcing the IRI policy, and a passing plus a deliberately
+  failing example instance [[#54](https://github.com/OpenEnergyPlatform/oekg/pull/54)]
 
 ### Changed
 - Repository restructured around two knowledge graphs; OEKG files grouped by status
