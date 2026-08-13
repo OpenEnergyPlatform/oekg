@@ -117,21 +117,47 @@ authoring layer: one schema definition generates the SHACL shapes that validate 
 (MHPO) or by OEO — and OWL generation stays off, so it never competes with MHPO as a source of
 terms.
 
-The toolchain for this is now installed and locked, in the `schema` and `graph` groups above.
-**The schema itself does not exist yet**, so nothing in this repository generates shapes today —
-`gen-shacl` works but has nothing to point at. Authoring it is the next step, and it is being
-worked as a separate effort.
+✅ **A first slice of that schema now exists** — `mhpkg/schema/`, covering a municipal heat plan, its
+target scenario and one final energy consumption value, with the SHACL generated from it and both a
+conformant and a deliberately failing example. It was built to test the decision against a real
+OBO-style ontology rather than to cover the domain, and the decision held: `gen-shacl` puts each
+`class_uri` straight into `sh:targetClass`, so the generated shapes constrain MHPO and OEO IRIs
+directly.
+
+Two limits found while building it are worth knowing before relying on the approach, and both are
+documented in `mhpkg/schema/README.md`:
+
+- **The IRI policy cannot be generated.** SHACL constrains a node's own IRI with `sh:pattern` at
+  *node* level and LinkML cannot emit that, so one hand-written shapes file sits alongside the
+  generated one. "Everything is generated" is not achievable today.
+- **Generated SHACL is not byte-stable**, because every `sh:property` is a blank node. A drift check
+  has to compare graphs, not bytes — a `diff` would fail on every run while nothing was wrong.
 
 ### What validates what
 
-⚠️ **No SHACL file in this repository validates any live graph.** Every one of them was authored
-against a dump:
+⚠️ **No SHACL file in this repository validates a live graph**, and that is still true — the new
+shapes validate example files, not the store.
 
-- `oekg/shapes/` — the most developed shapes available, written against the thesis-reworked graph
+Authored against a dump, and untouched:
+
+- `oekg/shapes/` — the most developed OEKG shapes, written against the thesis-reworked graph
 - `oekg/eval/oekg_shacl.txt` — evaluation shapes for the same era
 - the archive's own copies — thesis provenance
 
-So `pyshacl` "working" does not mean there is a validation pipeline. There is not one yet.
+⚠️ Those OEKG shapes also **cannot match the live graph even in principle**: they declare the OEO
+prefix as `http://openenergy-platform.org/ontology/oeo/` and use readable property names like
+`oeo:covers_energy_carrier` that OEO does not define. The namespace resolves — it redirects — but an
+IRI is *identity, not an address*, so every term in them is a different term from the one OEO mints.
+See the namespace-migration note below.
+
+Authored against the schema, and exercised on every run of `mhpkg/schema/validate.py`:
+
+- `mhpkg/schema/generated/` — generated from the LinkML schema
+- `mhpkg/schema/mhpkg_iri_policy.shacl.ttl` — hand-written, enforcing the IRI policy
+
+So `pyshacl` "working" now means example data is checked in both directions — the conformant
+instance passes and the negative control is asserted to fail for each of its reasons. It does **not**
+yet mean there is a validation pipeline, or a CI job.
 
 ### Namespace migration
 
@@ -154,22 +180,24 @@ separate instance. Access, backup and governance ride on the answer.
 **Undecided.** Which extracted heat-plan data belongs in the graph as triples, and which is better
 served as a table on the Open Energy Platform. See [Workflow](workflow.md#not-everything-belongs-in-a-graph).
 
-## The modelling and build workflow — planned, not built
+## The modelling and build workflow — the first steps built
 
-!!! danger "This diagram describes an intention, not reality"
+!!! warning "The left of this diagram is real; the right is still intention"
 
-    **None of the pipeline below exists today.** It is drawn to make the open decisions visible and
-    to give the shapes-first work a starting point to argue with — not to record an agreed design.
-    The boxes marked *undecided* are the actual open questions listed above.
+    **The authoring end now exists** — a LinkML schema, the SHACL generated from it, and validation
+    of example data in both directions. Solid boxes below are built and exercised.
 
-    Do not treat this as the agreed pipeline. When a decision is made, the marker in this diagram
-    should be replaced by the answer.
+    **Nothing has been loaded into a triple store yet**, and there is no CI job. Dashed boxes are
+    not built. The boxes still marked *undecided* are the open questions listed above.
+
+    When a decision is made, the marker here should be replaced by the answer rather than left to
+    rot.
 
 ```mermaid
 flowchart LR
-    SRC["Model source of truth<br/>SHACL-first or LinkML<br/>UNDECIDED"]
+    SRC["Model source of truth<br/>LinkML — DECIDED"]
     GEN["Generated artifacts<br/>what exactly: UNDECIDED"]
-    SHAPES["SHACL shapes"]
+    SHAPES["SHACL shapes<br/>generated + hand-written IRI policy"]
     DATA["Graph data"]
     VAL["Validation<br/>pyshacl"]
     LOAD["Load into Fuseki"]
@@ -180,11 +208,18 @@ flowchart LR
     DATA --> VAL
     VAL -- passes --> LOAD
     VAL -- fails --> SRC
+
+    classDef built stroke-width:2px
+    classDef todo stroke-dasharray: 5 5
+    class SRC,SHAPES,VAL built
+    class GEN,DATA,LOAD todo
 ```
 
 The shape of it is not controversial — author a model, generate from it, validate data against it,
-load what passes. What is undecided is **what the leftmost box actually is**, and that determines
-everything downstream.
+load what passes. **The leftmost box is now answered**: LinkML authors the model, MHPO owns the
+terms. What remains open is *which* generated artifacts are authoritative and how they are published
+— and one finding from building the schema constrains that answer already, because the IRI policy
+has to be hand-written, so the contract cannot simply say "everything is generated".
 
 ## Documentation and CI
 

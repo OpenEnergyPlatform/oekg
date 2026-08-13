@@ -120,8 +120,11 @@ where MHPKG data lives in Fuseki — which datasets, which named graphs — is s
    `uv run mkdocs build --strict` before pushing rather than discovering it in a red pipeline.
 3. **The default branch is `production`** — not `main`, not `develop`. See the note under
    *Permanent branches* below.
-4. **`mhpkg` is a provisional name.** Do not bake it into IRIs, prefixes or published URLs without
-   a rename path.
+4. **`mhpkg` is settled, not provisional.** **Note for anyone who read this before 2026-08-13:** it
+   used to warn against baking `mhpkg` into IRIs, prefixes or published URLs. That is superseded —
+   the name is fixed, instance data lives under `https://openenergyplatform.org/id/mhpkg/` and named
+   graphs under `https://openenergyplatform.org/graph/mhpkg/`, and `mhpkg/schema/` now depends on
+   exactly those namespaces. What *is* still provisional is the internal layout of `mhpkg/`.
 5. **Never hand-edit `uv.lock`.** Change `pyproject.toml`, run `uv lock`, and commit both in the
    same commit. Pull-request checks run `uv lock --check`, which *fails* when the two disagree
    rather than silently re-resolving. **Note for anyone who read this before 2026-08-07:** it used
