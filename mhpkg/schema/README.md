@@ -31,7 +31,8 @@ Both were decided before this schema existed and neither is reopenable here.
 | [`generated/mhpkg_target_scenario.shacl.ttl`](generated/) | **generated.** Do not hand-edit |
 | [`mhpkg_iri_policy.shacl.ttl`](mhpkg_iri_policy.shacl.ttl) | **hand-written.** The IRI policy as shapes — LinkML cannot express it |
 | [`mint_slice.py`](mint_slice.py) | mints the example IRIs, so no UUID in this directory is hand-typed |
-| [`validate.py`](validate.py) | validates both examples and **asserts the negative control catches every case** |
+| [`validate.py`](validate.py) | validates both examples and **asserts the negative control catches every case**. Needs `graph` only |
+| [`check_generated.py`](check_generated.py) | checks the committed SHACL still matches the schema. Needs `schema` |
 | [`examples/kassel_valid.ttl`](examples/kassel_valid.ttl) | a conformant instance |
 | [`examples/kassel_invalid.ttl`](examples/kassel_invalid.ttl) | the negative control — every node wrong in a different way |
 
@@ -46,11 +47,29 @@ uv run gen-shacl --closed mhpkg/schema/mhpkg_target_scenario.yaml \
 
 uv run python mhpkg/schema/mint_slice.py   # print the slice's IRIs and how they are derived
 uv run python mhpkg/schema/validate.py     # validate; exit 0 only if the negative control holds
+
+# check the committed SHACL still matches the schema (needs the `schema` group — it regenerates)
+uv run --group schema python mhpkg/schema/check_generated.py
 ```
 
 Verified with linkml 1.11.1, pyshacl 0.40.1, rdflib 7.6.0, against MHPO at pin
 [`34776b6`](../mhpo/pin.txt) and OEO 2.13.0.
 
+> 🔴 **Do not check the generated file with a byte diff.** `gen-shacl` output is **not byte-stable
+> across runs**: every `sh:property` is a blank node and rdflib mints fresh blank-node ids per
+> process, so the property blocks come out in a different order each time. Measured — three
+> consecutive runs of the same unchanged schema produced three different SHA-256 sums, and
+> `PYTHONHASHSEED=0` does **not** fix it (three more runs, three more sums), so this is blank-node id
+> generation rather than dict ordering.
+>
+> A `diff`-based drift check — the obvious design, and the one `mhpkg/mhpo/extract_terms.py --check`
+> uses for `terms.csv` — would therefore fail on **every** run while nothing was wrong, which is
+> worse than no check at all. `check_generated.py` compares **graph-isomorphically** instead
+> (`rdflib.compare.to_isomorphic`), and reports the concrete constraint that differs rather than the
+> raw set difference, which after canonicalisation names nothing a human can act on.
+>
+> It also fails when the generator **logs an error while succeeding** — see the exit-0 trap below.
+>
 > ⚠️ **Do not validate with two `-s` flags.** `pyshacl` accepts repeated `-s` and **silently uses
 > only the last one** — the earlier shapes graph is discarded with no warning. This was hit while
 > building the slice: `pyshacl -s generated/… -s mhpkg_iri_policy.… kassel_valid.ttl` reported
