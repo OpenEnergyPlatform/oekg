@@ -1,0 +1,507 @@
+id: https://openenergyplatform.org/schema/mhpkg/target-scenario
+name: mhpkg_target_scenario
+title: MHPKG — municipal heat plan and one target-scenario indicator
+description: >-
+  First cut of the MHPKG data shape, covering one slice of the domain: a municipal heat plan,
+  the target scenario it contains, and one final energy consumption value inside that scenario.
+
+  This schema AUTHORS THE DATA SHAPE ONLY. It mints no domain terms. Every class carries a
+  `class_uri` and every slot a `slot_uri` pointing at a term that MHPO or OEO already declares,
+  and `gen-owl` is never run against it — MHPO owns the OWL rendering of this domain.
+
+  Slots that the domain needs but no cited ontology provides are NOT invented here. They appear
+  as commented-out blocks marked TERM REQUEST, so the hole is visible in the artifact rather
+  than hidden in a document. See `README.md` for the list and `../mhpo/terms.csv` for what may
+  be cited at the current pin.
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  # --- MHPKG's own namespaces. Fixed by the IRI and namespace policy (MH-02). ---
+  # `mhpkg` names THINGS; `mhpkg_graph` names SETS OF STATEMENTS about them. Instance data
+  # never appears under a `/ontology/` path — an individual is not an ontology term.
+  mhpkg: https://openenergyplatform.org/id/mhpkg/
+  mhpkg_graph: https://openenergyplatform.org/graph/mhpkg/
+  mhpkg_schema: https://openenergyplatform.org/schema/mhpkg/
+
+  # --- The T-Box. Nothing below this line is defined by this repository. ---
+  mhpo: https://purl.org/mhpo/ontology/
+  oeo: https://openenergyplatform.org/ontology/oeo/
+  obo: http://purl.obolibrary.org/obo/
+  cco: https://www.commoncoreontologies.org/
+
+  # --- Infrastructure vocabulary. Not domain terms; carries no modelling commitment. ---
+  linkml: https://w3id.org/linkml/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+default_prefix: mhpkg_schema
+default_range: string
+default_curi_maps:
+  - semweb_context
+
+imports:
+  - linkml:types
+
+# The MHPO commit these MHPO_* IRIs were checked against. Mirrors `../mhpo/pin.txt`; MHPO has no
+# releases and no tags, so a commit SHA is the only pin available.
+source: https://github.com/OpenEnergyPlatform/municipal-heat-planning-ontology/tree/34776b699d10c936da05b353b1001548bf92e4b2
+
+# =====================================================================================
+# Types — deliberately absent, and this is a finding rather than an omission
+# =====================================================================================
+#
+# The first draft of this schema declared five `uriorcurie` types, one per IRI tier, each
+# carrying the IRI-policy regex as a type-level `pattern`. That is the natural LinkML way to
+# express "instance IRIs look like this", and it is the machine-readable half of the IRI policy
+# that MH-02 explicitly delegated here.
+#
+# It does not survive `gen-shacl` (linkml 1.11.1). Measured:
+#
+#   * a type-level `pattern` is DROPPED — no `sh:pattern` is emitted, and with `uri:` set there
+#     is no diagnostic at all. Without `uri:` there is one, `ERROR: No URI for type X` — logged,
+#     and the process still EXITS 0. Same class of trap as `uv sync --frozen` in MH-04: a check
+#     that reports failure through a channel nobody reads.
+#   * a slot-level `pattern` IS emitted, for both `uriorcurie` and `string` ranges.
+#   * on the `identifier` slot, a slot-level pattern is emitted — but attached to `sh:path
+#     mhpkg_schema:id`, an invented property that appears in no instance triple. The constraint
+#     is well-formed and can never fire.
+#
+# So the IRI policy is NOT expressible through this generator: SHACL constrains a focus node's
+# own IRI with `sh:pattern` at NODE level, and LinkML has no way to emit that. The policy is
+# enforced instead by a hand-written companion file, `mhpkg_iri_policy.shacl.ttl`, which is
+# verified to reject both a missing leading zero and an umlaut-stripped name.
+#
+# That companion file is the first thing in this repository that must be hand-written alongside
+# generated output, so it is direct input to MH-07: the generated-artifacts contract cannot say
+# "everything is generated".
+
+# =====================================================================================
+# Slots
+# =====================================================================================
+#
+# Every slot_uri below is a term MHPO or OEO already declares. Where the declared domain of a
+# term does not match the subject it is used on here, that is called out on the slot — those
+# are the mismatches this prototype exists to surface, not defects to paper over.
+
+slots:
+  # --- Identity ---------------------------------------------------------------------
+
+  id:
+    identifier: true
+    range: uriorcurie
+    description: The instance IRI, minted by the three-tier pure function of the IRI policy.
+
+  # --- Labels -----------------------------------------------------------------------
+
+  label:
+    slot_uri: rdfs:label
+    range: string
+    required: true
+    description: >-
+      The human-readable name, in German. Umlauts live here and never in an IRI — the IRI
+      policy keeps identity ASCII-only and puts the German in the label, where it is
+      unambiguous and universally supported.
+
+  # --- Structure of the plan --------------------------------------------------------
+
+  has_part:
+    slot_uri: obo:BFO_0000051
+    description: >-
+      BFO `has part`. MHPO declares this object property and already asserts
+      `municipal heat plan SubClassOf has part some target scenario`, so this slot restates an
+      axiom the ontology holds rather than inventing a relation.
+
+  has_quantity_value:
+    slot_uri: oeo:OEO_00140002
+    description: >-
+      OEO `has quantity value` — "a relation between an entity and a quantity value". Declares no
+      domain, so using it on a target scenario adds no unintended inference.
+
+      Note that MHPO asserts nothing here. Its `target scenario` definition says the scenario
+      "uses indicators to describe" the goal, and its comment enumerates the seven WPG Annex 2 III
+      indicators, but no axiom connects a scenario to a value. This slot is the first place the
+      data shape goes beyond what the T-Box states.
+
+  # --- The quantity value pattern ---------------------------------------------------
+  #
+  # OEO's `quantity value` is itself a reification: the number and the unit hang off a value node
+  # rather than off the thing measured. That is the same move LinkML would make anyway, which is
+  # why this half of the slice maps cleanly.
+
+  has_number:
+    slot_uri: oeo:OEO_00140178
+    range: float
+    required: true
+    description: >-
+      OEO `has number`, a datatype property whose declared domain is `quantity value`. Exact fit.
+
+  has_unit:
+    slot_uri: oeo:OEO_00040010
+    range: EnergyUnitEnum
+    required: true
+    description: >-
+      OEO `has unit`, domain `quantity value`, range `unit`. Exact fit.
+
+  covers_energy_carrier:
+    slot_uri: oeo:OEO_00000523
+    range: EnergyCarrierEnum
+    required: true
+    description: >-
+      OEO `covers energy carrier`.
+
+      MISMATCH — its declared domain is `study` (oeo:OEO_00020011), and the subject here is a
+      consumption value, not a study. OWL domains are inferential rather than constraining, so a
+      reasoner will not complain; it will silently infer that every MHPKG consumption value IS a
+      study. SHACL cannot see this at all. Recorded as a term request rather than worked around.
+
+  covers_sector:
+    slot_uri: oeo:OEO_00000505
+    range: SectorEnum
+    required: true
+    description: >-
+      OEO `covers sector`. Same mismatch as `covers_energy_carrier` — declared domain `study`.
+      WPG Annex 2 III.1 requires the final energy consumption differentiated by final energy
+      sector, so the slot is unavoidable; only the relation is borrowed.
+
+  has_scenario_year_value:
+    slot_uri: oeo:OEO_00020440
+    range: integer
+    required: true
+    minimum_value: 2024
+    maximum_value: 2100
+    description: >-
+      The target year the value is stated for. WPG Annex 2 III requires the indicators for 2030,
+      2035, 2040 and 2045 unless otherwise specified.
+
+      MISMATCH, and the worst of the three — OEO `has scenario year value` declares domain
+      `scenario factsheet` (oeo:OEO_00000365) AND range `xsd:dateTime`. This slot uses it on a
+      consumption value with an `xsd:integer`, so both ends are wrong. A year is a temporal
+      region, and BFO has `one-dimensional temporal region`; what is missing is a relation from a
+      value to it.
+
+  has_aggregation_type:
+    slot_uri: oeo:OEO_00390023
+    range: AggregationTypeEnum
+    required: true
+    description: >-
+      OEO `has aggregation type`. Declares no domain, so no unintended inference.
+
+  # --- Provenance and the publishing body -------------------------------------------
+
+  has_publication_date:
+    slot_uri: oeo:OEO_00390096
+    range: date
+    required: true
+    description: >-
+      The plan's publication date. This is not free metadata — the IRI policy makes it the Tier-2
+      discriminator, so it is part of the plan's identity and a shape that lets it drift lets the
+      IRI drift with it.
+
+      NEAR MISS — OEO declares domain `report` (obo:IAO_0000088) and range `xsd:dateTime`. MHPO
+      puts `municipal heat plan` under CCO `plan specification`, not under `report`, and a date is
+      not a dateTime. Closer than the three above, but still borrowed.
+
+  has_organisation:
+    slot_uri: oeo:OEO_00000510
+    description: >-
+      OEO `has organisation` — "a relation that holds between an information content entity and
+      the organisation in which it was created". Domain fits: MHPO's `municipal heat plan` is an
+      information content entity by way of CCO.
+
+      Its declared range is not `organisation` but `has role some organisation role`, i.e. OEO
+      reifies the organisation's involvement into a role. This slot deliberately points at the
+      organisation directly and does not model the role, because which role a body plays —
+      commissioning authority versus contracted planner — has no term yet. See TERM REQUEST 3.
+
+# =====================================================================================
+# TERM REQUESTS — slots this slice needs and no cited ontology provides
+# =====================================================================================
+#
+# Left commented out on purpose. The guardrail is that LinkML never mints a domain term, so a
+# missing term is an MHPO term request and not a new LinkML element. Writing them here, in the
+# position they would occupy, keeps the hole visible in the artifact.
+#
+#   1. WHICH AREA A PLAN IS FOR.
+#      MHPO has `municipality area` (MHPO_00020017) and `heat plan area` (MHPO_00020018), and
+#      relates areas to each other with BFO `part of`. Nothing relates a *plan* to the area it
+#      plans. Without it a heat plan cannot say where it applies.
+#
+#      # plans_area:
+#      #   slot_uri: mhpo:MHPO_TBD
+#      #   range: MunicipalityArea
+#      #   required: true
+#
+#   2. THE AGS OF A MUNICIPALITY AREA, AS DATA.
+#      The IRI carries it — Tier 1 is `municipality/AGS_06611000` — so it is recoverable by
+#      string surgery on the identifier, which is why this prototype does not block on it. But a
+#      key that exists only inside an IRI cannot be queried, typed or constrained as a key.
+#      OEO's `unique individual identifier` (OEO_00010037) is an ANNOTATION property, so it is
+#      not usable as a data slot.
+#
+#      # ags:
+#      #   slot_uri: mhpo:MHPO_TBD
+#      #   range: string
+#      #   pattern: '^\d{8}$'
+#
+#   3. THE ROLE A BODY PLAYS TOWARDS A PLAN.
+#      The slice has two organisations doing two different things: Stadt Kassel commissions the
+#      plan as the planning authority, and an engineering office produces it. `has_organisation`
+#      collapses them into one relation. OEO has `organisation role` (OEO_00000315) as a parent,
+#      but no `planning authority role` or `contracted planner role`, and WPG §12 makes the
+#      planning authority a statutory party — this is a real distinction, not a nicety.
+#
+#   4. A RELATION FROM A VALUE TO A TEMPORAL REGION, AND TO AN ENERGY CARRIER AND SECTOR.
+#      Covered above as mismatches rather than gaps, because a borrowable term exists. They
+#      belong on the same term request: what is wanted is `covers energy carrier` / `covers
+#      sector` with domains widened past `study`, or sibling relations for quantity values.
+
+# =====================================================================================
+# Enums — the controlled vocabularies, every value an OEO term
+# =====================================================================================
+#
+# This is the best result of the prototype and the pattern the rest of the schema should follow.
+#
+# THE PROBLEM these solve. OEO models units, energy carriers and sectors as CLASSES, not as
+# individuals — `natural gas` (OEO_00000292) is a class of material entity, whose instances are
+# particular parcels of gas. But an aggregate heat-plan statistic is about the carrier TYPE, and
+# there is no parcel of gas to point at. Pointing an instance-level property at a class IRI is
+# punning, and it is unavoidable for statistical data.
+#
+# PRECEDENT, not invention: `oekg/shapes/oekg_shapes.ttl` already does exactly this. Its
+# `covers_energy_carrier` property shape is an `sh:in` enumerating 120-odd OEO class IRIs,
+# `OEO_00000292` among them. So punning is the established pattern in this family and its own
+# shapes bless it. This slice follows it rather than inventing a third way.
+#
+#   (⚠️ Those OEKG shapes are also broken in a way worth knowing about but NOT worth fixing here
+#   — the predecessor map ruled OEKG changes out of scope. They declare the OEO prefix as
+#   `http://openenergy-platform.org/ontology/oeo/` — hyphenated, http — and use readable property
+#   names like `oeo:covers_energy_carrier` that OEO does not define.
+#
+#   Be precise about the namespace, because a reader who checks will find it resolves. It does:
+#   `http://openenergy-platform.org/ontology/oeo/OEO_00050016` returns 200, redirecting to the
+#   un-hyphenated host. But IRIs are IDENTITY, not addresses. OEO's own file declares
+#   `xmlns:oeo="https://openenergyplatform.org/ontology/oeo/"` and mints every term under it, so
+#   the hyphenated string is a DIFFERENT term that merely serves the same web page. Resolving is
+#   not matching, and this is the mechanical reason no SHACL file in this repository validates any
+#   live graph.
+#
+#   `linkml-lint` will warn that this schema's `oeo` prefix is not canonical and should be the
+#   hyphenated http form. That warning is a stale registry entry, not a defect here: the prefix
+#   below is the one OEO actually mints its terms under. The warning is accepted, not silenced.)
+#
+# WHY AN ENUM AND NOT `range: uriorcurie`. A bare `uriorcurie` generates `sh:nodeKind sh:IRI`,
+# which accepts any IRI at all — including a typo, or an MHPO area class where a carrier belongs.
+# An enum whose every `meaning:` is an OEO IRI generates `sh:in`, so the value set is enforced.
+# It mints nothing: the permissible-value keys are local labels for the RAG side's payload, and
+# the IRI is always OEO's.
+#
+# These lists are DELIBERATELY SHORT — the carriers, sectors and units this one slice needs.
+# Completing them is not this ticket's work, and a long list assembled without a heat plan in
+# front of it would be guesswork.
+
+enums:
+  EnergyCarrierEnum:
+    description: >-
+      Energy carriers, per WPG Annex 2 III.1 ("by energy carrier"). All OEO classes; every IRI
+      below was resolved against OEO 2.13.0 and its label read, not guessed.
+
+      🔴 THE MEMBERSHIP OF THIS LIST CANNOT BE CHECKED BY ANY TOOL IN THIS REPOSITORY, and that
+      is the sharpest finding of the prototype after the IRI-policy gap.
+
+      OEO's `energy carrier` (OEO_00020039) has exactly four asserted subclasses, and all four are
+      abstract: renewable, primary, secondary and final energy carrier. `natural gas` is a
+      subclass of `gas mixture`, not of `energy carrier`. It qualifies only through the
+      equivalence axiom `energy carrier ≡ material entity and has disposition some energy carrier
+      disposition` — i.e. BY INFERENCE. The OEKG's own shape file says so out loud: its `sh:in`
+      list is commented "energy carrier subclassed and as inferred".
+
+      So establishing that a candidate IRI really is an energy carrier needs a reasoner. This
+      repository has `pyshacl` and `rdflib`, neither of which reasons, and MH-01 deliberately kept
+      ROBOT, ODK and Docker out of the contributor setup. The list is therefore a hand-curated
+      snapshot that can drift from OEO silently — the same drift problem MH-01 solved for MHPO
+      terms by vendoring a generated list and checking it in CI, recurring one level down. Direct
+      input to MH-07 and MH-12.
+
+      ⚠️ Two IRIs were nearly wrong here and were caught only by resolving them. `OEO_00020196`,
+      which appears in the OEKG's carrier enumeration, is `fissile material entity` — correct
+      there, but not the district heating it might be mistaken for. And `district heating`
+      (OEO_00000132) is NOT an energy carrier at all: OEO puts it under `grid-bound heating`, a
+      transfer process. OEO is right and the intuition was wrong — WPG Annex 2 III.3 asks for the
+      consumption "of district heating BY energy carrier", so district heating is the supply route
+      and the carrier is whatever fuels it. It is deliberately absent below.
+    permissible_values:
+      natural_gas:
+        meaning: oeo:OEO_00000292
+        description: Erdgas.
+      heating_oil:
+        meaning: oeo:OEO_00000211
+        description: Heizöl.
+      hydrogen:
+        meaning: oeo:OEO_00000220
+        description: Wasserstoff.
+      biomass:
+        meaning: oeo:OEO_00010214
+        description: Biomasse.
+      renewable_energy_carrier:
+        meaning: oeo:OEO_00020050
+        description: >-
+          Erneuerbarer Energieträger. A parent rather than a specific carrier, and the one entry
+          here that IS an asserted subclass of `energy carrier`. Present because heat plans
+          routinely report an aggregate renewable share with no breakdown.
+
+  SectorEnum:
+    description: >-
+      Final energy sectors, per WPG Annex 2 III.1 ("by final energy sector"). All OEO classes.
+
+      ⚠️ WPG's sector division is not OEO's. OEO carries several named divisions — German energy
+      balance, Eurostat, CRF — and picking one is a modelling decision this slice does not have
+      the evidence to make. These three are OEO's generic demand sectors, which is the closest
+      honest fit until a real heat plan's sector table has been read.
+    permissible_values:
+      household:
+        meaning: oeo:OEO_00000214
+        description: Haushalte.
+      industry:
+        meaning: oeo:OEO_00000227
+        description: Industrie.
+      energy_demand_sector:
+        meaning: oeo:OEO_00000128
+        description: The parent, for a figure reported without a sector breakdown.
+
+  EnergyUnitEnum:
+    description: >-
+      Units an energy figure may be stated in. WPG Annex 2 III.1 specifies kilowatt-hours per
+      year; MWh and GWh are what heat plans actually print.
+    permissible_values:
+      megawatt_hour:
+        meaning: oeo:OEO_00050008
+        description: MWh.
+      kilowatt_hour:
+        meaning: obo:UO_0000224
+        description: >-
+          kWh — the unit the statute names. Note the namespace: OEO mints MWh and GWh itself but
+          takes kWh from the Units Ontology, so this one enum spans two namespaces. A consumer
+          that assumed all units were `oeo:` would break on the statutory unit.
+      gigawatt_hour:
+        meaning: oeo:OEO_00050011
+        description: GWh.
+
+  AggregationTypeEnum:
+    description: >-
+      OEO's aggregation types. Unlike the three enums above these ARE named individuals in OEO,
+      so this one involves no punning.
+    permissible_values:
+      integral:
+        meaning: oeo:OEO_00140070
+        description: >-
+          What an annual consumption figure is — a quantity summed over the year, not a reading
+          taken at a moment.
+      arithmetic_mean:
+        meaning: oeo:OEO_00140071
+      instantaneous:
+        meaning: oeo:OEO_00140069
+      minimum:
+        meaning: oeo:OEO_00140072
+      maximum:
+        meaning: oeo:OEO_00140073
+
+# =====================================================================================
+# Classes
+# =====================================================================================
+
+classes:
+  MunicipalHeatPlan:
+    class_uri: mhpo:MHPO_00020003
+    description: >-
+      A municipal heat plan — Kommunale Wärmeplanung, WPG §23. MHPO puts it under CCO
+      `plan specification` and asserts that it has as parts an aggregated inventory analysis, an
+      aggregated potential analysis, a target scenario, an implementation measure and an
+      implementation strategy.
+
+      This slice models only the target scenario part. The other four are out of the ticket, not
+      out of the model.
+    slots:
+      - id
+      - label
+      - has_publication_date
+      - has_part
+      - has_organisation
+    slot_usage:
+      has_part:
+        range: TargetScenario
+        required: true
+        multivalued: false
+      has_organisation:
+        range: Organisation
+        required: true
+        multivalued: true
+
+  TargetScenario:
+    class_uri: mhpo:MHPO_00020007
+    description: >-
+      The target scenario — Zielszenario, WPG Annex 2 III. An objective specification that uses
+      indicators to describe how a heat supply from renewable energy or unavoidable waste heat is
+      to be achieved.
+    slots:
+      - id
+      - label
+      - has_quantity_value
+    slot_usage:
+      has_quantity_value:
+        range: FinalEnergyConsumptionValue
+        required: true
+        multivalued: true
+
+  FinalEnergyConsumptionValue:
+    class_uri: oeo:OEO_00050016
+    description: >-
+      A final energy consumption value — Endenergieverbrauch. OEO defines it as an energy
+      consumption value about energy delivered to and consumed by end users, and it is exactly
+      indicator 1 of WPG Annex 2 III.
+
+      Its identity is its coordinates and not its magnitude: the same plan, indicator, carrier,
+      year and aggregation always mint the same IRI, so a corrected figure updates this node.
+    slots:
+      - id
+      - has_number
+      - has_unit
+      - covers_energy_carrier
+      - covers_sector
+      - has_scenario_year_value
+      - has_aggregation_type
+    slot_usage:
+      has_number:
+        minimum_value: 0
+        description: >-
+          A consumption cannot be negative. This is the one constraint in the whole slice that
+          comes from the domain rather than from a term — and it is exactly the kind of thing the
+          rejected "generate SHACL from MHPO" route could never have produced, because OWL is
+          open-world and carries no such assertion.
+
+  MunicipalityArea:
+    class_uri: mhpo:MHPO_00020017
+    description: >-
+      A municipality area — Gemeindegebiet. MHPO puts it under OEO `region` and gives it a
+      `municipality area role`.
+
+      Present in the slice but UNREACHABLE from the plan: no cited term relates a plan to the area
+      it plans. See TERM REQUEST 1. Its AGS is carried by its IRI.
+    slots:
+      - id
+      - label
+    slot_usage:
+
+  Organisation:
+    class_uri: oeo:OEO_00030022
+    description: >-
+      An organisation. Used for both the planning authority and the contracted planner, because
+      no term distinguishes the two roles — see TERM REQUEST 3.
+
+      A municipality acting as planning authority is NOT a second entity: `Stadt Kassel, der
+      Bürgermeister` is the municipality in a role, and the IRI policy gives it the Tier-1
+      municipality IRI. Only bodies with no register key are minted here.
+    slots:
+      - id
+      - label
+    slot_usage:

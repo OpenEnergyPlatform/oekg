@@ -11,13 +11,15 @@ separately from, the OEKG**, which occupies [its own area](../oekg/) of this rep
 describes energy studies and scenarios. The two graphs share a repository, not a model. See the
 [root README](../README.md) for how the repository is laid out and why there is no `shared/`.
 
-## ⚠️ `mhpkg` is a provisional name
+## ✅ The name `mhpkg` is settled
 
-The directory name and the short name `mhpkg` are **provisional** and may change.
+It was provisional; it is now fixed, and it is **safe to bake in**. Instance data lives under
+`https://openenergyplatform.org/id/mhpkg/` and named graphs under
+`https://openenergyplatform.org/graph/mhpkg/`. No rename path is owed.
 
-**Do not bake `mhpkg` into anything expensive to change** — in particular not IRIs, not
-namespace prefixes, and not published URLs. If you need a prefix while working on the
-draft, use a clearly temporary one and keep it in a single place so a rename is one edit.
+> ⚠️ **If you read an earlier version of this file**, it warned against putting `mhpkg` into IRIs,
+> prefixes or published URLs. That warning is superseded — the schema in [`schema/`](schema/) now
+> depends on exactly those namespaces.
 
 ## What belongs in here
 
@@ -27,16 +29,24 @@ draft, use a clearly temporary one and keep it in a single place so a rename is 
 
 ## Current layout
 
-Only one directory exists, because there is only one thing to put anywhere:
+Three directories, each created when there was something to put in it:
 
 | Path | Contents |
 |---|---|
-| `mhpkg/model/mhpkg_model_first_draft.owl` | the first draft of the model — 350 lines of RDF/XML exported from [Termboard](https://termboard.com/): 21 `owl:Class`, 16 `owl:ObjectProperty`, no `owl:DatatypeProperty`, no `sh:NodeShape` |
+| [`schema/`](schema/) | **the data shape** — the LinkML schema, the SHACL generated from it, the hand-written IRI-policy shapes, and worked examples. Start here |
+| [`mhpo/`](mhpo/) | the pinned MHPO term list — which terms this graph may cite, and the commit they came from |
+| `model/mhpkg_model_first_draft.owl` | the original Termboard draft — 350 lines of RDF/XML, 21 `owl:Class`, 16 `owl:ObjectProperty`, no `owl:DatatypeProperty`, no `sh:NodeShape` |
 
-`model/` rather than `shapes/` because the draft is **OWL, not SHACL** — it contains zero
-`sh:NodeShape`, so the shapes-first intent is not yet reflected in it. The name is
-**provisional** and may be revised when the model source of truth is decided (see the open
-questions below).
+`model/` is named for its contents: that file is **OWL, not SHACL**. The shapes now live in
+[`schema/generated/`](schema/generated/) and are generated rather than hand-written.
+
+> ⚠️ **The Termboard draft is a thinking artifact and is never machine-consumed.** Beyond the
+> vendor base IRI and the `"Imported Document"` title, it declares everything as `owl:Class` —
+> values, units and individuals alike — and silently strips umlauts from IRI local names, so
+> `Kassel Wärme Ingenieurbüro` becomes `Kassel_Wrme_Ingenieurbro`. Fed through the IRI policy that
+> mints a **different** entity with no error. Terms reach the model by hand, as MHPO term requests.
+
+⚠️ These directory names and this layout are **provisional** — see open question 3 below.
 
 Directory names are shared with the OEKG's area *where both graphs genuinely have the same
 thing* — `shapes/`, `eval/`, `examples/` are the agreed vocabulary. No parallel structure is
@@ -77,24 +87,31 @@ municipal-heat-planning-pdf-processing   (RAG pipeline: vocabulary + content ext
 municipal-heat-planning-ontology (MHPO)  ──uses──▶  Open Energy Ontology (OEO)
         │
         ▼
-   mhpkg  (this directory)  ──loaded into──▶  Jena Fuseki dataset  ◀── which dataset: open
+   mhpkg  (this directory)  ──loaded into──▶  Jena Fuseki dataset `mhpkg`
 ```
 
-The Open Energy Platform already serves the OEKG from a Jena Fuseki store over SPARQL.
-Whether `mhpkg` becomes a second dataset in that same store or gets its own instance is
-**not yet decided**.
+The Open Energy Platform already serves the OEKG from a Jena Fuseki store over SPARQL. MHPKG gets
+**its own dataset beside it**, holding one named graph per heat plan, so re-loading a plan is an
+atomic whole-graph replace and a re-run updates rather than duplicates. ⚠️ **The dataset does not
+exist yet** — the layout is decided, not provisioned.
 
 ## Open questions this scaffold deliberately does not answer
 
-These are being worked separately. Please do not settle them by implication in the draft —
-if the draft forces a position on one, say so rather than letting the commit decide it.
+These are being worked separately. Please do not settle them by implication —
+if a change forces a position on one, say so rather than letting the commit decide it.
 
-1. **The model source of truth.** SHACL-shapes-first is the intended direction, and LinkML
-   is under consideration as the authoring layer to generate from. Not yet decided.
+1. ✅ ~~**The model source of truth.**~~ **Decided.** [LinkML](https://linkml.io/) authors the data
+   shape and generates the SHACL; MHPO remains the only source of *terms*. See
+   [`schema/`](schema/) for the schema and for what the first slice established — including where
+   the approach has known limits.
 2. **The KG / table boundary.** Which extracted data belongs in the graph as triples versus
    in a table on the Open Energy Platform.
-3. **The Fuseki dataset** that will host this graph.
-4. **This directory's final name and internal layout.**
+3. ⚠️ **This directory's internal layout** — the names `schema/`, `mhpo/` and `model/`, and where the
+   IRI-policy document finally lives. The *graph's* name is settled (`mhpkg`); only the layout is
+   open.
+
+Previously listed here and now answered: **the Fuseki dataset** — MHPKG gets its own, as described
+above.
 
 ## Licence
 
