@@ -1,0 +1,115 @@
+# The IRI and namespace policy, as enforceable shapes.
+#
+# HAND-WRITTEN, AND THAT IS THE POINT. Everything in `generated/` comes out of
+# `mhpkg_target_scenario.yaml` via `gen-shacl`. This file cannot, and the reason is structural
+# rather than a version bug:
+#
+#   SHACL constrains a focus node's OWN IRI with `sh:pattern` at NODE level. LinkML has no way to
+#   emit that. Its `identifier: true` slot becomes an ordinary property shape on an invented
+#   property (`mhpkg_schema:id`), which appears in no instance triple, so a pattern attached there
+#   is well-formed and can never fire. A type-level `pattern` is dropped outright — silently when
+#   the type has a `uri:`, and with a logged ERROR and EXIT CODE 0 when it does not.
+#
+# So the machine-checkable half of the IRI policy that MH-02 delegated to the LinkML schema lives
+# here instead. This is the first artifact in this repository that must be hand-maintained
+# alongside generated output, which makes it direct input to MH-07: the generated-artifacts
+# contract cannot say "everything is generated".
+#
+# WHAT THIS FILE IS FOR, precisely: identity. The generated shapes check that a heat plan has a
+# label, one publication date and a target scenario. Nothing in them checks that the plan's IRI is
+# the one the policy says it must be — and since the policy's whole purpose is that a re-run mints
+# byte-identical IRIs, an unchecked IRI is an unchecked re-runnability guarantee.
+#
+# Verified to reject, not merely to accept — see `examples/kassel_invalid.ttl`:
+#   * a missing leading zero (`AGS_6611000`), where the leading zero is significant
+#   * an umlaut-stripped organisation hash, the Termboard defect meeting this policy
+#   * a UUIDv4 where the policy requires v5, i.e. random where it requires reproducible
+
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix mhpo:  <https://purl.org/mhpo/ontology/> .
+@prefix oeo:   <https://openenergyplatform.org/ontology/oeo/> .
+@prefix mhpkg_shapes: <https://openenergyplatform.org/schema/mhpkg/shapes/> .
+
+# --- Tier 1: official public register key ---------------------------------------------
+#
+# `AGS_` names the register — the Amtlicher Gemeindeschlüssel, 8 digits. Register-qualified
+# because Germany's keys are all bare digits and otherwise indistinguishable, and because it
+# makes the leading zero's significance visible: `6611000` is a DIFFERENT municipality IRI, and
+# this shape is what turns that from a convention into a rejection.
+
+mhpkg_shapes:MunicipalityAreaIri
+    a sh:NodeShape ;
+    sh:targetClass mhpo:MHPO_00020017 ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/municipality/AGS_[0-9]{8}$" ;
+    sh:message "Tier-1 violation: a municipality area IRI must be https://openenergyplatform.org/id/mhpkg/municipality/AGS_ plus exactly 8 digits. The leading zero is significant." .
+
+# --- Tier 2: register key plus a discriminator ----------------------------------------
+#
+# The discriminator is the plan's FULL ISO-8601 publication date, not the year: WPG §25(1)
+# obliges a review at least every five years, and a draft plus a final in one year would collide
+# under a year-only key.
+
+mhpkg_shapes:MunicipalHeatPlanIri
+    a sh:NodeShape ;
+    sh:targetClass mhpo:MHPO_00020003 ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/heatplan/AGS_[0-9]{8}_[0-9]{4}-[0-9]{2}-[0-9]{2}$" ;
+    sh:message "Tier-2 violation: a heat plan IRI must be .../heatplan/AGS_<8 digits>_<YYYY-MM-DD>. The full publication date is required, not the year alone." .
+
+mhpkg_shapes:TargetScenarioIri
+    a sh:NodeShape ;
+    sh:targetClass mhpo:MHPO_00020007 ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/targetscenario/AGS_[0-9]{8}_[0-9]{4}-[0-9]{2}-[0-9]{2}$" ;
+    sh:message "Tier-2 violation: a target scenario IRI must be .../targetscenario/AGS_<8 digits>_<YYYY-MM-DD>, discriminated by the heat plan it belongs to." .
+
+# --- Tier 3: UUIDv5 over the identifying tuple ----------------------------------------
+#
+# The version nibble is pinned to `5` and the variant nibble to [89ab]. This is not cosmetic:
+# UUIDv5 is a namespace+name hash and is deterministic, v4 is random. A v4 here would break the
+# governing constraint that minting is a pure function of the data, and it is exactly the defect
+# MH-02 found in the OEKG — all 388 of its instance ids are random hex wearing UUID dashes, with
+# the version nibble uniformly spread over all 16 values instead of pinned to `4`.
+#
+# Lower case is required too. Hex is case-insensitive as a number but IRIs are not, so `A` and `a`
+# would be two identities for one thing.
+
+mhpkg_shapes:ConsumptionValueIri
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00050016 ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/value/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" ;
+    sh:message "Tier-3 violation: a value IRI must be .../value/<lower-case UUIDv5>. Version nibble 5, not 4 — a random id would break re-runnability." .
+
+mhpkg_shapes:OrganisationIri
+    a sh:NodeShape ;
+    sh:targetClass oeo:OEO_00030022 ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/organisation/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" ;
+    sh:message "Tier-3 violation: an organisation IRI must be .../organisation/<lower-case UUIDv5> over the normalised label." .
+
+# --- The umlaut rule ------------------------------------------------------------------
+#
+# Umlauts never reach an IRI: Tier 1 is digits and Tier 3 is hex, so the patterns above already
+# exclude them. German text lives in `rdfs:label`, and this shape guards the other direction —
+# that no MHPKG instance IRI anywhere carries a non-ASCII or percent-encoded character.
+#
+# MHPKG would otherwise be the first non-ASCII IRI in this family; there are currently zero
+# non-ASCII and zero percent-encoded IRIs anywhere in the `oekg` repository.
+#
+# ⚠️ WHAT THIS CANNOT CATCH, stated rather than implied. The policy's real umlaut exposure is on
+# the HASH INPUT, not the output: `Kassel Wärme Ingenieurbüro` and `Kassel Warme Ingenieurburo`
+# both normalise cleanly and both mint a valid-looking Tier-3 IRI — two different organisations,
+# silently, with no error. That is precisely the Termboard defect, and no shape can see it,
+# because both outputs are well-formed. It is caught only by never machine-consuming
+# umlaut-stripping output, which is why that is a standing decision rather than a validation rule.
+
+mhpkg_shapes:NoNonAsciiInstanceIri
+    a sh:NodeShape ;
+    sh:targetClass mhpo:MHPO_00020003, mhpo:MHPO_00020007, mhpo:MHPO_00020017,
+                   oeo:OEO_00050016, oeo:OEO_00030022 ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^[\\u0021-\\u007E]*$" ;
+    sh:message "An MHPKG instance IRI must be pure printable ASCII with no percent-encoding. German belongs in rdfs:label." .

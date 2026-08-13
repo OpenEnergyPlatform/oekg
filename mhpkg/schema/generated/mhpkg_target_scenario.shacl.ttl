@@ -1,0 +1,169 @@
+@prefix mhpkg_schema: <https://openenergyplatform.org/schema/mhpkg/> .
+@prefix mhpo: <https://purl.org/mhpo/ontology/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix oeo: <https://openenergyplatform.org/ontology/oeo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mhpo:MHPO_00020003 a sh:NodeShape ;
+    rdfs:comment """A municipal heat plan — Kommunale Wärmeplanung, WPG §23. MHPO puts it under CCO `plan specification` and asserts that it has as parts an aggregated inventory analysis, an aggregated potential analysis, a target scenario, an implementation measure and an implementation strategy.
+This slice models only the target scenario part. The other four are out of the ticket, not out of the model.""" ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:date ;
+            sh:description """The plan's publication date. This is not free metadata — the IRI policy makes it the Tier-2 discriminator, so it is part of the plan's identity and a shape that lets it drift lets the IRI drift with it.
+NEAR MISS — OEO declares domain `report` (obo:IAO_0000088) and range `xsd:dateTime`. MHPO puts `municipal heat plan` under CCO `plan specification`, not under `report`, and a date is not a dateTime. Closer than the three above, but still borrowed.""" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path oeo:OEO_00390096 ],
+        [ sh:class oeo:OEO_00030022 ;
+            sh:description """OEO `has organisation` — "a relation that holds between an information content entity and the organisation in which it was created". Domain fits: MHPO's `municipal heat plan` is an information content entity by way of CCO.
+Its declared range is not `organisation` but `has role some organisation role`, i.e. OEO reifies the organisation's involvement into a role. This slot deliberately points at the organisation directly and does not model the role, because which role a body plays — commissioning authority versus contracted planner — has no term yet. See TERM REQUEST 3.""" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path oeo:OEO_00000510 ],
+        [ sh:description "The instance IRI, minted by the three-tier pure function of the IRI policy." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path mhpkg_schema:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "The human-readable name, in German. Umlauts live here and never in an IRI — the IRI policy keeps identity ASCII-only and puts the German in the label, where it is unambiguous and universally supported." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rdfs:label ],
+        [ sh:class mhpo:MHPO_00020007 ;
+            sh:description "BFO `has part`. MHPO declares this object property and already asserts `municipal heat plan SubClassOf has part some target scenario`, so this slot restates an axiom the ontology holds rather than inventing a relation." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path obo:BFO_0000051 ] ;
+    sh:targetClass mhpo:MHPO_00020003 .
+
+mhpo:MHPO_00020017 a sh:NodeShape ;
+    rdfs:comment """A municipality area — Gemeindegebiet. MHPO puts it under OEO `region` and gives it a `municipality area role`.
+Present in the slice but UNREACHABLE from the plan: no cited term relates a plan to the area it plans. See TERM REQUEST 1. Its AGS is carried by its IRI.""" ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The human-readable name, in German. Umlauts live here and never in an IRI — the IRI policy keeps identity ASCII-only and puts the German in the label, where it is unambiguous and universally supported." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rdfs:label ],
+        [ sh:description "The instance IRI, minted by the three-tier pure function of the IRI policy." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path mhpkg_schema:id ] ;
+    sh:targetClass mhpo:MHPO_00020017 .
+
+oeo:OEO_00030022 a sh:NodeShape ;
+    rdfs:comment """An organisation. Used for both the planning authority and the contracted planner, because no term distinguishes the two roles — see TERM REQUEST 3.
+A municipality acting as planning authority is NOT a second entity: `Stadt Kassel, der Bürgermeister` is the municipality in a role, and the IRI policy gives it the Tier-1 municipality IRI. Only bodies with no register key are minted here.""" ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The human-readable name, in German. Umlauts live here and never in an IRI — the IRI policy keeps identity ASCII-only and puts the German in the label, where it is unambiguous and universally supported." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rdfs:label ],
+        [ sh:description "The instance IRI, minted by the three-tier pure function of the IRI policy." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path mhpkg_schema:id ] ;
+    sh:targetClass oeo:OEO_00030022 .
+
+oeo:OEO_00050016 a sh:NodeShape ;
+    rdfs:comment """A final energy consumption value — Endenergieverbrauch. OEO defines it as an energy consumption value about energy delivered to and consumed by end users, and it is exactly indicator 1 of WPG Annex 2 III.
+Its identity is its coordinates and not its magnitude: the same plan, indicator, carrier, year and aggregation always mint the same IRI, so a corrected figure updates this node.""" ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description """OEO `covers energy carrier`.
+MISMATCH — its declared domain is `study` (oeo:OEO_00020011), and the subject here is a consumption value, not a study. OWL domains are inferential rather than constraining, so a reasoner will not complain; it will silently infer that every MHPKG consumption value IS a study. SHACL cannot see this at all. Recorded as a term request rather than worked around.""" ;
+            sh:in ( oeo:OEO_00000292 oeo:OEO_00000211 oeo:OEO_00000220 oeo:OEO_00010214 oeo:OEO_00020050 ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path oeo:OEO_00000523 ],
+        [ sh:description "OEO `has unit`, domain `quantity value`, range `unit`. Exact fit." ;
+            sh:in ( oeo:OEO_00050008 obo:UO_0000224 oeo:OEO_00050011 ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path oeo:OEO_00040010 ],
+        [ sh:datatype xsd:integer ;
+            sh:description """The target year the value is stated for. WPG Annex 2 III requires the indicators for 2030, 2035, 2040 and 2045 unless otherwise specified.
+MISMATCH, and the worst of the three — OEO `has scenario year value` declares domain `scenario factsheet` (oeo:OEO_00000365) AND range `xsd:dateTime`. This slot uses it on a consumption value with an `xsd:integer`, so both ends are wrong. A year is a temporal region, and BFO has `one-dimensional temporal region`; what is missing is a relation from a value to it.""" ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 2100 ;
+            sh:minCount 1 ;
+            sh:minInclusive 2024 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path oeo:OEO_00020440 ],
+        [ sh:description "The instance IRI, minted by the three-tier pure function of the IRI policy." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path mhpkg_schema:id ],
+        [ sh:datatype xsd:float ;
+            sh:description "A consumption cannot be negative. This is the one constraint in the whole slice that comes from the domain rather than from a term — and it is exactly the kind of thing the rejected \"generate SHACL from MHPO\" route could never have produced, because OWL is open-world and carries no such assertion." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path oeo:OEO_00140178 ],
+        [ sh:description "OEO `covers sector`. Same mismatch as `covers_energy_carrier` — declared domain `study`. WPG Annex 2 III.1 requires the final energy consumption differentiated by final energy sector, so the slot is unavoidable; only the relation is borrowed." ;
+            sh:in ( oeo:OEO_00000214 oeo:OEO_00000227 oeo:OEO_00000128 ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path oeo:OEO_00000505 ],
+        [ sh:description "OEO `has aggregation type`. Declares no domain, so no unintended inference." ;
+            sh:in ( oeo:OEO_00140070 oeo:OEO_00140071 oeo:OEO_00140069 oeo:OEO_00140072 oeo:OEO_00140073 ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 6 ;
+            sh:path oeo:OEO_00390023 ] ;
+    sh:targetClass oeo:OEO_00050016 .
+
+mhpo:MHPO_00020007 a sh:NodeShape ;
+    rdfs:comment "The target scenario — Zielszenario, WPG Annex 2 III. An objective specification that uses indicators to describe how a heat supply from renewable energy or unavoidable waste heat is to be achieved." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The human-readable name, in German. Umlauts live here and never in an IRI — the IRI policy keeps identity ASCII-only and puts the German in the label, where it is unambiguous and universally supported." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rdfs:label ],
+        [ sh:class oeo:OEO_00050016 ;
+            sh:description """OEO `has quantity value` — "a relation between an entity and a quantity value". Declares no domain, so using it on a target scenario adds no unintended inference.
+Note that MHPO asserts nothing here. Its `target scenario` definition says the scenario "uses indicators to describe" the goal, and its comment enumerates the seven WPG Annex 2 III indicators, but no axiom connects a scenario to a value. This slot is the first place the data shape goes beyond what the T-Box states.""" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path oeo:OEO_00140002 ],
+        [ sh:description "The instance IRI, minted by the three-tier pure function of the IRI policy." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path mhpkg_schema:id ] ;
+    sh:targetClass mhpo:MHPO_00020007 .
+
+

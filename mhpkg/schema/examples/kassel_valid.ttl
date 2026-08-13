@@ -1,0 +1,95 @@
+# A conformant MHPKG instance: Kassel's 2024 municipal heat plan, one target-scenario indicator.
+#
+# Hand-written, with every IRI produced by `python mhpkg/schema/mint_slice.py` rather than typed —
+# a hand-typed UUID is a hand-typed UUID whatever the policy says.
+#
+# Validate with:
+#   .venv/bin/pyshacl -s mhpkg/schema/generated/mhpkg_target_scenario.shacl.ttl \
+#                     -s mhpkg/schema/mhpkg_iri_policy.shacl.ttl \
+#                     -df turtle -f human mhpkg/schema/examples/kassel_valid.ttl
+#
+# ⚠️ THE DATA IS ILLUSTRATIVE, NOT REAL. 241 MWh comes from the Termboard sketch and is far too
+# small for a city of 200,000 — a real Kassel figure would be in the millions of MWh. It is kept
+# because this slice tests the SHAPE, and changing the number would quietly imply the figure had
+# been sourced. No published heat plan has been read yet.
+
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix mhpo:  <https://purl.org/mhpo/ontology/> .
+@prefix oeo:   <https://openenergyplatform.org/ontology/oeo/> .
+@prefix mhpkg: <https://openenergyplatform.org/id/mhpkg/> .
+
+# --- The plan -------------------------------------------------------------------------
+# Tier 2: AGS plus the full publication date. That date is not free metadata — it is half the
+# plan's identity, which is why the shapes require it exactly once.
+
+<https://openenergyplatform.org/id/mhpkg/heatplan/AGS_06611000_2024-03-15>
+    a mhpo:MHPO_00020003 ;                                    # municipal heat plan
+    rdfs:label "Kommunale Wärmeplanung Kassel 2024" ;
+    oeo:OEO_00390096 "2024-03-15"^^xsd:date ;                 # has publication date
+    obo:BFO_0000051 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2024-03-15> ;   # has part
+    oeo:OEO_00000510 <https://openenergyplatform.org/id/mhpkg/organisation/2d4f4ae8-ea0f-575c-9a76-8dcf377042af> .  # has organisation
+
+# --- The target scenario --------------------------------------------------------------
+# Zielszenario, WPG Annex 2 III. MHPO asserts that a municipal heat plan has one as a part, so
+# the `has part` edge above restates an axiom the ontology already holds.
+
+<https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2024-03-15>
+    a mhpo:MHPO_00020007 ;                                    # target scenario
+    rdfs:label "Zielszenario Kassel 2024" ;
+    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/a878a3a1-b856-5aaf-b767-d1b4154d11aa> .   # has quantity value
+
+# --- The indicator value --------------------------------------------------------------
+# Tier 3: UUIDv5 over the value's COORDINATES — plan, indicator, carrier, year, aggregation —
+# and never over its magnitude. Correcting 241 to 2410 updates this node; it does not mint a
+# second one and orphan the first.
+
+<https://openenergyplatform.org/id/mhpkg/value/a878a3a1-b856-5aaf-b767-d1b4154d11aa>
+    a oeo:OEO_00050016 ;                                      # final energy consumption value
+    oeo:OEO_00140178 "241.0"^^xsd:float ;                     # has number
+    oeo:OEO_00040010 oeo:OEO_00050008 ;                       # has unit -> megawatt-hour
+    oeo:OEO_00000523 oeo:OEO_00000292 ;                       # covers energy carrier -> natural gas
+    oeo:OEO_00000505 oeo:OEO_00000214 ;                       # covers sector -> household sector
+    oeo:OEO_00020440 "2030"^^xsd:integer ;                    # has scenario year value
+    oeo:OEO_00390023 oeo:OEO_00140070 .                       # has aggregation type -> integral
+
+# --- The contracted planner -----------------------------------------------------------
+# Tier 3 over the NORMALISED label: NFC, casefold, punctuation to space, collapse, strip trailing
+# legal form. `Kassel Wärme Ingenieurbüro`, `  kassel   wärme  ingenieurbüro  ` and
+# `Kassel Wärme Ingenieurbüro GmbH` all mint this same IRI. `Kassel Warme Ingenieurburo` does not.
+
+<https://openenergyplatform.org/id/mhpkg/organisation/2d4f4ae8-ea0f-575c-9a76-8dcf377042af>
+    a oeo:OEO_00030022 ;                                      # organisation
+    rdfs:label "Kassel Wärme Ingenieurbüro" .
+
+# --- The municipality area ------------------------------------------------------------
+#
+# 🔴 PRESENT BUT UNREACHABLE, and this is a finding rather than an oversight in the example.
+#
+# No term in MHPO or OEO relates a PLAN to the area it plans. MHPO has `municipality area` and
+# `heat plan area` and relates areas to one another with BFO `part of`, but nothing connects the
+# plan to either. So this node is a floating island: the plan above cannot say where it applies,
+# which for a municipal heat plan is not a detail. See TERM REQUEST 1 in the schema.
+#
+# ⚠️ AND A SECOND, SHARPER PROBLEM THE SHAPES CAUGHT.
+#
+# The IRI policy §6 rules that `Stadt Kassel, der Bürgermeister` is not a second entity — it is
+# the municipality in a role, and it reuses `municipality/AGS_06611000`. But the only class
+# available for that IRI is `municipality area`, a two-dimensional spatial region. A region cannot
+# commission a plan, and there is no class anywhere in MHPO or OEO for the municipality as a legal
+# body: `Stadt Kassel` the corporation and `Gemeindegebiet Kassel` the territory are different
+# things and only the territory has a term.
+#
+# The IRI shapes make the collision concrete rather than arguable: `MunicipalityAreaIri` requires
+# `.../municipality/AGS_<8 digits>` and `OrganisationIri` requires `.../organisation/<UUIDv5>`, so
+# ONE IRI CANNOT SATISFY BOTH. Typing `municipality/AGS_06611000` as an organisation to make it
+# the commissioning body is therefore not a workaround — it is a validation failure. Which means
+# the planning authority is absent from this example, and WPG §12 makes it a statutory party.
+#
+# Recorded, not patched. It is a conflict between two already-made decisions and belongs to a
+# human, not to this prototype.
+
+<https://openenergyplatform.org/id/mhpkg/municipality/AGS_06611000>
+    a mhpo:MHPO_00020017 ;                                    # municipality area
+    rdfs:label "Gemeindegebiet Kassel" .

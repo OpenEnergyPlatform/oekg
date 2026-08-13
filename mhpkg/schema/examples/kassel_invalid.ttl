@@ -1,0 +1,120 @@
+# THE NEGATIVE CONTROL. Every node below is deliberately wrong, in a different way.
+#
+# A validator that never rejects anything is not evidence. This file exists so that
+# `kassel_valid.ttl` passing means something: each violation here names the constraint it is
+# aimed at, and `validate.py` asserts that all of them are caught.
+#
+# Validate with:
+#   .venv/bin/python mhpkg/schema/validate.py
+#
+# Expected: NON-CONFORMING, with one violation per numbered case below.
+
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix mhpo:  <https://purl.org/mhpo/ontology/> .
+@prefix oeo:   <https://openenergyplatform.org/ontology/oeo/> .
+
+# --- 1. Tier-1: the missing leading zero ----------------------------------------------
+#
+# `AGS_6611000` is seven digits. The Amtlicher Gemeindeschlüssel is eight and the leading zero is
+# significant — `06` is Hessen. This is the single most likely real-world corruption of the whole
+# policy, because every spreadsheet program in existence will strip that zero on import.
+
+<https://openenergyplatform.org/id/mhpkg/municipality/AGS_6611000>
+    a mhpo:MHPO_00020017 ;
+    rdfs:label "Gemeindegebiet Kassel, AGS mit fehlender führender Null" .
+
+# --- 2. Tier-3: a UUIDv4 where the policy requires v5 ---------------------------------
+#
+# The version nibble here is `4`, i.e. random. Reproducibility is the one property the whole
+# pipeline rests on, and a v4 breaks it silently — the data looks perfect and re-running the
+# import duplicates every node. This is the OEKG's actual defect, reproduced on purpose.
+
+<https://openenergyplatform.org/id/mhpkg/organisation/9f1e2d3c-4b5a-4c7d-8e9f-0a1b2c3d4e5f>
+    a oeo:OEO_00030022 ;
+    rdfs:label "Planungsbüro mit UUIDv4 statt v5" .
+
+# --- 3. A non-ASCII instance IRI ------------------------------------------------------
+#
+# The umlaut rule, violated at the output end: German belongs in `rdfs:label`, never in identity.
+
+<https://openenergyplatform.org/id/mhpkg/organisation/Kassel-Wärme-Ingenieurbüro>
+    a oeo:OEO_00030022 ;
+    rdfs:label "Kassel Wärme Ingenieurbüro" .
+
+# --- 4. The plan: a missing publication date, and a language-tagged label -------------
+#
+# TWO violations on one node.
+#
+# (a) No `has publication date`. The generated shape requires exactly one, and it is not fussiness
+#     — the date is the Tier-2 discriminator, so a plan without one has no derivable identity.
+#
+# (b) `"..."@de` instead of a plain literal. This is the German-language question, and the answer
+#     is that IT FAILS: LinkML's `range: string` generates `sh:datatype xsd:string`, and a
+#     language-tagged literal has datatype `rdf:langString`, which is a DIFFERENT datatype. So the
+#     obvious, correct-looking way to mark a German label as German is rejected by the generated
+#     shapes. Worth knowing before a RAG pipeline emits thousands of them.
+
+<https://openenergyplatform.org/id/mhpkg/heatplan/AGS_06611000_2024-03-15>
+    a mhpo:MHPO_00020003 ;
+    rdfs:label "Kommunale Wärmeplanung Kassel 2024"@de ;
+    obo:BFO_0000051 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2024-03-15> ;
+    oeo:OEO_00000510 <https://openenergyplatform.org/id/mhpkg/organisation/2d4f4ae8-ea0f-575c-9a76-8dcf377042af> .
+
+# --- 5. The scenario: a Tier-2 IRI missing its discriminator --------------------------
+#
+# `targetscenario/AGS_06611000` has no date. WPG §25(1) obliges a review at least every five
+# years, so a municipality will have several scenarios and this IRI cannot say which one it is.
+
+<https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000>
+    a mhpo:MHPO_00020007 ;
+    rdfs:label "Zielszenario ohne Datum" ;
+    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/a878a3a1-b856-5aaf-b767-d1b4154d11aa> .
+
+# --- 6. The value: four violations at once --------------------------------------------
+#
+# (a) A NEGATIVE consumption. `-241.0` — the one constraint in this schema that comes from the
+#     domain rather than from an ontology term, and exactly the kind of thing the rejected
+#     "generate SHACL from MHPO" route could never have produced: OWL is open-world and asserts
+#     nothing about sign.
+#
+# (b) An out-of-vocabulary ENERGY CARRIER. `oeo:OEO_00000132` is `district heating`, which OEO
+#     puts under `grid-bound heating` — a transfer process, not a carrier. A plausible mistake,
+#     and precisely the one the `sh:in` enum exists to reject. A bare `sh:nodeKind sh:IRI` would
+#     have waved it through.
+#
+# (c) A SECTOR IRI that is not a sector at all. `oeo:OEO_00000292` is natural gas — a carrier
+#     pasted into the sector slot. Same class of error, caught by the same mechanism.
+#
+# (d) An OUT-OF-RANGE year. `1990` is before the WPG existed; the schema floors the year at 2024.
+
+<https://openenergyplatform.org/id/mhpkg/value/a878a3a1-b856-5aaf-b767-d1b4154d11aa>
+    a oeo:OEO_00050016 ;
+    oeo:OEO_00140178 "-241.0"^^xsd:float ;
+    oeo:OEO_00040010 oeo:OEO_00050008 ;
+    oeo:OEO_00000523 oeo:OEO_00000132 ;
+    oeo:OEO_00000505 oeo:OEO_00000292 ;
+    oeo:OEO_00020440 "1990"^^xsd:integer ;
+    oeo:OEO_00390023 oeo:OEO_00140070 .
+
+# --- 7. An undeclared property on a declared class ------------------------------------
+#
+# `sh:closed true` is on every generated shape, so a property the schema does not declare is a
+# violation. This is what stops a RAG pipeline from quietly inventing its own predicates and
+# having them accepted because nothing was looking.
+#
+# ⚠️ It is also the constraint most likely to be wrong in production, and the reason is worth
+# recording: closed shapes reject ANY extra triple, including provenance — which PDF, which page,
+# which model, what confidence. That is already on the map as fog, and this line is where it turns
+# from a modelling question into a validation failure.
+
+<https://openenergyplatform.org/id/mhpkg/value/b1c2d3e4-f5a6-5b7c-8d9e-0f1a2b3c4d5e>
+    a oeo:OEO_00050016 ;
+    oeo:OEO_00140178 "500.0"^^xsd:float ;
+    oeo:OEO_00040010 oeo:OEO_00050008 ;
+    oeo:OEO_00000523 oeo:OEO_00000292 ;
+    oeo:OEO_00000505 oeo:OEO_00000214 ;
+    oeo:OEO_00020440 "2030"^^xsd:integer ;
+    oeo:OEO_00390023 oeo:OEO_00140070 ;
+    rdfs:seeAlso <https://example.org/some-pdf-page-42> .
