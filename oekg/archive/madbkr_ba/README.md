@@ -64,13 +64,35 @@ which only ~1.2M is irreplaceable.
 | **`oekg_rework/oekg_neu.ttl`** | 792K | **no — irreplaceable.** April 2025 dump of the *live* OEKG from the Fuseki endpoint. There is no other copy of the graph at that date. |
 | shapes (350 + 317 lines), competency questions, `documentation.pdf`, the 4 scripts | ~460K | **no — irreplaceable** |
 
+## Paths cited by the thesis
+
+The thesis cites this material by repository path, for the validation reports it was too long to
+include. **Those paths no longer exist**, and — contrary to what one might assume — the 2026-08
+restructure did not break them: `d5d99fb` "clean repo" (2026-03-02) did, five months earlier. The
+restructure only moved the material further, into this directory.
+
+The repository state the thesis actually cites is tagged **`thesis-madbkr-2025`** (commit
+`5ea4646`, 2025-06-04), so the cited tree stays reachable by name.
+
+| Cited in the thesis | Where it is today |
+|---|---|
+| `oekg/oekg_rework/shacl` (footnotes 4 and 5, pp. 32 and 44) | `oekg/archive/madbkr_ba/oekg_rework/shacl` |
+| `oekg/oekg_rework` | `oekg/archive/madbkr_ba/oekg_rework` |
+
+Every other reference the thesis makes is stable: the issue links
+([`ontology#2064`](https://github.com/OpenEnergyPlatform/ontology/issues/2064),
+[`oeplatform#2008`](https://github.com/OpenEnergyPlatform/oeplatform/issues/2008)) and the OEO
+modules wiki. `scripts/documentation.pdf` is cited only by name in prose, never by URL.
+
 ## Relation to the rest of `oekg/`
 
-- `oekg/shapes/oekg_shapes.ttl` is a **copy** of
-  `oekg_rework/shacl/oekg_shacl_old_graph_txt`, surfaced as the starting point for future
-  shapes work. The copy here is the frozen thesis record and stays.
-- `oekg/eval/oekg_shacl.txt` is byte-identical to
-  `oekg_rework/shacl/oekg_shacl_new_graph.txt`. The two copies have different jobs: this
-  one is the frozen thesis record, the other is the graph's evaluation material.
+- **`oekg_rework/shacl/oekg_shacl_old_graph_txt` (350 lines) is now the ONLY copy** of the
+  pre-rework instrument. Until 2026-08-13 a byte-identical copy sat in `oekg/shapes/` and was
+  presented there as the current, forward-looking shapes — which it never was. It was removed;
+  this copy stays, as the instrument that produced the 2695-violation baseline.
+- `oekg_rework/shacl/oekg_shacl_new_graph.txt` (317 lines) is byte-identical to
+  **`oekg/shapes/oekg_shapes.ttl`** (which until 2026-08-13 was `oekg/eval/oekg_shacl.txt`). The
+  two copies have different jobs: this one is the frozen thesis record, the other is the graph's
+  canonical working copy.
 - `oekg/legacy/` is a *different* superseded pipeline — the original 2023 placeholder →
   notebook → Turtle route. It is not part of this thesis.

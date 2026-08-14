@@ -47,6 +47,21 @@ format `YYYY-MM-DD`, for example `2026-05-16`. This distinction is the most dire
 in the family's procedure and it matters here: almost everything this repository releases is
 data, not software.
 
+## Citable references
+
+**Publications citing this repository must cite a tag or a commit SHA, never `/tree/<branch>/…`.**
+Branch paths move, and a citation in a submitted thesis cannot be corrected afterwards.
+
+This is not hypothetical here. The 2025 BA thesis cites
+`github.com/OpenEnergyPlatform/oekg/tree/production/oekg/oekg_rework/shacl` twice for validation
+reports it was too long to print; the directory was reorganised in 2026 and those footnotes now
+404. The cited state is preserved as the annotated tag `thesis-madbkr-2025`, and
+`oekg/archive/madbkr_ba/README.md` maps the old paths to the current ones.
+
+For a thesis or paper, **set the tag when the work is submitted**, pattern
+`thesis-<initials>-<year>`. These provenance tags are deliberately outside whatever release tag
+scheme is eventually chosen above — they name a cited state, not a release.
+
 ## GitHub Release
 
 Following Semantic Versioning, different workflows for Major, Minor, or Patch releases are

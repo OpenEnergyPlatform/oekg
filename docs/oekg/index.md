@@ -58,28 +58,38 @@ exactly what caused the confusion above.
 
 | Directory | Status | What it is |
 |---|---|---|
-| `oekg/shapes/` | current | the most developed SHACL shapes available. ⚠️ See the warning below. |
-| `oekg/eval/` | current | competency questions in natural language and SPARQL, plus evaluation shapes |
+| `oekg/shapes/` | current | `oekg_shapes.ttl`, the OEKG's canonical SHACL shapes. They **do** describe the live graph — see below. |
+| `oekg/eval/` | current | competency questions in natural language and SPARQL |
 | `oekg/legacy/` | **superseded** | the first population pipeline: placeholder JSON, a Colab notebook, a 2023 Turtle snapshot. Do not reuse. |
 | `oekg/archive/madbkr_ba/` | **archived** | a finished Bachelor's thesis remodelling the graph, intact. Closed. |
 
 Each directory has a README stating what it holds and whether it is live. Read it first.
 
-### The shapes do not validate the live graph
+### The shapes describe the live graph — as of 2026-08-13
 
-⚠️ `oekg/shapes/` holds the best SHACL available here, and it is a reasonable starting point for
-future work — but be clear about what it is not:
+**This section previously said the opposite, and that is worth explaining rather than quietly
+editing.** Until 2026-08-13 `oekg/shapes/` held the thesis's **pre-rework** shapes: written against
+the graph *before* the remodelling, on the old `http://openenergy-platform.org/…` namespace. Against
+today's graph that file matches nothing at all, so "the shapes do not validate the live graph" was
+true of the file that happened to be sitting there — not of the shapes that existed.
 
-- It was authored against the **thesis-reworked** graph, not the live one.
-- **No SHACL file in this repository describes the live graph.** All of them were written against
-  dumps.
-- It is on the **older namespace form** (`http://openenergy-platform.org/…`), while the live graph
-  has since migrated to `https://openenergyplatform.org/…`. The competency-question SPARQL in
-  `oekg/eval/` has the same issue.
+The thesis's **final** shapes were in `oekg/eval/`, described there as mere "evaluation material".
+They have been moved to `oekg/shapes/oekg_shapes.ttl` and are now the canonical file.
 
-So a query or validation run copied from here will not match the live graph until it is rebased.
-That is a known open item, not a bug to be surprised by — see
-[Tech stack](../tech-stack.md#what-is-still-open).
+Validated 2026-08-13 with `pyshacl` against a dump of the live graph:
+
+- **They bind.** 1,499 focus nodes across all eight shapes; the declared namespaces match the live
+  graph exactly. (A shapes file whose namespaces do not match reports `Conforms: True` by matching
+  nothing — that is precisely what the old file did.)
+- **135 violations**, 0.99% of 13,700 triples, against the thesis's own baseline of 55 / 0.5%.
+- **133 of those 135 are `oeplatform` data bugs** — unfilled mandatory fields, missing OEO term
+  labels, and writer regressions — which no change to this repository can fix. Only 2 are the
+  shapes' own.
+
+Two caveats remain. The run used a **dump, not the SPARQL endpoint**, so the dump-vs-live gap is
+unmeasured. And the **competency-question SPARQL in `oekg/eval/` still carries the old namespace**
+(`http://openenergy-platform.org/ontology/oekg/`), so a query copied from there will not match the
+live graph until it is rebased — see [Tech stack](../tech-stack.md#what-is-still-open).
 
 ### Where the predicates are defined
 
