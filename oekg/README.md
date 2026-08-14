@@ -27,8 +27,8 @@ would put live and dead material side by side with nothing to tell them apart.
 
 | Directory | Status | What it is |
 |---|---|---|
-| [`shapes/`](shapes/) | **current**, forward-looking | the most developed SHACL shapes for the OEKG. ⚠️ They validate **no live graph** — a starting point, not a pipeline. |
-| [`eval/`](eval/) | **current** | the graph's evaluation instruments: competency questions (prose + SPARQL) and the 317-line evaluation shapes. |
+| [`shapes/`](shapes/) | **current**, canonical | `oekg_shapes.ttl` — the OEKG's SHACL shapes, from the BA thesis. Validated against the live graph 2026-08-13: **135 violations, 133 of them upstream `oeplatform` data bugs**. No CI runs them yet. |
+| [`eval/`](eval/) | **current** | the competency questions (prose + SPARQL). The shapes **moved out** of here to `shapes/` on 2026-08-13. |
 | [`legacy/`](legacy/) | **superseded**, kept for provenance | the first population pipeline: hand-built placeholder JSON → Colab notebook → a 2023 Turtle snapshot. **Do not reuse.** |
 | [`archive/madbkr_ba/`](archive/madbkr_ba/) | **archived**, closed | a finished BA thesis that remodelled the graph against the OEO. Intact, nothing deleted. Its `documentation.pdf` holds the predicate definitions. |
 
@@ -42,11 +42,14 @@ using anything in it.
 | what the OEKG's fields are | [`../docs/oekg/fields.md`](../docs/oekg/fields.md) |
 | how the graph used to be built, and how it is built now | [`../docs/oekg/provenance.md`](../docs/oekg/provenance.md) |
 | the predicate definitions | `archive/madbkr_ba/scripts/documentation.pdf` |
-| to work on shapes | [`shapes/`](shapes/) — and read its README first |
+| to work on shapes | [`shapes/`](shapes/) — and read its README first; it records which artifact is which, and why |
 | the actual graph data | the SPARQL endpoint, not this repository |
 
 ## No CI validates any of this
 
-There is no `.github/workflows/` in this repository. No shapes are run, no queries are
-executed, nothing is checked. Adding SHACL validation to CI is an obvious win, but it needs a
-decision about *what is validated against what* first — and that is model design.
+`.github/workflows/checks.yml` runs pull-request checks, but it deliberately validates **no graph
+data**: no shapes are run and no queries are executed. Adding SHACL validation to CI is an obvious
+win, but it needs a decision about *what is validated against what* first — and that is model
+design. The 2026-08-13 validation makes the shape of that decision concrete: of the 135 violations
+the live graph produces, **133 are `oeplatform` data bugs that no pull request to this repository
+can fix**, so a blocking check against the live graph would be permanently red.

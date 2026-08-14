@@ -135,29 +135,36 @@ documented in `mhpkg/schema/README.md`:
 
 ### What validates what
 
-⚠️ **No SHACL file in this repository validates a live graph**, and that is still true — the new
-shapes validate example files, not the store.
+Describes the **live OEKG**, verified 2026-08-13:
 
-Authored against a dump, and untouched:
+- `oekg/shapes/oekg_shapes.ttl` — the OEKG's canonical shapes. Run against a dump of the live graph
+  they bind 1,499 focus nodes across all eight shapes and report 135 violations (0.99% of triples),
+  **133 of which are `oeplatform` data bugs** rather than anything this repository can fix.
 
-- `oekg/shapes/` — the most developed OEKG shapes, written against the thesis-reworked graph
-- `oekg/eval/oekg_shacl.txt` — evaluation shapes for the same era
-- the archive's own copies — thesis provenance
+⚠️ **This entry used to say the opposite.** Until 2026-08-13 `oekg/shapes/` held the thesis's
+*pre-rework* file, which declares the OEO prefix as `http://openenergy-platform.org/ontology/oeo/`
+and uses readable property names like `oeo:covers_energy_carrier` that OEO does not define. The
+namespace resolves — it redirects — but an IRI is *identity, not an address*, so every term in it is
+a different term from the one OEO mints, and it therefore could not match the live graph even in
+principle. That file is now only in the archive; the canonical file uses the current
+`https://openenergyplatform.org/…` namespaces.
 
-⚠️ Those OEKG shapes also **cannot match the live graph even in principle**: they declare the OEO
-prefix as `http://openenergy-platform.org/ontology/oeo/` and use readable property names like
-`oeo:covers_energy_carrier` that OEO does not define. The namespace resolves — it redirects — but an
-IRI is *identity, not an address*, so every term in them is a different term from the one OEO mints.
-See the namespace-migration note below.
+Describes a dump or a target state, not the store:
+
+- the archive's own copies — thesis provenance, both the 350-line and 317-line instruments
+- `oekg/eval/competency_questions/` — the SPARQL still carries the **old** `oekg` namespace and
+  needs rebasing before it will match the live graph
 
 Authored against the schema, and exercised on every run of `mhpkg/schema/validate.py`:
 
 - `mhpkg/schema/generated/` — generated from the LinkML schema
 - `mhpkg/schema/mhpkg_iri_policy.shacl.ttl` — hand-written, enforcing the IRI policy
 
-So `pyshacl` "working" now means example data is checked in both directions — the conformant
-instance passes and the negative control is asserted to fail for each of its reasons. It does **not**
-yet mean there is a validation pipeline, or a CI job.
+So `pyshacl` "working" now means two different things. For MHPKG: example data is checked in both
+directions — the conformant instance passes and the negative control is asserted to fail for each of
+its reasons. For the OEKG: the shapes have been run against real graph data once, by hand, and the
+result recorded. Neither is **a validation pipeline or a CI job** — `checks.yml` still validates no
+graph data at all.
 
 ### Namespace migration
 

@@ -1,10 +1,7 @@
-# `oekg/eval/` — the OEKG's evaluation instruments
+# `oekg/eval/` — the OEKG's competency questions
 
-> **Status: CURRENT.** These are the instruments used to evaluate the OEKG. Nothing here is
-> automated — no CI runs them, and running them is a manual step today.
-
-Both kinds of material in this directory are evaluation instruments, which is why they sit
-together rather than being split by file type.
+> **Status: CURRENT.** These are evaluation instruments for the OEKG. Nothing here is automated —
+> no CI runs them, and running them is a manual step today.
 
 ## Contents
 
@@ -12,26 +9,31 @@ together rather than being split by file type.
 |---|---|
 | `competency_questions/cq_natural_language.txt` | the competency questions in prose — what the graph must be able to answer |
 | `competency_questions/cq_sparql.txt` | the same questions as SPARQL queries |
-| `oekg_shacl.txt` | 317 lines of SHACL, the evaluation shapes for the **reworked** graph |
 
-## `oekg_shacl.txt`
-
-These shapes target `oeo:OEO_00020227` (scenario bundle) and report **55 violations** against
-`../archive/madbkr_ba/oekg_rework/output_rework_oekg_final.ttl`. That 55 is one half of the BA
-thesis's headline `2695 → 55` result; see
+The BA thesis reports **20** questions, of which **19** were answerable after its rework and 7 were
+problematic before it. That result is the other half of the thesis's finding; the first half is the
+SHACL improvement, `2695 → 55`. See
 [`../archive/madbkr_ba/README.md`](../archive/madbkr_ba/README.md).
 
-The file is **byte-identical** to
-`../archive/madbkr_ba/oekg_rework/shacl/oekg_shacl_new_graph.txt`
-(`md5 d5ab525e8316cb99abf2551949722414`). Both copies are kept deliberately and they have
-different jobs: the archived copy is the frozen thesis record, this one is the graph's
-evaluation material and may be revised. Neither is a source of truth.
+> These files have **not** been verified against the thesis's final versions the way the shapes
+> were. Treat the count above as the thesis's claim rather than a checked fact.
 
-Forward-looking shapes work starts from [`../shapes/`](../shapes/), not from here.
+## 🔀 The shapes moved out of this directory
+
+This directory used to hold `oekg_shacl.txt`, the OEKG's SHACL shapes, described here as
+"evaluation material… not a source of truth". That framing stopped being true once the shapes
+became the graph's contract, and a `.txt` extension on a Turtle file did not help.
+
+**They now live at [`../shapes/oekg_shapes.ttl`](../shapes/oekg_shapes.ttl)** — same content,
+renamed and relocated. **Shapes work starts there, not here.** Read that directory's README first;
+it explains which artifact is which and why, and it records a mistake worth not repeating.
+
+The frozen thesis record of the same file remains at
+`../archive/madbkr_ba/oekg_rework/shacl/oekg_shacl_new_graph.txt`, unchanged.
 
 ## What these can and cannot be run against
 
-The SPARQL competency questions were written against the **live** OEKG in Fuseki, and the
-shapes against a dump of it. Neither can be usefully run against `../legacy/oekg.ttl`, which
-is a 2023 snapshot with none of the relevant class instances. See
-[`../README.md`](../README.md) for where the live graph actually is.
+The SPARQL competency questions were written against the **live** OEKG in Fuseki. They cannot be
+usefully run against [`../legacy/oekg.ttl`](../legacy/), which is a 2023 snapshot containing none
+of the relevant class instances. See [`../README.md`](../README.md) for where the live graph
+actually is.

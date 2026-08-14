@@ -74,5 +74,8 @@ way to see what the graph can do, subject to the namespace caveat above.
 
 - **You cannot get the graph as a file from this repository.** See
   [provenance](provenance.md).
-- **You cannot validate the live graph with the shapes in `oekg/shapes/`** — they were written
-  against a dump, not against what is deployed. See [the OEKG overview](index.md#the-shapes-do-not-validate-the-live-graph).
+- **You can validate the live graph with the shapes in `oekg/shapes/`, but not from here.** As of
+  2026-08-13 those shapes do describe the deployed model — they were run against a dump of it and
+  bound 1,499 focus nodes. What this repository cannot give you is the data: you supply a dump or
+  point `pyshacl` at the endpoint yourself. See
+  [the OEKG overview](index.md#the-shapes-describe-the-live-graph-as-of-2026-08-13).
