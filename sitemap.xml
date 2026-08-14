@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://openenergyplatform.github.io/oekg/</loc>
+         <lastmod>2026-08-14</lastmod>
+    </url>
+    <url>
+         <loc>https://openenergyplatform.github.io/oekg/tech-stack/</loc>
+         <lastmod>2026-08-14</lastmod>
+    </url>
+    <url>
+         <loc>https://openenergyplatform.github.io/oekg/workflow/</loc>
+         <lastmod>2026-08-14</lastmod>
+    </url>
+    <url>
+         <loc>https://openenergyplatform.github.io/oekg/mhpkg/</loc>
+         <lastmod>2026-08-14</lastmod>
+    </url>
+    <url>
+         <loc>https://openenergyplatform.github.io/oekg/oekg/</loc>
+         <lastmod>2026-08-14</lastmod>
+    </url>
+    <url>
+         <loc>https://openenergyplatform.github.io/oekg/oekg/endpoint/</loc>
+         <lastmod>2026-08-14</lastmod>
+    </url>
+    <url>
+         <loc>https://openenergyplatform.github.io/oekg/oekg/fields/</loc>
+         <lastmod>2026-08-14</lastmod>
+    </url>
+    <url>
+         <loc>https://openenergyplatform.github.io/oekg/oekg/provenance/</loc>
+         <lastmod>2026-08-14</lastmod>
+    </url>
+</urlset>
