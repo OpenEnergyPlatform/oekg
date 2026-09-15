@@ -1,0 +1,1506 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://openenergyplatform.github.io/oekg/tech-stack/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../workflow/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/OpenEnergyFamily_Logo_OpenEnergyFamily_icon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Tech stack - Open Energy Knowledge Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tech-stack" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://openenergyplatform.org/" title="Open Energy Knowledge Graphs" class="md-header__button md-logo" aria-label="Open Energy Knowledge Graphs" data-md-component="logo">
+      
+  <img src="../assets/OpenEnergyFamily_Logo_OpenEnergyFamily_white_simple.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Energy Knowledge Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tech stack
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/OpenEnergyPlatform/oekg" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tech stack
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../workflow/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Workflow
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../oekg/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  OEKG
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../mhpkg/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Municipal Heat Planning
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://openenergyplatform.org/" title="Open Energy Knowledge Graphs" class="md-nav__button md-logo" aria-label="Open Energy Knowledge Graphs" data-md-component="logo">
+      
+  <img src="../assets/OpenEnergyFamily_Logo_OpenEnergyFamily_white_simple.png" alt="logo">
+
+    </a>
+    Open Energy Knowledge Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/OpenEnergyPlatform/oekg" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tech stack
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tech stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#settled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settled
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The repositories
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-and-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies and environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-still-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is still open
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is still open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-model-source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model source of truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-validates-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What validates what
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-the-heat-planning-graph-will-be-hosted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the heat-planning graph will be hosted
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-graph-table-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The graph / table boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-modelling-and-build-workflow-the-first-steps-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The modelling and build workflow — the first steps built
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-and-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation and CI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation and CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-the-validation-block-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the validation: block exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../oekg/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OEKG
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OEKG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oekg/fields/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factsheet fields
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oekg/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPARQL endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oekg/provenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Provenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../mhpkg/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Municipal Heat Planning
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Municipal Heat Planning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#settled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settled
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The repositories
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-and-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies and environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-still-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is still open
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is still open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-model-source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model source of truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-validates-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What validates what
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-the-heat-planning-graph-will-be-hosted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the heat-planning graph will be hosted
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-graph-table-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The graph / table boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-modelling-and-build-workflow-the-first-steps-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The modelling and build workflow — the first steps built
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-and-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation and CI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation and CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-the-validation-block-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the validation: block exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+  
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+<h1 id="tech-stack">Tech stack<a class="headerlink" href="#tech-stack" title="Permanent link">#</a></h1>
+<p>What these two knowledge graphs are built with — and, just as importantly, <strong>which parts are not
+decided yet</strong>. Anything below marked <em>open</em> is genuinely open; nothing here should be read as a
+commitment that has not been made.</p>
+<h2 id="settled">Settled<a class="headerlink" href="#settled" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Choice</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data model</td>
+<td><strong>RDF</strong></td>
+<td>both graphs</td>
+</tr>
+<tr>
+<td>Serialisation</td>
+<td><strong>Turtle</strong> for the OEKG, <strong>RDF/XML</strong> for the MHP draft</td>
+<td>the MHP draft's format is an artefact of its export tool, not a decision</td>
+</tr>
+<tr>
+<td>Triple store</td>
+<td><strong>Apache Jena Fuseki</strong></td>
+<td>the OEKG is served from a Fuseki dataset</td>
+</tr>
+<tr>
+<td>Query protocol</td>
+<td><strong>SPARQL</strong></td>
+<td>see <a href="../oekg/endpoint/">the endpoint</a></td>
+</tr>
+<tr>
+<td>OEKG schema</td>
+<td><strong><a href="https://github.com/OpenEnergyPlatform/ontology">Open Energy Ontology</a></strong> (OEO)</td>
+<td></td>
+</tr>
+<tr>
+<td>MHP schema</td>
+<td><strong><a href="https://github.com/OpenEnergyPlatform/municipal-heat-planning-ontology">MHPO</a></strong></td>
+<td>imports from and aligns to OEO</td>
+</tr>
+<tr>
+<td>Graph manipulation</td>
+<td><strong><a href="https://github.com/RDFLib/rdflib"><code>rdflib</code></a></strong></td>
+<td>also how the platform writes to the store</td>
+</tr>
+<tr>
+<td>SHACL validation</td>
+<td><strong><a href="https://github.com/RDFLib/pySHACL"><code>pyshacl</code></a></strong></td>
+<td>works; but see the warning below about <em>what</em> it validates</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td><strong>mkdocs</strong> + <strong>mkdocs-material</strong></td>
+<td>this site</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-repositories">The repositories<a class="headerlink" href="#the-repositories" title="Permanent link">#</a></h2>
+<p>Four repositories are in play, and knowing which owns what saves a lot of confusion:</p>
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Owns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>oekg</code></strong> (this one)</td>
+<td>both graphs' data, shapes and documentation</td>
+</tr>
+<tr>
+<td><a href="https://github.com/OpenEnergyPlatform/ontology"><code>ontology</code></a></td>
+<td>the Open Energy Ontology</td>
+</tr>
+<tr>
+<td><a href="https://github.com/OpenEnergyPlatform/municipal-heat-planning-ontology"><code>municipal-heat-planning-ontology</code></a></td>
+<td>MHPO</td>
+</tr>
+<tr>
+<td><a href="https://github.com/OpenEnergyPlatform/municipal-heat-planning-pdf-processing"><code>municipal-heat-planning-pdf-processing</code></a></td>
+<td>the RAG pipeline over published heat plans</td>
+</tr>
+<tr>
+<td><a href="https://github.com/OpenEnergyPlatform/oeplatform"><code>oeplatform</code></a></td>
+<td>the Open Energy Platform — <strong>consumer and writer</strong> of the OEKG, via factsheets</td>
+</tr>
+</tbody>
+</table>
+<p>Note the direction of that last row: <code>oeplatform</code> <strong>writes</strong> the OEKG over SPARQL. It does not read
+files from this repository. See <a href="../oekg/#how-the-oekg-is-populated">how the OEKG is populated</a>.</p>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OEO release vendored in the archive</td>
+<td><strong>v2.8.0</strong> (<code>oekg/archive/madbkr_ba/oekg_rework/oeo-full.owl</code>)</td>
+</tr>
+<tr>
+<td>OEO release the live graph targets</td>
+<td>tracks the current OEO; not pinned here</td>
+</tr>
+</tbody>
+</table>
+<p>The vendored copy exists to keep the archived thesis self-contained. It is <strong>not</strong> the version to
+work from — take OEO releases from the
+<a href="https://github.com/OpenEnergyPlatform/ontology"><code>ontology</code></a> repository.</p>
+<h2 id="dependencies-and-environment">Dependencies and environment<a class="headerlink" href="#dependencies-and-environment" title="Permanent link">#</a></h2>
+<p>Managed with <strong><a href="https://docs.astral.sh/uv/">uv</a></strong>. <code>pyproject.toml</code> declares the dependency
+groups, <code>uv.lock</code> pins the exact resolved versions, and <code>.python-version</code> pins the interpreter —
+which uv downloads itself, so no system Python is required.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pyproject.toml</code></td>
+<td>dependency groups; <code>package = false</code> (this repo is not an importable package)</td>
+</tr>
+<tr>
+<td><code>uv.lock</code></td>
+<td><strong>committed</strong> — the exact resolved set, so CI installs what you have locally</td>
+</tr>
+<tr>
+<td><code>.python-version</code></td>
+<td>the interpreter uv fetches (3.13); <code>requires-python</code> is <code>&gt;=3.11</code></td>
+</tr>
+</tbody>
+</table>
+<p>The commands a contributor runs live in
+<a href="https://github.com/OpenEnergyPlatform/oekg/blob/production/CONTRIBUTING.md#local-setup">CONTRIBUTING.md</a>,
+deliberately in <strong>one</strong> place rather than copied here — two copies of setup instructions diverge
+within months. That page also lists the traps, including the fact that the dev server does not
+serve at <code>/</code>.</p>
+<p>There are three groups: <strong><code>docs</code></strong> (the documentation build), <strong><code>schema</code></strong> (LinkML, which generates
+the SHACL shapes) and <strong><code>graph</code></strong> (<code>pyshacl</code> and <code>rdflib</code>). <code>schema</code> and <code>graph</code> are separate
+because <code>linkml</code> accounts for 88 of the 95 packages they resolve to between them, and a job that
+only validates has no reason to install a generator.</p>
+<p>Pull-request checks run <code>uv lock --check</code>, which <strong>fails</strong> if <code>uv.lock</code> is out of step with
+<code>pyproject.toml</code>, then install every group and build the documentation with <code>--strict</code>. The deploy
+workflow installs with <code>--locked</code>, which fails the same way.</p>
+<div class="admonition warning">
+<p class="admonition-title"><code>--frozen</code> does not assert anything — corrected 2026-08-07</p>
+<p>This page and <code>CONTRIBUTING.md</code> both used to state that CI enforced the lockfile with
+<code>--frozen</code>. That was <strong>wrong</strong>, and the guarantee it described did not exist: <code>--frozen</code> means
+<em>"sync without updating the lockfile"</em>, so it accepts a stale lock and exits 0. Verified by
+running <code>uv sync --group docs --frozen</code> against a <code>pyproject.toml</code> carrying a dependency group
+absent from <code>uv.lock</code> — it passed. The flags that actually assert are <code>--locked</code> and
+<code>uv lock --check</code>, and both are now in use. Compounding it, the deploy workflow does not run on
+pull requests at all, so nothing checked anything before merge; that is what <code>checks.yml</code> is
+for.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">This diverges from the rest of the Open Energy Family</p>
+<p>Other OEP repositories use a plain <code>requirements.txt</code> with <code>pip</code>. This one deliberately does
+not. The trade was made knowingly: a single source of truth plus a real lockfile was judged
+worth more than byte-for-byte consistency with a 15-line workflow. If you maintain other family
+repos, this is the one place this repo will surprise you.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">The archived thesis scripts are still not reproducible</p>
+<p><code>oekg/archive/madbkr_ba/scripts/</code> was written against unrecorded versions of <code>rdflib</code> and
+<code>owlready2</code>, needs a Java toolchain for <code>sync_reasoner()</code>, and one script raises <code>TypeError</code> on
+every invocation. <strong>It is closed work</strong>; the archive makes no reproducibility claim. The
+<code>graph</code> group now locks an <code>rdflib</code> — but it locks it for <em>new</em> work, not for these scripts,
+and it does not lock <code>owlready2</code> or provide Java. Nothing here resurrects them.</p>
+</div>
+<h2 id="what-is-still-open">What is still open<a class="headerlink" href="#what-is-still-open" title="Permanent link">#</a></h2>
+<p>Model-design questions rather than repository-structure ones, worked as a separate effort. The
+first of them has since been <strong>decided</strong> and is kept here, marked as such, so that anyone who read
+the old text sees what changed rather than finding the section quietly gone.</p>
+<h3 id="the-model-source-of-truth">The model source of truth<a class="headerlink" href="#the-model-source-of-truth" title="Permanent link">#</a></h3>
+<p><strong>Decided</strong> (2026-08-07), and no longer "under consideration". <a href="https://linkml.io/">LinkML</a> is the
+authoring layer: one schema definition generates the SHACL shapes that validate the data. LinkML
+<strong>never mints domain terms</strong> — every class and slot points at an IRI owned by the
+<a href="https://github.com/OpenEnergyPlatform/municipal-heat-planning-ontology">municipal heat planning ontology</a>
+(MHPO) or by OEO — and OWL generation stays off, so it never competes with MHPO as a source of
+terms.</p>
+<p>✅ <strong>A first slice of that schema now exists</strong> — <code>mhpkg/schema/</code>, covering a municipal heat plan, its
+target scenario and one final energy consumption value, with the SHACL generated from it and both a
+conformant and a deliberately failing example. It was built to test the decision against a real
+OBO-style ontology rather than to cover the domain, and the decision held: <code>gen-shacl</code> puts each
+<code>class_uri</code> straight into <code>sh:targetClass</code>, so the generated shapes constrain MHPO and OEO IRIs
+directly.</p>
+<p>Two limits found while building it are worth knowing before relying on the approach, and both are
+documented in <code>mhpkg/schema/README.md</code>:</p>
+<ul>
+<li><strong>The IRI policy cannot be generated.</strong> SHACL constrains a node's own IRI with <code>sh:pattern</code> at
+  <em>node</em> level and LinkML cannot emit that, so one hand-written shapes file sits alongside the
+  generated one. "Everything is generated" is not achievable today.</li>
+<li><strong>Generated SHACL is not byte-stable</strong>, because every <code>sh:property</code> is a blank node. A drift check
+  has to compare graphs, not bytes — a <code>diff</code> would fail on every run while nothing was wrong.</li>
+</ul>
+<h3 id="what-validates-what">What validates what<a class="headerlink" href="#what-validates-what" title="Permanent link">#</a></h3>
+<p>Describes the <strong>live OEKG</strong>, verified 2026-08-13:</p>
+<ul>
+<li><code>oekg/shapes/oekg_shapes.ttl</code> — the OEKG's canonical shapes. Run against a dump of the live graph
+  they bind 1,499 focus nodes across all eight shapes and report 135 violations (0.99% of triples),
+  <strong>133 of which are <code>oeplatform</code> data bugs</strong> rather than anything this repository can fix.</li>
+</ul>
+<p>⚠️ <strong>This entry used to say the opposite.</strong> Until 2026-08-13 <code>oekg/shapes/</code> held the thesis's
+<em>pre-rework</em> file, which declares the OEO prefix as <code>http://openenergy-platform.org/ontology/oeo/</code>
+and uses readable property names like <code>oeo:covers_energy_carrier</code> that OEO does not define. The
+namespace resolves — it redirects — but an IRI is <em>identity, not an address</em>, so every term in it is
+a different term from the one OEO mints, and it therefore could not match the live graph even in
+principle. That file is now only in the archive; the canonical file uses the current
+<code>https://openenergyplatform.org/…</code> namespaces.</p>
+<p>Describes a dump or a target state, not the store:</p>
+<ul>
+<li>the archive's own copies — thesis provenance, both the 350-line and 317-line instruments</li>
+<li><code>oekg/eval/competency_questions/</code> — the SPARQL still carries the <strong>old</strong> <code>oekg</code> namespace and
+  needs rebasing before it will match the live graph</li>
+</ul>
+<p>Authored against the schema, and exercised on every run of <code>mhpkg/schema/validate.py</code>:</p>
+<ul>
+<li><code>mhpkg/schema/generated/</code> — generated from the LinkML schema</li>
+<li><code>mhpkg/schema/mhpkg_iri_policy.shacl.ttl</code> — hand-written, enforcing the IRI policy</li>
+</ul>
+<p>So <code>pyshacl</code> "working" now means two different things. For MHPKG: example data is checked in both
+directions — the conformant instance passes and the negative control is asserted to fail for each of
+its reasons. For the OEKG: the shapes have been run against real graph data once, by hand, and the
+result recorded. Neither is <strong>a validation pipeline or a CI job</strong> — <code>checks.yml</code> still validates no
+graph data at all.</p>
+<h3 id="namespace-migration">Namespace migration<a class="headerlink" href="#namespace-migration" title="Permanent link">#</a></h3>
+<p>The project has moved from <code>http://openenergy-platform.org/…</code> to
+<code>https://openenergyplatform.org/…</code>. <strong>The live graph has been updated. Some files here have not</strong> —
+notably <code>oekg/shapes/</code> and the competency-question SPARQL in <code>oekg/eval/</code>.</p>
+<p>This matters practically: a query or shapes file copied from those locations may silently return
+nothing against the live graph, because a zero-result SPARQL query is indistinguishable from a
+correct query about absent data. Files under <code>oekg/legacy/</code> and <code>oekg/archive/</code> use the old form
+<strong>correctly</strong> — they are dated artefacts and should not be changed.</p>
+<h3 id="where-the-heat-planning-graph-will-be-hosted">Where the heat-planning graph will be hosted<a class="headerlink" href="#where-the-heat-planning-graph-will-be-hosted" title="Permanent link">#</a></h3>
+<p><strong>Undecided.</strong> Either a second dataset in the Fuseki store that already serves the OEKG, or a
+separate instance. Access, backup and governance ride on the answer.</p>
+<h3 id="the-graph-table-boundary">The graph / table boundary<a class="headerlink" href="#the-graph-table-boundary" title="Permanent link">#</a></h3>
+<p><strong>Undecided.</strong> Which extracted heat-plan data belongs in the graph as triples, and which is better
+served as a table on the Open Energy Platform. See <a href="../workflow/#not-everything-belongs-in-a-graph">Workflow</a>.</p>
+<h2 id="the-modelling-and-build-workflow-the-first-steps-built">The modelling and build workflow — the first steps built<a class="headerlink" href="#the-modelling-and-build-workflow-the-first-steps-built" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">The left of this diagram is real; the right is still intention</p>
+<p><strong>The authoring end now exists</strong> — a LinkML schema, the SHACL generated from it, and validation
+of example data in both directions. Solid boxes below are built and exercised.</p>
+<p><strong>Nothing has been loaded into a triple store yet</strong>, and there is no CI job. Dashed boxes are
+not built. The boxes still marked <em>undecided</em> are the open questions listed above.</p>
+<p>When a decision is made, the marker here should be replaced by the answer rather than left to
+rot.</p>
+</div>
+<pre class="mermaid"><code>flowchart LR
+    SRC["Model source of truth&lt;br/&gt;LinkML — DECIDED"]
+    GEN["Generated artifacts&lt;br/&gt;what exactly: UNDECIDED"]
+    SHAPES["SHACL shapes&lt;br/&gt;generated + hand-written IRI policy"]
+    DATA["Graph data"]
+    VAL["Validation&lt;br/&gt;pyshacl"]
+    LOAD["Load into Fuseki"]
+
+    SRC --&gt; GEN
+    SRC --&gt; SHAPES
+    SHAPES --&gt; VAL
+    DATA --&gt; VAL
+    VAL -- passes --&gt; LOAD
+    VAL -- fails --&gt; SRC
+
+    classDef built stroke-width:2px
+    classDef todo stroke-dasharray: 5 5
+    class SRC,SHAPES,VAL built
+    class GEN,DATA,LOAD todo</code></pre>
+<p>The shape of it is not controversial — author a model, generate from it, validate data against it,
+load what passes. <strong>The leftmost box is now answered</strong>: LinkML authors the model, MHPO owns the
+terms. What remains open is <em>which</em> generated artifacts are authoritative and how they are published
+— and one finding from building the schema constrains that answer already, because the IRI policy
+has to be hand-written, so the contract cannot simply say "everything is generated".</p>
+<h2 id="documentation-and-ci">Documentation and CI<a class="headerlink" href="#documentation-and-ci" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Site generator</td>
+<td>mkdocs <strong>1.x</strong> with mkdocs-material</td>
+</tr>
+<tr>
+<td>Diagrams</td>
+<td>mermaid, via Material's <code>pymdownx.superfences</code> custom fence</td>
+</tr>
+<tr>
+<td>Build strictness</td>
+<td><code>strict: true</code> <strong>plus</strong> an explicit <code>validation:</code> block</td>
+</tr>
+<tr>
+<td>Hosting</td>
+<td>GitHub Pages</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">The <code>mkdocs~=1.6</code> pin is deliberate — do not relax it to allow 2.0</p>
+<p>The Material for MkDocs team warns that <strong>MkDocs 2.0</strong> introduces backward-incompatible
+changes to the framework Material is built on: the plugin system is removed (all plugins stop
+working), the theming system is rewritten (all overrides break), <strong>no migration path exists</strong>,
+the contribution model is closed, and it is <strong>currently unlicensed — unsuitable for production
+use</strong>. Material itself is not deprecated; it is actively maintained and Production/Stable.</p>
+<p><code>mkdocs~=1.6</code> resolves to <code>&gt;=1.6, ==1.*</code>, which permits 1.9 but <strong>blocks 2.0</strong> — verified. Keep
+it that way until the situation upstream resolves. See the
+<a href="https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/">Material team's analysis</a>.</p>
+</div>
+<h3 id="why-the-validation-block-exists">Why the <code>validation:</code> block exists<a class="headerlink" href="#why-the-validation-block-exists" title="Permanent link">#</a></h3>
+<p><code>strict: true</code> alone is <strong>not</strong> enough. mkdocs 1.6 does not check <code>#anchors</code> by default, so a
+strict build passes happily while cross-page anchor links rot. These pages carry several such
+links, so the config adds:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">validation</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">anchors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
+<span class="w">  </span><span class="nt">unrecognized_links</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
+<span class="w">  </span><span class="nt">absolute_links</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
+</code></pre></div>
+<p>With <code>strict: true</code>, a warning becomes a build failure. This was verified with a negative control —
+an anchor was deliberately broken and the build aborted with exit 1 — so the passing build is a
+real result and not a disabled check.</p>
+<p>Documentation is the <strong>only</strong> thing this repository has CI for. There is no test suite and no
+validation job; adding SHACL validation to CI is an obvious future step, but it depends on the
+model source of truth above being decided first.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.tracking", "navigation.top", "toc.follow", "search.suggest", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
