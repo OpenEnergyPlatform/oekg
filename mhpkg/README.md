@@ -35,16 +35,18 @@ Three directories, each created when there was something to put in it:
 |---|---|
 | [`schema/`](schema/) | **the data shape** — the LinkML schema, the SHACL generated from it, the hand-written IRI-policy shapes, and worked examples. Start here |
 | [`mhpo/`](mhpo/) | the pinned MHPO term list — which terms this graph may cite, and the commit they came from |
-| `model/mhpkg_model_first_draft.owl` | the original Termboard draft — 350 lines of RDF/XML, 21 `owl:Class`, 16 `owl:ObjectProperty`, no `owl:DatatypeProperty`, no `sh:NodeShape` |
+| [`model/`](model/) | the Termboard exports (JSON and OWL, by date), the **mapping** from Termboard names to the schema, and `termboard_delta.py`, which compares a new export with the schema. **Start here when a new export arrives** |
 
-`model/` is named for its contents: that file is **OWL, not SHACL**. The shapes now live in
-[`schema/generated/`](schema/generated/) and are generated rather than hand-written.
+`model/` holds the model as it is drawn, and `schema/` holds it as it is enforced. The shapes live
+in [`schema/generated/`](schema/generated/) and are generated rather than hand-written.
 
-> ⚠️ **The Termboard draft is a thinking artifact and is never machine-consumed.** Beyond the
-> vendor base IRI and the `"Imported Document"` title, it declares everything as `owl:Class` —
-> values, units and individuals alike — and silently strips umlauts from IRI local names, so
-> `Kassel Wärme Ingenieurbüro` becomes `Kassel_Wrme_Ingenieurbro`. Fed through the IRI policy that
-> mints a **different** entity with no error. Terms reach the model by hand, as MHPO term requests.
+> ⚠️ **Termboard output never reaches the schema or the graph without a human decision.** The OWL
+> export is not even valid RDF/XML, declares everything as `owl:Class` and strips umlauts from IRI
+> local names — so `Kassel Wärme Ingenieurbüro` becomes `Kassel_Wrme_Ingenieurbro`, which the IRI
+> policy mints as a **different** entity with no error. The JSON export is clean enough to be
+> *compared* against the schema, and [`model/termboard_delta.py`](model/) does exactly that; every
+> resulting change is still made by hand and recorded in `model/termboard_mapping.yaml`. See
+> [`model/README.md`](model/README.md).
 
 ⚠️ These directory names and this layout are **provisional** — see open question 3 below.
 
@@ -53,12 +55,9 @@ thing* — `shapes/`, `eval/`, `examples/` are the agreed vocabulary. No paralle
 invented ahead of content: **create a directory when there is something to put in it**, not
 before. Empty directories that exist get filled with the wrong things.
 
-> ⚠️ **The draft's base IRI is a vendor namespace** —
-> `https://termboard.com/ontology/d0425b2d-…`, and its `dc:title` is still
-> "Imported Document". It **needs rebasing onto a namespace this project controls**, and this
-> is exactly the "don't bake in IRIs" hazard arriving through a tool rather than a decision.
-> Deliberately **not** done during the repository restructure: rebasing an ontology's IRIs is
-> model design. Recorded here so it is not lost.
+> ✅ **The drafts' vendor base IRI** (`https://termboard.com/ontology/…`) no longer matters: no
+> Termboard IRI is ever used. The tool matches Termboard names, and instance IRIs come from the IRI
+> policy in `https://openenergyplatform.org/id/mhpkg/`.
 
 ## What does *not* belong in here
 

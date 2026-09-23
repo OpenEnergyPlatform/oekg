@@ -26,11 +26,11 @@ Being honest about maturity, because the ambition above is much larger than what
 | | |
 |---|---|
 | **Data shape** | one slice authored in [LinkML](https://linkml.io/) — `mhpkg/schema/` |
-| **Coverage** | a municipal heat plan, its target scenario, and one final energy consumption value |
-| **SHACL shapes** | **generated** from the LinkML schema, plus a hand-written file enforcing the IRI policy |
+| **Coverage** | a municipal heat plan, its inventory analysis and target scenario, and their final energy consumption, greenhouse gas emission and share values |
+| **SHACL shapes** | **generated** from the LinkML schema, plus two hand-written files: the IRI policy, and rules that depend on where a node sits |
 | **Terms** | cited from MHPO and OEO, never minted here — pinned term list in `mhpkg/mhpo/` |
 | **Examples** | one conformant instance and one deliberately failing one |
-| **Termboard draft** | `mhpkg/model/mhpkg_model_first_draft.owl` — 350 lines of RDF/XML, kept as a thinking artifact |
+| **Termboard model** | exported to `mhpkg/model/` by date (latest: 2026-09-15), and compared with the schema by a delta tool |
 | **Extracted data** | none yet in the graph |
 | **Store** | decided — its own Fuseki dataset, one named graph per heat plan. Not yet provisioned |
 
@@ -56,14 +56,22 @@ limits change how the generated artifacts can be checked.
 MHPO term list, and the script that regenerates it. MHPO has no releases or tags, so the pin is a
 commit SHA.
 
-### About the Termboard draft
+[`mhpkg/model/`](https://github.com/OpenEnergyPlatform/oekg/tree/production/mhpkg/model) — the
+Termboard exports and the loop that carries a new one into the schema.
 
-It remains in the repository as a record of early modelling, and it is **never machine-consumed**.
-Two reasons, both verified: its base IRI is a vendor namespace (`https://termboard.com/ontology/…`)
-and its `dc:title` is still `"Imported Document"`; and it silently strips umlauts from IRI local
-names, so `Kassel Wärme Ingenieurbüro` becomes `Kassel_Wrme_Ingenieurbro`. Fed through the IRI
-policy, an umlaut-stripped name mints a **different** entity without raising an error. Terms reach
-the model by hand, through MHPO's term-request process.
+### About the Termboard model
+
+The model is drawn in Termboard and exported here, but **nothing from Termboard reaches the schema or
+the graph without a human decision**. Termboard cannot say which box is a class, which is an
+individual and which is a literal: `2030`, `MWh` and `municipal heat plan` are all boxes. Its OWL
+export is also not valid RDF/XML, and it strips umlauts from IRI local names, so
+`Kassel Wärme Ingenieurbüro` becomes `Kassel_Wrme_Ingenieurbro`. Fed through the IRI policy, that
+mints a **different** entity without raising an error.
+
+The JSON export is clean enough to **compare** against. `mhpkg/model/termboard_delta.py` reads it,
+together with a committed mapping of Termboard names to schema elements, and lists what is new,
+what is gone, and which drawn relations the schema cannot yet express. The schema change itself is
+made by hand. Terms that neither OEO nor MHPO has become term requests.
 
 ## How the data gets here
 

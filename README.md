@@ -11,16 +11,16 @@
 | Directory | Graph | Domain | Status |
 |---|---|---|---|
 | [`oekg/`](oekg/) | **OEKG** — Open Energy Knowledge Graph | energy studies and scenarios | live; the graph itself is served by the Open Energy Platform |
-| [`mhpkg/`](mhpkg/) | **mhpkg** — Municipal Heat Planning KG ⚠️ *provisional name* | German *kommunale Wärmeplanung* | early draft |
+| [`mhpkg/`](mhpkg/) | **mhpkg** — Municipal Heat Planning KG | German *kommunale Wärmeplanung* | early draft: one schema slice, no data yet |
 
 They are kept side by side because they are developed by the same people, against overlapping
 ontologies, for the same platform — and separated inside the repository because they are
 genuinely different animals. The OEKG is populated from OEP factsheets and has three tiers of
-history behind it; `mhpkg` is fed by a RAG pipeline over published heat plans and currently
-consists of one OWL draft. Neither directory's layout is imposed on the other.
+history behind it; `mhpkg` is modelled in Termboard, shaped by a LinkML schema, and will be fed
+by a RAG pipeline over published heat plans. Neither directory's layout is imposed on the other.
 
-> ⚠️ **`mhpkg` is a provisional name.** Do not bake it into IRIs, namespace prefixes or
-> published URLs without a rename path. See [`mhpkg/README.md`](mhpkg/README.md).
+> ✅ **The name `mhpkg` is settled** and is used in IRIs (`https://openenergyplatform.org/id/mhpkg/`).
+> An earlier version of this README called it provisional. See [`mhpkg/README.md`](mhpkg/README.md).
 
 ## What lives where
 
@@ -37,8 +37,10 @@ consists of one OWL draft. Neither directory's layout is imposed on the other.
 │   ├── legacy/            superseded: the first population pipeline. Do not reuse.
 │   └── archive/madbkr_ba/ archived: a finished BA thesis, intact
 │
-├── mhpkg/                 Municipal Heat Planning KG (provisional name)
-│   └── model/             the first OWL draft of the model
+├── mhpkg/                 Municipal Heat Planning KG
+│   ├── schema/            the data shape: LinkML schema, generated + hand-written SHACL, examples
+│   ├── mhpo/              the pinned MHPO term list
+│   └── model/             the Termboard exports, and the tool that compares them with the schema
 │
 ├── CHANGELOG.md  CITATION.cff  CONTRIBUTING.md  CODE_OF_CONDUCT.md  LICENSE.txt
 ├── RELEASE_PROCEDURE.md   the family's release convention, adapted

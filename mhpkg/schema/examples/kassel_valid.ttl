@@ -1,17 +1,21 @@
-# A conformant MHPKG instance: Kassel's 2024 municipal heat plan, one target-scenario indicator.
+# A conformant MHPKG instance: Kassel's 2024 municipal heat plan, its inventory analysis and its
+# target scenario, with one value of each indicator class the 2026-09-15 Termboard draft names.
 #
 # Hand-written, with every IRI produced by `python mhpkg/schema/mint_slice.py` rather than typed —
 # a hand-typed UUID is a hand-typed UUID whatever the policy says.
 #
 # Validate with:
-#   .venv/bin/pyshacl -s mhpkg/schema/generated/mhpkg_target_scenario.shacl.ttl \
-#                     -s mhpkg/schema/mhpkg_iri_policy.shacl.ttl \
-#                     -df turtle -f human mhpkg/schema/examples/kassel_valid.ttl
+#   uv run python mhpkg/schema/validate.py
+#
+# NOT with `pyshacl -s … -s …`: pyshacl silently uses only the last `-s`, so that command checks
+# one shapes file of three and reports conformance either way. See `validate.py`.
 #
 # ⚠️ THE DATA IS ILLUSTRATIVE, NOT REAL. 241 MWh comes from the Termboard sketch and is far too
 # small for a city of 200,000 — a real Kassel figure would be in the millions of MWh. It is kept
 # because this slice tests the SHAPE, and changing the number would quietly imply the figure had
-# been sourced. No published heat plan has been read yet.
+# been sourced. No published heat plan has been read yet. The same goes for 1588 t and 25 %, also
+# from the sketch — and the inventory base year 2021 is not even in the sketch; it is invented,
+# because an inventory value must carry a year and the draft draws none.
 
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
@@ -28,7 +32,8 @@
     a mhpo:MHPO_00020003 ;                                    # municipal heat plan
     rdfs:label "Kommunale Wärmeplanung Kassel 2024" ;
     oeo:OEO_00390096 "2024-03-15"^^xsd:date ;                 # has publication date
-    obo:BFO_0000051 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2024-03-15> ;   # has part
+    obo:BFO_0000051 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2024-03-15> ,   # has part
+                    <https://openenergyplatform.org/id/mhpkg/inventoryanalysis/AGS_06611000_2024-03-15> ;
     oeo:OEO_00000510 <https://openenergyplatform.org/id/mhpkg/organisation/2d4f4ae8-ea0f-575c-9a76-8dcf377042af> .  # has organisation
 
 # --- The target scenario --------------------------------------------------------------
@@ -38,21 +43,59 @@
 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2024-03-15>
     a mhpo:MHPO_00020007 ;                                    # target scenario
     rdfs:label "Zielszenario Kassel 2024" ;
-    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/a878a3a1-b856-5aaf-b767-d1b4154d11aa> .   # has quantity value
+    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/78153046-c4c2-5cae-a61c-56c70e57e5a5> ,   # has quantity value
+                     <https://openenergyplatform.org/id/mhpkg/value/9f4b7750-a043-5d47-9112-3f90264ebc6f> .
 
 # --- The indicator value --------------------------------------------------------------
 # Tier 3: UUIDv5 over the value's COORDINATES — plan, indicator, carrier, year, aggregation —
 # and never over its magnitude. Correcting 241 to 2410 updates this node; it does not mint a
 # second one and orphan the first.
 
-<https://openenergyplatform.org/id/mhpkg/value/a878a3a1-b856-5aaf-b767-d1b4154d11aa>
+<https://openenergyplatform.org/id/mhpkg/value/78153046-c4c2-5cae-a61c-56c70e57e5a5>
     a oeo:OEO_00050016 ;                                      # final energy consumption value
     oeo:OEO_00140178 "241.0"^^xsd:float ;                     # has number
     oeo:OEO_00040010 oeo:OEO_00050008 ;                       # has unit -> megawatt-hour
     oeo:OEO_00000523 oeo:OEO_00000292 ;                       # covers energy carrier -> natural gas
     oeo:OEO_00000505 oeo:OEO_00000214 ;                       # covers sector -> household sector
+    oeo:OEO_00390101 oeo:OEO_00020491 ;                       # covers technology -> gas powered heating
     oeo:OEO_00020440 "2030"^^xsd:integer ;                    # has scenario year value
-    oeo:OEO_00390023 oeo:OEO_00140070 .                       # has aggregation type -> integral
+    oeo:OEO_00390023 oeo:OEO_00140070 ;                       # has aggregation type -> integral
+    oeo:OEO_00000516 oeo:OEO_00020161 .                       # has temporal resolution -> annual
+
+# --- A share --------------------------------------------------------------------------
+# Termboard's `share`: 25 % natural gas in 2030. What it is a share OF — the numerator and the
+# denominator the sketch draws — has no relation to be written with yet (TERM REQUEST 7), so the
+# share carries its numerator's carrier and year directly. Its tuple has no aggregation, so that
+# field is the empty string: omitted fields would shift and collide.
+
+<https://openenergyplatform.org/id/mhpkg/value/9f4b7750-a043-5d47-9112-3f90264ebc6f>
+    a oeo:OEO_00140127 ;                                      # fraction value
+    oeo:OEO_00140178 "25.0"^^xsd:float ;                      # has number
+    oeo:OEO_00040010 obo:UO_0000187 ;                         # has unit -> percent
+    oeo:OEO_00000523 oeo:OEO_00000292 ;                       # covers energy carrier -> natural gas
+    oeo:OEO_00020440 "2030"^^xsd:integer .                    # has scenario year value
+
+# --- The aggregated inventory analysis ------------------------------------------------
+# Bestandsanalyse, WPG Annex 2 I: where the plan starts from. Tier 2 like the target scenario —
+# one per plan, which `mhpkg_context.shacl.ttl` enforces.
+
+<https://openenergyplatform.org/id/mhpkg/inventoryanalysis/AGS_06611000_2024-03-15>
+    a mhpo:MHPO_00020005 ;                                    # aggregated inventory analysis
+    rdfs:label "Bestandsanalyse Kassel 2024" ;
+    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/1f9238b1-7f03-554e-b682-1e472b6b0a1a> .   # has quantity value
+
+# --- A greenhouse gas emission value --------------------------------------------------
+# Total emissions for the base year: no carrier, no sector, no technology — WPG asks for the total.
+# The unit is the tonne; the CO2-equivalence is the value's, not the unit's (see MassUnitEnum).
+# A year before 2024 is fine HERE and would be rejected inside the target scenario.
+
+<https://openenergyplatform.org/id/mhpkg/value/1f9238b1-7f03-554e-b682-1e472b6b0a1a>
+    a oeo:OEO_00340065 ;                                      # greenhouse gas emission value
+    oeo:OEO_00140178 "1588.0"^^xsd:float ;                    # has number
+    oeo:OEO_00040010 oeo:OEO_00010137 ;                       # has unit -> metric ton
+    oeo:OEO_00020440 "2021"^^xsd:integer ;                    # has scenario year value (base year)
+    oeo:OEO_00390023 oeo:OEO_00140070 ;                       # has aggregation type -> integral
+    oeo:OEO_00000516 oeo:OEO_00020161 .                       # has temporal resolution -> annual
 
 # --- The contracted planner -----------------------------------------------------------
 # Tier 3 over the NORMALISED label: NFC, casefold, punctuation to space, collapse, strip trailing

@@ -48,7 +48,7 @@ def mint(collection: str, name: str) -> str:
     return f"{BASE}{collection}/{uuid.uuid5(ns(collection), name)}"
 
 
-# --- The slice: Kassel's 2024 heat plan, one target-scenario indicator ------------------
+# --- The slice: Kassel's 2024 heat plan, its inventory analysis and target scenario ------
 
 AGS = "06611000"  # Kassel. 06 Hessen · 6 RB Kassel · 11 Stadt Kassel · 000 kreisfrei.
 PUBLISHED = "2024-03-15"
@@ -56,6 +56,7 @@ PUBLISHED = "2024-03-15"
 MUNICIPALITY = f"{BASE}municipality/AGS_{AGS}"  # Tier 1: public register key
 HEATPLAN = f"{BASE}heatplan/AGS_{AGS}_{PUBLISHED}"  # Tier 2: key + discriminator
 TARGET_SCENARIO = f"{BASE}targetscenario/AGS_{AGS}_{PUBLISHED}"  # Tier 2
+INVENTORY = f"{BASE}inventoryanalysis/AGS_{AGS}_{PUBLISHED}"  # Tier 2, one per plan
 
 # Tier 3. Value identity is its COORDINATES, never its magnitude — so correcting 241 to 2410
 # updates this node instead of orphaning it.
@@ -66,6 +67,19 @@ AGGREGATION = "https://openenergyplatform.org/ontology/oeo/OEO_00140070"  # inte
 
 VALUE_TUPLE = "|".join([HEATPLAN, INDICATOR, ENERGY_CARRIER, YEAR, AGGREGATION])
 VALUE = mint("value", VALUE_TUPLE)
+
+# The 2026-09-15 draft's two new indicator classes, in the same five-field tuple. A field the value
+# does not have is the EMPTY STRING, never omitted — omitting it would shift the fields and let two
+# different values hash the same. The indicator class is a field, so a consumption and an emission
+# figure with otherwise equal coordinates still mint different IRIs.
+GHG_INDICATOR = "https://openenergyplatform.org/ontology/oeo/OEO_00340065"  # GHG emission value
+BASE_YEAR = "2021"  # illustrative: the sketch gives the inventory analysis no year
+GHG_TUPLE = "|".join([HEATPLAN, GHG_INDICATOR, "", BASE_YEAR, AGGREGATION])  # total, no carrier
+GHG_VALUE = mint("value", GHG_TUPLE)
+
+SHARE_INDICATOR = "https://openenergyplatform.org/ontology/oeo/OEO_00140127"  # fraction value
+SHARE_TUPLE = "|".join([HEATPLAN, SHARE_INDICATOR, ENERGY_CARRIER, YEAR, ""])  # no aggregation
+SHARE_VALUE = mint("value", SHARE_TUPLE)
 
 # The contracted planner has no public register key, so Tier 3 over its normalised label.
 PLANNER_LABEL = "Kassel Wärme Ingenieurbüro"
@@ -79,11 +93,16 @@ if __name__ == "__main__":
     print(f"municipality      {MUNICIPALITY}")
     print(f"heat plan         {HEATPLAN}")
     print(f"target scenario   {TARGET_SCENARIO}")
+    print(f"inventory         {INVENTORY}")
     print(f"organisation      {PLANNER}")
     print(f"   from label     {PLANNER_LABEL!r} -> {normalise(PLANNER_LABEL)!r}")
     print()
     print(f"value tuple       {VALUE_TUPLE}")
     print(f"value             {VALUE}")
+    print(f"ghg tuple         {GHG_TUPLE}")
+    print(f"ghg value         {GHG_VALUE}")
+    print(f"share tuple       {SHARE_TUPLE}")
+    print(f"share value       {SHARE_VALUE}")
     print()
     print(f"data graph        {GRAPH}plan/AGS_{AGS}_{PUBLISHED}")
     print(f"shapes graph      {GRAPH}shapes")

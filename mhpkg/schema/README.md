@@ -4,10 +4,14 @@
 for MHPKG, the SHACL shapes generated from it, and worked examples that prove the shapes reject
 what they should.
 
-> **Status: first cut, one slice.** It covers a municipal heat plan, the target scenario inside it
-> and one final energy consumption value — deep enough to be honest, small enough to finish. It is
-> not the schema for the whole domain, and the [findings](#what-this-slice-established) below matter
-> more than the coverage.
+> **Status: one slice, updated to the 2026-09-15 Termboard draft.** It covers a municipal heat plan,
+> its aggregated inventory analysis and its target scenario, and three kinds of indicator value in
+> them — final energy consumption, greenhouse gas emissions and shares — with carrier, sector,
+> technology, year, aggregation and temporal resolution. It is not the schema for the whole domain,
+> and the [findings](#what-this-slice-established) below matter more than the coverage.
+>
+> **When a new Termboard export arrives, start in [`../model/`](../model/README.md)**: its delta tool
+> lists what the export says that this schema does not.
 >
 > **This directory's location is provisional.** **MH-03** decides the `mhpkg/` layout and may move
 > it, as it may move [`../mhpo/`](../mhpo/).
@@ -30,6 +34,7 @@ Both were decided before this schema existed and neither is reopenable here.
 | [`mhpkg_target_scenario.yaml`](mhpkg_target_scenario.yaml) | the schema — **the only thing you edit** |
 | [`generated/mhpkg_target_scenario.shacl.ttl`](generated/) | **generated.** Do not hand-edit |
 | [`mhpkg_iri_policy.shacl.ttl`](mhpkg_iri_policy.shacl.ttl) | **hand-written.** The IRI policy as shapes — LinkML cannot express it |
+| [`mhpkg_context.shacl.ttl`](mhpkg_context.shacl.ttl) | **hand-written.** Rules that depend on where a node sits — LinkML cannot express them either |
 | [`mint_slice.py`](mint_slice.py) | mints the example IRIs, so no UUID in this directory is hand-typed |
 | [`validate.py`](validate.py) | validates both examples and **asserts the negative control catches every case**. Needs `graph` only |
 | [`check_generated.py`](check_generated.py) | checks the committed SHACL still matches the schema. Needs `schema` |
@@ -47,6 +52,7 @@ uv run gen-shacl --closed mhpkg/schema/mhpkg_target_scenario.yaml \
 
 uv run python mhpkg/schema/mint_slice.py   # print the slice's IRIs and how they are derived
 uv run python mhpkg/schema/validate.py     # validate; exit 0 only if the negative control holds
+                                           # (merges all three shapes files — never use `pyshacl -s -s`)
 
 # check the committed SHACL still matches the schema (needs the `schema` group — it regenerates)
 uv run --group schema python mhpkg/schema/check_generated.py
@@ -126,6 +132,27 @@ So the machine-checkable half of the IRI policy that MH-02 delegated here lives 
 companion file. **This is direct input to MH-07: the generated-artifacts contract cannot say
 "everything is generated".**
 
+**🔴 Some rules depend on the container, and LinkML cannot say that.** Found when the 2026-09-15
+draft put the same value classes into the aggregated inventory analysis as well as the target
+scenario. `gen-shacl` emits one shape per class, so each constraint applies to every instance of the
+class wherever it sits. Two rules that used to be expressible per class stopped being so:
+
+- "the year is 2024 or later" holds for a *target-scenario* value, and not for an inventory base year;
+- "exactly one target scenario" stopped fitting on `has_part` once the plan could also have an
+  inventory analysis as a part. LinkML emits `sh:or` over the classes, and no per-class
+  cardinality.
+
+The generated shapes were loosened (the year floor is now 1990, and `has_part` takes either class),
+and both rules were restated in a second hand-written file, `mhpkg_context.shacl.ttl`. It uses a
+SHACL property path through the container and a qualified value shape, neither of which LinkML
+emits. Negative-control cases 8 and 9 assert both rules, and removing the file makes exactly
+those cases fail. **So there are now two hand-written companions, and MH-07's contract has to allow
+for a category of them, not a single exception.**
+
+**✅ Heat generation technology needs no reasoner, unlike energy carrier.** OEO's `heat generation
+technology` has an asserted hierarchy, so every `TechnologyEnum` entry is an asserted subclass.
+This is the opposite of the energy-carrier problem below.
+
 **🔴 Enum membership cannot be checked by anything in this repository.** OEO's `energy carrier` has
 four asserted subclasses and all are abstract; `natural gas` is a subclass of `gas mixture` and
 qualifies only *by inference*, through a disposition equivalence axiom. The OEKG's shape file admits
@@ -183,8 +210,17 @@ hole is visible in the artifact. They belong to MHPO's owners — filing is
 4. **The AGS as data**, not only inside an IRI. A key recoverable by string surgery on an
    identifier cannot be queried or typed as a key. OEO's `unique individual identifier` is an
    *annotation* property, so it will not serve.
-5. **Relations from a quantity value to its temporal region, energy carrier and sector** — or the
-   existing `covers …` relations with domains widened past `study`.
+5. **Relations from a quantity value to its temporal region, energy carrier, sector and
+   technology, and to its temporal resolution.** The alternative is the existing `covers …` and
+   `has temporal resolution` relations with their domains widened past `study` and `data set`. The
+   2026-09-15 Termboard draft names them `refers to …`, which is a fair first wording.
+6. **Whether a plan was drawn up in a convoy** (Konvoiverfahren): Termboard's `part of convoi`.
+7. **What a share is a share of.** Termboard draws `has numerator` and `has denominator`. OEO relates
+   *units* to numerator units, but never a quantity value to the values it is a ratio of.
+
+> The numbering here differs from the `TERM REQUEST` blocks in the YAML, which predate this list.
+> The YAML numbers 1 area, 2 AGS, 3 role, 4 value relations, 6 convoy and 7 share, and
+> `../model/termboard_mapping.yaml` uses the YAML's numbers.
 
 ## Deliberately not here
 

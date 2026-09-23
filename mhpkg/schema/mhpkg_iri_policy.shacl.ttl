@@ -65,6 +65,16 @@ mhpkg_shapes:TargetScenarioIri
     sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/targetscenario/AGS_[0-9]{8}_[0-9]{4}-[0-9]{2}-[0-9]{2}$" ;
     sh:message "Tier-2 violation: a target scenario IRI must be .../targetscenario/AGS_<8 digits>_<YYYY-MM-DD>, discriminated by the heat plan it belongs to." .
 
+# A plan has at most one inventory analysis, as it has one target scenario, so the same key serves.
+# (`mhpkg_context.shacl.ttl` enforces the "at most one"; this shape only enforces the spelling.)
+
+mhpkg_shapes:AggregatedInventoryAnalysisIri
+    a sh:NodeShape ;
+    sh:targetClass mhpo:MHPO_00020005 ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/inventoryanalysis/AGS_[0-9]{8}_[0-9]{4}-[0-9]{2}-[0-9]{2}$" ;
+    sh:message "Tier-2 violation: an aggregated inventory analysis IRI must be .../inventoryanalysis/AGS_<8 digits>_<YYYY-MM-DD>, discriminated by the heat plan it belongs to." .
+
 # --- Tier 3: UUIDv5 over the identifying tuple ----------------------------------------
 #
 # The version nibble is pinned to `5` and the variant nibble to [89ab]. This is not cosmetic:
@@ -76,9 +86,12 @@ mhpkg_shapes:TargetScenarioIri
 # Lower case is required too. Hex is case-insensitive as a number but IRIs are not, so `A` and `a`
 # would be two identities for one thing.
 
+# Every value class shares the one `value/` collection: a value's identity is its coordinates, and
+# the indicator class is one of them, so a consumption and an emission figure cannot collide.
+
 mhpkg_shapes:ConsumptionValueIri
     a sh:NodeShape ;
-    sh:targetClass oeo:OEO_00050016 ;
+    sh:targetClass oeo:OEO_00050016, oeo:OEO_00340065, oeo:OEO_00140127 ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/value/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" ;
     sh:message "Tier-3 violation: a value IRI must be .../value/<lower-case UUIDv5>. Version nibble 5, not 4 — a random id would break re-runnability." .
@@ -108,8 +121,8 @@ mhpkg_shapes:OrganisationIri
 
 mhpkg_shapes:NoNonAsciiInstanceIri
     a sh:NodeShape ;
-    sh:targetClass mhpo:MHPO_00020003, mhpo:MHPO_00020007, mhpo:MHPO_00020017,
-                   oeo:OEO_00050016, oeo:OEO_00030022 ;
+    sh:targetClass mhpo:MHPO_00020003, mhpo:MHPO_00020005, mhpo:MHPO_00020007, mhpo:MHPO_00020017,
+                   oeo:OEO_00050016, oeo:OEO_00340065, oeo:OEO_00140127, oeo:OEO_00030022 ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^[\\u0021-\\u007E]*$" ;
     sh:message "An MHPKG instance IRI must be pure printable ASCII with no percent-encoding. German belongs in rdfs:label." .

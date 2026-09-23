@@ -1,0 +1,141 @@
+# What each Termboard name IS in the LinkML schema — or why it is not there.
+#
+# Read by `termboard_delta.py`, written by a human. This file is where modelling decisions about
+# the Termboard sketch are recorded, one line per name, so that the next export can be compared
+# against decisions instead of against memory. The tool never edits it and never edits the schema.
+#
+# Keys are Termboard names exactly as they appear in the JSON export (Termboard ids identify boxes
+# on the board, not concepts — `year` appears as four boxes — so names are the key).
+#
+# TERMS take exactly one of:
+#   class: <LinkML class>          a node type the schema models
+#   enum: <LinkML enum>            a controlled vocabulary the schema models
+#   value: <Enum>.<value>          one member of a controlled vocabulary
+#   datatype: <LinkML type>        a literal slot range (year -> integer, date -> date)
+#   example: <text>                instance data drawn on the board (2030, 241, Kassel) — never schema
+#   term_request: <n>              needed, but no OEO/MHPO term exists; see TERM REQUESTS in the schema
+#   deferred: <reason>             real, deliberately not modelled yet
+#   open: <question>               a decision nobody has made yet
+#
+# RELATIONS take exactly one of:
+#   slot: <LinkML slot>            optionally with `by_target: {<Class>: <slot>}` where the sketch
+#                                  uses one relation for what the schema expresses with two
+#   inverse: <relation name>       realised by checking the inverse edge (part of -> has part)
+#   literal: <text>                Termboard's attribute edge from a slot to an example value
+#   sketch: <text>                 an untyped board edge; checked only for a typed counterpart
+#   term_request / deferred / open as for terms
+#
+# An optional `note:` on any entry is for the reader; the tool ignores it.
+
+schema: ../schema/mhpkg_target_scenario.yaml
+
+terms:
+  # --- node types ------------------------------------------------------------------------
+  municipal heat plan: {class: MunicipalHeatPlan}
+  tartget scenario indicators:
+    class: TargetScenario
+    note: typo for "target" in Termboard (already flagged in August); fix it at the source
+  aggregated inventory analysis: {class: AggregatedInventoryAnalysis}
+  aggregated potential analysis:
+    deferred: >-
+      MHPO has it (MHPO_00020006) but the sketch gives it no content — no value is part of it.
+      Model it when the sketch says what it holds.
+  final energy consumption value: {class: FinalEnergyConsumptionValue}
+  final energy consumption:
+    class: FinalEnergyConsumptionValue
+    note: >-
+      The two boxes that hang off `share` as numerator and denominator. They carry unit, carrier,
+      sector, year and technology exactly like a final energy consumption value, so they are one.
+  greenhouse gas emission value: {class: GreenhouseGasEmissionValue}
+  share: {class: FractionValue}
+
+  # --- controlled vocabularies -----------------------------------------------------------
+  energy carrier: {enum: EnergyCarrierEnum}
+  sector: {enum: SectorEnum}
+  technology: {enum: TechnologyEnum}
+  heat generation technology: {enum: TechnologyEnum}
+  aggregation type: {enum: AggregationTypeEnum}
+  integral: {value: AggregationTypeEnum.integral}
+  annual: {value: TemporalResolutionEnum.annual}
+  MWh: {value: EnergyUnitEnum.megawatt_hour}
+  tCO2eq:
+    value: MassUnitEnum.metric_ton
+    note: >-
+      OEO has no "tonne CO2 equivalent" unit. The CO2-equivalence is a property of the value, not
+      of the unit: OEO's `carbon dioxide equivalent quantity value` (OEO_00140083) says so. The
+      unit is the metric ton.
+  "%": {value: FractionUnitEnum.percent}
+
+  # --- literal ranges --------------------------------------------------------------------
+  year: {datatype: integer}
+  date: {datatype: date}
+  title: {datatype: string}
+  UUID:
+    open: >-
+      Does a heat plan carry a `has uuid` (OEO_00390095) as the OEKG does? MH-02 made the IRI the
+      identity (Tier 2, AGS + publication date) and #61 asks the same question. A uuid next to a
+      deterministic IRI is a second identity that can disagree with the first.
+
+  # --- instance data drawn on the board --------------------------------------------------
+  "2030": {example: a target year}
+  "241": {example: a final energy consumption figure}
+  "25": {example: a share / consumption figure}
+  "1588": {example: a greenhouse gas emission figure}
+  "false": {example: the value of part of convoi}
+  Kassel: {example: the municipality area (TERM REQUEST 1 — nothing relates a plan to it)}
+  Kassel Wärme Ingenieurbüro: {example: an Organisation — the contracted planner}
+  Stadt Kassel, der Bürgermeister: {example: the planning authority (MH-15, TERM REQUEST 3)}
+  energy carrier 1: {example: the numerator's energy carrier}
+  all energy carriers: {example: the denominator's energy carrier — every carrier}
+
+relations:
+  # --- structure -------------------------------------------------------------------------
+  has part:
+    slot: has_part
+    by_target:
+      FinalEnergyConsumptionValue: has_quantity_value
+      GreenhouseGasEmissionValue: has_quantity_value
+      FractionValue: has_quantity_value
+    note: >-
+      The sketch says `has part` from a scenario or analysis to its values. The schema keeps OEO
+      `has quantity value` there (decided in MH-06); `has part` stays for plan -> scenario/analysis.
+  part of: {inverse: has part}
+  part of convoi:
+    term_request: 6
+    note: >-
+      Whether the plan was drawn up jointly by several municipalities (Konvoiverfahren). A boolean
+      about the planning procedure; neither OEO nor MHPO has a term for it.
+
+  # --- the value pattern -----------------------------------------------------------------
+  value: {literal: Termboard's attribute edge from a slot to an example value}
+  has unit: {slot: has_unit}
+  has aggregation type: {slot: has_aggregation_type}
+  has temporal resolution: {slot: has_temporal_resolution}
+  refers to energy carrier: {slot: covers_energy_carrier}
+  refers to sector: {slot: covers_sector}
+  refers to technology: {slot: covers_technology}
+  refers to temporal region: {slot: has_scenario_year_value}
+  has numerator:
+    term_request: 7
+    note: OEO relates units to numerator/denominator units, never a quantity value to its parts.
+  has denominator: {term_request: 7}
+
+  # --- the plan's metadata ---------------------------------------------------------------
+  has title: {slot: label}
+  has publication date: {slot: has_publication_date}
+  has uuid:
+    open: see the `UUID` term
+  created by: {slot: has_organisation}
+  on behalf of:
+    term_request: 3
+    note: the planning authority's role towards the plan; also held by MH-15
+  is about municipality:
+    term_request: 1
+    note: which area a plan is for
+
+  # --- untyped board edges ---------------------------------------------------------------
+  related to: {sketch: Termboard's default relation type — a connection nobody has named}
+  "":
+    open: >-
+      An unnamed edge from `final energy consumption value` to itself, in the 2026-09-15 draft.
+      Most likely a stray drag on the board: delete it in Termboard, or give it a name.
