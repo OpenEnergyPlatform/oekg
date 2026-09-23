@@ -118,8 +118,10 @@ authoring layer: one schema definition generates the SHACL shapes that validate 
 terms.
 
 ✅ **A first slice of that schema now exists** — `mhpkg/schema/`, covering a municipal heat plan, its
-target scenario and one final energy consumption value, with the SHACL generated from it and both a
-conformant and a deliberately failing example. It was built to test the decision against a real
+inventory analysis and target scenario, and their consumption, emission and share values, with the
+SHACL generated from it and both a conformant and a deliberately failing example. It follows the
+Termboard model through a delta tool in `mhpkg/model/`, which compares each new export with the
+schema. It was built to test the decision against a real
 OBO-style ontology rather than to cover the domain, and the decision held: `gen-shacl` puts each
 `class_uri` straight into `sh:targetClass`, so the generated shapes constrain MHPO and OEO IRIs
 directly.
@@ -128,8 +130,11 @@ Two limits found while building it are worth knowing before relying on the appro
 documented in `mhpkg/schema/README.md`:
 
 - **The IRI policy cannot be generated.** SHACL constrains a node's own IRI with `sh:pattern` at
-  *node* level and LinkML cannot emit that, so one hand-written shapes file sits alongside the
+  *node* level and LinkML cannot emit that, so a hand-written shapes file sits alongside the
   generated one. "Everything is generated" is not achievable today.
+- **Nor can rules that depend on the container.** "A target-scenario value is for 2024 or later" and
+  "exactly one target scenario per plan" need a property path through the container or a qualified
+  value shape. LinkML emits neither, so a second hand-written file carries them.
 - **Generated SHACL is not byte-stable**, because every `sh:property` is a blank node. A drift check
   has to compare graphs, not bytes — a `diff` would fail on every run while nothing was wrong.
 
@@ -159,6 +164,7 @@ Authored against the schema, and exercised on every run of `mhpkg/schema/validat
 
 - `mhpkg/schema/generated/` — generated from the LinkML schema
 - `mhpkg/schema/mhpkg_iri_policy.shacl.ttl` — hand-written, enforcing the IRI policy
+- `mhpkg/schema/mhpkg_context.shacl.ttl` — hand-written, enforcing rules that depend on where a node sits
 
 So `pyshacl` "working" now means two different things. For MHPKG: example data is checked in both
 directions — the conformant instance passes and the negative control is asserted to fail for each of
