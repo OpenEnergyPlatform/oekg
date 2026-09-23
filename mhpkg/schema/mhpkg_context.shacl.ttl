@@ -1,0 +1,62 @@
+# Rules that depend on WHERE a node sits, not on what class it is.
+#
+# HAND-WRITTEN, for the same structural reason as `mhpkg_iri_policy.shacl.ttl`: `gen-shacl` emits
+# one node shape per class, and every constraint in it applies to every instance of that class,
+# wherever it appears. It has no way to say "a value INSIDE A TARGET SCENARIO is for 2024 or later"
+# or "a plan has exactly one part OF THIS CLASS". SHACL can say both — with a property path through
+# the container, and with a qualified value shape — and LinkML emits neither.
+#
+# This file exists because of the 2026-09-15 Termboard draft. Until then a value could only sit in a
+# target scenario and a plan had exactly one part, so both rules were expressible per class and were
+# generated. The draft puts the same value classes into the aggregated inventory analysis too, and a
+# second kind of part into the plan, and the generated shapes had to loosen:
+#
+#   * `has_scenario_year_value` floors at 1990 instead of 2024, because inventory base years are past
+#   * `has_part` on the plan is `sh:or` over two classes, with no per-class cardinality
+#
+# Both lost rules are restated here, so loosening the generated shapes did not loosen validation.
+# Both are asserted by the negative control — see `examples/kassel_invalid.ttl`, cases 8 and 9.
+
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix mhpo:  <https://purl.org/mhpo/ontology/> .
+@prefix oeo:   <https://openenergyplatform.org/ontology/oeo/> .
+@prefix mhpkg_shapes: <https://openenergyplatform.org/schema/mhpkg/shapes/> .
+
+# --- A target scenario looks forward ---------------------------------------------------
+#
+# WPG Annex 2 III asks for the target-scenario indicators for 2030, 2035, 2040 and 2045. A year
+# before 2024 — the year the WPG came into force — in a target scenario is an extraction error,
+# most likely an inventory base year that landed in the wrong container.
+
+mhpkg_shapes:TargetScenarioLooksForward
+    a sh:NodeShape ;
+    sh:targetClass mhpo:MHPO_00020007 ;
+    sh:property [
+        sh:path ( oeo:OEO_00140002 oeo:OEO_00020440 ) ;    # has quantity value / has scenario year value
+        sh:minInclusive 2024 ;
+        sh:message "A target-scenario value must be for 2024 or later. A past year belongs to the inventory analysis." ;
+    ] .
+
+# --- A plan has exactly one target scenario and at most one inventory analysis ------------
+#
+# MHPO asserts `municipal heat plan SubClassOf has part some target scenario`; "exactly one" is the
+# data shape's own rule, as it was before the draft added the inventory analysis. Two target
+# scenarios in one plan would mean two plans merged into one, or a draft and a final under one IRI.
+
+mhpkg_shapes:PlanPartsCardinality
+    a sh:NodeShape ;
+    sh:targetClass mhpo:MHPO_00020003 ;
+    sh:property [
+        sh:path obo:BFO_0000051 ;                           # has part
+        sh:qualifiedValueShape [ sh:class mhpo:MHPO_00020007 ] ;   # target scenario
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:message "A municipal heat plan has exactly one target scenario." ;
+    ] , [
+        sh:path obo:BFO_0000051 ;
+        sh:qualifiedValueShape [ sh:class mhpo:MHPO_00020005 ] ;   # aggregated inventory analysis
+        sh:qualifiedMaxCount 1 ;
+        sh:message "A municipal heat plan has at most one aggregated inventory analysis." ;
+    ] .

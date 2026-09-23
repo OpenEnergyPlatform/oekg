@@ -70,7 +70,7 @@
 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000>
     a mhpo:MHPO_00020007 ;
     rdfs:label "Zielszenario ohne Datum" ;
-    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/a878a3a1-b856-5aaf-b767-d1b4154d11aa> .
+    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/78153046-c4c2-5cae-a61c-56c70e57e5a5> .
 
 # --- 6. The value: four violations at once --------------------------------------------
 #
@@ -87,15 +87,18 @@
 # (c) A SECTOR IRI that is not a sector at all. `oeo:OEO_00000292` is natural gas — a carrier
 #     pasted into the sector slot. Same class of error, caught by the same mechanism.
 #
-# (d) An OUT-OF-RANGE year. `1990` is before the WPG existed; the schema floors the year at 2024.
+# (d) An OUT-OF-RANGE year. `1900` is before any year a heat plan reports against; the generated
+#     shape floors the year at 1990. (It was `1990` against a floor of 2024 until the 2026-09-15
+#     draft put values into the inventory analysis, whose base years are past — the "2024 or later"
+#     rule now applies only inside a target scenario, and case 8 tests that.)
 
-<https://openenergyplatform.org/id/mhpkg/value/a878a3a1-b856-5aaf-b767-d1b4154d11aa>
+<https://openenergyplatform.org/id/mhpkg/value/78153046-c4c2-5cae-a61c-56c70e57e5a5>
     a oeo:OEO_00050016 ;
     oeo:OEO_00140178 "-241.0"^^xsd:float ;
     oeo:OEO_00040010 oeo:OEO_00050008 ;
     oeo:OEO_00000523 oeo:OEO_00000132 ;
     oeo:OEO_00000505 oeo:OEO_00000292 ;
-    oeo:OEO_00020440 "1990"^^xsd:integer ;
+    oeo:OEO_00020440 "1900"^^xsd:integer ;
     oeo:OEO_00390023 oeo:OEO_00140070 .
 
 # --- 7. An undeclared property on a declared class ------------------------------------
@@ -118,3 +121,51 @@
     oeo:OEO_00020440 "2030"^^xsd:integer ;
     oeo:OEO_00390023 oeo:OEO_00140070 ;
     rdfs:seeAlso <https://example.org/some-pdf-page-42> .
+
+# --- 8. A base-year value inside a target scenario ------------------------------------
+#
+# Every node here is valid BY CLASS: the value's year 2021 clears the generated floor of 1990. What
+# is wrong is WHERE it sits — a 2021 figure in a target scenario is almost certainly an inventory
+# value filed in the wrong container. The generated shapes cannot see that, because they constrain
+# classes, not containers; `mhpkg_context.shacl.ttl` follows the edge from the scenario and can.
+
+<https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2029-06-30>
+    a mhpo:MHPO_00020007 ;
+    rdfs:label "Zielszenario mit einem Wert aus der Bestandsanalyse" ;
+    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/e4f5a6b7-c8d9-5e0f-a1b2-c3d4e5f6a7b8> .
+
+<https://openenergyplatform.org/id/mhpkg/value/e4f5a6b7-c8d9-5e0f-a1b2-c3d4e5f6a7b8>
+    a oeo:OEO_00050016 ;
+    oeo:OEO_00140178 "300.0"^^xsd:float ;
+    oeo:OEO_00040010 oeo:OEO_00050008 ;
+    oeo:OEO_00000523 oeo:OEO_00000292 ;
+    oeo:OEO_00000505 oeo:OEO_00000214 ;
+    oeo:OEO_00020440 "2021"^^xsd:integer ;
+    oeo:OEO_00390023 oeo:OEO_00140070 .
+
+# --- 9. A plan with two target scenarios ----------------------------------------------
+#
+# The generated shape accepts it: since the plan may also have an inventory analysis as a part,
+# `has part` is `sh:or` over two classes, and LinkML emits no per-class cardinality. The
+# hand-written qualified value shape restores "exactly one target scenario". Everything else on
+# this node is valid — its organisation is case 2's, which is typed, so no `sh:class` cascade.
+
+<https://openenergyplatform.org/id/mhpkg/heatplan/AGS_06611000_2029-06-30>
+    a mhpo:MHPO_00020003 ;
+    rdfs:label "Wärmeplan mit zwei Zielszenarien" ;
+    oeo:OEO_00390096 "2029-06-30"^^xsd:date ;
+    obo:BFO_0000051 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2029-06-30> ,
+                    <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000> ;
+    oeo:OEO_00000510 <https://openenergyplatform.org/id/mhpkg/organisation/9f1e2d3c-4b5a-4c7d-8e9f-0a1b2c3d4e5f> .
+
+# --- 10. A share: over 100 %, and in an energy unit -----------------------------------
+#
+# TWO violations on one node. (a) 125 % is not a share. (b) MWh is an energy unit; a share takes
+# FractionUnitEnum. The second one proves that `has unit` is constrained PER CLASS — the slot's
+# default range is EnergyUnitEnum, and a class-blind shape would have accepted MWh here.
+
+<https://openenergyplatform.org/id/mhpkg/value/d3e4f5a6-b7c8-5d9e-8f1a-2b3c4d5e6f7a>
+    a oeo:OEO_00140127 ;
+    oeo:OEO_00140178 "125.0"^^xsd:float ;
+    oeo:OEO_00040010 oeo:OEO_00050008 ;
+    oeo:OEO_00020440 "2030"^^xsd:integer .

@@ -1,9 +1,11 @@
 id: https://openenergyplatform.org/schema/mhpkg/target-scenario
 name: mhpkg_target_scenario
-title: MHPKG — municipal heat plan and one target-scenario indicator
+title: MHPKG — municipal heat plan, its inventory analysis and its target-scenario indicators
 description: >-
-  First cut of the MHPKG data shape, covering one slice of the domain: a municipal heat plan,
-  the target scenario it contains, and one final energy consumption value inside that scenario.
+  The MHPKG data shape for one slice of the domain: a municipal heat plan, the aggregated
+  inventory analysis and the target scenario it contains, and the three kinds of indicator value
+  the Termboard draft of 2026-09-15 puts inside them — final energy consumption, greenhouse gas
+  emissions and shares. The file keeps its first-cut name; MH-03 owns the layout.
 
   This schema AUTHORS THE DATA SHAPE ONLY. It mints no domain terms. Every class carries a
   `class_uri` and every slot a `slot_uri` pointing at a term that MHPO or OEO already declares,
@@ -168,11 +170,19 @@ slots:
     slot_uri: oeo:OEO_00020440
     range: integer
     required: true
-    minimum_value: 2024
+    minimum_value: 1990
     maximum_value: 2100
     description: >-
-      The target year the value is stated for. WPG Annex 2 III requires the indicators for 2030,
-      2035, 2040 and 2045 unless otherwise specified.
+      The year the value is stated for. WPG Annex 2 III requires the target-scenario indicators for
+      2030, 2035, 2040 and 2045 unless otherwise specified; an inventory analysis states them for a
+      past base year.
+
+      The floor was 2024 while only target scenarios held values. The 2026-09-15 draft puts the
+      same value classes into the aggregated inventory analysis too, whose base years lie in the
+      past, and a generated shape constrains a CLASS, not the container it sits in — so the floor
+      here is now 1990 (the Kyoto base year, the earliest a German inventory reports against), and
+      "a target-scenario value is for 2024 or later" moved to the hand-written
+      `mhpkg_context.shacl.ttl`, which can follow the edge from the scenario to its values.
 
       MISMATCH, and the worst of the three — OEO `has scenario year value` declares domain
       `scenario factsheet` (oeo:OEO_00000365) AND range `xsd:dateTime`. This slot uses it on a
@@ -186,6 +196,29 @@ slots:
     required: true
     description: >-
       OEO `has aggregation type`. Declares no domain, so no unintended inference.
+
+  has_temporal_resolution:
+    slot_uri: oeo:OEO_00000516
+    range: TemporalResolutionEnum
+    description: >-
+      OEO `has temporal resolution` — Termboard's `has temporal resolution`, `annual` on every
+      value in the 2026-09-15 draft. Optional: a heat plan rarely states it, because WPG Annex 2
+      asks for annual figures throughout.
+
+      MISMATCH — declared domain `data set`. Same class of problem as the `covers …` relations: a
+      reasoner would infer every value is a data set. Folded into TERM REQUEST 4.
+
+  covers_technology:
+    slot_uri: oeo:OEO_00390101
+    range: TechnologyEnum
+    description: >-
+      OEO `covers technology` — Termboard's `refers to technology`. Optional: WPG Annex 2 III asks
+      for carriers and sectors, not technologies, but heat plans break consumption and emissions
+      down by heat generation technology often enough that the 2026-09-15 draft draws it on every
+      value.
+
+      MISMATCH — declared domain `study`, exactly like `covers energy carrier` and `covers
+      sector`. Folded into TERM REQUEST 4.
 
   # --- Provenance and the publishing body -------------------------------------------
 
@@ -251,10 +284,42 @@ slots:
 #      but no `planning authority role` or `contracted planner role`, and WPG §12 makes the
 #      planning authority a statutory party — this is a real distinction, not a nicety.
 #
-#   4. A RELATION FROM A VALUE TO A TEMPORAL REGION, AND TO AN ENERGY CARRIER AND SECTOR.
+#   4. A RELATION FROM A VALUE TO A TEMPORAL REGION, AND TO AN ENERGY CARRIER, SECTOR,
+#      TECHNOLOGY AND TEMPORAL RESOLUTION.
 #      Covered above as mismatches rather than gaps, because a borrowable term exists. They
 #      belong on the same term request: what is wanted is `covers energy carrier` / `covers
-#      sector` with domains widened past `study`, or sibling relations for quantity values.
+#      sector` / `covers technology` with domains widened past `study`, and `has temporal
+#      resolution` past `data set` — or sibling relations for quantity values. The 2026-09-15
+#      Termboard draft names exactly these as `refers to energy carrier / sector / technology /
+#      temporal region`, which is a fair first wording for the request.
+#
+#   (5 is the municipality as a legal body — see README.md and MH-15. It has no slot position
+#   here, because it would change a class, not add a slot.)
+#
+#   6. WHETHER A PLAN WAS DRAWN UP IN A CONVOY.
+#      Termboard's `part of convoi`: several municipalities may draw up their heat plans jointly
+#      (Konvoiverfahren). A fact about the planning procedure, a boolean in the draft. Neither OEO
+#      nor MHPO has a term for it, and a plain boolean would be a data property only MHPO should
+#      mint — or better, a relation to the other plans of the convoy.
+#
+#      # part_of_convoy:
+#      #   slot_uri: mhpo:MHPO_TBD
+#      #   range: boolean
+#
+#   7. WHAT A SHARE IS A SHARE OF.
+#      Termboard draws `share` with `has numerator` and `has denominator`, each a final energy
+#      consumption — "the share of energy carrier 1 in the consumption of all energy carriers".
+#      OEO relates UNITS to numerator and denominator units (`has unit numerator`, OEO_00010472)
+#      and never a quantity value to the values it is the ratio of. Until it does, a
+#      FractionValue carries its numerator's carrier, sector and year directly — enough to say
+#      WHICH share, not enough to say of WHAT.
+#
+#      # has_numerator:
+#      #   slot_uri: oeo:OEO_TBD
+#      #   range: FinalEnergyConsumptionValue
+#      # has_denominator:
+#      #   slot_uri: oeo:OEO_TBD
+#      #   range: FinalEnergyConsumptionValue
 
 # =====================================================================================
 # Enums — the controlled vocabularies, every value an OEO term
@@ -406,6 +471,77 @@ enums:
       maximum:
         meaning: oeo:OEO_00140073
 
+  TemporalResolutionEnum:
+    description: >-
+      OEO's temporal resolutions. Named individuals of `temporal resolution` (OEO_00020122), so
+      like the aggregation types this involves no punning. Only `annual` is listed: it is the one
+      the 2026-09-15 draft uses, and the one WPG Annex 2 asks for.
+    permissible_values:
+      annual:
+        meaning: oeo:OEO_00020161
+        description: Jährlich — one value per year.
+
+  TechnologyEnum:
+    description: >-
+      Heat generation technologies — Termboard's `technology` and `heat generation technology`.
+      All OEO classes (punned, as for carriers). OEO's `heat generation technology` (OEO_00020308)
+      has a clean asserted hierarchy, unlike `energy carrier`: every entry below is an ASSERTED
+      subclass, checked against OEO 2.13.0, so membership here needs no reasoner.
+
+      The combustion-based entries mirror EnergyCarrierEnum one to one, which is what a heat plan
+      table by technology looks like. Short on purpose, like every enum here.
+    permissible_values:
+      heat_generation_technology:
+        meaning: oeo:OEO_00020308
+        description: >-
+          Wärmeerzeugungstechnologie. The parent, for a figure reported without a technology
+          breakdown — the same move as `energy_demand_sector`.
+      heat_pump_technology:
+        meaning: oeo:OEO_00020486
+        description: Wärmepumpe.
+      solar_thermal_heat_technology:
+        meaning: oeo:OEO_00020307
+        description: Solarthermie.
+      geothermal_heat_technology:
+        meaning: oeo:OEO_00020306
+        description: Geothermie.
+      electrical_heating_technology:
+        meaning: oeo:OEO_00020487
+        description: Direktelektrische Heizung.
+      gas_powered_heating_technology:
+        meaning: oeo:OEO_00020491
+        description: Gasheizung.
+      oil_powered_heating_technology:
+        meaning: oeo:OEO_00020490
+        description: Ölheizung.
+      biomass_powered_heating_technology:
+        meaning: oeo:OEO_00020493
+        description: Biomasseheizung.
+      hydrogen_powered_heating_technology:
+        meaning: oeo:OEO_00020492
+        description: Wasserstoffheizung.
+
+  MassUnitEnum:
+    description: >-
+      Units a greenhouse gas emission figure may be stated in.
+
+      Termboard draws the unit as `tCO2eq`, and OEO has no such unit — correctly. "CO2
+      equivalent" is not a property of the unit but of the value: OEO's `carbon dioxide
+      equivalent quantity value` (OEO_00140083) is the value that "gives an equivalent" amount of
+      CO2. The unit of a tonne of CO2-equivalent is the tonne.
+    permissible_values:
+      metric_ton:
+        meaning: oeo:OEO_00010137
+        description: Tonne (t).
+
+  FractionUnitEnum:
+    description: The unit of a share.
+    permissible_values:
+      percent:
+        meaning: obo:UO_0000187
+        description: >-
+          Prozent. From the Units Ontology, like kWh — OEO does not mint its own percent.
+
 # =====================================================================================
 # Classes
 # =====================================================================================
@@ -419,8 +555,14 @@ classes:
       aggregated potential analysis, a target scenario, an implementation measure and an
       implementation strategy.
 
-      This slice models only the target scenario part. The other four are out of the ticket, not
-      out of the model.
+      This slice models the target scenario and the aggregated inventory analysis. The other three
+      parts are not modelled yet, which is not the same as not being in the model. The potential
+      analysis appears in the 2026-09-15 Termboard draft but holds nothing there; it is `deferred`
+      in `../model/termboard_mapping.yaml`.
+
+      ⚠️ `has_part` now takes either part, so the generated shape can no longer say "exactly one
+      target scenario" — LinkML emits `sh:or` over the classes and no qualified cardinality. That
+      rule, and "at most one inventory analysis", are in the hand-written `mhpkg_context.shacl.ttl`.
     slots:
       - id
       - label
@@ -429,9 +571,11 @@ classes:
       - has_organisation
     slot_usage:
       has_part:
-        range: TargetScenario
+        any_of:
+          - range: TargetScenario
+          - range: AggregatedInventoryAnalysis
         required: true
-        multivalued: false
+        multivalued: true
       has_organisation:
         range: Organisation
         required: true
@@ -443,13 +587,40 @@ classes:
       The target scenario — Zielszenario, WPG Annex 2 III. An objective specification that uses
       indicators to describe how a heat supply from renewable energy or unavoidable waste heat is
       to be achieved.
+
+      Termboard draws its values as `has part`; the schema keeps OEO `has quantity value`, as
+      decided in MH-06 — `../model/termboard_mapping.yaml` records the translation.
     slots:
       - id
       - label
       - has_quantity_value
     slot_usage:
       has_quantity_value:
-        range: FinalEnergyConsumptionValue
+        any_of:
+          - range: FinalEnergyConsumptionValue
+          - range: GreenhouseGasEmissionValue
+          - range: FractionValue
+        required: true
+        multivalued: true
+
+  AggregatedInventoryAnalysis:
+    class_uri: mhpo:MHPO_00020005
+    description: >-
+      The aggregated inventory analysis — aggregierte Bestandsanalyse, WPG Annex 2 I. The current
+      state the target scenario departs from: consumption and emissions for a past base year.
+      MHPO asserts a municipal heat plan has one as a part.
+
+      Holds the same value classes as the target scenario, which is why the base-year floor on
+      `has_scenario_year_value` had to drop — see that slot.
+    slots:
+      - id
+      - label
+      - has_quantity_value
+    slot_usage:
+      has_quantity_value:
+        any_of:
+          - range: FinalEnergyConsumptionValue
+          - range: GreenhouseGasEmissionValue
         required: true
         multivalued: true
 
@@ -468,8 +639,10 @@ classes:
       - has_unit
       - covers_energy_carrier
       - covers_sector
+      - covers_technology
       - has_scenario_year_value
       - has_aggregation_type
+      - has_temporal_resolution
     slot_usage:
       has_number:
         minimum_value: 0
@@ -478,6 +651,70 @@ classes:
           comes from the domain rather than from a term — and it is exactly the kind of thing the
           rejected "generate SHACL from MHPO" route could never have produced, because OWL is
           open-world and carries no such assertion.
+
+  GreenhouseGasEmissionValue:
+    class_uri: oeo:OEO_00340065
+    description: >-
+      A greenhouse gas emission value — Treibhausgasemissionen, WPG Annex 2 III.2, "in tonnes of
+      CO2 equivalent". OEO: an emission value that quantifies a greenhouse gas emission rate and
+      has a mass unit. Termboard's `greenhouse gas emission value`, in both the inventory analysis
+      and the target scenario.
+
+      ⚠️ OEO also has `carbon dioxide equivalent quantity value` (OEO_00140083), which is what
+      "tCO2eq" literally is. The class follows the Termboard name; whether every MHPKG emission
+      figure is CO2-equivalent — and therefore should be typed with the narrower class — is a
+      modelling call for the two people drafting the model, not for this schema.
+
+      Carrier, sector and technology are OPTIONAL here, unlike on a consumption value: WPG asks
+      for total emissions, with no breakdown. The year and aggregation stay required, because an
+      emission figure without a year is not a figure.
+    slots:
+      - id
+      - has_number
+      - has_unit
+      - covers_energy_carrier
+      - covers_sector
+      - covers_technology
+      - has_scenario_year_value
+      - has_aggregation_type
+      - has_temporal_resolution
+    slot_usage:
+      has_unit:
+        range: MassUnitEnum
+      covers_energy_carrier:
+        required: false
+      covers_sector:
+        required: false
+
+  FractionValue:
+    class_uri: oeo:OEO_00140127
+    description: >-
+      A share — Anteil. OEO's `fraction value`: a relational quantity value with a fraction as its
+      unit. Termboard's `share`, drawn in the target scenario as the share of one energy carrier in
+      the final energy consumption of all of them.
+
+      🔴 INCOMPLETE BY CONSTRUCTION: what a share is a share OF is TERM REQUEST 7. Until OEO relates
+      a quantity value to its numerator and denominator, a FractionValue carries its numerator's
+      carrier, sector and year directly, which says WHICH share it is but not of what.
+    slots:
+      - id
+      - has_number
+      - has_unit
+      - covers_energy_carrier
+      - covers_sector
+      - covers_technology
+      - has_scenario_year_value
+    slot_usage:
+      has_number:
+        minimum_value: 0
+        maximum_value: 100
+        description: A percentage. Out of range either way is an extraction error, not data.
+      has_unit:
+        range: FractionUnitEnum
+      covers_energy_carrier:
+        required: false
+      covers_sector:
+        required: false
 
   MunicipalityArea:
     class_uri: mhpo:MHPO_00020017

@@ -2,7 +2,8 @@
 """Validate the example instances against the MHPKG shapes.
 
 WHY THIS EXISTS RATHER THAN A `pyshacl` COMMAND LINE. The shapes come in two files — the generated
-`generated/mhpkg_target_scenario.shacl.ttl` and the hand-written `mhpkg_iri_policy.shacl.ttl` — and
+`generated/mhpkg_target_scenario.shacl.ttl` and the hand-written `mhpkg_iri_policy.shacl.ttl` and
+`mhpkg_context.shacl.ttl` — and
 `pyshacl` accepts repeated `-s` flags while SILENTLY USING ONLY THE LAST ONE. Two `-s` flags do not
 merge; the first shapes graph is discarded without a warning.
 
@@ -38,6 +39,7 @@ HERE = Path(__file__).parent
 SHAPE_FILES = [
     HERE / "generated" / "mhpkg_target_scenario.shacl.ttl",
     HERE / "mhpkg_iri_policy.shacl.ttl",
+    HERE / "mhpkg_context.shacl.ttl",
 ]
 VALID = HERE / "examples" / "kassel_valid.ttl"
 INVALID = HERE / "examples" / "kassel_invalid.ttl"
@@ -67,24 +69,40 @@ EXPECTED = [
     ("5  Tier-2 IRI missing its date discriminator",
      "Pattern", "targetscenario/AGS_06611000>", "Source Shape: mhpkg_shapes:TargetScenarioIri"),
     ("6a negative energy consumption",
-     "MinInclusive", "a878a3a1-b856-5aaf", "Result Path: oeo:OEO_00140178"),
+     "MinInclusive", "78153046-c4c2-5cae", "Result Path: oeo:OEO_00140178"),
     ("6b energy carrier outside the controlled vocabulary",
-     "In", "a878a3a1-b856-5aaf", "Result Path: oeo:OEO_00000523"),
+     "In", "78153046-c4c2-5cae", "Result Path: oeo:OEO_00000523"),
     ("6c sector slot holding an energy carrier",
-     "In", "a878a3a1-b856-5aaf", "Result Path: oeo:OEO_00000505"),
-    ("6d target year before the WPG existed",
-     "MinInclusive", "a878a3a1-b856-5aaf", "Result Path: oeo:OEO_00020440"),
+     "In", "78153046-c4c2-5cae", "Result Path: oeo:OEO_00000505"),
+    ("6d year below the generated floor of 1990",
+     "MinInclusive", "78153046-c4c2-5cae", "Result Path: oeo:OEO_00020440"),
     ("7  undeclared property on a closed shape",
      "Closed", "b1c2d3e4-f5a6", "Result Path: rdfs:seeAlso"),
+    ("8  a base-year value inside a target scenario (context rule)",
+     "MinInclusive", "targetscenario/AGS_06611000_2029-06-30", "Message: A target-scenario value"),
+    ("9  a plan with two target scenarios (context rule)",
+     "QualifiedMaxCount", "heatplan/AGS_06611000_2029-06-30",
+     "Message: A municipal heat plan has exactly one"),
+    ("10a a share over 100 %",
+     "MaxInclusive", "d3e4f5a6-b7c8", "Result Path: oeo:OEO_00140178"),
+    ("10b a share in an energy unit — `has unit` is constrained per class",
+     "In", "d3e4f5a6-b7c8", "Result Path: oeo:OEO_00040010"),
 ]
 
 # Consequences of the cases above rather than cases in their own right, listed so the report
-# accounts for every violation instead of quietly leaving two unexplained. The broken plan node in
+# accounts for every violation instead of quietly leaving some unexplained. The broken plan node in
 # case 4 points at a target scenario and an organisation that the invalid file does not define, so
-# `sh:class` cannot confirm their type. Real failures, just not designed ones.
+# `sh:class` cannot confirm their type — and the context rule then finds no target scenario to
+# count. Case 5's scenario holds case 6's value, so its out-of-range year also trips the
+# target-scenario rule. Real failures, just not designed ones.
 EXPECTED_CASCADES = [
-    ("dangling target scenario reference from case 4",
-     "Class", "heatplan/AGS_06611000_2024-03-15", "Result Path: obo:BFO_0000051"),
+    ("case 5's scenario holds case 6's 1900 value, so the forward-looking rule fires too",
+     "MinInclusive", "targetscenario/AGS_06611000>", "Message: A target-scenario value"),
+    ("dangling target scenario reference from case 4 — `sh:or`, as a plan has two kinds of part",
+     "OrConstraintComponent", "heatplan/AGS_06611000_2024-03-15", "Result Path: obo:BFO_0000051"),
+    ("…and so case 4's plan has no target scenario the context rule can count",
+     "QualifiedMinCount", "heatplan/AGS_06611000_2024-03-15",
+     "Message: A municipal heat plan has exactly one"),
     ("dangling organisation reference from case 4",
      "Class", "heatplan/AGS_06611000_2024-03-15", "Result Path: oeo:OEO_00000510"),
 ]
