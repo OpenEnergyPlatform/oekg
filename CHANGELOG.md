@@ -40,8 +40,27 @@ Here is a template for new release sections:
   heat plan, its target scenario and one final energy consumption value), the SHACL shapes generated
   from it, a hand-written companion file enforcing the IRI policy, and a passing plus a deliberately
   failing example instance [[#54](https://github.com/OpenEnergyPlatform/oekg/pull/54)]
+- `mhpkg/model/termboard_delta.py` and `termboard_mapping.yaml`: compare a Termboard JSON export with
+  the LinkML schema — unmapped, removed and dangling names, drawn relations the schema cannot
+  express, and untyped relations with no named counterpart. It compares and never converts; every
+  schema change stays a human decision recorded in the mapping. `mhpkg/model/README.md` documents
+  the loop from a new export to validated shapes [[#63](https://github.com/OpenEnergyPlatform/oekg/pull/63)]
+- `mhpkg/schema/`: the 2026-09-15 Termboard draft — `AggregatedInventoryAnalysis`,
+  `GreenhouseGasEmissionValue`, `FractionValue`; `covers_technology` and `has_temporal_resolution`;
+  `TechnologyEnum`, `TemporalResolutionEnum`, `MassUnitEnum`, `FractionUnitEnum`; term requests 6
+  (convoy planning) and 7 (numerator/denominator of a share); a second hand-written shapes file,
+  `mhpkg_context.shacl.ttl`, for rules that depend on the container; negative-control cases 8–10
+  [[#63](https://github.com/OpenEnergyPlatform/oekg/pull/63)]
 
 ### Changed
+- `mhpkg/schema/`: the year floor on `has_scenario_year_value` drops from 2024 to 1990, because the
+  inventory analysis carries past base years; "2024 or later inside a target scenario" moved to
+  `mhpkg_context.shacl.ttl`. The example value IRI is now the one `mint_slice.py` actually mints —
+  the committed `value/a878a3a1-…` could not be reproduced from any tuple the policy describes.
+  The example no longer recommends `pyshacl -s … -s …`, which silently uses only the last shapes
+  file [[#63](https://github.com/OpenEnergyPlatform/oekg/pull/63)]
+- The root README no longer calls `mhpkg` a provisional name; it is settled and used in IRIs
+  [[#63](https://github.com/OpenEnergyPlatform/oekg/pull/63)]
 - Repository restructured around two knowledge graphs; OEKG files grouped by status
   (`shapes/`, `eval/`, `legacy/`, `archive/`) under `oekg/` [[#51](https://github.com/OpenEnergyPlatform/oekg/pull/51)]
 - CONTRIBUTING.md now documents `production` as the only permanent branch, matching the
