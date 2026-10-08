@@ -189,17 +189,14 @@ slots:
       MISMATCH — declared domain `data set`. Same class of problem as the `covers …` relations: a
       reasoner would infer every value is a data set. Folded into TERM REQUEST 4.
 
-  covers_technology:
-    slot_uri: oeo:OEO_00390101
+  refers_to_technology:
+    slot_uri: oeo:OEO_00370003
     range: TechnologyEnum
     description: >-
-      OEO `covers technology` — Termboard's `refers to technology`. Optional: WPG Annex 2 III asks
+      OEO `refers to technology` — Termboard's `refers to technology`. Optional: WPG Annex 2 III asks
       for carriers and sectors, not technologies, but heat plans break consumption and emissions
       down by heat generation technology often enough that the 2026-09-15 draft draws it on every
       value.
-
-      MISMATCH — declared domain `study`, exactly like `covers energy carrier` and `covers
-      sector`. Folded into TERM REQUEST 4.
 
   # --- Provenance and the publishing body -------------------------------------------
 
@@ -617,7 +614,7 @@ classes:
       - has_unit
       - refers_to_energy_carrier
       - refers_to_sector
-      - covers_technology
+      - refers_to_technology
       - has_scenario_year_value
       - has_aggregation_type
       - has_temporal_resolution
@@ -652,7 +649,7 @@ classes:
       - has_unit
       - refers_to_energy_carrier
       - refers_to_sector
-      - covers_technology
+      - refers_to_technology
       - has_scenario_year_value
       - has_aggregation_type
       - has_temporal_resolution
@@ -680,7 +677,7 @@ classes:
       - has_unit
       - refers_to_energy_carrier
       - refers_to_sector
-      - covers_technology
+      - refers_to_technology
       - has_scenario_year_value
     slot_usage:
       has_number:
