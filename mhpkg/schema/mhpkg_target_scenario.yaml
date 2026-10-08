@@ -45,9 +45,9 @@ default_curi_maps:
 imports:
   - linkml:types
 
-# The MHPO commit these MHPO_* IRIs were checked against. Mirrors `../mhpo/pin.txt`; MHPO has no
-# releases and no tags, so a commit SHA is the only pin available.
-source: https://github.com/OpenEnergyPlatform/municipal-heat-planning-ontology/tree/34776b699d10c936da05b353b1001548bf92e4b2
+# The MHPO commit these MHPO_* IRIs were checked against: release v0.1.0. Mirrors `../mhpo/pin.txt`,
+# which says why the pin is the commit and not the tag.
+source: https://github.com/OpenEnergyPlatform/municipal-heat-planning-ontology/tree/03ad66e026111797d8d0000c04aae9ccf3d87998
 
 # =====================================================================================
 # Types — deliberately absent, and this is a finding rather than an omission
@@ -219,7 +219,7 @@ slots:
       IRI drift with it.
 
       NEAR MISS — OEO declares domain `report` (obo:IAO_0000088) and range `xsd:dateTime`. MHPO
-      puts `municipal heat plan` under CCO `plan specification`, not under `report`, and a date is
+      puts `municipal heat plan` under IAO `plan specification`, not under `report`, and a date is
       not a dateTime. Closer than the three above, but still borrowed.
 
   has_organisation:
@@ -227,7 +227,7 @@ slots:
     description: >-
       OEO `has organisation` — "a relation that holds between an information content entity and
       the organisation in which it was created". Domain fits: MHPO's `municipal heat plan` is an
-      information content entity by way of CCO.
+      information content entity by way of IAO `plan specification`.
 
       Its declared range is not `organisation` but `has role some organisation role`, i.e. OEO
       reifies the organisation's involvement into a role. This slot deliberately points at the
@@ -246,6 +246,15 @@ slots:
 #      MHPO has `municipality area` (MHPO_00020017) and `heat plan area` (MHPO_00020018), and
 #      relates areas to each other with BFO `part of`. Nothing relates a *plan* to the area it
 #      plans. Without it a heat plan cannot say where it applies.
+#
+#      ⚠️ MAY NO LONGER NEED A NEW TERM (MHPO v0.1.0). v0.1.0 moved `municipal heat plan` from
+#      CCO to IAO `plan specification`, an information content entity. OEO `has spatial region`
+#      (OEO_00010378, a sub-property of IAO `is about`) has exactly that domain and range
+#      `spatial region`, which `municipality area` is by way of OEO `region of relevance`. MHPO
+#      itself uses it as the parent of its new `represents heat supply area` (MHPO_00030019).
+#      That new property does NOT answer this request: its range is `area for decentralized heat
+#      supply` (MHPO_00020021), one kind of subarea, not the area the plan covers. Citing
+#      `has spatial region` is a modelling decision and has not been taken here.
 #
 #      # plans_area:
 #      #   slot_uri: mhpo:MHPO_TBD
@@ -513,7 +522,7 @@ classes:
   MunicipalHeatPlan:
     class_uri: mhpo:MHPO_00020003
     description: >-
-      A municipal heat plan — Kommunale Wärmeplanung, WPG §23. MHPO puts it under CCO
+      A municipal heat plan — Kommunale Wärmeplanung, WPG §23. MHPO puts it under IAO
       `plan specification` and asserts that it has as parts an aggregated inventory analysis, an
       aggregated potential analysis, a target scenario, an implementation measure and an
       implementation strategy.
