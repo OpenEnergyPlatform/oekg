@@ -133,17 +133,12 @@ slots:
     description: >-
       OEO `has unit`, domain `quantity value`, range `unit`. Exact fit.
 
-  covers_energy_carrier:
-    slot_uri: oeo:OEO_00000523
+  refers_to_energy_carrier:
+    slot_uri: oeo:OEO_00370001
     range: EnergyCarrierEnum
     required: true
     description: >-
-      OEO `covers energy carrier`.
-
-      MISMATCH — its declared domain is `study` (oeo:OEO_00020011), and the subject here is a
-      consumption value, not a study. OWL domains are inferential rather than constraining, so a
-      reasoner will not complain; it will silently infer that every MHPKG consumption value IS a
-      study. SHACL cannot see this at all. Recorded as a term request rather than worked around.
+      OEO `refers to energy carrier`.
 
   covers_sector:
     slot_uri: oeo:OEO_00000505
@@ -622,7 +617,7 @@ classes:
       - id
       - has_number
       - has_unit
-      - covers_energy_carrier
+      - refers_to_energy_carrier
       - covers_sector
       - covers_technology
       - has_scenario_year_value
@@ -657,7 +652,7 @@ classes:
       - id
       - has_number
       - has_unit
-      - covers_energy_carrier
+      - refers_to_energy_carrier
       - covers_sector
       - covers_technology
       - has_scenario_year_value
@@ -666,7 +661,7 @@ classes:
     slot_usage:
       has_unit:
         range: MassUnitEnum
-      covers_energy_carrier:
+      refers_to_energy_carrier:
         required: false
       covers_sector:
         required: false
@@ -685,7 +680,7 @@ classes:
       - id
       - has_number
       - has_unit
-      - covers_energy_carrier
+      - refers_to_energy_carrier
       - covers_sector
       - covers_technology
       - has_scenario_year_value
@@ -696,7 +691,7 @@ classes:
         description: A percentage. Out of range either way is an extraction error, not data.
       has_unit:
         range: FractionUnitEnum
-      covers_energy_carrier:
+      refers_to_energy_carrier:
         required: false
       covers_sector:
         required: false
