@@ -7,9 +7,9 @@ in `class_uri` / `slot_uri`, and a label so a human can tell which term that is.
 
 Why a list and not the ontology:
 
-* MHPO has **no releases and no tags**, and `purl.org/mhpo` redirects to the repository's
-  GitHub page rather than to an ontology. The only consumable artifact is `mhpo-edit.owl` on
-  a branch, so whatever we take has to be pinned to a commit by hand.
+* MHPO's published IRIs do not resolve. It has released (v0.1.0, 2026-09-30), but term PURLs
+  and the release's version IRIs return 404, so the only reliably consumable artifact is
+  `mhpo-edit.owl` at a commit. We pin the commit a release tag points at, by hand.
 * A list diffs one readable line per term. A 57 KB OWL functional-syntax file does not.
 * It needs no ODK, no Docker and no ROBOT, which keeps the contributor setup to `uv`.
 
@@ -39,7 +39,7 @@ OUT = HERE / "terms.csv"
 
 REPO = "OpenEnergyPlatform/municipal-heat-planning-ontology"
 EDIT_PATH = "src/ontology/mhpo-edit.owl"
-BRANCH = "develop"  # MHPO's default branch; it has no `main`, despite its ODK config
+BRANCH = "develop"  # MHPO's default branch, where its releases are tagged
 
 # IRI prefix -> short source name. Order matters: first match wins.
 SOURCES = [
@@ -61,6 +61,7 @@ INFRASTRUCTURE = (
     "http://www.w3.org/2001/XMLSchema#",
     "http://purl.org/dc/elements/1.1/",
     "http://purl.org/dc/terms/",
+    "http://www.w3.org/2004/02/skos/core#",
 )
 
 REPLACED_BY = "http://purl.obolibrary.org/obo/IAO_0100001"

@@ -1,14 +1,23 @@
 curie,label,type,source,declared_in_mhpo,label_status,deprecated,replaced_by,iri
-BFO_0000023,,class,bfo,no,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000023
-BFO_0000050,,objectProperty,bfo,no,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000050
+BFO_0000023,,class,bfo,yes,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000023
+BFO_0000027,,class,bfo,yes,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000027
+BFO_0000050,,objectProperty,bfo,yes,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000050
 BFO_0000051,,objectProperty,bfo,yes,unresolved,no,,http://purl.obolibrary.org/obo/BFO_0000051
+IAO_0000005,,class,iao,yes,unresolved,no,,http://purl.obolibrary.org/obo/IAO_0000005
+IAO_0000007,,class,iao,yes,unresolved,no,,http://purl.obolibrary.org/obo/IAO_0000007
+IAO_0000030,,class,iao,yes,unresolved,no,,http://purl.obolibrary.org/obo/IAO_0000030
 IAO_0000104,,class,iao,yes,unresolved,no,,http://purl.obolibrary.org/obo/IAO_0000104
 IAO_0000115,definition,annotationProperty,iao,yes,from_mhpo,no,,http://purl.obolibrary.org/obo/IAO_0000115
 IAO_0000118,alternative label,annotationProperty,iao,yes,from_mhpo,no,,http://purl.obolibrary.org/obo/IAO_0000118
-RO_0000052,,objectProperty,ro,no,unresolved,no,,http://purl.obolibrary.org/obo/RO_0000052
-RO_0000053,,objectProperty,ro,no,unresolved,no,,http://purl.obolibrary.org/obo/RO_0000053
-RO_0000087,,objectProperty,ro,no,unresolved,no,,http://purl.obolibrary.org/obo/RO_0000087
-OEO_00360020,,class,oeo,no,unresolved,no,,https://openenergyplatform.org/ontology/oeo/OEO_00360020
+IAO_0000119,,annotationProperty,iao,yes,unresolved,no,,http://purl.obolibrary.org/obo/IAO_0000119
+RO_0000052,,objectProperty,ro,yes,unresolved,no,,http://purl.obolibrary.org/obo/RO_0000052
+RO_0000053,,objectProperty,ro,yes,unresolved,no,,http://purl.obolibrary.org/obo/RO_0000053
+OEO_00000350,,class,oeo,yes,unresolved,no,,https://openenergyplatform.org/ontology/oeo/OEO_00000350
+OEO_00010378,,objectProperty,oeo,yes,unresolved,no,,https://openenergyplatform.org/ontology/oeo/OEO_00010378
+OEO_00020056,,objectProperty,oeo,yes,unresolved,no,,https://openenergyplatform.org/ontology/oeo/OEO_00020056
+OEO_00020426,,annotationProperty,oeo,yes,unresolved,no,,https://openenergyplatform.org/ontology/oeo/OEO_00020426
+OEO_00360020,,class,oeo,yes,unresolved,no,,https://openenergyplatform.org/ontology/oeo/OEO_00360020
+MHPO_00020000,descriptive information content entity,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020000
 MHPO_00020003,municipal heat plan,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020003
 MHPO_00020005,aggregated inventory analysis,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020005
 MHPO_00020006,aggregated potential analysis,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020006
@@ -43,7 +52,10 @@ MHPO_00030012,energy saving area,class,mhpo,yes,from_mhpo,no,,https://purl.org/m
 MHPO_00030013,area under suitability assessment,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030013
 MHPO_00030014,role of area under suitability assessment,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030014
 MHPO_00030016,area excluded from heat planning,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030016
-ont00000476,,class,cco,no,unresolved,no,,https://www.commoncoreontologies.org/ont00000476
-ont00000853,,class,cco,no,unresolved,no,,https://www.commoncoreontologies.org/ont00000853
-ont00000965,,class,cco,no,unresolved,no,,https://www.commoncoreontologies.org/ont00000965
-ont00000974,,class,cco,no,unresolved,no,,https://www.commoncoreontologies.org/ont00000974
+MHPO_00030017,initial suitability assessment,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030017
+MHPO_00030018,shortened heat planning,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030018
+MHPO_00030019,represents heat supply area,objectProperty,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030019
+MHPO_00030020,building stock,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030020
+MHPO_00030021,building count,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030021
+ont00001754,,annotationProperty,cco,yes,unresolved,no,,https://www.commoncoreontologies.org/ont00001754
+ont00001808,,objectProperty,cco,yes,unresolved,no,,https://www.commoncoreontologies.org/ont00001808
