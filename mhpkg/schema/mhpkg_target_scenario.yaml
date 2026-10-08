@@ -114,22 +114,10 @@ slots:
       `municipal heat plan SubClassOf has part some target scenario`, so this slot restates an
       axiom the ontology holds rather than inventing a relation.
 
-  has_quantity_value:
-    slot_uri: oeo:OEO_00140002
+  covers_parameter:
+    slot_uri: mhpo:MHPO_0002027
     description: >-
-      OEO `has quantity value` — "a relation between an entity and a quantity value". Declares no
-      domain, so using it on a target scenario adds no unintended inference.
-
-      Note that MHPO asserts nothing here. Its `target scenario` definition says the scenario
-      "uses indicators to describe" the goal, and its comment enumerates the seven WPG Annex 2 III
-      indicators, but no axiom connects a scenario to a value. This slot is the first place the
-      data shape goes beyond what the T-Box states.
-
-  # --- The quantity value pattern ---------------------------------------------------
-  #
-  # OEO's `quantity value` is itself a reification: the number and the unit hang off a value node
-  # rather than off the thing measured. That is the same move LinkML would make anyway, which is
-  # why this half of the slice maps cleanly.
+      MHPO `covers parameter`. A relation between an infoprmation content entity that is part of a municipal heat plan and the parameter it reports on. 
 
   has_number:
     slot_uri: oeo:OEO_00140178
@@ -587,15 +575,12 @@ classes:
       The target scenario — Zielszenario, WPG Annex 2 III. An objective specification that uses
       indicators to describe how a heat supply from renewable energy or unavoidable waste heat is
       to be achieved.
-
-      Termboard draws its values as `has part`; the schema keeps OEO `has quantity value`, as
-      decided in MH-06 — `../model/termboard_mapping.yaml` records the translation.
     slots:
       - id
       - label
-      - has_quantity_value
+      - covers_parameter
     slot_usage:
-      has_quantity_value:
+      covers_parameter:
         any_of:
           - range: FinalEnergyConsumptionValue
           - range: GreenhouseGasEmissionValue
@@ -615,9 +600,9 @@ classes:
     slots:
       - id
       - label
-      - has_quantity_value
+      - covers_parameter
     slot_usage:
-      has_quantity_value:
+      covers_parameter:
         any_of:
           - range: FinalEnergyConsumptionValue
           - range: GreenhouseGasEmissionValue
