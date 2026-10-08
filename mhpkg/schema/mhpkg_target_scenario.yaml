@@ -140,14 +140,12 @@ slots:
     description: >-
       OEO `refers to energy carrier`.
 
-  covers_sector:
-    slot_uri: oeo:OEO_00000505
+  refers_to_sector:
+    slot_uri: oeo:OEO_00020519
     range: SectorEnum
     required: true
     description: >-
-      OEO `covers sector`. Same mismatch as `covers_energy_carrier` — declared domain `study`.
-      WPG Annex 2 III.1 requires the final energy consumption differentiated by final energy
-      sector, so the slot is unavoidable; only the relation is borrowed.
+      OEO `refers to sector`. 
 
   has_scenario_year_value:
     slot_uri: oeo:OEO_00020440
@@ -618,7 +616,7 @@ classes:
       - has_number
       - has_unit
       - refers_to_energy_carrier
-      - covers_sector
+      - refers_to_sector
       - covers_technology
       - has_scenario_year_value
       - has_aggregation_type
@@ -653,7 +651,7 @@ classes:
       - has_number
       - has_unit
       - refers_to_energy_carrier
-      - covers_sector
+      - refers_to_sector
       - covers_technology
       - has_scenario_year_value
       - has_aggregation_type
@@ -663,7 +661,7 @@ classes:
         range: MassUnitEnum
       refers_to_energy_carrier:
         required: false
-      covers_sector:
+      refers_to_sector:
         required: false
 
   FractionValue:
@@ -681,7 +679,7 @@ classes:
       - has_number
       - has_unit
       - refers_to_energy_carrier
-      - covers_sector
+      - refers_to_sector
       - covers_technology
       - has_scenario_year_value
     slot_usage:
@@ -693,7 +691,7 @@ classes:
         range: FractionUnitEnum
       refers_to_energy_carrier:
         required: false
-      covers_sector:
+      refers_to_sector:
         required: false
 
   MunicipalityArea:
