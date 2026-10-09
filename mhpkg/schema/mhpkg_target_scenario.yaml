@@ -195,6 +195,18 @@ slots:
       down by heat generation technology often enough that the 2026-09-15 draft draws it on every
       value.
 
+  has_numerator:
+    slot_uri: oeo:OEO_00370004
+    range: RelationalQuantityValue
+    description: >-
+      OEO `has numerator` — Termboard's `has numerator`. 
+
+  has_denominator:
+    slot_uri: oeo:OEO_00370005
+    range: RelationalQuantityValue
+    description: >-
+      OEO `has denominator` — Termboard's `has denominator`.     
+
   # --- Provenance and the publishing body -------------------------------------------
 
   has_publication_date:
@@ -259,15 +271,6 @@ slots:
 #      but no `planning authority role` or `contracted planner role`, and WPG §12 makes the
 #      planning authority a statutory party — this is a real distinction, not a nicety.
 #
-#   4. A RELATION FROM A VALUE TO A TEMPORAL REGION, AND TO AN ENERGY CARRIER, SECTOR,
-#      TECHNOLOGY AND TEMPORAL RESOLUTION.
-#      Covered above as mismatches rather than gaps, because a borrowable term exists. They
-#      belong on the same term request: what is wanted is `covers energy carrier` / `covers
-#      sector` / `covers technology` with domains widened past `study`, and `has temporal
-#      resolution` past `data set` — or sibling relations for quantity values. The 2026-09-15
-#      Termboard draft names exactly these as `refers to energy carrier / sector / technology /
-#      temporal region`, which is a fair first wording for the request.
-#
 #   (5 is the municipality as a legal body — see README.md and MH-15. It has no slot position
 #   here, because it would change a class, not add a slot.)
 #
@@ -281,21 +284,6 @@ slots:
 #      #   slot_uri: mhpo:MHPO_TBD
 #      #   range: boolean
 #
-#   7. WHAT A SHARE IS A SHARE OF.
-#      Termboard draws `share` with `has numerator` and `has denominator`, each a final energy
-#      consumption — "the share of energy carrier 1 in the consumption of all energy carriers".
-#      OEO relates UNITS to numerator and denominator units (`has unit numerator`, OEO_00010472)
-#      and never a quantity value to the values it is the ratio of. Until it does, a
-#      FractionValue carries its numerator's carrier, sector and year directly — enough to say
-#      WHICH share, not enough to say of WHAT.
-#
-#      # has_numerator:
-#      #   slot_uri: oeo:OEO_TBD
-#      #   range: FinalEnergyConsumptionValue
-#      # has_denominator:
-#      #   slot_uri: oeo:OEO_TBD
-#      #   range: FinalEnergyConsumptionValue
-
 # =====================================================================================
 # Enums — the controlled vocabularies, every value an OEO term
 # =====================================================================================
@@ -663,14 +651,12 @@ classes:
     description: >-
       A relational quantity value — a quantity value that is the ratio of two other quantity values.
       OEO defines it as a quantity value that is the ratio of two other quantity values.
-
-      🔴 INCOMPLETE BY CONSTRUCTION: what a share is a share OF is TERM REQUEST 7. Until OEO relates
-      a quantity value to its numerator and denominator, a RelationalQuantityValue carries its numerator's
-      carrier, sector and year directly, which says WHICH share it is but not of what.
     slots:
       - id
       - has_number
       - has_unit
+      - has_numerator
+      - has_denominator
       - refers_to_energy_carrier
       - refers_to_sector
       - refers_to_technology
