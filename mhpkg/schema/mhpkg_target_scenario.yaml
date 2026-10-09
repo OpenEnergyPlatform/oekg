@@ -145,7 +145,7 @@ slots:
     range: SectorEnum
     required: true
     description: >-
-      OEO `refers to sector`. 
+      OEO `refers to sector`.
 
   has_scenario_year_value:
     slot_uri: oeo:OEO_00020440
@@ -185,9 +185,6 @@ slots:
       OEO `has temporal resolution` — Termboard's `has temporal resolution`, `annual` on every
       value in the 2026-09-15 draft. Optional: a heat plan rarely states it, because WPG Annex 2
       asks for annual figures throughout.
-
-      MISMATCH — declared domain `data set`. Same class of problem as the `covers …` relations: a
-      reasoner would infer every value is a data set. Folded into TERM REQUEST 4.
 
   refers_to_technology:
     slot_uri: oeo:OEO_00370003
