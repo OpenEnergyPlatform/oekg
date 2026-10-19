@@ -196,13 +196,13 @@ slots:
       value.
 
   has_numerator:
-    slot_uri: oeo:OEO_00370004
+    slot_uri: oeo:OEO_00370009
     range: RelationalQuantityValue
     description: >-
       OEO `has numerator` — Termboard's `has numerator`. 
 
   has_denominator:
-    slot_uri: oeo:OEO_00370005
+    slot_uri: oeo:OEO_00370010
     range: RelationalQuantityValue
     description: >-
       OEO `has denominator` — Termboard's `has denominator`.     
