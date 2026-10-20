@@ -115,7 +115,7 @@ slots:
       axiom the ontology holds rather than inventing a relation.
 
   covers_parameter:
-    slot_uri: mhpo:MHPO_0002027
+    slot_uri: mhpo:MHPO_0002028
     description: >-
       MHPO `covers parameter`. A relation between an infoprmation content entity that is part of a municipal heat plan and the parameter it reports on. 
 
