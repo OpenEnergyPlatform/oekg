@@ -91,7 +91,7 @@ mhpkg_shapes:AggregatedInventoryAnalysisIri
 
 mhpkg_shapes:ConsumptionValueIri
     a sh:NodeShape ;
-    sh:targetClass oeo:OEO_00050016, oeo:OEO_00340065, oeo:OEO_00140127 ;
+    sh:targetClass oeo:OEO_00050016, oeo:OEO_00340065, oeo:OEO_00020423 ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^https://openenergyplatform\\.org/id/mhpkg/value/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" ;
     sh:message "Tier-3 violation: a value IRI must be .../value/<lower-case UUIDv5>. Version nibble 5, not 4 — a random id would break re-runnability." .
@@ -122,7 +122,7 @@ mhpkg_shapes:OrganisationIri
 mhpkg_shapes:NoNonAsciiInstanceIri
     a sh:NodeShape ;
     sh:targetClass mhpo:MHPO_00020003, mhpo:MHPO_00020005, mhpo:MHPO_00020007, mhpo:MHPO_00020017,
-                   oeo:OEO_00050016, oeo:OEO_00340065, oeo:OEO_00140127, oeo:OEO_00030022 ;
+                   oeo:OEO_00050016, oeo:OEO_00340065, oeo:OEO_00020423, oeo:OEO_00030022 ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^[\\u0021-\\u007E]*$" ;
     sh:message "An MHPKG instance IRI must be pure printable ASCII with no percent-encoding. German belongs in rdfs:label." .

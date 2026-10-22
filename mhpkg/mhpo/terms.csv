@@ -40,6 +40,7 @@ MHPO_00020023,role of district heating development area,class,mhpo,yes,from_mhpo
 MHPO_00020024,role of district heating densification area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020024
 MHPO_00020025,role of district heating expansion area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020025
 MHPO_00020026,projected heat plan subarea,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020026
+MHPO_00020028,covers parameter,objectProperty,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00020028
 MHPO_00030001,implementation strategy,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030001
 MHPO_00030005,hydrogen grid area,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030005
 MHPO_00030006,hydrogen grid area role,class,mhpo,yes,from_mhpo,no,,https://purl.org/mhpo/ontology/MHPO_00030006

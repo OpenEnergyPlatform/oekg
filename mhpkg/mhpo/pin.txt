@@ -7,7 +7,7 @@
 
 repo:    OpenEnergyPlatform/municipal-heat-planning-ontology
 branch:  develop
-tag:     v0.1.0
-commit:  03ad66e026111797d8d0000c04aae9ccf3d87998
-date:    2026-09-30
-subject: Merge pull request #36 from OpenEnergyPlatform/release-v0.1.0
+# tag:     none — develop is past v0.1.0
+commit:  16462e9bc0f238f4c58d26985cb0dc99f8dcff4a
+date:    2026-10-22
+subject: Merge pull request #44 from OpenEnergyPlatform/fix-imports-after-release-v.0.1

@@ -70,7 +70,7 @@
 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000>
     a mhpo:MHPO_00020007 ;
     rdfs:label "Zielszenario ohne Datum" ;
-    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/78153046-c4c2-5cae-a61c-56c70e57e5a5> .
+    mhpo:MHPO_00020028 <https://openenergyplatform.org/id/mhpkg/value/78153046-c4c2-5cae-a61c-56c70e57e5a5> .
 
 # --- 6. The value: four violations at once --------------------------------------------
 #
@@ -96,8 +96,8 @@
     a oeo:OEO_00050016 ;
     oeo:OEO_00140178 "-241.0"^^xsd:float ;
     oeo:OEO_00040010 oeo:OEO_00050008 ;
-    oeo:OEO_00000523 oeo:OEO_00000132 ;
-    oeo:OEO_00000505 oeo:OEO_00000292 ;
+    oeo:OEO_00370001 oeo:OEO_00000132 ;
+    oeo:OEO_00020519 oeo:OEO_00000292 ;
     oeo:OEO_00020440 "1900"^^xsd:integer ;
     oeo:OEO_00390023 oeo:OEO_00140070 .
 
@@ -116,8 +116,8 @@
     a oeo:OEO_00050016 ;
     oeo:OEO_00140178 "500.0"^^xsd:float ;
     oeo:OEO_00040010 oeo:OEO_00050008 ;
-    oeo:OEO_00000523 oeo:OEO_00000292 ;
-    oeo:OEO_00000505 oeo:OEO_00000214 ;
+    oeo:OEO_00370001 oeo:OEO_00000292 ;
+    oeo:OEO_00020519 oeo:OEO_00000214 ;
     oeo:OEO_00020440 "2030"^^xsd:integer ;
     oeo:OEO_00390023 oeo:OEO_00140070 ;
     rdfs:seeAlso <https://example.org/some-pdf-page-42> .
@@ -132,14 +132,14 @@
 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2029-06-30>
     a mhpo:MHPO_00020007 ;
     rdfs:label "Zielszenario mit einem Wert aus der Bestandsanalyse" ;
-    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/e4f5a6b7-c8d9-5e0f-a1b2-c3d4e5f6a7b8> .
+    mhpo:MHPO_00020028 <https://openenergyplatform.org/id/mhpkg/value/e4f5a6b7-c8d9-5e0f-a1b2-c3d4e5f6a7b8> .
 
 <https://openenergyplatform.org/id/mhpkg/value/e4f5a6b7-c8d9-5e0f-a1b2-c3d4e5f6a7b8>
     a oeo:OEO_00050016 ;
     oeo:OEO_00140178 "300.0"^^xsd:float ;
     oeo:OEO_00040010 oeo:OEO_00050008 ;
-    oeo:OEO_00000523 oeo:OEO_00000292 ;
-    oeo:OEO_00000505 oeo:OEO_00000214 ;
+    oeo:OEO_00370001 oeo:OEO_00000292 ;
+    oeo:OEO_00020519 oeo:OEO_00000214 ;
     oeo:OEO_00020440 "2021"^^xsd:integer ;
     oeo:OEO_00390023 oeo:OEO_00140070 .
 
@@ -165,7 +165,7 @@
 # default range is EnergyUnitEnum, and a class-blind shape would have accepted MWh here.
 
 <https://openenergyplatform.org/id/mhpkg/value/d3e4f5a6-b7c8-5d9e-8f1a-2b3c4d5e6f7a>
-    a oeo:OEO_00140127 ;
+    a oeo:OEO_00020423 ;
     oeo:OEO_00140178 "125.0"^^xsd:float ;
     oeo:OEO_00040010 oeo:OEO_00050008 ;
     oeo:OEO_00020440 "2030"^^xsd:integer .

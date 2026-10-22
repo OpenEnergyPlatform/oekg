@@ -87,14 +87,14 @@ human decision recorded in the mapping.
 
 ## Status of the 2026-09-15 draft
 
-Carried into the schema in full. `--check` passes, with these recorded holes:
+Carried into the schema in full. `--check` passes except for the numerator/denominator range below, with these recorded holes:
 
 | Termboard | Disposition |
 |---|---|
 | `is about municipality` | TERM REQUEST 1: nothing relates a plan to the area it plans |
 | `on behalf of` | TERM REQUEST 3: the planning authority's role; also MH-15 |
 | `part of convoi` | TERM REQUEST 6: joint planning by several municipalities |
-| `has numerator`, `has denominator` | TERM REQUEST 7: what a share is a share of |
+| `has numerator`, `has denominator` | OEO `has numerator`/`has denominator` (on OEO `dev`, not in v2.14.0). 🔴 `--check` fails: the schema gives both slots the range `RelationalQuantityValue`, the board draws a `final energy consumption` |
 | `has uuid`, `UUID` | open: the IRI already is the identity (MH-02, #61) |
 | `aggregated potential analysis` | deferred: the draft gives it no content |
 | an unnamed self-edge on `final energy consumption value` | open: most likely a stray drag on the board |
