@@ -47,7 +47,7 @@ terms:
       The two boxes that hang off `share` as numerator and denominator. They carry unit, carrier,
       sector, year and technology exactly like a final energy consumption value, so they are one.
   greenhouse gas emission value: {class: GreenhouseGasEmissionValue}
-  share: {class: FractionValue}
+  share: {class: RelationalQuantityValue}
 
   # --- controlled vocabularies -----------------------------------------------------------
   energy carrier: {enum: EnergyCarrierEnum}
@@ -93,12 +93,12 @@ relations:
   has part:
     slot: has_part
     by_target:
-      FinalEnergyConsumptionValue: has_quantity_value
-      GreenhouseGasEmissionValue: has_quantity_value
-      FractionValue: has_quantity_value
+      FinalEnergyConsumptionValue: covers_parameter
+      GreenhouseGasEmissionValue: covers_parameter
+      RelationalQuantityValue: covers_parameter
     note: >-
-      The sketch says `has part` from a scenario or analysis to its values. The schema keeps OEO
-      `has quantity value` there (decided in MH-06); `has part` stays for plan -> scenario/analysis.
+      The sketch says `has part` from a scenario or analysis to its values. The schema uses MHPO
+      `covers parameter` there (replaced OEO `has quantity value` in #64); `has part` stays for plan -> scenario/analysis.
   part of: {inverse: has part}
   part of convoi:
     term_request: 6
@@ -111,14 +111,12 @@ relations:
   has unit: {slot: has_unit}
   has aggregation type: {slot: has_aggregation_type}
   has temporal resolution: {slot: has_temporal_resolution}
-  refers to energy carrier: {slot: covers_energy_carrier}
-  refers to sector: {slot: covers_sector}
-  refers to technology: {slot: covers_technology}
+  refers to energy carrier: {slot: refers_to_energy_carrier}
+  refers to sector: {slot: refers_to_sector}
+  refers to technology: {slot: refers_to_technology}
   refers to temporal region: {slot: has_scenario_year_value}
-  has numerator:
-    term_request: 7
-    note: OEO relates units to numerator/denominator units, never a quantity value to its parts.
-  has denominator: {term_request: 7}
+  has numerator: {slot: has_numerator}
+  has denominator: {slot: has_denominator}
 
   # --- the plan's metadata ---------------------------------------------------------------
   has title: {slot: label}

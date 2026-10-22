@@ -34,7 +34,7 @@ mhpkg_shapes:TargetScenarioLooksForward
     a sh:NodeShape ;
     sh:targetClass mhpo:MHPO_00020007 ;
     sh:property [
-        sh:path ( oeo:OEO_00140002 oeo:OEO_00020440 ) ;    # has quantity value / has scenario year value
+        sh:path ( mhpo:MHPO_00020028 oeo:OEO_00020440 ) ;    # covers parameter / has scenario year value
         sh:minInclusive 2024 ;
         sh:message "A target-scenario value must be for 2024 or later. A past year belongs to the inventory analysis." ;
     ] .

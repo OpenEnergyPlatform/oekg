@@ -53,6 +53,20 @@ Here is a template for new release sections:
   [[#63](https://github.com/OpenEnergyPlatform/oekg/pull/63)]
 
 ### Changed
+- `mhpkg/mhpo/`: the MHPO pin moves from `34776b6` to `03ad66e`, the commit tagged as MHPO's
+  first release, **v0.1.0**. The term list grows from 48 to 60 terms. *has role* (`RO_0000087`) and
+  the four CCO parent classes are gone, and MHPO now declares every term it cites. The six MHPO
+  terms the schema cites keep their IRIs, so the schema, its generated shapes and the negative
+  control are unchanged in substance. Their descriptions now say IAO `plan specification` where
+  they said CCO. The pin is still a commit and not the release artefacts, because their IRIs do
+  not resolve. `skos:` is now treated as infrastructure vocabulary and left out of the list
+- `mhpkg/mhpo/`: the pin moves on past v0.1.0 to `16462e9` (develop, 2026-10-22), which adds
+  *covers parameter* (`MHPO_00020028`); 61 terms. `mhpkg/schema/`: the schema cited it as
+  `MHPO_0002028`, one digit short, and now cites the real IRI. The generated shapes, the examples,
+  the two hand-written shapes files, `mint_slice.py`, `validate.py` and `termboard_mapping.yaml`
+  follow the relation rework of [#64](https://github.com/OpenEnergyPlatform/oekg/pull/64)
+  (`covers parameter`, `refers to …`, `relational quantity value`); the share's value IRI is
+  re-minted because its indicator class changed
 - `mhpkg/schema/`: the year floor on `has_scenario_year_value` drops from 2024 to 1990, because the
   inventory analysis carries past base years; "2024 or later inside a target scenario" moved to
   `mhpkg_context.shacl.ttl`. The example value IRI is now the one `mint_slice.py` actually mints —
