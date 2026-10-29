@@ -61,19 +61,25 @@ ex:StudyShape
         sh:class oeo:OEO_00090001; #funder
         sh:resultMessage "Study target: This should end in class funder.";
     ] ;
-    sh:property [
-        sh:path rdfs:label ;
-        sh:datatype xsd:string ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:resultMessage "Study target: This should be string and have exactly one name.";
-    ] ;
-    sh:property [
-        sh:path dc:acronym;
-        sh:datatype xsd:string ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:resultMessage "Study target: This should be string and have exactly one acronym.";
+    sh:or[
+        [
+            sh:property [
+                sh:path rdfs:label ;
+                sh:datatype xsd:string ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:resultMessage "Study target: This should be string and have exactly one name.";
+            ]
+        ] ;
+        [
+        sh:property [
+            sh:path dc:acronym;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:resultMessage "Study target: This should be string and have exactly one acronym.";
+        ]
+        ];
     ] ;
     sh:property [
         sh:path dc:abstract ;
