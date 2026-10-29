@@ -156,7 +156,7 @@ ex:ScenarioShape
     ] ;
     sh:property [
         sh:path oeo:OEO_00390073 ; #has scenario type
-        sh:in ( oeo:OEO_00000364 oeo:OEO_00020247 oeo:OEO_00020248 oeo:OEO_00020314 oeo:OEO_00020345 oeo:OEO_00020412 oeo:OEO_00030007 oeo:OEO_00030008 oeo:OEO_00030009 oeo:OEO_00030010 oeo:OEO_00020309 oeo:OEO_00020411 oeo:OEO_00020317 oeo:OEO_00020321 oeo:OEO_00020310 oeo:OEO_00020311 oeo:OEO_00020312 ) ;
+        sh:in ( oeo:OEO_00000364 oeo:OEO_00020247 oeo:OEO_00020248 oeo:OEO_00020314 oeo:OEO_00020345 oeo:OEO_00020412 oeo:OEO_00030007 oeo:OEO_00030008 oeo:OEO_00030009 oeo:OEO_00030010 oeo:OEO_00020309 oeo:OEO_00020411 oeo:OEO_00020317 oeo:OEO_00020321 oeo:OEO_00020310 oeo:OEO_00020311 oeo:OEO_00020312 oeo:OEO_00020517) ;
         sh:minCount 1 ;
         sh:resultMessage "Scenario target: This should have at least one scenario subclass.";
     ] ;
