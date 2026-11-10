@@ -53,6 +53,9 @@ Here is a template for new release sections:
   [[#63](https://github.com/OpenEnergyPlatform/oekg/pull/63)]
 
 ### Changed
+- `oekg/shapes/oekg_shapes.ttl`: a study needs a name **or** an acronym (or both) instead of
+  both; scenario type `integrated assessment modeling scenario` (`OEO_00020517`) is allowed
+  [[#68](https://github.com/OpenEnergyPlatform/oekg/pull/68)]
 - `mhpkg/schema/`: the year floor on `has_scenario_year_value` drops from 2024 to 1990, because the
   inventory analysis carries past base years; "2024 or later inside a target scenario" moved to
   `mhpkg_context.shacl.ttl`. The example value IRI is now the one `mint_slice.py` actually mints —
