@@ -548,6 +548,7 @@ classes:
       - has_publication_date
       - has_part
       - has_organisation
+      - has_study_region
     slot_usage:
       has_part:
         any_of:
@@ -559,6 +560,24 @@ classes:
         range: Organisation
         required: true
         multivalued: true
+      has_study_region:
+        range: studyRegion
+        required: true
+        multivalued: false
+  
+  StudyRegion:
+    class_uri: oeo:OEO_00020032
+    description: >-
+      A study region — Untersuchungsgebiet. OEO defines it as a spatial region that is the subject
+      of a study. Termboard's `study region`, which every heat plan has.
+    slots:
+      - id
+      - label
+      - has_community_identification_key
+    slot_usage:
+      has_community_identification_key:
+        required: true
+        multivalued: false
 
   TargetScenario:
     class_uri: mhpo:MHPO_00020007
