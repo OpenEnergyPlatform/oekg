@@ -59,12 +59,12 @@ the interpreter, so no contributor needs a particular Python.
 Worth stating plainly, because installing a toolchain is not the same as having something to run it
 on:
 
-- **There is no LinkML schema in this repository yet.** `gen-shacl` is installed and works, but
-  there is nothing to point it at. Authoring that schema is in progress.
-- **There are no generated SHACL shapes**, and therefore nothing for `pyshacl` to validate data
-  against. The shapes under `oekg/shapes/` do not validate any live graph.
-- **There is still no test suite, and no validation runs in CI.** The pull-request checks assert the
-  lockfile and build the documentation; they do not validate graph data.
+- **The pull-request checks keep the repository consistent with itself, not with a live graph.**
+  Besides the lockfile and the documentation build, they assert that `oekg/shapes/oekg_shapes.ttl`
+  parses, that the generated MHPKG shapes match `mhpkg/schema/mhpkg_target_scenario.yaml`, that the
+  MHPKG examples validate (and the negative control fails as intended), and that the schema
+  accounts for every name in the Termboard draft. **If you change the schema YAML, regenerate the
+  shapes and commit both** — see `mhpkg/schema/README.md`. No check runs against live graph data.
 - **No ODK or ROBOT toolchain, and no Java.** This repository does not build the municipal heat
   planning ontology (MHPO) — it consumes a pinned, vendored term list. See `mhpkg/mhpo/README.md`.
   The extractor there is deliberately standard-library only and needs none of the groups above.

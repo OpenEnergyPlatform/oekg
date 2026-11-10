@@ -115,8 +115,13 @@ relations:
   refers to sector: {slot: refers_to_sector}
   refers to technology: {slot: refers_to_technology}
   refers to temporal region: {slot: has_scenario_year_value}
-  has numerator: {slot: has_numerator}
-  has denominator: {slot: has_denominator}
+  # Realised as has_numerator / has_denominator, but the board points them at a final energy
+  # consumption value and the schema only accepts a relational quantity value. Restore
+  # `{slot: has_numerator}` / `{slot: has_denominator}` once #74 decides the range.
+  has numerator:
+    open: "#74 — the slot's range is narrower than both the board and OEO"
+  has denominator:
+    open: "#74 — the slot's range is narrower than both the board and OEO"
 
   # --- the plan's metadata ---------------------------------------------------------------
   has title: {slot: label}

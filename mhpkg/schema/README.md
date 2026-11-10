@@ -231,5 +231,5 @@ hole is visible in the artifact. They belong to MHPO's owners — filing is
   downstream of seeing one generator work. It now also inherits three constraints from above: the
   hand-written companion file, enum drift, and the `@de` question.
 - **Loading anything into Fuseki** — **MH-11**. Nothing here has been near a triple store.
-- **A validation CI job** — **MH-12**. `validate.py` exits non-zero on failure so that job has
-  something to call, but wiring it into `checks.yml` is not this ticket's.
+- **Validating live data in CI.** `validate.py` and `check_generated.py` run on every pull request
+  ([#73](https://github.com/OpenEnergyPlatform/oekg/issues/73)), but against the examples only.

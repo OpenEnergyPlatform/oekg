@@ -169,8 +169,9 @@ Authored against the schema, and exercised on every run of `mhpkg/schema/validat
 So `pyshacl` "working" now means two different things. For MHPKG: example data is checked in both
 directions — the conformant instance passes and the negative control is asserted to fail for each of
 its reasons. For the OEKG: the shapes have been run against real graph data once, by hand, and the
-result recorded. Neither is **a validation pipeline or a CI job** — `checks.yml` still validates no
-graph data at all.
+result recorded. Neither is **a validation pipeline** — `checks.yml` runs the MHPKG example
+validation and the generated-shapes check on every pull request, and parses the OEKG shapes, but it
+validates no live graph data.
 
 ### Namespace migration
 
@@ -200,7 +201,7 @@ served as a table on the Open Energy Platform. See [Workflow](workflow.md#not-ev
     **The authoring end now exists** — a LinkML schema, the SHACL generated from it, and validation
     of example data in both directions. Solid boxes below are built and exercised.
 
-    **Nothing has been loaded into a triple store yet**, and there is no CI job. Dashed boxes are
+    **Nothing has been loaded into a triple store yet**, and CI checks only example data. Dashed boxes are
     not built. The boxes still marked *undecided* are the open questions listed above.
 
     When a decision is made, the marker here should be replaced by the answer rather than left to
