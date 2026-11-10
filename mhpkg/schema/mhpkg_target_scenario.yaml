@@ -517,9 +517,7 @@ enums:
   CountUnitEnum:
     description: The unit of a count.
     permissible_values:
-      count:
-        minimum_value: 1
-        maximum_value: 1
+      count_unit:
         meaning: obo:UO_0000189
         description: Zählwert. From the Units Ontology, like percent and kWh — OEO does not mint its own count.
 
@@ -709,6 +707,7 @@ classes:
     slot_usage:
       has_unit: 
         range: CountUnitEnum
+        has_number: 1
 
   MunicipalityArea:
     class_uri: mhpo:MHPO_00020017
