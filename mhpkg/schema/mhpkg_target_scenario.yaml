@@ -31,6 +31,7 @@ prefixes:
   oeo: https://openenergyplatform.org/ontology/oeo/
   obo: http://purl.obolibrary.org/obo/
   cco: https://www.commoncoreontologies.org/
+  bfo: http://purl.obolibrary.org/obo/bfo.owl#
 
   # --- Infrastructure vocabulary. Not domain terms; carries no modelling commitment. ---
   linkml: https://w3id.org/linkml/
@@ -194,6 +195,12 @@ slots:
       for carriers and sectors, not technologies, but heat plans break consumption and emissions
       down by heat generation technology often enough that the 2026-09-15 draft draws it on every
       value.
+
+  refers_to:
+    slot_uri: oeo:OEO_00370000
+    range: MaterialEntityEnum
+    description: >-
+      OEO `refers to` — Termboard's `refers to`. 
 
   has_numerator:
     slot_uri: oeo:OEO_00370009
@@ -521,6 +528,14 @@ enums:
         meaning: obo:UO_0000189
         description: Zählwert. From the Units Ontology, like percent and kWh — OEO does not mint its own count.
 
+  MaterialEntityEnum:
+    description: >-
+      OEO's material entities, for the `refers to` relation. 
+    permissible_values:
+      material_entity:
+        meaning: bfo:BFO_0000040
+        description: material entity and subclasses.
+      
 # =====================================================================================
 # Classes
 # =====================================================================================
