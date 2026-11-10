@@ -5,8 +5,10 @@ name: checks
 # stale uv.lock or a broken `#anchor` was discovered when the *deploy* failed,
 # which is after merge. Both discoveries now happen at review time.
 #
-# This deliberately does NOT validate any graph data. There is no SHACL
-# validation job yet and adding one is a separate, tracked decision.
+# It checks that the repository agrees with itself: the shapes parse, the
+# generated MHPKG shapes match their schema, the examples validate, and the
+# schema accounts for the Termboard draft. It deliberately validates no LIVE
+# graph data — what to validate against what is a separate, tracked decision.
 
 on:
   pull_request:
@@ -44,3 +46,18 @@ jobs:
       # strict: true plus anchor validation, so a broken link fails here.
       - name: Build the documentation
         run: uv run mkdocs build --strict
+
+      # Each of these would have caught a PR that went green without them (#73):
+      # a shapes file that did not parse, and schema changes that no longer
+      # generate or were committed without regenerating.
+      - name: The OEKG shapes parse
+        run: uv run --locked --group graph python -c "import rdflib; rdflib.Graph().parse('oekg/shapes/oekg_shapes.ttl')"
+
+      - name: The generated MHPKG shapes match the schema
+        run: uv run --locked --group schema python mhpkg/schema/check_generated.py
+
+      - name: The MHPKG examples validate and the negative control holds
+        run: uv run --locked --group graph python mhpkg/schema/validate.py
+
+      - name: The schema accounts for every Termboard name
+        run: uv run --locked --group schema python mhpkg/model/termboard_delta.py --check

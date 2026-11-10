@@ -47,8 +47,9 @@ using anything in it.
 
 ## No CI validates any of this
 
-`.github/workflows/checks.yml` runs pull-request checks, but it deliberately validates **no graph
-data**: no shapes are run and no queries are executed. Adding SHACL validation to CI is an obvious
+`.github/workflows/checks.yml` runs pull-request checks, but for the OEKG it only asserts that the
+shapes file parses. It deliberately validates **no graph data**: no shapes are run and no queries
+are executed. Adding SHACL validation to CI is an obvious
 win, but it needs a decision about *what is validated against what* first — and that is model
 design. The 2026-08-13 validation makes the shape of that decision concrete: of the 135 violations
 the live graph produces, **133 are `oeplatform` data bugs that no pull request to this repository
