@@ -53,8 +53,8 @@ established *and where the approach has limits*. Read that before extending the 
 limits change how the generated artifacts can be checked.
 
 [`mhpkg/mhpo/`](https://github.com/OpenEnergyPlatform/oekg/tree/production/mhpkg/mhpo) — the pinned
-MHPO term list, and the script that regenerates it. MHPO has no releases or tags, so the pin is a
-commit SHA.
+MHPO term list, and the script that regenerates it. The pin is the commit of MHPO's release
+v0.1.0. It is not the release artefacts, because their IRIs do not resolve yet.
 
 [`mhpkg/model/`](https://github.com/OpenEnergyPlatform/oekg/tree/production/mhpkg/model) — the
 Termboard exports and the loop that carries a new one into the schema.

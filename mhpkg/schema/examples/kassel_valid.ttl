@@ -43,8 +43,8 @@
 <https://openenergyplatform.org/id/mhpkg/targetscenario/AGS_06611000_2024-03-15>
     a mhpo:MHPO_00020007 ;                                    # target scenario
     rdfs:label "Zielszenario Kassel 2024" ;
-    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/78153046-c4c2-5cae-a61c-56c70e57e5a5> ,   # has quantity value
-                     <https://openenergyplatform.org/id/mhpkg/value/9f4b7750-a043-5d47-9112-3f90264ebc6f> .
+    mhpo:MHPO_00020028 <https://openenergyplatform.org/id/mhpkg/value/78153046-c4c2-5cae-a61c-56c70e57e5a5> ,   # covers parameter
+                     <https://openenergyplatform.org/id/mhpkg/value/9bf64a69-fa84-5685-b038-7a1739183162> .
 
 # --- The indicator value --------------------------------------------------------------
 # Tier 3: UUIDv5 over the value's COORDINATES — plan, indicator, carrier, year, aggregation —
@@ -55,24 +55,25 @@
     a oeo:OEO_00050016 ;                                      # final energy consumption value
     oeo:OEO_00140178 "241.0"^^xsd:float ;                     # has number
     oeo:OEO_00040010 oeo:OEO_00050008 ;                       # has unit -> megawatt-hour
-    oeo:OEO_00000523 oeo:OEO_00000292 ;                       # covers energy carrier -> natural gas
-    oeo:OEO_00000505 oeo:OEO_00000214 ;                       # covers sector -> household sector
-    oeo:OEO_00390101 oeo:OEO_00020491 ;                       # covers technology -> gas powered heating
+    oeo:OEO_00370001 oeo:OEO_00000292 ;                       # refers to energy carrier -> natural gas
+    oeo:OEO_00020519 oeo:OEO_00000214 ;                       # refers to sector -> household sector
+    oeo:OEO_00370003 oeo:OEO_00020491 ;                       # refers to technology -> gas powered heating
     oeo:OEO_00020440 "2030"^^xsd:integer ;                    # has scenario year value
     oeo:OEO_00390023 oeo:OEO_00140070 ;                       # has aggregation type -> integral
     oeo:OEO_00000516 oeo:OEO_00020161 .                       # has temporal resolution -> annual
 
 # --- A share --------------------------------------------------------------------------
 # Termboard's `share`: 25 % natural gas in 2030. What it is a share OF — the numerator and the
-# denominator the sketch draws — has no relation to be written with yet (TERM REQUEST 7), so the
-# share carries its numerator's carrier and year directly. Its tuple has no aggregation, so that
+# denominator the sketch draws — is left out here: OEO's `has numerator`/`has denominator` are not
+# released yet and the schema's range for them is still open, so the share carries its numerator's
+# carrier and year directly. Its tuple has no aggregation, so that
 # field is the empty string: omitted fields would shift and collide.
 
-<https://openenergyplatform.org/id/mhpkg/value/9f4b7750-a043-5d47-9112-3f90264ebc6f>
-    a oeo:OEO_00140127 ;                                      # fraction value
+<https://openenergyplatform.org/id/mhpkg/value/9bf64a69-fa84-5685-b038-7a1739183162>
+    a oeo:OEO_00020423 ;                                      # relational quantity value
     oeo:OEO_00140178 "25.0"^^xsd:float ;                      # has number
     oeo:OEO_00040010 obo:UO_0000187 ;                         # has unit -> percent
-    oeo:OEO_00000523 oeo:OEO_00000292 ;                       # covers energy carrier -> natural gas
+    oeo:OEO_00370001 oeo:OEO_00000292 ;                       # refers to energy carrier -> natural gas
     oeo:OEO_00020440 "2030"^^xsd:integer .                    # has scenario year value
 
 # --- The aggregated inventory analysis ------------------------------------------------
@@ -82,7 +83,7 @@
 <https://openenergyplatform.org/id/mhpkg/inventoryanalysis/AGS_06611000_2024-03-15>
     a mhpo:MHPO_00020005 ;                                    # aggregated inventory analysis
     rdfs:label "Bestandsanalyse Kassel 2024" ;
-    oeo:OEO_00140002 <https://openenergyplatform.org/id/mhpkg/value/1f9238b1-7f03-554e-b682-1e472b6b0a1a> .   # has quantity value
+    mhpo:MHPO_00020028 <https://openenergyplatform.org/id/mhpkg/value/1f9238b1-7f03-554e-b682-1e472b6b0a1a> .   # covers parameter
 
 # --- A greenhouse gas emission value --------------------------------------------------
 # Total emissions for the base year: no carrier, no sector, no technology — WPG asks for the total.

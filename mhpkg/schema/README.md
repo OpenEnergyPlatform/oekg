@@ -59,7 +59,9 @@ uv run --group schema python mhpkg/schema/check_generated.py
 ```
 
 Verified with linkml 1.11.1, pyshacl 0.40.1, rdflib 7.6.0, against MHPO at pin
-[`34776b6`](../mhpo/pin.txt) and OEO 2.13.0.
+[`03ad66e`](../mhpo/pin.txt) (release v0.1.0) and OEO 2.13.0. The previous pin, `34776b6`, gave
+the same result: v0.1.0 moved the superclasses of the six MHPO terms this schema cites, not their
+IRIs.
 
 > 🔴 **Do not check the generated file with a byte diff.** `gen-shacl` output is **not byte-stable
 > across runs**: every `sh:property` is a blank node and rdflib mints fresh blank-node ids per
