@@ -195,6 +195,13 @@ slots:
       down by heat generation technology often enough that the 2026-09-15 draft draws it on every
       value.
 
+  has_study_region:
+    slot_uri: oeo:OEO_00020220
+    range: studyRegion
+    description: >-
+      OEO `has study region` — Termboard's `has study region`. Optional: a heat plan is about a
+      municipality area, but the 2026-09-15 draft does not draw it on every value. 
+      
   has_numerator:
     slot_uri: oeo:OEO_00370009
     range: RelationalQuantityValue
