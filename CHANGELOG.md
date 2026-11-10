@@ -55,7 +55,7 @@ Here is a template for new release sections:
   shapes match the schema, that the MHPKG examples validate with the negative control holding, and
   that `termboard_delta.py --check` passes. `has numerator` / `has denominator` are marked `open`
   in `termboard_mapping.yaml` until [#74](https://github.com/OpenEnergyPlatform/oekg/issues/74)
-  decides their range [[#PR](https://github.com/OpenEnergyPlatform/oekg/pull/PR)]
+  decides their range [[#77](https://github.com/OpenEnergyPlatform/oekg/pull/77)]
 
 ### Changed
 - `mhpkg/mhpo/`: the MHPO pin moves from `34776b6` to `03ad66e`, the commit tagged as MHPO's
