@@ -201,7 +201,7 @@ slots:
     description: >-
       OEO `has study region` — Termboard's `has study region`. Optional: a heat plan is about a
       municipality area, but the 2026-09-15 draft does not draw it on every value. 
-      
+
   has_numerator:
     slot_uri: oeo:OEO_00370009
     range: RelationalQuantityValue
@@ -619,6 +619,7 @@ classes:
       - has_scenario_year_value
       - has_aggregation_type
       - has_temporal_resolution
+      - has_study_region
     slot_usage:
       has_number:
         minimum_value: 0
@@ -654,6 +655,7 @@ classes:
       - has_scenario_year_value
       - has_aggregation_type
       - has_temporal_resolution
+      - has_study_region
     slot_usage:
       has_unit:
         range: MassUnitEnum
@@ -677,6 +679,7 @@ classes:
       - refers_to_sector
       - refers_to_technology
       - has_scenario_year_value
+      - has_study_region
     slot_usage:
       has_number:
         minimum_value: 0
