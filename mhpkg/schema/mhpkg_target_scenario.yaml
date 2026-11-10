@@ -673,6 +673,22 @@ classes:
       refers_to_sector:
         required: false
 
+  CountValue:
+    class_uri: oeo:OEO_00020521
+    description: >-
+      A count value — Zählwert. OEO defines it as a quantity value that is a count of entities.
+      Termboard's `count value`, in both the inventory analysis and the target scenario.
+    slots:
+      - id
+      - has_number
+      - has_unit
+      - refers_to
+      - has_scenario_year_value
+      - has_temporal_resolution
+    slot_usage:
+      has_unit: 
+        range: count_unit
+
   MunicipalityArea:
     class_uri: mhpo:MHPO_00020017
     description: >-
