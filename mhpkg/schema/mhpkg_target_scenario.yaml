@@ -569,6 +569,7 @@ classes:
           - range: FinalEnergyConsumptionValue
           - range: GreenhouseGasEmissionValue
           - range: RelationalQuantityValue
+          - range: CountValue
         required: true
         multivalued: true
 
@@ -590,6 +591,8 @@ classes:
         any_of:
           - range: FinalEnergyConsumptionValue
           - range: GreenhouseGasEmissionValue
+          - range: RelationalQuantityValue
+          - range: CountValue
         required: true
         multivalued: true
 
