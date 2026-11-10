@@ -505,6 +505,15 @@ enums:
         description: >-
           Prozent. From the Units Ontology, like kWh — OEO does not mint its own percent.
 
+  CountUnitEnum:
+    description: The unit of a count.
+    permissible_values:
+      count:
+        minimum_value: 1
+        maximum_value: 1
+        meaning: obo:UO_0000189
+        description: Zählwert. From the Units Ontology, like percent and kWh — OEO does not mint its own count.
+
 # =====================================================================================
 # Classes
 # =====================================================================================
@@ -687,7 +696,7 @@ classes:
       - has_temporal_resolution
     slot_usage:
       has_unit: 
-        range: count_unit
+        range: CountUnitEnum
 
   MunicipalityArea:
     class_uri: mhpo:MHPO_00020017
