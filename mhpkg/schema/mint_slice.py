@@ -77,7 +77,7 @@ BASE_YEAR = "2021"  # illustrative: the sketch gives the inventory analysis no y
 GHG_TUPLE = "|".join([HEATPLAN, GHG_INDICATOR, "", BASE_YEAR, AGGREGATION])  # total, no carrier
 GHG_VALUE = mint("value", GHG_TUPLE)
 
-SHARE_INDICATOR = "https://openenergyplatform.org/ontology/oeo/OEO_00140127"  # fraction value
+SHARE_INDICATOR = "https://openenergyplatform.org/ontology/oeo/OEO_00020423"  # relational quantity value
 SHARE_TUPLE = "|".join([HEATPLAN, SHARE_INDICATOR, ENERGY_CARRIER, YEAR, ""])  # no aggregation
 SHARE_VALUE = mint("value", SHARE_TUPLE)
 
