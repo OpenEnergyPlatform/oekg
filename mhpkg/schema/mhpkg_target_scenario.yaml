@@ -203,6 +203,14 @@ slots:
       OEO `has spatial region` — Termboard's `has spatial region`. Optional: a heat plan is about a
       municipality area, but the 2026-09-15 draft does not draw it on every value. 
 
+  has_community_identification_key:
+    slot_uri: mhpo:MHPO_00020030
+    range: string
+    pattern: '^\d{8}$'
+    description: >-
+      OEO `has community identification key` — Termboard's `has community identification key`. The
+      ARS of the municipality area the plan is for, as a string.
+
   has_numerator:
     slot_uri: oeo:OEO_00370009
     range: RelationalQuantityValue
@@ -731,6 +739,9 @@ classes:
           required: true
           multivalued: false
           range: MunicipalityArea
+      - has_community_identification_key:
+          required: true
+          multivalued: false
 
   MunicipalityArea:
     class_uri: mhpo:MHPO_00020017
