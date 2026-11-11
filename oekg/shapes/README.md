@@ -2,7 +2,7 @@
 
 > **Status: CURRENT and canonical.** `oekg_shapes.ttl` is the OEKG's shapes file. It was validated
 > against the live graph on 2026-08-13 and it binds — see [Validation status](#validation-status).
-> No CI runs it yet; wiring that up is tracked work.
+> CI checks only that it parses; running it against a graph in CI is tracked work.
 
 ## What is here
 
@@ -100,9 +100,10 @@ because LinkML silently drops the patterns it needs.
 - **The six `sh:in` enumerations — 382 OEO terms — are still hand-maintained**, and that is the
   source of the 2 shape-side violations above. They are to become **generated from the OEO** and
   checked for currency in CI, so that the shapes and the platform's dropdowns (which already derive
-  the same lists dynamically from OEO annotations) cannot disagree. Not implemented yet.
-- **No CI validates this file.** Adding that needs a decision about what is validated against what,
-  which is tracked separately.
+  the same lists dynamically from OEO annotations) cannot disagree. Not implemented yet — see
+  [#69](https://github.com/OpenEnergyPlatform/oekg/issues/69).
+- **CI parses this file but validates nothing with it.** Running it against a graph needs a
+  decision about what is validated against what, which is tracked separately.
 
 ## Running the shapes
 
