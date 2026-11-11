@@ -31,6 +31,7 @@ prefixes:
   oeo: https://openenergyplatform.org/ontology/oeo/
   obo: http://purl.obolibrary.org/obo/
   cco: https://www.commoncoreontologies.org/
+  iao: http://purl.obolibrary.org/obo/iao/
 
   # --- Infrastructure vocabulary. Not domain terms; carries no modelling commitment. ---
   linkml: https://w3id.org/linkml/
@@ -213,6 +214,11 @@ slots:
     range: RelationalQuantityValue
     description: >-
       OEO `has denominator` — Termboard's `has denominator`.     
+
+  is_about:
+    slot_uri: iao:IAO_0000136
+    description: >-
+      IAO `is about` — Termboard's `is about`.
 
   # --- Provenance and the publishing body -------------------------------------------
 
@@ -548,7 +554,7 @@ classes:
       - has_publication_date
       - has_part
       - has_organisation
-      - has_spatial_region
+      - is_about
     slot_usage:
       has_part:
         any_of:
@@ -560,8 +566,8 @@ classes:
         range: Organisation
         required: true
         multivalued: true
-      has_spatial_region:
-        range: StudyRegion
+      is_about:
+        range: Municipality
         required: true
         multivalued: false
   
@@ -710,6 +716,21 @@ classes:
         required: false
       refers_to_sector:
         required: false
+
+  Municipality:
+    class_uri: mhpo:MHPO_xxxxxxxx
+    description: >-
+      A municipality — Gemeinde. MHPO does not declare a term for it, but the IRI policy makes it a Tier-1 entity and
+    slots:
+      - id
+      - label
+      - has_community_identification_key
+      - has_spatial_region
+    slot_usage:
+      - has_spatial_region:
+          required: true
+          multivalued: false
+          range: MunicipalityArea
 
   MunicipalityArea:
     class_uri: mhpo:MHPO_00020017
