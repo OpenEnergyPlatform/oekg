@@ -718,7 +718,7 @@ classes:
         required: false
 
   Municipality:
-    class_uri: mhpo:MHPO_xxxxxxxx
+    class_uri: mhpo:MHPO_00020029
     description: >-
       A municipality — Gemeinde. MHPO does not declare a term for it, but the IRI policy makes it a Tier-1 entity and
     slots:
