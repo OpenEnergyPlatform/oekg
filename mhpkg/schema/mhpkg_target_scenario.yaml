@@ -195,11 +195,11 @@ slots:
       down by heat generation technology often enough that the 2026-09-15 draft draws it on every
       value.
 
-  has_study_region:
-    slot_uri: oeo:OEO_00020220
+  has_spatial_region:
+    slot_uri: oeo:OEO_00010378
     range: StudyRegion
     description: >-
-      OEO `has study region` — Termboard's `has study region`. Optional: a heat plan is about a
+      OEO `has spatial region` — Termboard's `has spatial region`. Optional: a heat plan is about a
       municipality area, but the 2026-09-15 draft does not draw it on every value. 
 
   has_numerator:
@@ -548,7 +548,7 @@ classes:
       - has_publication_date
       - has_part
       - has_organisation
-      - has_study_region
+      - has_spatial_region
     slot_usage:
       has_part:
         any_of:
@@ -560,7 +560,7 @@ classes:
         range: Organisation
         required: true
         multivalued: true
-      has_study_region:
+      has_spatial_region:
         range: StudyRegion
         required: true
         multivalued: false
@@ -568,7 +568,7 @@ classes:
   StudyRegion:
     class_uri: oeo:OEO_00020032
     description: >-
-      A study region — Untersuchungsgebiet. OEO defines it as a spatial region that is the subject
+      A spatial region — Untersuchungsgebiet. OEO defines it as a spatial region that is the subject
       of a study. Termboard's `study region`, which every heat plan has.
     slots:
       - id
@@ -638,7 +638,7 @@ classes:
       - has_scenario_year_value
       - has_aggregation_type
       - has_temporal_resolution
-      - has_study_region
+      - has_spatial_region
     slot_usage:
       has_number:
         minimum_value: 0
@@ -674,7 +674,7 @@ classes:
       - has_scenario_year_value
       - has_aggregation_type
       - has_temporal_resolution
-      - has_study_region
+      - has_spatial_region
     slot_usage:
       has_unit:
         range: MassUnitEnum
@@ -698,7 +698,7 @@ classes:
       - refers_to_sector
       - refers_to_technology
       - has_scenario_year_value
-      - has_study_region
+      - has_spatial_region
     slot_usage:
       has_number:
         minimum_value: 0
