@@ -31,7 +31,6 @@ prefixes:
   oeo: https://openenergyplatform.org/ontology/oeo/
   obo: http://purl.obolibrary.org/obo/
   cco: https://www.commoncoreontologies.org/
-  iao: http://purl.obolibrary.org/obo/iao/
 
   # --- Infrastructure vocabulary. Not domain terms; carries no modelling commitment. ---
   linkml: https://w3id.org/linkml/
@@ -224,7 +223,7 @@ slots:
       OEO `has denominator` — Termboard's `has denominator`.     
 
   is_about:
-    slot_uri: iao:IAO_0000136
+    slot_uri: obo:IAO_0000136
     description: >-
       IAO `is about` — Termboard's `is about`.
 
