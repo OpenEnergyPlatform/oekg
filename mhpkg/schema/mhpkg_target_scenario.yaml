@@ -195,6 +195,28 @@ slots:
       down by heat generation technology often enough that the 2026-09-15 draft draws it on every
       value.
 
+  has_spatial_region:
+    slot_uri: oeo:OEO_00010378
+    range: StudyRegion
+    description: >-
+      OEO `has spatial region` — Termboard's `has spatial region`. Optional: a heat plan is about a
+      municipality area, but the 2026-09-15 draft does not draw it on every value. 
+
+  located_in:
+    slot_uri: obo:RO_0001025
+    range: MunicipalityArea, StudyRegion
+    description: >-
+      OEO `located in` — Termboard's `located in`. Optional: a heat plan is about a municipality
+      area, but the 2026-09-15 draft does not draw it on every value.
+
+  has_community_identification_key:
+    slot_uri: mhpo:MHPO_00020030
+    range: string
+    pattern: '^\d{8}$'
+    description: >-
+      OEO `has community identification key` — Termboard's `has community identification key`. The
+      ARS of the municipality area the plan is for, as a string.
+
   has_numerator:
     slot_uri: oeo:OEO_00370009
     range: RelationalQuantityValue
@@ -206,6 +228,11 @@ slots:
     range: RelationalQuantityValue
     description: >-
       OEO `has denominator` — Termboard's `has denominator`.     
+
+  is_about:
+    slot_uri: obo:IAO_0000136
+    description: >-
+      IAO `is about` — Termboard's `is about`.
 
   # --- Provenance and the publishing body -------------------------------------------
 
@@ -541,6 +568,7 @@ classes:
       - has_publication_date
       - has_part
       - has_organisation
+      - is_about
     slot_usage:
       has_part:
         any_of:
@@ -552,6 +580,24 @@ classes:
         range: Organisation
         required: true
         multivalued: true
+      is_about:
+        range: Municipality
+        required: true
+        multivalued: false
+  
+  StudyRegion:
+    class_uri: oeo:OEO_00020032
+    description: >-
+      A spatial region — Untersuchungsgebiet. OEO defines it as a spatial region that is the subject
+      of a study. Termboard's `study region`, which every heat plan has.
+    slots:
+      - id
+      - label
+      - has_community_identification_key
+    slot_usage:
+      has_community_identification_key:
+        required: true
+        multivalued: false
 
   TargetScenario:
     class_uri: mhpo:MHPO_00020007
@@ -612,6 +658,7 @@ classes:
       - has_scenario_year_value
       - has_aggregation_type
       - has_temporal_resolution
+      - has_spatial_region
     slot_usage:
       has_number:
         minimum_value: 0
@@ -647,6 +694,7 @@ classes:
       - has_scenario_year_value
       - has_aggregation_type
       - has_temporal_resolution
+      - has_spatial_region
     slot_usage:
       has_unit:
         range: MassUnitEnum
@@ -670,6 +718,7 @@ classes:
       - refers_to_sector
       - refers_to_technology
       - has_scenario_year_value
+      - has_spatial_region
     slot_usage:
       has_number:
         minimum_value: 0
@@ -681,6 +730,24 @@ classes:
         required: false
       refers_to_sector:
         required: false
+
+  Municipality:
+    class_uri: mhpo:MHPO_00020029
+    description: >-
+      A municipality — Gemeinde. MHPO does not declare a term for it, but the IRI policy makes it a Tier-1 entity and
+    slots:
+      - id
+      - label
+      - has_community_identification_key
+      - has_spatial_region
+    slot_usage:
+      - located_in:
+          required: true
+          multivalued: false
+          range: MunicipalityArea
+      - has_community_identification_key:
+          required: true
+          multivalued: false
 
   MunicipalityArea:
     class_uri: mhpo:MHPO_00020017
