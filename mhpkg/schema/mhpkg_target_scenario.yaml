@@ -202,6 +202,13 @@ slots:
       OEO `has spatial region` — Termboard's `has spatial region`. Optional: a heat plan is about a
       municipality area, but the 2026-09-15 draft does not draw it on every value. 
 
+  located_in:
+    slot_uri: obo:RO_0001025
+    range: MunicipalityArea, StudyRegion
+    description: >-
+      OEO `located in` — Termboard's `located in`. Optional: a heat plan is about a municipality
+      area, but the 2026-09-15 draft does not draw it on every value.
+
   has_community_identification_key:
     slot_uri: mhpo:MHPO_00020030
     range: string
@@ -734,7 +741,7 @@ classes:
       - has_community_identification_key
       - has_spatial_region
     slot_usage:
-      - has_spatial_region:
+      - located_in:
           required: true
           multivalued: false
           range: MunicipalityArea
