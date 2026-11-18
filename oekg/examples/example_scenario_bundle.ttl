@@ -1,0 +1,138 @@
+# A complete OEKG scenario bundle: one study, its report, one scenario factsheet, and one framework
+# and one model factsheet — every field of `docs/oekg/fields.md` that the shapes allow is filled.
+#
+# ⚠️ THE CONTENT IS FICTIONAL. "Example study", its people, institutions, funder, report, DOI and
+# datasets do not exist; every UUID is a visibly made-up 0000…-pattern. Only the OEO term IRIs,
+# the region references and the class / predicate IRIs are real — they are what the shapes demand.
+#
+# Modelled like the live (reworked) graph, see
+# `oekg/archive/madbkr_ba/oekg_rework/output_rework_oekg_final.ttl`: instance IRIs under the
+# `oekg:` namespace, every object of a CommonShape predicate (OEO terms, people, organisations)
+# carrying exactly one label, and links / region references typed `reference`.
+#
+# Not filled, because the closed shapes forbid it (no predicate exists in the reworked model):
+#   R4 "Place of publication" — the pre-rework `oekg:place_of_publication` was dropped.
+#
+# Validate with (one shapes file, so one graph — no `-s` merging hazard here):
+#   uv run --group graph python -c "
+#   from pyshacl import validate; from rdflib import Graph
+#   s = Graph().parse('oekg/shapes/oekg_shapes.ttl'); d = Graph().parse('oekg/examples/example_scenario_bundle.ttl')
+#   c, _, t = validate(data_graph=d, shacl_graph=s, advanced=True); print(c); print(t)"
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc:   <http://purl.org/dc/terms/> .
+@prefix obo:  <http://purl.obolibrary.org/obo/> .
+@prefix oeo:  <https://openenergyplatform.org/ontology/oeo/> .
+@prefix oekg: <https://openenergyplatform.org/ontology/oekg/> .
+
+# --- The study (scenario bundle) -----------------------------------------------------------
+
+oekg:00000000-0000-4000-8000-000000000001
+    a oeo:OEO_00020227 ;                                            # scenario bundle
+    rdfs:label "Example study on the heat transition in a fictional federal state"^^xsd:string ;   # S1
+    dc:acronym "EXAMPLE-HEAT"^^xsd:string ;                         # S2
+    oeo:OEO_00000510 oekg:00000000-0000-4000-8000-0000000000a1 ,    # S3 has organisation
+                     oekg:00000000-0000-4000-8000-0000000000a2 ;
+    oeo:OEO_00000509 oekg:00000000-0000-4000-8000-0000000000b1 ;    # S4 has funding source
+    dc:abstract "Example research question: how fast must heat pumps and district heating grow for the building sector of a fictional federal state to reach climate neutrality by 2045, and what does that mean for the electricity grid?"^^xsd:string ;   # S5
+    oeo:OEO_00000508 oekg:00000000-0000-4000-8000-0000000000c1 ;    # S6 has contact person
+    oeo:OEO_00390079 oeo:OEO_00010056 ;                             # S7 based on sector division
+    oeo:OEO_00020439 oeo:OEO_00010034 , oeo:OEO_00000213 ;          # S8 covers sector (shortcut)
+    oeo:OEO_00020432 oeo:OEO_00000292 , oeo:OEO_00010380 ;          # S9 covers energy carrier (shortcut)
+    oeo:OEO_00020438 oeo:OEO_00020308 , oeo:OEO_00020369 ;          # S10 covers technology (shortcut)
+    oeo:OEO_00390071 oeo:OEO_00020005 , oeo:OEO_00010212 ;          # S11 has study descriptor tag
+    obo:BFO_0000051                                                 # has part
+        <https://openenergyplatform.org/ontology/oekg/publication/00000000-0000-4000-8000-000000000002> ,
+        <https://openenergyplatform.org/ontology/oekg/scenario/00000000-0000-4000-8000-000000000003> ,
+        <https://openenergyplatform.org/ontology/oekg/frameworks/example-framework> ,
+        <https://openenergyplatform.org/ontology/oekg/models/example-model> .
+
+oekg:00000000-0000-4000-8000-0000000000a1 a oeo:OEO_00030022 ;      # organisation
+    rdfs:label "Example Institute for Energy Systems"^^xsd:string .
+oekg:00000000-0000-4000-8000-0000000000a2 a oeo:OEO_00030022 ;
+    rdfs:label "Example University of Applied Sciences"^^xsd:string .
+oekg:00000000-0000-4000-8000-0000000000b1 a oeo:OEO_00090001 ;      # funder
+    rdfs:label "Example Research Foundation"^^xsd:string .
+oekg:00000000-0000-4000-8000-0000000000c1 a oeo:OEO_00000107 ;      # contact person
+    rdfs:label "Erika Example"^^xsd:string .
+
+# --- The report (study report) -------------------------------------------------------------
+
+<https://openenergyplatform.org/ontology/oekg/publication/00000000-0000-4000-8000-000000000002>
+    a oeo:OEO_00020012 ;                                            # study report
+    rdfs:label "Example study: heat transition pathways — final report"^^xsd:string ;   # R1
+    oeo:OEO_00390096 "2024-06-01T00:00:00"^^xsd:dateTime ;          # R2 has publication date
+    oeo:OEO_00390098 "10.0000/example.2024.001"^^xsd:string ;       # R3 has doi
+    oeo:OEO_00390078 <https://example.org/reports/example-heat-2024.pdf> ;   # R5 has reference
+    oeo:OEO_00000506 oekg:00000000-0000-4000-8000-0000000000d1 ,    # R6 has author
+                     oekg:00000000-0000-4000-8000-0000000000d2 ;
+    oeo:OEO_00390095 "00000000-0000-4000-8000-000000000002"^^xsd:string .   # has uuid
+
+<https://example.org/reports/example-heat-2024.pdf> a oeo:OEO_00000353 .   # reference
+
+oekg:00000000-0000-4000-8000-0000000000d1 a oeo:OEO_00000064 ;      # author
+    rdfs:label "Erika Example"^^xsd:string .
+oekg:00000000-0000-4000-8000-0000000000d2 a oeo:OEO_00000064 ;
+    rdfs:label "Max Mustermann"^^xsd:string .
+
+# --- The scenario (scenario factsheet) -----------------------------------------------------
+
+<https://openenergyplatform.org/ontology/oekg/scenario/00000000-0000-4000-8000-000000000003>
+    a oeo:OEO_00000365 ;                                            # scenario factsheet
+    rdfs:label "Example scenario: electrified heat"^^xsd:string ;   # SC1
+    dc:acronym "EX-ELEC"^^xsd:string ;                              # SC2
+    dc:abstract "Example storyline: oil and gas boilers are phased out by 2040; heat pumps supply detached houses and district heating fed by large heat pumps and thermal storage supplies dense areas."^^xsd:string ;   # SC3
+    oeo:OEO_00020220 <https://openenergyplatform.org/ontology/oekg/region/Germany> ;    # SC4 has study region
+    oeo:OEO_00020222 <https://openenergyplatform.org/ontology/oekg/region/Austria> ;   # SC5 has interacting region
+    oeo:OEO_00020440 "2030-01-01T00:00:00"^^xsd:dateTime ,          # SC6 has scenario year value
+                     "2045-01-01T00:00:00"^^xsd:dateTime ;
+    oeo:OEO_00390073 oeo:OEO_00020247 , oeo:OEO_00030010 ;          # SC7 has scenario type
+    oeo:OEO_00020437 <https://openenergyplatform.org/ontology/oekg/input_datasets/00000000-0000-4000-8000-000000000004> ;    # SC8 has information input (shortcut)
+    oeo:OEO_00020436 <https://openenergyplatform.org/ontology/oekg/output_datasets/00000000-0000-4000-8000-000000000005> ;   # SC8 has information output (shortcut)
+    oeo:OEO_00390095 "00000000-0000-4000-8000-000000000003"^^xsd:string .   # has uuid
+
+<https://openenergyplatform.org/ontology/oekg/region/Germany> a oeo:OEO_00020032 ;   # study region
+    rdfs:label "Germany"^^xsd:string ;
+    oeo:OEO_00390078 <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/Germany> .
+<https://openenergyplatform.org/ontology/oekg/region/Austria> a oeo:OEO_00020036 ;   # interacting region
+    rdfs:label "Austria"^^xsd:string ;
+    oeo:OEO_00390078 <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/Austria> .
+<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/Germany> a oeo:OEO_00000353 .
+<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/Austria> a oeo:OEO_00000353 .
+
+<https://openenergyplatform.org/ontology/oekg/input_datasets/00000000-0000-4000-8000-000000000004>
+    a oeo:OEO_00030029 ;                                            # exogenous data
+    rdfs:label "Example input: building stock and heat demand assumptions (example_heat_input)"^^xsd:string ;
+    oeo:OEO_00390094 "/dataedit/view/scenario/example_heat_input"^^xsd:string ;   # has iri
+    oekg:has_id 1 ;
+    oeo:OEO_00390095 "00000000-0000-4000-8000-000000000004"^^xsd:string .
+<https://openenergyplatform.org/ontology/oekg/output_datasets/00000000-0000-4000-8000-000000000005>
+    a oeo:OEO_00030030 ;                                            # endogenous data
+    rdfs:label "Example output: heat generation by technology (example_heat_output)"^^xsd:string ;
+    oeo:OEO_00390094 "/dataedit/view/scenario/example_heat_output"^^xsd:string ;
+    oekg:has_id 2 ;
+    oeo:OEO_00390095 "00000000-0000-4000-8000-000000000005"^^xsd:string .
+
+# --- Models and frameworks (fields.md: TBD; the shapes cover only label and iri) -----------
+
+<https://openenergyplatform.org/ontology/oekg/frameworks/example-framework> a oeo:OEO_00000172 ;   # framework factsheet
+    rdfs:label "Example framework"^^xsd:string ;
+    oeo:OEO_00390094 "/factsheets/frameworks/example-framework/"^^xsd:string .
+<https://openenergyplatform.org/ontology/oekg/models/example-model> a oeo:OEO_00000277 ;   # model factsheet
+    rdfs:label "Example model"^^xsd:string ;
+    oeo:OEO_00390094 "/factsheets/models/example-model/"^^xsd:string .
+
+# --- OEO terms: CommonShape requires exactly one label on each (labels as in the live graph) -
+
+oeo:OEO_00010056 rdfs:label "KSG sector division"^^xsd:string .
+oeo:OEO_00010034 rdfs:label "building sector"^^xsd:string .
+oeo:OEO_00000213 rdfs:label "heating and cooling sector"^^xsd:string .
+oeo:OEO_00000292 rdfs:label "natural gas"^^xsd:string .
+oeo:OEO_00010380 rdfs:label "renewable electrolytic hydrogen"^^xsd:string .
+oeo:OEO_00020308 rdfs:label "heat generation technology"^^xsd:string .
+oeo:OEO_00020369 rdfs:label "thermal energy storage technology"^^xsd:string .
+oeo:OEO_00020005 rdfs:label "heating grid"^^xsd:string .
+oeo:OEO_00010212 rdfs:label "decarbonisation pathway"^^xsd:string .
+oeo:OEO_00020247 rdfs:label "target driven scenario"^^xsd:string .
+oeo:OEO_00030010 rdfs:label "energy scenario"^^xsd:string .

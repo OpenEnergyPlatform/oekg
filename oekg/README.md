@@ -28,6 +28,7 @@ would put live and dead material side by side with nothing to tell them apart.
 | Directory | Status | What it is |
 |---|---|---|
 | [`shapes/`](shapes/) | **current**, canonical | `oekg_shapes.ttl` — the OEKG's SHACL shapes, from the BA thesis. Validated against the live graph 2026-08-13: **135 violations, 133 of them upstream `oeplatform` data bugs**. No CI runs them yet. |
+| [`examples/`](examples/) | **current** | `example_scenario_bundle.ttl` — one complete, fictional scenario bundle (every `docs/oekg/fields.md` field the shapes allow); conforms to `shapes/oekg_shapes.ttl`. |
 | [`eval/`](eval/) | **current** | the competency questions (prose + SPARQL). The shapes **moved out** of here to `shapes/` on 2026-08-13. |
 | [`legacy/`](legacy/) | **superseded**, kept for provenance | the first population pipeline: hand-built placeholder JSON → Colab notebook → a 2023 Turtle snapshot. **Do not reuse.** |
 | [`archive/madbkr_ba/`](archive/madbkr_ba/) | **archived**, closed | a finished BA thesis that remodelled the graph against the OEO. Intact, nothing deleted. Its `documentation.pdf` holds the predicate definitions. |
